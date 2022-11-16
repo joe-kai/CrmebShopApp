@@ -1,0 +1,24 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "CrmebShopApp"
+
+include ':crmeb-app:app'
+include ':lib-resource'
+include ':lib-base'
+include ':crmeb-app:module-home'
+include ':crmeb-app:module-mine'
+include ':crmeb-app:module-cart'
+include ':crmeb-app:module-category'
+include ':crmeb-app:module-order'
