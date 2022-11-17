@@ -1,0 +1,23 @@
+ext {
+    app_versions = [
+            minSdkVersion    : 26,
+            compileSdkVersion: 33,
+            targetSdkVersion : 33,
+            versionCode      : 1,
+            versionName      : '1.0',
+    ]
+}
+
+ext{
+
+}
+
+//获取路径
+ext.getRootPath = {
+    def tempProject = project
+    println "path = " + tempProject
+    while (tempProject.parent != null) {
+        tempProject = tempProject.parent
+    }
+    return project.buildFile.parentFile.path
+}

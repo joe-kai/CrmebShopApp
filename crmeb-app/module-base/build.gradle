@@ -1,16 +1,14 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-
 }
+
 apply from: project.getRootPath() + "/common.gradle"
 
 android {
-    namespace 'com.joekay.crmeb_app'
-
+    namespace 'com.joekay.module_base'
 }
-
 dependencies {
-
+    api project(":lib-base")
 
 }
