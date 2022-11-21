@@ -1,0 +1,18 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: project.getRootPath() + "/android.gradle"
+android {
+    namespace 'com.joekay.lib_network'
+}
+
+dependencies {
+    api libs.retrofit
+    api libs.converter_gson
+    api libs.logging_interceptor
+    api libs.livedata_ktx
+    api libs.viewmodel_ktx
+    api libs.eventbus
+}

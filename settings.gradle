@@ -19,3 +19,4 @@ include ':lib-base'
 include ':app-crmeb:module-base'
 
 include ':lib-resource'
+include ':lib-network'

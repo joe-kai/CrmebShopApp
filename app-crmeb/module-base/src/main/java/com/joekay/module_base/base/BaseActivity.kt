@@ -9,4 +9,6 @@ import com.joekay.lib_base.base.activity.BaseBindingAct
  * @explain：
  */
 abstract class BaseActivity<VB:ViewBinding>:BaseBindingAct<VB>() {
+
+
 }
