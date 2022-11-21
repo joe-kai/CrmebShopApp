@@ -1,0 +1,27 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: project.getRootPath() + "/android.gradle"
+android {
+    namespace 'com.joekay.app_crmeb'
+
+    flavorDimensions 'package'
+
+    productFlavors {
+        normal {
+            dimension 'package'
+            manifestPlaceholders = [appName: "@string/app_name"]
+        }
+        self {
+            dimension 'package'
+            applicationIdSuffix ".self"
+            manifestPlaceholders = [appName:"@string/app_name"]
+        }
+    }
+}
+
+dependencies {
+    api project(":app-crmeb:module-base")
+}

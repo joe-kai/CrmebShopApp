@@ -2,9 +2,14 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
-apply from:"../common.gradle"
 
+apply from: project.getRootPath() + "/android.gradle"
+android {
+    namespace 'com.joekay.lib_resource'
+}
 
 dependencies {
-
+    api libs.core_ktx
+    api libs.appcompat
+    api libs.material
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 常见界面标题栏大小 -->
+    <dimen name="actionBarSize">50dp</dimen>
+    <dimen name="actionBarHeight">50dp</dimen>
+
+    <!-- 常见列表左边or右边，距离屏幕间隔。 -->
+    <dimen name="listSpaceSize">14dp</dimen>
+
+    <!--  标题栏字体大小  -->
+    <dimen name="titleSize">18sp</dimen>
+
+    <!--  右边标题栏字体大小  -->
+    <dimen name="rightTitleSize">14dp</dimen>
+
+    <dimen name="dp15">15dp</dimen>
+
+</resources>

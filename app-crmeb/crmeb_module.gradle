@@ -1,0 +1,5 @@
+apply from: project.getRootPath() + "/common_android.gradle"
+
+dependencies {
+    api project(":app-crmeb:module-base")
+}

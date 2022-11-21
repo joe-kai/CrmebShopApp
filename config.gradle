@@ -1,14 +1,41 @@
-ext {
-    app_versions = [
-            minSdkVersion    : 26,
-            compileSdkVersion: 33,
-            targetSdkVersion : 33,
-            versionCode      : 1,
-            versionName      : '1.0',
-    ]
-}
+ext.app_versions = [
+        minSdkVersion    : 26,
+        compileSdkVersion: 33,
+        targetSdkVersion : 33,
+        versionCode      : 1,
+        versionName      : '1.0',
+]
 
-ext{
+ext {
+    lifecycle_version = "2.6.0-alpha03"
+    activity_version = "1.6.1"
+    fragment_version = "1.5.4"
+    refresh_version = "2.0.5"
+
+
+    libs = [
+            core_ktx         : 'androidx.core:core-ktx:1.8.0',
+            appcompat        : 'androidx.appcompat:appcompat:1.5.1',
+            material         : 'com.google.android.material:material:1.6.0',
+
+
+            activity_ktx     : "androidx.activity:activity-ktx:$activity_version",
+            fragment_ktx     : "androidx.fragment:fragment-ktx:$fragment_version",
+            eventbus         : "org.greenrobot:eventbus:3.3.1",
+            rv_animators     : 'jp.wasabeef:recyclerview-animators:4.0.2',
+
+            baseAdapter      : "io.github.cymchad:BaseRecyclerViewAdapterHelper:4.0.0-beta02",
+            refresh_layout   : "io.github.scwang90:refresh-layout-kernel:$refresh_version",      //核心必须依赖
+            refresh_header   : "io.github.scwang90:refresh-header-classics:$refresh_version",
+            // ViewModel
+            viewmodel_ktx    : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+            // ViewModel utilities for Compose
+            viewmodel_compose: "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version",
+            // LiveData
+            livedata_ktx     : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
+            // Lifecycles only (without ViewModel or LiveData)
+            runtime_ktx      : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
+    ]
 
 }
 

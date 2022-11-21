@@ -1,0 +1,14 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: project.getRootPath() + "/android.gradle"
+android {
+    namespace 'com.joekay.module_base'
+}
+
+dependencies {
+    api project(":lib-base")
+
+}

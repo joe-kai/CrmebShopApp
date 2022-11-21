@@ -14,13 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "CrmebShopApp"
 
-include ':crmeb-app:app'
-include ':lib-resource'
+include ':app-crmeb:app'
 include ':lib-base'
-include ':crmeb-app:module-home'
-include ':crmeb-app:module-mine'
-include ':crmeb-app:module-cart'
-include ':crmeb-app:module-category'
-include ':crmeb-app:module-order'
-include ':lib-network'
-include ':crmeb-app:module-base'
+include ':app-crmeb:module-base'
+
+include ':lib-resource'
