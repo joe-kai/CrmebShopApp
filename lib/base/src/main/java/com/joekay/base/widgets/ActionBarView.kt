@@ -18,6 +18,7 @@ import com.joekay.base.ktx.getStatusBarHeight
  * @date:  2022/11/20
  * @explain：
  */
+@Suppress("DEPRECATION")
 class ActionBarView : RelativeLayout, View.OnClickListener {
     private var mTitleColor: Int = 0
     private var mTitleSize: Float = 0f

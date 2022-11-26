@@ -1,13 +1,13 @@
 package com.joekay.module_mine
 
-import android.util.Log
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.joekay.base.ktx.setSingleClickListener
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_mine.databinding.FragmentMineBinding
-import java.util.*
+import com.joekay.resource.RouterPath
+import com.therouter.router.Route
 
+@Route(path = RouterPath.frag_mine)
 class MineFragment : BaseFragment<FragmentMineBinding>() {
 
     companion object {

@@ -1,21 +1,8 @@
 package com.joekay.base
 
-import android.app.Activity
 import android.app.Application
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.Network
-import android.os.Build
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import com.google.gson.reflect.TypeToken
-import com.google.gson.stream.JsonToken
 import com.joekay.base.aop.Log
-import com.scwang.smart.refresh.layout.SmartRefreshLayout
-import com.scwang.smart.refresh.layout.api.RefreshLayout
-import okhttp3.OkHttpClient
-import timber.log.Timber
+import com.tencent.bugly.crashreport.CrashReport
 
 /**
  * @author:  JoeKai
@@ -30,6 +17,8 @@ open class BaseApplication : Application() {
         fun initSdk(application: Application) {
             // Activity 栈管理初始化
             ActivityManager.getInstance().init(application)
+            // Bugly异常捕捉
+            CrashReport.initCrashReport(application,"70d55d6996",false)
         }
     }
 

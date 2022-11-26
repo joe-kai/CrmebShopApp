@@ -13,6 +13,8 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$androidGradlePluginVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath 'cn.therouter:plugin:1.1.1'
+
     }
 }
 //plugins {

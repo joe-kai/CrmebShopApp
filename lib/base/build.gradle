@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+
 }
 
 apply from: project.getRootPath() + "/android.gradle"
@@ -27,4 +29,9 @@ dependencies {
     api libs.aspectjrt
     api libs.timber
     api libs.lottie
+    api libs.bugly
+    debugApi libs.leakcanary
+    api libs.therouter
+    kapt libs.therouter_apt
+
 }

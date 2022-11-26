@@ -1,0 +1,11 @@
+apply from: "../crmeb_module.gradle"
+apply plugin: 'org.jetbrains.kotlin.android'
+
+
+android {
+    namespace 'com.joekay.module_main'
+}
+
+dependencies {
+
+}

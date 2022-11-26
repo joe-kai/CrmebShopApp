@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'therouter'
+
 }
 apply from: project.getRootPath() + "/android.gradle"
 
@@ -45,11 +47,9 @@ android {
 
 dependencies {
     api project(":app-crmeb:module-base")
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.4.+'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
 
     if (!isApp) {
+        api project(":app-crmeb:module-main")
         api project(":app-crmeb:module-home")
         api project(":app-crmeb:module-category")
         api project(":app-crmeb:module-cart")

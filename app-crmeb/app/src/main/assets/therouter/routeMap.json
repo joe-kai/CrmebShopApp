@@ -1,0 +1,37 @@
+[
+  {
+    "path": "mine/mine_frag",
+    "className": "com.joekay.module_mine.MineFragment",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
+    "path": "main/main_act",
+    "className": "com.joekay.module_main.MainActivity",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
+    "path": "home/home_frag",
+    "className": "com.joekay.module_home.HomeFragment",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
+    "path": "category/category_frag",
+    "className": "com.joekay.module_category.CategoryFragment",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
+    "path": "cart/cart_frag",
+    "className": "com.joekay.module_cart.CartFragment",
+    "action": "",
+    "description": "",
+    "params": {}
+  }
+]
