@@ -1,0 +1,9 @@
+apply from: "../crmeb_module.gradle"
+
+android {
+    namespace 'com.joekay.module_order'
+    if (isApp)
+        defaultConfig {
+            applicationId "com.joekay.module_order"
+        }
+}

@@ -2,26 +2,57 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
-
 apply from: project.getRootPath() + "/android.gradle"
+
 android {
     namespace 'com.joekay.app_crmeb'
 
-    flavorDimensions 'package'
+    defaultConfig {
+        applicationId "com.joekay.app_crmeb"
+    }
 
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions 'package'
     productFlavors {
         normal {
             dimension 'package'
-            manifestPlaceholders = [appName: "@string/app_name"]
+            manifestPlaceholders = [appName: "@string/app_name_normal"]
         }
         self {
             dimension 'package'
             applicationIdSuffix ".self"
-            manifestPlaceholders = [appName:"@string/app_name"]
+            manifestPlaceholders = [appName: "@string/app_name_self"]
         }
     }
+    applicationVariants.all { variant ->
+        // apk 输出文件名配置
+        variant.outputs.all { output ->
+            outputFileName = rootProject.getName() + '_v' + variant.versionName + '_' + variant.buildType.name
+            if (variant.buildType.name == buildTypes.release.getName()) {
+                outputFileName += '_' + new Date().format('MMdd')
+            }
+            outputFileName += '.apk'
+        }
+    }
+
 }
 
 dependencies {
     api project(":app-crmeb:module-base")
+
+    if (!isApp) {
+        api project(":app-crmeb:module-home")
+        api project(":app-crmeb:module-category")
+        api project(":app-crmeb:module-cart")
+        api project(":app-crmeb:module-mine")
+        api project(":app-crmeb:module-order")
+        api project(":app-crmeb:module-product")
+    }
+
 }

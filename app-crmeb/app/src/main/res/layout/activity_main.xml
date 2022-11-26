@@ -7,19 +7,24 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.joekay.lib_base.widgets.ActionBarView
-        android:id="@+id/actionBarView"
-        android:background="@color/black"
+    <com.joekay.base.widgets.NoScrollViewPager
+        android:id="@+id/main_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:background="@color/white"
+        android:elevation="@dimen/dp_5"
+        app:itemIconSize="@dimen/dp_24"
+        app:itemIconTint="@null"
+        app:itemRippleColor="@color/transparent"
+        app:itemTextColor="@drawable/select_nav_text_color"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
+
 
 </LinearLayout>

@@ -1,23 +1,18 @@
 apply from:"config.gradle"
+
 buildscript {
     ext {
         androidGradlePluginVersion = '7.0.2'
         kotlinVersion = "1.7.10"
     }
     repositories {
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/central' }
-        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
-        maven { url 'https://jitpack.io' }
         google()
         mavenCentral()
-
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$androidGradlePluginVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-
-
     }
 }
 //plugins {

@@ -1,0 +1,27 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: project.getRootPath() + "/android.gradle"
+android {
+    namespace 'com.joekay.base'
+}
+
+dependencies {
+    api fileTree(include:['*.jar'],dir: 'libs' )
+    api project(":lib:resource")
+    api project(":lib:network")
+    api libs.activity_ktx
+    api libs.fragment_ktx
+    api libs.eventbus
+    api libs.rv_animators
+    api libs.baseAdapter
+    api libs.refresh_layout
+    api libs.refresh_header
+    api libs.viewmodel_ktx
+    api libs.viewmodel_compose
+    api libs.livedata_ktx
+    api libs.runtime_ktx
+//    api libs.xxPermissions
+}

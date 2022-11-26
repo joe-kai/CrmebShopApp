@@ -1,7 +1,7 @@
 package com.joekay.module_base.base
 
 import androidx.viewbinding.ViewBinding
-import com.joekay.lib_base.base.fragment.BaseBindingFrag
+import com.joekay.base.fragment.BaseBindingFrag
 
 /**
  * @author:  JoeKai

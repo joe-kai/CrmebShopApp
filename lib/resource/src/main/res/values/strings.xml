@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name_normal">商城APP</string>
+    <string name="app_name_self">商城SELF</string>
+    <string name="home_exit_hint">再按一次退出</string>
+
+
+    <string name="home">首页</string>
+    <string name="category">分类</string>
+    <string name="cart">购物车</string>
+    <string name="mine">我的</string>
+</resources>

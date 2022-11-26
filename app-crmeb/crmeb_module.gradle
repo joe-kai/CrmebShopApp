@@ -1,4 +1,29 @@
-apply from: project.getRootPath() + "/common_android.gradle"
+if (isApp) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android'
+
+apply from: project.getRootPath() + "/android.gradle"
+
+android {
+    sourceSets {
+        main {
+            if (isApp) {
+                manifest.srcFile 'src/main/app/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                //集成开发模式下排除debug文件夹中的所有Java文件
+                java {
+                    exclude '*module'
+                }
+            }
+        }
+    }
+}
 
 dependencies {
     api project(":app-crmeb:module-base")
