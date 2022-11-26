@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/actionBarView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,14 +11,18 @@
         android:gravity="center_vertical"
         tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:id="@+id/imv_back"
-            android:layout_width="@dimen/dp_50"
-            android:layout_height="@dimen/dp_50"
-            android:padding="@dimen/dp_15"
-            android:src="@drawable/ic_back_white_25dp" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_40"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/dp_10"
+            android:textColor="@android:color/tertiary_text_light"
+            android:textSize="@dimen/sp_10"
+            app:drawableLeftCompat="@drawable/ic_back_black_25dp"
+            tools:text="" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txv_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,12 +32,12 @@
             android:ellipsize="end"
             android:gravity="center"
             android:singleLine="true"
-            android:text="默认标题"
             android:textColor="@color/title_color"
-            android:textSize="@dimen/sp_18" />
+            android:textSize="@dimen/sp_18"
+            tools:text="默认标题" />
 
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txv_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

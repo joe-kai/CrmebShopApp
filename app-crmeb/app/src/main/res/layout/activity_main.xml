@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <com.joekay.base.widgets.ActionBarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:left_hint="true"
+        app:title="Hello" />
+
     <com.joekay.base.widgets.NoScrollViewPager
         android:id="@+id/main_pager"
         android:layout_width="match_parent"

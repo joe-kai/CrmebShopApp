@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ActionBarView">
-        <attr name="bar_title" format="string" />
-        <attr name="bar_title_size" format="dimension" />
-        <attr name="bar_title_color" format="color" />
-        <attr name="bar_right_icon" format="reference" />
-        <attr name="bar_right_text" format="string" />
-        <attr name="bar_right_color" format="color" />
-        <attr name="bar_right_icon_margin" format="dimension" />
-        <attr name="bar_right_width" format="dimension" />
-        <attr name="bar_right_height" format="dimension" />
-        <attr name="bar_left_icon" format="reference" />
-        <attr name="bar_left_width" format="dimension" />
-        <attr name="bar_left_height" format="dimension" />
-        <attr name="bar_left_icon_margin" format="dimension" />
-        <attr name="bar_left_hint" format="boolean" />
+        <attr name="title" format="string" />
+        <attr name="title_size" format="dimension" />
+        <attr name="title_color" format="color" />
+        <attr name="right_icon" format="reference" />
+        <attr name="right_text" format="string" />
+        <attr name="right_color" format="color" />
+        <attr name="right_icon_margin" format="dimension" />
+        <attr name="right_width" format="dimension" />
+        <attr name="right_height" format="dimension" />
+        <attr name="left_icon" format="reference" />
+        <attr name="left_width" format="dimension" />
+        <attr name="left_text" format="string" />
+        <attr name="lift_color" format="color" />
+        <attr name="left_height" format="dimension" />
+        <attr name="left_icon_margin" format="dimension" />
+        <attr name="left_hint" format="boolean" />
     </declare-styleable>
 
 

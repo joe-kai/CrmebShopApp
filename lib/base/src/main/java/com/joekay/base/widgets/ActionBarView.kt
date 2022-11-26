@@ -1,43 +1,49 @@
 package com.joekay.base.widgets
 
-import android.app.Activity
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.text.TextUtils
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.joekay.base.R
 import com.joekay.base.ktx.getStatusBarHeight
-import com.joekay.base.utils.GlobalUtil
 
 /**
  * @author:  JoeKai
  * @date:  2022/11/20
  * @explain：
  */
-class ActionBarView : RelativeLayout {
-    private var mBarRightTextColor: Int? = 0
-    private var mBarLeftHint: Boolean? = false
-    private var mBarRightText: String? = ""
-    private var mBarLeftIconMargin: Float = 0f
-    private var mBarLeftIcon: Drawable? = null
-    private var mBarRightIconMargin: Float = 0f
-    private var mBarRightIcon: Drawable? = null
-    private var mBarTitleColor: Int = 0
-    private var mBarTitleSize: Float = 0f
-    private var mBarTitle: String? = ""
+class ActionBarView : RelativeLayout, View.OnClickListener {
+    private var mTitleColor: Int = 0
+    private var mTitleSize: Float = 0f
+    private var mTitle: String? = ""
+
+    private var mRightTextColor: Int? = 0
+    private var mRightText: String? = ""
+    private var mRightIconMargin: Float = 0f
+    private var mRightIcon: Drawable? = null
+    private var mRightIconWidth: Float = 0f
+    private var mRightIconHeight: Float = 0f
+
+    private var mLeftHint: Boolean? = false
+    private var mLiftTextColor: Int? = 0
+    private var mLiftText: String? = ""
+    private var mLeftIconMargin: Float = 0f
+    private var mLeftIcon: Drawable? = null
+    private var mLeftIconWidth: Float = 0f
+    private var mLeftIconHeight: Float = 0f
+
     private var mContext: Context? = null
-    private var mBarLeftIconWidth: Float = 0f
-    private var mBarLeftIconHeight: Float = 0f
-    private var mBarRightIconWidth: Float = 0f
-    private var mBarRightIconHeight: Float = 0f
+
+    /** 监听器对象  */
+    private var mListener: OnTitleBarListener? = null
     private lateinit var txvTitle: TextView
-    private lateinit var imvBack: ImageView
     private lateinit var txvRight: TextView
+    private lateinit var txvLeft: TextView
 
     constructor(
         context: Context
@@ -51,20 +57,24 @@ class ActionBarView : RelativeLayout {
     ) : super(context, attrs) {
         val ob =
             context.obtainStyledAttributes(attrs, R.styleable.ActionBarView)
-        mBarLeftHint = ob.getBoolean(R.styleable.ActionBarView_bar_left_hint, false)
-        mBarTitle = ob.getString(R.styleable.ActionBarView_bar_title)
-        mBarRightText = ob.getString(R.styleable.ActionBarView_bar_right_text)
-        mBarRightTextColor = ob.getColor(R.styleable.ActionBarView_bar_right_color, 0)
-        mBarTitleSize = ob.getDimension(R.styleable.ActionBarView_bar_title_size, 0f)
-        mBarTitleColor = ob.getColor(R.styleable.ActionBarView_bar_title_color, 0)
-        mBarRightIcon = ob.getDrawable(R.styleable.ActionBarView_bar_right_icon)
-        mBarRightIconMargin = ob.getDimension(R.styleable.ActionBarView_bar_right_icon_margin, 0f)
-        mBarLeftIcon = ob.getDrawable(R.styleable.ActionBarView_bar_left_icon)
-        mBarLeftIconMargin = ob.getDimension(R.styleable.ActionBarView_bar_left_icon_margin, 0f)
-        mBarLeftIconWidth = ob.getDimension(R.styleable.ActionBarView_bar_left_width, 0f)
-        mBarLeftIconHeight = ob.getDimension(R.styleable.ActionBarView_bar_left_height, 0f)
-        mBarRightIconWidth = ob.getDimension(R.styleable.ActionBarView_bar_right_width, 0f)
-        mBarRightIconHeight = ob.getDimension(R.styleable.ActionBarView_bar_right_height, 0f)
+        mTitle = ob.getString(R.styleable.ActionBarView_title)
+        mTitleSize = ob.getDimension(R.styleable.ActionBarView_title_size, 0f)
+        mTitleColor = ob.getColor(R.styleable.ActionBarView_title_color, 0)
+
+        mRightIconWidth = ob.getDimension(R.styleable.ActionBarView_right_width, 0f)
+        mRightIconHeight = ob.getDimension(R.styleable.ActionBarView_right_height, 0f)
+        mRightText = ob.getString(R.styleable.ActionBarView_right_text)
+        mRightTextColor = ob.getColor(R.styleable.ActionBarView_right_color, 0)
+        mRightIcon = ob.getDrawable(R.styleable.ActionBarView_right_icon)
+        mRightIconMargin = ob.getDimension(R.styleable.ActionBarView_right_icon_margin, 0f)
+
+        mLeftIconWidth = ob.getDimension(R.styleable.ActionBarView_left_width, 0f)
+        mLeftIconHeight = ob.getDimension(R.styleable.ActionBarView_left_height, 0f)
+        mLiftText = ob.getString(R.styleable.ActionBarView_left_text)
+        mLiftTextColor = ob.getColor(R.styleable.ActionBarView_lift_color, 0)
+        mLeftHint = ob.getBoolean(R.styleable.ActionBarView_left_hint, false)
+        mLeftIcon = ob.getDrawable(R.styleable.ActionBarView_left_icon)
+        mLeftIconMargin = ob.getDimension(R.styleable.ActionBarView_left_icon_margin, 0f)
 
         ob.recycle()
 
@@ -79,10 +89,9 @@ class ActionBarView : RelativeLayout {
         addView(view)
     }
 
-
     private fun initView(view: View) {
         txvTitle = view.findViewById(R.id.txv_title)
-        imvBack = view.findViewById(R.id.imv_back)
+        txvLeft = view.findViewById(R.id.txv_left)
         txvRight = view.findViewById(R.id.txv_right)
         initView()
 
@@ -92,64 +101,61 @@ class ActionBarView : RelativeLayout {
     private fun initView() {
         txvTitle.apply {
             //设置title
-            if (!TextUtils.isEmpty(mBarTitle)) {
-                text = mBarTitle
+            if (!TextUtils.isEmpty(mTitle)) {
+                text = mTitle
             }
 
             //设置title大小
-            if (mBarTitleSize != 0f) {
-                textSize = mBarTitleSize
+            if (mTitleSize != 0f) {
+                textSize = mTitleSize
             }
             //设置title颜色
-            if (mBarTitleColor != 0) {
-                setTextColor(mBarTitleColor)
+            if (mTitleColor != 0) {
+                setTextColor(mTitleColor)
             }
         }
-
-
         actionBarRight()
+        actionBarLeft()
+    }
 
-
-        //左侧按钮
-        imvBack.apply {
-            //是否显示
-            visibility = if (mBarLeftHint!!) {
-                GONE
-            } else {
-                VISIBLE
-            }
-            //通过属性设置
-            if (mBarLeftIcon != null) {
-                //设置左侧图标
-                setImageDrawable(mBarLeftIcon)
-                //设置距离左侧的边距
-                val params = layoutParams as LinearLayout.LayoutParams
-                if (mBarLeftIconMargin != 0f) {
-                    params.leftMargin = mBarLeftIconMargin.toInt()
+    private fun actionBarLeft() {
+        if (mLeftHint == true) {
+            txvLeft.visibility = View.GONE
+        }
+        //内容不为空，显示右侧内容
+        if (!TextUtils.isEmpty(mLiftText)) {
+            txvLeft.visibility = View.VISIBLE
+            txvLeft.text = mLiftText
+            txvLeft.setCompoundDrawables(null, null, null, null)
+        } else {
+            //右侧设置图片格式
+            if (mLeftIcon != null) {
+                txvLeft.visibility = View.VISIBLE
+                mLeftIcon?.run {
+                    setBounds(0, 0, this.minimumWidth, this.minimumHeight)
                 }
-                //设置宽高
-                if (mBarLeftIconWidth != 0f) {
-                    params.width = mBarLeftIconWidth.toInt()
-                    params.height = mBarLeftIconHeight.toInt()
-                }
-                layoutParams = params
-                //设置左侧点击的事件
-                imvBack.setOnClickListener {
-                    if (mOnLeftClickListener != null) {
-                        mOnLeftClickListener!!.leftClick()
-                    }
-                }
-            } else {
-                imvBack.setOnClickListener {
-                    //返回，销毁页面
-                    (mContext as Activity).finish()
-                }
+                txvLeft.setCompoundDrawables(mLeftIcon, null, null, null)
             }
         }
 
+
+        val layoutParams = txvLeft.layoutParams as RelativeLayout.LayoutParams
+        //设置距离右边距离
+        if (mLeftIconMargin != 0f) {
+            layoutParams.rightMargin = mLeftIconMargin.toInt()
+        }
+        //设置宽
+        if (mLeftIconWidth != 0f) {
+            layoutParams.width = mLeftIconWidth.toInt()
+        }
+        //设置高
+        if (mLeftIconHeight != 0f) {
+            layoutParams.height = mLeftIconHeight.toInt()
+        }
+        txvLeft.layoutParams = layoutParams
         //设置右边的颜色
-        if (mBarRightTextColor != 0) {
-            txvRight.setTextColor(mBarRightTextColor!!)
+        if (mLiftTextColor != 0) {
+            txvLeft.setTextColor(mLiftTextColor!!)
         }
 
     }
@@ -160,195 +166,210 @@ class ActionBarView : RelativeLayout {
      */
     private fun actionBarRight() {
         //内容不为空，显示右侧内容
-        if (!TextUtils.isEmpty(mBarRightText)) {
+        if (!TextUtils.isEmpty(mRightText)) {
             txvRight.visibility = View.VISIBLE
-            txvRight.text = mBarRightText
-        }
+            txvRight.text = mRightText
+            txvRight.setCompoundDrawables(null, null, null, null)
+        } else {
+            //右侧设置图片格式
+            if (mRightIcon != null) {
+                txvRight.visibility = View.VISIBLE
+                mRightIcon?.run {
+                    setBounds(0, 0, this.minimumWidth, this.minimumHeight)
+                }
+                txvRight.setCompoundDrawables(null, null, mRightIcon, null)
 
-        //右侧设置图片格式
-        if (mBarRightIcon != null) {
-            txvRight.visibility = View.VISIBLE
-            txvRight.background = mBarRightIcon
+            }
         }
 
         val layoutParams = txvRight.layoutParams as RelativeLayout.LayoutParams
         //设置距离右边距离
-        if (mBarRightIconMargin != 0f) {
-            layoutParams.rightMargin = mBarRightIconMargin.toInt()
+        if (mRightIconMargin != 0f) {
+            layoutParams.rightMargin = mRightIconMargin.toInt()
         }
         //设置宽
-        if (mBarRightIconWidth != 0f) {
-            layoutParams.width = mBarRightIconWidth.toInt()
+        if (mRightIconWidth != 0f) {
+            layoutParams.width = mRightIconWidth.toInt()
         }
         //设置高
-        if (mBarRightIconHeight != 0f) {
-            layoutParams.height = mBarRightIconHeight.toInt()
+        if (mRightIconHeight != 0f) {
+            layoutParams.height = mRightIconHeight.toInt()
         }
         txvRight.layoutParams = layoutParams
-
-        //右侧按钮点击事件
-        txvRight.setOnClickListener {
-            if (mOnRightClickListener != null) {
-                mOnRightClickListener!!.rightClick()
-            }
+        //设置右边的颜色
+        if (mRightTextColor != 0) {
+            txvRight.setTextColor(mRightTextColor!!)
         }
+
     }
 
     /**
-     * AUTHOR:AbnerMing
-     * INTRODUCE:设置Title
+     * 设置Title
      */
-    fun setBarTitle(title: String): TextView {
-        txvTitle.text = title
-        return txvTitle
+    fun setTitle(id: Int) = apply {
+        setTitle(resources.getString(id));
     }
 
     /**
-     * AUTHOR:AbnerMing
-     * INTRODUCE:设置标题颜色
+     * 设置Title
      */
-    fun setBarTitleColor(color: Int) {
-        txvTitle.setTextColor(GlobalUtil.getColor(color))
+    fun setTitle(title: CharSequence) = apply {
+        mTitle = title.toString()
+
+    }
+
+
+    /**
+     * 设置标题颜色
+     */
+    fun setTitleColor(color: Int) = apply {
+        txvTitle.setTextColor(resources.getColor(color))
     }
 
     /**
-     * AUTHOR:AbnerMing
-     * INTRODUCE:设置标题大小
+     * 设置标题大小
      */
-    fun setBarTitleSize(size: Float) {
-        txvTitle.textSize = size
+    fun setTitleSize(size: Float) = apply {
+        setTitleSize(TypedValue.COMPLEX_UNIT_SP, size)
     }
 
+    /**
+     * 设置标题大小
+     */
+    private fun setTitleSize(unit: Int, size: Float) = apply {
+        txvTitle.setTextSize(unit, size)
+    }
+
+    fun getTitle(): CharSequence {
+        return txvTitle.text
+    }
 
     /**
      * AUTHOR:AbnerMing
      * INTRODUCE:只显示标题
      */
-    fun hintLeftAndRight() {
-        imvBack.visibility = View.GONE
+    fun hintLeftAndRight() = apply {
         txvRight.visibility = View.GONE
+        txvLeft.visibility = View.GONE
+    }
+
+    /**
+     * 设置左标题的文本
+     */
+    fun setLeftTitle(id: Int) = apply {
+        setLeftTitle(resources.getString(id))
+    }
+
+    /**
+     * 设置左标题的文本
+     */
+    fun setLeftTitle(text: CharSequence) = apply {
+        mLiftText = text.toString()
+        actionBarLeft()
+    }
+
+    fun setLeftTitleColor(color: Int) = apply {
+        mLiftTextColor = resources.getColor(color)
+        actionBarLeft()
+    }
+
+    /**
+     * 设置左标题的字体大小
+     */
+    fun setLeftTitleSize(size: Float) = apply {
+        setLeftTitleSize(TypedValue.COMPLEX_UNIT_SP, size)
+    }
+
+    private fun setLeftTitleSize(unit: Int, size: Float) = apply {
+        txvLeft.setTextSize(unit, size)
+    }
+
+    fun setLeftIcon(id: Int) = apply {
+        mLeftIcon = resources.getDrawable(id)
+        actionBarLeft()
+    }
+
+    fun getLeftTitle(): CharSequence {
+        return txvLeft.text
+    }
+
+    /**
+     * 设置右标题的文本
+     */
+    fun setRightTitle(id: Int) = apply {
+        setRightTitle(resources.getString(id))
+    }
+
+    fun setRightTitle(text: CharSequence) = apply {
+        mRightText = text.toString()
+        actionBarRight()
+    }
+
+    /**
+     * 设置右标题的字体颜色
+     */
+    fun setRightTitleColor(color: Int) = apply {
+        mRightTextColor = resources.getColor(color)
+        actionBarRight()
+    }
+
+    fun getRightTitle(): CharSequence {
+        return txvRight.text
     }
 
     /**
      * AUTHOR:AbnerMing
      * INTRODUCE:显示右侧按钮
      */
-    fun setRightMenu(menu: String): TextView {
-        mBarRightText = menu
+    fun setRightTitle(title: String) = apply {
+        mRightText = title
         actionBarRight()
-        return txvRight
     }
 
-    fun setRightMenu(menu: Int): TextView {
-        mBarRightIcon = GlobalUtil.getDrawable(menu)
+    @SuppressLint("UseCompatLoadingForDrawables")
+    fun setRightIcon(id: Int) = apply {
+        mRightIcon = resources.getDrawable(id)
         actionBarRight()
-        return txvRight
     }
 
-    /**
-     * AUTHOR:AbnerMing
-     * INTRODUCE:显示右侧按钮
-     */
-    fun getRightMenu(menu: Any): TextView {
-        if (menu is String) {
-            mBarRightText = menu
-        } else if (menu is Drawable) {
-            mBarRightIcon = menu
-        }
-        actionBarRight()
-        return txvRight
-    }
 
     /**
      * AUTHOR:AbnerMing
      * INTRODUCE:获取title
      */
-    fun getBarTitle(): TextView {
+    fun getTitleView(): TextView {
         return txvTitle
-    }
-
-    /**
-     * AUTHOR:AbnerMing
-     * INTRODUCE:左侧
-     */
-    fun getLeftMenu(): ImageView {
-        return imvBack
-    }
-
-    /**
-     * AUTHOR:AbnerMing
-     * INTRODUCE:设置左边的图标及宽高距离左边的距离
-     */
-    fun setBarLeftIcon(icon: Int, l: Int = 0, w: Int = 0, h: Int = 0): ImageView {
-        if (icon != View.NO_ID) {
-            imvBack.setImageResource(icon)
-            if (l != 0) {
-                val layoutParams = imvBack.layoutParams as LinearLayout.LayoutParams
-                layoutParams.apply {
-                    width = w
-                    height = h
-                    leftMargin = l
-                }
-                imvBack.layoutParams = layoutParams
-            }
-            //imvBack.setOnClickListener {
-            //    if (mOnLeftClickListener != null) {
-            //        mOnLeftClickListener!!.leftClick()
-            //    }
-            //}
-        }
-        return imvBack
-    }
-
-    /**
-     * AUTHOR:AbnerMing
-     * INTRODUCE:设置右边的宽高和距离
-     */
-    fun setBarRightParams(r: Int = 0, w: Int = 0, h: Int = 0): TextView {
-        if (r != 0) {
-            val layoutParams = txvRight.layoutParams as RelativeLayout.LayoutParams
-            layoutParams.width = w
-            layoutParams.height = h
-            layoutParams.rightMargin = r
-            txvRight.layoutParams = layoutParams
-        }
-        return txvRight
     }
 
     /**
      * AUTHOR:AbnerMing
      * INTRODUCE:隐藏左边的按钮
      */
-    fun hintLeftBack() {
-        imvBack.visibility = View.GONE
+    fun hintLeftBack() = apply {
+        txvLeft.visibility = View.GONE
     }
 
-    fun setOnRightClickListener(action: () -> Unit) {
-        mOnRightClickListener = object : OnRightClickListener {
-            override fun rightClick() {
-                action()
-            }
+    /**
+     * 设置标题栏的点击监听器
+     */
+    fun setOnTitleBarListener(listener: OnTitleBarListener) = apply {
+        mListener = listener
+        // 设置监听
+        txvRight.setOnClickListener(this)
+        txvLeft.setOnClickListener(this)
+        txvTitle.setOnClickListener(this)
+    }
 
+    override fun onClick(v: View?) {
+        if (mListener == null) {
+            return
         }
-    }
-
-    private var mOnRightClickListener: OnRightClickListener? = null
-
-    interface OnRightClickListener {
-        fun rightClick()
-    }
-
-    private var mOnLeftClickListener: OnLeftClickListener? = null
-
-    interface OnLeftClickListener {
-        fun leftClick()
-    }
-
-    fun setOnLeftClickListener(action: () -> Unit) {
-        mOnLeftClickListener = object : OnLeftClickListener {
-            override fun leftClick() {
-                action()
-            }
+        if (v === txvLeft) {
+            mListener!!.onLeftClick(v)
+        } else if (v === txvRight) {
+            mListener!!.onRightClick(v)
+        } else if (v === txvTitle) {
+            mListener!!.onTitleClick(v)
         }
     }
 }

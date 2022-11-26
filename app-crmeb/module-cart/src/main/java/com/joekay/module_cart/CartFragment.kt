@@ -1,6 +1,8 @@
 package com.joekay.module_cart
 
+import android.view.View
 import androidx.fragment.app.viewModels
+import com.joekay.base.widgets.ActionBarView
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_cart.databinding.FragmentCartBinding
 
@@ -16,6 +18,8 @@ class CartFragment : BaseFragment<FragmentCartBinding>() {
 
     override fun initBinding() {
     }
+
+
 
 
 }

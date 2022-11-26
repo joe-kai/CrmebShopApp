@@ -2,6 +2,7 @@ package com.joekay.base.activity
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.SparseArray
 import android.view.KeyEvent
@@ -12,10 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import com.google.android.material.internal.ViewUtils.getContentView
-import com.joekay.base.action.ActivityAction
-import com.joekay.base.action.BundleAction
-import com.joekay.base.action.HandlerAction
-import com.joekay.base.action.KeyboardAction
+import com.joekay.base.action.*
 import com.joekay.base.fragment.BaseBindingFrag
 import com.joekay.base.fragment.BaseFrag
 
@@ -33,6 +31,7 @@ open class BaseAct : AppCompatActivity(), ActivityAction, BundleAction,
     override fun getContext(): Context {
         return this
     }
+
 
     override fun startActivity(intent: Intent) {
         return super<AppCompatActivity>.startActivity(intent)
@@ -74,6 +73,7 @@ open class BaseAct : AppCompatActivity(), ActivityAction, BundleAction,
         // 查看源码得知 startActivity 最终也会调用 startActivityForResult
         super.startActivityForResult(intent, requestCode, options)
     }
+
     override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
         val fragments: MutableList<Fragment?> = supportFragmentManager.fragments
         for (fragment: Fragment? in fragments) {

@@ -2,9 +2,13 @@ package com.joekay.module_base.base
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Bundle
+import android.view.View
 import androidx.viewbinding.ViewBinding
+import com.hjq.demo.action.TitleBarAction
 import com.joekay.base.activity.BaseBindingAct
 import com.joekay.base.ktx.showToast
+import com.joekay.base.widgets.ActionBarView
 import com.joekay.network.event.LoadingEvent
 import com.joekay.network.event.State
 import com.joekay.network.event.StateEvent
@@ -18,10 +22,21 @@ import org.greenrobot.eventbus.ThreadMode
  * @date:  2022/11/20
  * @explain：
  */
-abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>() {
+abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAction {
+
+
+    /** 标题栏对象 */
+    private var titleBar: ActionBarView? = null
+
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val titleBar = getTitleBar()
+        titleBar?.setOnTitleBarListener(this)
 
     }
 
@@ -72,4 +87,31 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>() {
         EventBus.getDefault().unregister(this)
     }
 
+    override fun getTitleBar(): ActionBarView? {
+        if (titleBar == null) {
+            titleBar = obtainTitleBar(getContentView())
+        }
+        return titleBar
+    }
+
+    override fun setTitle(id: Int) {
+        getTitleBar()?.setTitle(id)
+    }
+
+    override fun setTitle(title: CharSequence) {
+        super<BaseBindingAct>.setTitle(title)
+        getTitleBar()?.setTitle(title)
+    }
+
+    override fun onLeftClick(view: View?) {
+        onBackPressed()
+    }
+
+    override fun onRightClick(view: View?) {
+
+    }
+
+    override fun onTitleClick(view: View?) {
+        "hahha".showToast()
+    }
 }

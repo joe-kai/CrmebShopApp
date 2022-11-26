@@ -2,6 +2,7 @@ package com.joekay.app_crmeb
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.joekay.app_crmeb.databinding.ActivityMainBinding
 import com.joekay.base.ActivityManager
 import com.joekay.base.adapter.FragmentPagerAdapter
@@ -15,10 +16,12 @@ import com.joekay.module_cart.CartFragment
 import com.joekay.module_category.CategoryFragment
 import com.joekay.module_home.HomeFragment
 import com.joekay.module_mine.MineFragment
+import com.joekay.network.liveData.observeLoading
 import com.joekay.resource.R.id.*
 import com.joekay.resource.R.string.*
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
+    private val viewModel by viewModels<MainViewModel>()
 
     companion object {
         private const val INTENT_KEY_IN_FRAGMENT_INDEX: String = "fragmentIndex"
@@ -28,25 +31,33 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private var pagerAdapter: FragmentPagerAdapter<BaseFragment<*>>? = null
 
     override fun initObserve() {
+        viewModel.getUpdateApk()
+        viewModel.updateApk.observeLoading(this, false) {
+            onSuccess {
+                if (GlobalUtil.appVersionCode < it.versionCode) {
+                    // 升级对话框
+                    AppUpdateDialog.Builder(this@MainActivity)
+                        // 版本名
+                        .setVersionName(it.versionName)
+                        // 是否强制更新
+                        .setForceUpdate(false)
+                        // 更新日志
+                        .setUpdateLog(it.updateMessage)
+                        // 下载 URL
+                        .setDownloadUrl("${it.updateUrl}${it.fileName}")
+                        // 文件 MD5
+                        .setFileMd5(it.md5)
+                        .show()
+                }
+            }
+        }
         pagerAdapter = FragmentPagerAdapter<BaseFragment<*>>(this).apply {
             addFragment(HomeFragment())
             addFragment(CategoryFragment())
             addFragment(CartFragment())
             addFragment(MineFragment())
         }
-        // 升级对话框
-        AppUpdateDialog.Builder(this)
-            // 版本名
-            .setVersionName("5.2.0")
-            // 是否强制更新
-            .setForceUpdate(false)
-            // 更新日志
-            .setUpdateLog("到底更新了啥\n到底更新了啥\n到底更新了啥\n到底更新了啥\n到底更新了啥\n到底更新了啥")
-            // 下载 URL
-            .setDownloadUrl("https://dldir1.qq.com/weixin/android/weixin807android1920_arm64.apk")
-            // 文件 MD5
-            .setFileMd5("df2f045dfa854d8461d9cefe08b813c8")
-            .show()
+
 
     }
 
