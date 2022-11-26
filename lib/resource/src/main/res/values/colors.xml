@@ -11,4 +11,6 @@
     <color name="title_color">#000000</color>
     <color name="main_bottom_bar_select">#FF4500</color>
     <color name="main_bottom_bar_no_select">#868686</color>
+    <color name="black60">#99000000</color>
+
 </resources>

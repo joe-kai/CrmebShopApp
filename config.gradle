@@ -50,7 +50,11 @@ ext {
             // AOP 插件库：https://mvnrepository.com/artifact/org.aspectj/aspectjrt
             aspectjrt          : 'org.aspectj:aspectjrt:1.9.6',
             // 日志打印框架：https://github.com/JakeWharton/timber
-            timber             : 'com.jakewharton.timber:timber:5.0.1'
+            timber             : 'com.jakewharton.timber:timber:5.0.1',
+
+            // 动画解析库：https://github.com/airbnb/lottie-android
+            // 动画资源：https://lottiefiles.com、https://icons8.com/animated-icons
+            lottie             : 'com.airbnb.android:lottie:5.2.0'
     ]
 }
 

@@ -26,4 +26,5 @@ dependencies {
 //    api libs.xxPermissions
     api libs.aspectjrt
     api libs.timber
+    api libs.lottie
 }
