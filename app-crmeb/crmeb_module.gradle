@@ -6,6 +6,8 @@ if (isApp) {
 apply plugin: 'org.jetbrains.kotlin.android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
+apply plugin: 'dagger.hilt.android.plugin'
+
 
 apply from: project.getRootPath() + "/android.gradle"
 
@@ -28,4 +30,6 @@ android {
 dependencies {
     api project(":app-crmeb:module-base")
     kapt libs.therouter_apt
+    api libs.hilt
+    kapt libs.hilt_kapt
 }

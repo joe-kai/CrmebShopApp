@@ -17,6 +17,7 @@ ext {
     fragment_version = "1.5.4"
     refresh_version = "2.0.5"
     retrofit_version = '2.9.0'
+    hilt_version = "2.42"
 
     libs = [
             core_ktx           : 'androidx.core:core-ktx:1.8.0',
@@ -60,6 +61,9 @@ ext {
             // 组件化路由 https://github.com/HuolalaTech/hll-wp-therouter-android
             therouter          : 'cn.therouter:router:1.1.1',
             therouter_apt      : "cn.therouter:apt:1.1.1",
+
+            hilt               : "com.google.dagger:hilt-android:$hilt_version",
+            hilt_kapt          : "com.google.dagger:hilt-android-compiler:$hilt_version"
             // 多语种：https://github.com/getActivity/MultiLanguages
             // 悬浮窗：https://github.com/getActivity/XToast
             // 日志输出：https://github.com/getActivity/Logcat

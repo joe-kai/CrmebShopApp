@@ -8,9 +8,11 @@ import com.joekay.module_base.base.BaseActivity
 import com.joekay.resource.RouterPath
 import com.therouter.TheRouter
 import com.therouter.router.Route
+import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("CustomSplashScreen")
 @Route(path = RouterPath.act_splash)
+@AndroidEntryPoint
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     override fun initObserve() {
     }

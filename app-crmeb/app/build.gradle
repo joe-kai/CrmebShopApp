@@ -2,8 +2,10 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'therouter'
-
+    id 'kotlin-kapt'
 }
+apply plugin: 'dagger.hilt.android.plugin'
+
 apply from: project.getRootPath() + "/android.gradle"
 
 android {
@@ -47,6 +49,8 @@ android {
 
 dependencies {
     api project(":app-crmeb:module-base")
+    api libs.hilt
+    kapt libs.hilt_kapt
 
     if (!isApp) {
         api project(":app-crmeb:module-main")

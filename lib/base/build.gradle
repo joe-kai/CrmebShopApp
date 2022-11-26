@@ -2,8 +2,8 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-
 }
+apply plugin: 'dagger.hilt.android.plugin'
 
 apply from: project.getRootPath() + "/android.gradle"
 android {
@@ -33,5 +33,7 @@ dependencies {
     debugApi libs.leakcanary
     api libs.therouter
     kapt libs.therouter_apt
+    api libs.hilt
+    kapt libs.hilt_kapt
 
 }

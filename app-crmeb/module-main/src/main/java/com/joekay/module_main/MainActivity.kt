@@ -18,8 +18,10 @@ import com.joekay.resource.R
 import com.joekay.resource.RouterPath
 import com.therouter.TheRouter
 import com.therouter.router.Route
+import dagger.hilt.android.AndroidEntryPoint
 
 @Route(path = RouterPath.act_main)
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val viewModel by viewModels<MainViewModel>()
