@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.joekay.base.ActivityManager
 import com.joekay.base.BaseApplication
 import com.joekay.base.utils.GlobalUtil
 
@@ -38,9 +39,9 @@ fun Window.getInsertPadding(): Int {
 @SuppressLint("InternalInsetResource")
 inline fun Any.getStatusBarHeight():Int{
     var result = 0
-    val resourceId: Int = BaseApplication.instance.resources.getIdentifier("status_bar_height", "dimen", "android")
+    val resourceId: Int = ActivityManager.getInstance().getApplication().resources.getIdentifier("status_bar_height", "dimen", "android")
     if (resourceId > 0) {
-        result = BaseApplication.instance.resources.getDimensionPixelSize(resourceId)
+        result = ActivityManager.getInstance().getApplication().resources.getDimensionPixelSize(resourceId)
     }
     return result
 }

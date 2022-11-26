@@ -39,12 +39,18 @@ ext {
             livedata_ktx       : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
             // Lifecycles only (without ViewModel or LiveData)
             runtime_ktx        : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
+
             retrofit           : "com.squareup.retrofit2:retrofit:$retrofit_version",
             converter_gson     : "com.squareup.retrofit2:converter-gson:$retrofit_version",
             logging_interceptor: "com.squareup.okhttp3:logging-interceptor:4.10.0",
 
             // 权限请求框架：https://github.com/getActivity/XXPermissions
-            xxPermissions        : "com.github.getActivity:XXPermissions:16.2"
+            xxPermissions      : "com.github.getActivity:XXPermissions:16.2",
+
+            // AOP 插件库：https://mvnrepository.com/artifact/org.aspectj/aspectjrt
+            aspectjrt          : 'org.aspectj:aspectjrt:1.9.6',
+            // 日志打印框架：https://github.com/JakeWharton/timber
+            timber             : 'com.jakewharton.timber:timber:5.0.1'
     ]
 }
 

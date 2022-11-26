@@ -13,5 +13,5 @@ annotation class SingleClick constructor(
     /**
      * 快速点击的间隔
      */
-    val value: Long = 1000
+    val value: Long = 3000
 )

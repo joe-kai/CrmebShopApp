@@ -8,4 +8,8 @@
     <string name="category">分类</string>
     <string name="cart">购物车</string>
     <string name="mine">我的</string>
+
+
+    <!-- 支付密码对话框 -->
+    <string name="pay_title">请输入支付密码</string>
 </resources>

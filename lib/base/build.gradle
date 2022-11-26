@@ -9,7 +9,7 @@ android {
 }
 
 dependencies {
-    api fileTree(include:['*.jar'],dir: 'libs' )
+    api fileTree(include: ['*.jar'], dir: 'libs')
     api project(":lib:resource")
     api project(":lib:network")
     api libs.activity_ktx
@@ -24,4 +24,6 @@ dependencies {
     api libs.livedata_ktx
     api libs.runtime_ktx
 //    api libs.xxPermissions
+    api libs.aspectjrt
+    api libs.timber
 }

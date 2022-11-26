@@ -3,7 +3,7 @@ package com.joekay.app_crmeb
 import android.content.Intent
 import android.os.Bundle
 import com.joekay.app_crmeb.databinding.ActivityMainBinding
-import com.joekay.base.ActivityManage
+import com.joekay.base.ActivityManager
 import com.joekay.base.adapter.FragmentPagerAdapter
 import com.joekay.base.dialog.AppUpdateDialog
 import com.joekay.base.ktx.showToast
@@ -117,7 +117,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         moveTaskToBack(false)
         postDelayed({
             // 进行内存优化，销毁掉所有的界面
-            ActivityManage.removeAll()
+            ActivityManager.getInstance().finishAllActivities()
         }, 300)
     }
 

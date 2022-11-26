@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.text.TextUtils
+import com.joekay.base.ActivityManager
 import com.joekay.base.BaseApplication
 import java.util.*
 
@@ -23,21 +24,21 @@ object GlobalUtil {
      * @return 当前应用程序的包名。
      */
     val appPackage: String
-        get() = BaseApplication.instance.packageName
+        get() = ActivityManager.getInstance().getApplication().packageName
 
     /**
      * 获取当前应用程序的名称。
      * @return 当前应用程序的名称。
      */
     val appName: String
-        get() = BaseApplication.instance.resources.getString(BaseApplication.instance.applicationInfo.labelRes)
+        get() = ActivityManager.getInstance().getApplication().resources.getString(ActivityManager.getInstance().getApplication().applicationInfo.labelRes)
 
     /**
      * 获取当前应用程序的版本名。
      * @return 当前应用程序的版本名。
      */
     val appVersionName: String
-        get() = BaseApplication.instance.packageManager.getPackageInfo(appPackage, 0).versionName
+        get() = ActivityManager.getInstance().getApplication().packageManager.getPackageInfo(appPackage, 0).versionName
 
     /**
      * 获取当前应用程序的版本号。
@@ -45,9 +46,9 @@ object GlobalUtil {
      */
     val appVersionCode: Long
         get() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            BaseApplication.instance.packageManager.getPackageInfo(appPackage, 0).longVersionCode
+            ActivityManager.getInstance().getApplication().packageManager.getPackageInfo(appPackage, 0).longVersionCode
         } else {
-            BaseApplication.instance.packageManager.getPackageInfo(
+            ActivityManager.getInstance().getApplication().packageManager.getPackageInfo(
                 appPackage,
                 0
             ).versionCode.toLong()
@@ -90,7 +91,7 @@ object GlobalUtil {
      * @return 字符串资源id对应的字符串内容。
      */
     fun getString(resId: Int): String {
-        return BaseApplication.instance.resources.getString(resId)
+        return ActivityManager.getInstance().getApplication().resources.getString(resId)
     }
 
     /**
@@ -101,7 +102,7 @@ object GlobalUtil {
      * @return 字符串资源id对应的字符串内容。
      */
     fun getDimension(resId: Int): Int {
-        return BaseApplication.instance.resources.getDimensionPixelOffset(resId)
+        return ActivityManager.getInstance().getApplication().resources.getDimensionPixelOffset(resId)
     }
 
     /**
@@ -114,15 +115,15 @@ object GlobalUtil {
      * @return 指定资源名的资源id。
      */
     fun getResourceId(name: String, type: String): Int {
-        return BaseApplication.instance.resources.getIdentifier(name, type, appPackage)
+        return ActivityManager.getInstance().getApplication().resources.getIdentifier(name, type, appPackage)
     }
 
     fun getDrawable(resId: Int): Drawable? {
-        return BaseApplication.instance.getDrawable(resId)
+        return ActivityManager.getInstance().getApplication().getDrawable(resId)
     }
 
     fun getColor(resId: Int): Int {
-        return BaseApplication.instance.getColor(resId)
+        return ActivityManager.getInstance().getApplication().getColor(resId)
     }
 
     /**
@@ -134,7 +135,7 @@ object GlobalUtil {
     fun getApplicationMetaData(key: String): String? {
         var applicationInfo: ApplicationInfo? = null
         try {
-            applicationInfo = BaseApplication.instance.packageManager.getApplicationInfo(
+            applicationInfo = ActivityManager.getInstance().getApplication().packageManager.getApplicationInfo(
                 appPackage,
                 PackageManager.GET_META_DATA
             )
@@ -152,7 +153,7 @@ object GlobalUtil {
      */
     fun isInstalled(packageName: String): Boolean {
         val packageInfo: PackageInfo? = try {
-            BaseApplication.instance.packageManager.getPackageInfo(packageName, 0)
+            ActivityManager.getInstance().getApplication().packageManager.getPackageInfo(packageName, 0)
         } catch (e: PackageManager.NameNotFoundException) {
             null
         }
@@ -163,7 +164,7 @@ object GlobalUtil {
      * 获取当前应用程序的图标。
      */
     fun getAppIcon(): Drawable {
-        val packageManager = BaseApplication.instance.packageManager
+        val packageManager = ActivityManager.getInstance().getApplication().packageManager
         val applicationInfo = packageManager.getApplicationInfo(appPackage, 0)
         return packageManager.getApplicationIcon(applicationInfo)
     }

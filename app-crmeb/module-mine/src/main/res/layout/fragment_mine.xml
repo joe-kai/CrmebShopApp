@@ -6,9 +6,16 @@
     tools:context=".MineFragment">
 
     <TextView
+        android:id="@+id/txv_pays"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="Mine Hello" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txv_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="支付" />
 
 </FrameLayout>

@@ -1,6 +1,7 @@
 package com.joekay.base.ktx
 
 import android.widget.Toast
+import com.joekay.base.ActivityManager
 import com.joekay.base.BaseApplication
 
 /**
@@ -18,11 +19,11 @@ private var time: Long = 0
 private var oldMsg: String? = null
 fun String.showToast(duration: Int = Toast.LENGTH_SHORT) {
     if (this != oldMsg) {
-        Toast.makeText(BaseApplication.instance, this, duration).show()
+        Toast.makeText(ActivityManager.getInstance().getApplication(), this, duration).show()
         time = System.currentTimeMillis()
     } else {
         if (System.currentTimeMillis() - time > 2000) {
-            Toast.makeText(BaseApplication.instance, this, duration).show()
+            Toast.makeText(ActivityManager.getInstance().getApplication(), this, duration).show()
             time = System.currentTimeMillis()
         }
     }
