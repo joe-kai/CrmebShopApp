@@ -1,11 +1,11 @@
 package com.joekay.module_base.base
 
+import TitleBarAction
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.viewbinding.ViewBinding
-import com.hjq.demo.action.TitleBarAction
 import com.joekay.base.activity.BaseBindingAct
 import com.joekay.base.ktx.showToast
 import com.joekay.base.widgets.ActionBarView
@@ -22,6 +22,7 @@ import org.greenrobot.eventbus.ThreadMode
  * @date:  2022/11/20
  * @explain：
  */
+@Suppress("DEPRECATION")
 abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAction {
 
 

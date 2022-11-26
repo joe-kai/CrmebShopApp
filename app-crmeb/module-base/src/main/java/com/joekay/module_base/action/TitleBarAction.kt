@@ -1,5 +1,3 @@
-package com.hjq.demo.action
-
 import android.view.ViewGroup
 import androidx.annotation.StringRes
 import com.joekay.base.widgets.ActionBarView

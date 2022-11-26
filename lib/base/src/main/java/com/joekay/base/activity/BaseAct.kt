@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import com.google.android.material.internal.ViewUtils.getContentView
@@ -65,6 +66,14 @@ open class BaseAct : AppCompatActivity(), ActivityAction, BundleAction,
     open fun getContentView(): ViewGroup? {
         return findViewById(Window.ID_ANDROID_CONTENT)
     }
+
+    open fun setDarkStatusBar(dark :Boolean = true) {
+        WindowCompat.getInsetsController(window, getContentView()!!).apply {
+            isAppearanceLightStatusBars = dark
+            isAppearanceLightNavigationBars = dark
+        }
+    }
+
 
     @Suppress("deprecation")
     override fun startActivityForResult(intent: Intent, requestCode: Int, options: Bundle?) {

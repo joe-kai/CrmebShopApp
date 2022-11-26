@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.internal.ViewUtils.getContentView
 import com.joekay.base.IBaseView
 import com.joekay.base.ktx.setTransparentStyle
 import com.joekay.base.utils.BindingReflex
@@ -41,6 +43,14 @@ abstract class BaseBindingFrag<VB : ViewBinding> : BaseFrag(), IBaseView {
         super.onViewCreated(view, savedInstanceState)
         initObserve()
         initBinding()
+        setDarkStatusBar()
+    }
+
+    open fun setDarkStatusBar(dark: Boolean = true) {
+        WindowCompat.getInsetsController(getAttachActivity()?.window!!, _binding.root).apply {
+            isAppearanceLightStatusBars = dark
+            isAppearanceLightNavigationBars = dark
+        }
     }
 
     override fun onResume() {

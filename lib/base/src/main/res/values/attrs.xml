@@ -13,7 +13,7 @@
         <attr name="left_icon" format="reference" />
         <attr name="left_width" format="dimension" />
         <attr name="left_text" format="string" />
-        <attr name="lift_color" format="color" />
+        <attr name="left_color" format="color" />
         <attr name="left_height" format="dimension" />
         <attr name="left_icon_margin" format="dimension" />
         <attr name="left_hint" format="boolean" />

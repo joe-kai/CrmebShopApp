@@ -1,7 +1,5 @@
 package com.joekay.app_crmeb
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -20,7 +18,7 @@ import com.joekay.module_home.HomeFragment
 import com.joekay.module_mine.MineFragment
 import com.joekay.network.liveData.observeLoading
 import com.joekay.resource.R.id.*
-import com.joekay.resource.R.string.*
+import com.joekay.resource.R.string.home_exit_hint
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val viewModel by viewModels<MainViewModel>()

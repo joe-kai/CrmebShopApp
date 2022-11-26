@@ -2,6 +2,7 @@ package com.joekay.base.widgets
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.text.TextUtils
 import android.util.AttributeSet
@@ -30,8 +31,8 @@ class ActionBarView : RelativeLayout, View.OnClickListener {
     private var mRightIconHeight: Float = 0f
 
     private var mLeftHint: Boolean? = false
-    private var mLiftTextColor: Int? = 0
-    private var mLiftText: String? = ""
+    private var mLeftTextColor: Int? = 0
+    private var mLefetText: String? = ""
     private var mLeftIconMargin: Float = 0f
     private var mLeftIcon: Drawable? = null
     private var mLeftIconWidth: Float = 0f
@@ -70,8 +71,8 @@ class ActionBarView : RelativeLayout, View.OnClickListener {
 
         mLeftIconWidth = ob.getDimension(R.styleable.ActionBarView_left_width, 0f)
         mLeftIconHeight = ob.getDimension(R.styleable.ActionBarView_left_height, 0f)
-        mLiftText = ob.getString(R.styleable.ActionBarView_left_text)
-        mLiftTextColor = ob.getColor(R.styleable.ActionBarView_lift_color, 0)
+        mLefetText = ob.getString(R.styleable.ActionBarView_left_text)
+        mLeftTextColor = ob.getColor(R.styleable.ActionBarView_left_color, 0)
         mLeftHint = ob.getBoolean(R.styleable.ActionBarView_left_hint, false)
         mLeftIcon = ob.getDrawable(R.styleable.ActionBarView_left_icon)
         mLeftIconMargin = ob.getDimension(R.styleable.ActionBarView_left_icon_margin, 0f)
@@ -85,6 +86,7 @@ class ActionBarView : RelativeLayout, View.OnClickListener {
         mContext = context
         val view = View.inflate(context, R.layout.layout_action_bar, null)
         view.setPadding(0, getStatusBarHeight(), 0, 0)
+        view.setBackgroundColor(Color.WHITE)
         initView(view)
         addView(view)
     }
@@ -123,9 +125,9 @@ class ActionBarView : RelativeLayout, View.OnClickListener {
             txvLeft.visibility = View.GONE
         }
         //内容不为空，显示右侧内容
-        if (!TextUtils.isEmpty(mLiftText)) {
+        if (!TextUtils.isEmpty(mLefetText)) {
             txvLeft.visibility = View.VISIBLE
-            txvLeft.text = mLiftText
+            txvLeft.text = mLefetText
             txvLeft.setCompoundDrawables(null, null, null, null)
         } else {
             //右侧设置图片格式
@@ -154,8 +156,8 @@ class ActionBarView : RelativeLayout, View.OnClickListener {
         }
         txvLeft.layoutParams = layoutParams
         //设置右边的颜色
-        if (mLiftTextColor != 0) {
-            txvLeft.setTextColor(mLiftTextColor!!)
+        if (mLeftTextColor != 0) {
+            txvLeft.setTextColor(mLeftTextColor!!)
         }
 
     }
@@ -264,12 +266,12 @@ class ActionBarView : RelativeLayout, View.OnClickListener {
      * 设置左标题的文本
      */
     fun setLeftTitle(text: CharSequence) = apply {
-        mLiftText = text.toString()
+        mLefetText = text.toString()
         actionBarLeft()
     }
 
     fun setLeftTitleColor(color: Int) = apply {
-        mLiftTextColor = resources.getColor(color)
+        mLeftTextColor = resources.getColor(color)
         actionBarLeft()
     }
 

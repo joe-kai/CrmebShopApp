@@ -27,6 +27,7 @@ abstract class BaseBindingAct<VB : ViewBinding> : BaseAct(), IBaseView {
         initSoftKeyboard()
         initObserve()
         initBinding()
+        setDarkStatusBar()
     }
 
 }
