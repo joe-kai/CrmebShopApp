@@ -35,5 +35,14 @@ dependencies {
     kapt libs.therouter_apt
     api libs.hilt
     kapt libs.hilt_kapt
+    api libs.banner
+
+    api libs.glide
+    kapt libs.glide_kapt
+    api libs.glide_transformations
+    api libs.immersionbar
+    api libs.immersionbar_ktx
+    api libs.circleimageview
+    api libs.GSYVideoPlayer
 
 }

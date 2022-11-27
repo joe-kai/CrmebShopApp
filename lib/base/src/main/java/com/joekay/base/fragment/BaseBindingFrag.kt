@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.internal.ViewUtils.getContentView
 import com.joekay.base.IBaseView
-import com.joekay.base.ktx.setTransparentStyle
+import com.joekay.base.ext.setTransparentStyle
 import com.joekay.base.utils.BindingReflex
 
 /**

@@ -1,7 +1,14 @@
 [
   {
+    "path": "video/video_frag",
+    "className": "com.joekay.module_video.ui.VideoFragment",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
     "path": "mine/mine_frag",
-    "className": "com.joekay.module_mine.MineFragment",
+    "className": "com.joekay.module_mine.ui.MineFragment",
     "action": "",
     "description": "",
     "params": {}
@@ -15,21 +22,21 @@
   },
   {
     "path": "home/home_frag",
-    "className": "com.joekay.module_home.HomeFragment",
+    "className": "com.joekay.module_home.ui.HomeFragment",
     "action": "",
     "description": "",
     "params": {}
   },
   {
     "path": "category/category_frag",
-    "className": "com.joekay.module_category.CategoryFragment",
+    "className": "com.joekay.module_category.ui.CategoryFragment",
     "action": "",
     "description": "",
     "params": {}
   },
   {
     "path": "cart/cart_frag",
-    "className": "com.joekay.module_cart.CartFragment",
+    "className": "com.joekay.module_cart.ui.CartFragment",
     "action": "",
     "description": "",
     "params": {}

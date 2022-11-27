@@ -15,4 +15,6 @@ dependencies {
     api libs.livedata_ktx
     api libs.viewmodel_ktx
     api libs.eventbus
+    api libs.paging
+    api libs.paging_ktx
 }

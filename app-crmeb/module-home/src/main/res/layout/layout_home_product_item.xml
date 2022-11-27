@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_2"
+    android:layout_weight="1"
+    app:cardCornerRadius="@dimen/dp_5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imv_product"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_150"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/txv_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:paddingHorizontal="@dimen/dp_5"
+            android:textColor="@color/black65"
+            android:textSize="@dimen/sp_14"
+            tools:text="哼唱的商品名称" />
+
+        <TextView
+            android:id="@+id/txv_ot_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:paddingHorizontal="@dimen/dp_5"
+            android:textColor="@color/black70"
+            android:textSize="@dimen/sp_12"
+            tools:text="¥10000.00" />
+
+        <TextView
+            android:id="@+id/txv_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:paddingHorizontal="@dimen/dp_5"
+            android:textColor="@color/red"
+            android:textSize="@dimen/sp_10"
+            tools:text="¥999.00" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -23,7 +23,7 @@ import com.joekay.base.fragment.BaseFrag
  * @date:  2022/11/18
  * @explain：
  */
-open class BaseAct : AppCompatActivity(), ActivityAction, BundleAction,
+abstract class BaseAct : AppCompatActivity(), ActivityAction, BundleAction,
     HandlerAction, KeyboardAction {
     override fun initBundle(): Bundle? {
         return intent.extras

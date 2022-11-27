@@ -17,21 +17,7 @@ import com.joekay.base.action.KeyboardAction
  * @date:  2022/11/18
  * @explain：
  */
-open class BaseFrag : Fragment(), HandlerAction, BundleAction, KeyboardAction {
-
-    /** Activity 对象 */
-    private var activity: ComponentActivity? = null
-
-
-
-
-    @Suppress("UNCHECKED_CAST")
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        // 获得全局的 Activity
-        activity = requireActivity()
-    }
-
+abstract class BaseFrag : Fragment(), HandlerAction, BundleAction, KeyboardAction {
 
 
     /**
@@ -51,10 +37,6 @@ open class BaseFrag : Fragment(), HandlerAction, BundleAction, KeyboardAction {
         removeCallbacks()
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        activity = null
-    }
 
     /**
      * 获取绑定的 Activity，防止出现 getActivity 为空

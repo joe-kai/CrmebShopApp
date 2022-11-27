@@ -3,11 +3,10 @@ package com.joekay.module_main
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.fragment.app.Fragment
 import com.joekay.base.ActivityManager
 import com.joekay.base.adapter.FragmentPagerAdapter
 import com.joekay.base.dialog.AppUpdateDialog
-import com.joekay.base.ktx.showToast
+import com.joekay.base.ext.showToast
 import com.joekay.base.utils.GlobalUtil
 import com.joekay.module_base.base.BaseActivity
 import com.joekay.module_base.base.BaseFragment
@@ -59,6 +58,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             addFragment(
                 TheRouter.build(RouterPath.frag_category).createFragment<BaseFragment<*>>()!!
             )
+            addFragment(
+                TheRouter.build(RouterPath.frag_video).createFragment<BaseFragment<*>>()!!
+            )
             addFragment(TheRouter.build(RouterPath.frag_cart).createFragment<BaseFragment<*>>()!!)
             addFragment(TheRouter.build(RouterPath.frag_mine).createFragment<BaseFragment<*>>()!!)
         }
@@ -78,11 +80,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     R.id.nav_category -> {
                         switchFragment(1)
                     }
-                    R.id.nav_cart -> {
+                    R.id.nav_video -> {
                         switchFragment(2)
                     }
-                    R.id.nav_mine -> {
+                    R.id.nav_cart -> {
                         switchFragment(3)
+                    }
+                    R.id.nav_mine -> {
+                        switchFragment(4)
                     }
                 }
                 return@setOnItemSelectedListener true
@@ -117,7 +122,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             return
         }
         when (fragmentIndex) {
-            0, 1, 2, 3 -> {
+            0, 1, 2, 3, 4 -> {
                 mBinding.mainPager.currentItem = fragmentIndex
             }
         }

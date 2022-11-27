@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_50"
+        android:layout_height="?android:attr/actionBarSize"
         android:gravity="center_vertical"
         tools:ignore="MissingConstraints">
 
@@ -16,6 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_40"
             android:gravity="center"
+            android:layout_centerVertical="true"
             android:paddingHorizontal="@dimen/dp_10"
             android:textColor="@android:color/tertiary_text_light"
             android:textSize="@dimen/sp_10"
@@ -24,6 +25,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txv_title"
+            android:layout_centerVertical="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"

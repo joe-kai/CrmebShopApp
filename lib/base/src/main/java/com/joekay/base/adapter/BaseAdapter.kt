@@ -169,7 +169,7 @@ abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder> (private val con
      * 设置 RecyclerView 条目点击监听
      */
     open fun setOnItemClickListener(listener: OnItemClickListener?) {
-        checkRecyclerViewState()
+        //checkRecyclerViewState()
         itemClickListener = listener
     }
 

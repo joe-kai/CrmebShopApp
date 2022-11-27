@@ -3,9 +3,7 @@ package com.joekay.base.activity
 import android.os.Bundle
 import androidx.viewbinding.ViewBinding
 import com.joekay.base.IBaseView
-import com.joekay.base.action.BundleAction
-import com.joekay.base.action.HandlerAction
-import com.joekay.base.ktx.setTransparentStyle
+import com.joekay.base.ext.setTransparentStyle
 import com.joekay.base.utils.BindingReflex
 
 /**

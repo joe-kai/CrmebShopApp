@@ -15,4 +15,17 @@
     <string name="update_notification_channel_id">update</string>
     <string name="update_notification_channel_name">升级通知</string>
 
+    <!-- 时间和日期 -->
+    <string name="minutes_ago">分钟前</string>
+    <string name="hours_ago">小时前</string>
+    <string name="days_ago">天前</string>
+    <string name="weeks_ago">周前</string>
+    <string name="year">年</string>
+    <string name="month">个月</string>
+    <string name="day">天</string>
+    <string name="hour">小时</string>
+    <string name="minute">分钟</string>
+
+    <string name="load_error">加载失败，请点击重试</string>
+
 </resources>

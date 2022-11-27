@@ -16,6 +16,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -56,6 +60,7 @@ dependencies {
         api project(":app-crmeb:module-main")
         api project(":app-crmeb:module-home")
         api project(":app-crmeb:module-category")
+        api project(":app-crmeb:module-video")
         api project(":app-crmeb:module-cart")
         api project(":app-crmeb:module-mine")
         api project(":app-crmeb:module-order")

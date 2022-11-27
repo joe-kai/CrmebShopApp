@@ -11,7 +11,7 @@ import android.view.View
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.joekay.base.R
-import com.joekay.base.ktx.getStatusBarHeight
+import com.joekay.base.ext.getStatusBarHeight
 
 /**
  * @author:  JoeKai

@@ -6,9 +6,22 @@
 
     <string name="home">首页</string>
     <string name="category">分类</string>
+    <string name="video">视频</string>
     <string name="cart">购物车</string>
     <string name="mine">我的</string>
 
+
+    <string name="favorites">收藏</string>
+
+    <!-- 网络 -->
+    <string name="network_error">网络错误</string>
+    <string name="error_view_tip">点击屏幕重试</string>
+    <string name="json_data_error">数据解析异常</string>
+    <string name="network_connect_error">网络连接异常</string>
+    <string name="network_connect_timeout">网络连接超时</string>
+    <string name="no_route_to_host">无法连接到服务器</string>
+    <string name="network_response_code_error">服务器状态码异常：</string>
+    <string name="error_view_tip_retry">加载失败，点击重试</string>
 
     <!-- 支付密码对话框 -->
     <string name="pay_title">请输入支付密码</string>

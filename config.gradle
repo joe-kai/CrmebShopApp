@@ -18,6 +18,7 @@ ext {
     refresh_version = "2.0.5"
     retrofit_version = '2.9.0'
     hilt_version = "2.42"
+    glide_version = "4.13.2"
 
     libs = [
             core_ktx           : 'androidx.core:core-ktx:1.8.0',
@@ -63,7 +64,26 @@ ext {
             therouter_apt      : "cn.therouter:apt:1.1.1",
 
             hilt               : "com.google.dagger:hilt-android:$hilt_version",
-            hilt_kapt          : "com.google.dagger:hilt-android-compiler:$hilt_version"
+            hilt_kapt          : "com.google.dagger:hilt-android-compiler:$hilt_version",
+
+            banner             : "io.github.youth5201314:banner:2.2.2",
+
+            paging             : 'androidx.paging:paging-common-ktx:3.1.1',
+            paging_ktx         : 'androidx.paging:paging-runtime-ktx:3.1.1',
+
+            //图片加载
+            glide              : "com.github.bumptech.glide:glide:$glide_version",
+            glide_kapt         : "com.github.bumptech.glide:compiler:$glide_version",
+            glide_transformations :'jp.wasabeef:glide-transformations:4.1.0',
+            // 沉浸式框架：https://github.com/gyf-dev/ImmersionBar
+            immersionbar       : 'com.geyifeng.immersionbar:immersionbar:3.2.2',
+            immersionbar_ktx   : 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2',
+
+            //圆形图像 https://github.com/hdodenhof/CircleImageView
+            circleimageview    : "de.hdodenhof:circleimageview:3.1.0",
+            //视频播放 https://github.com/CarGuo/GSYVideoPlayer
+            GSYVideoPlayer     : 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.3.4-release-jitpack'
+
             // 多语种：https://github.com/getActivity/MultiLanguages
             // 悬浮窗：https://github.com/getActivity/XToast
             // 日志输出：https://github.com/getActivity/Logcat

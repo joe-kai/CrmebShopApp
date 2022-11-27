@@ -1,5 +1,7 @@
 package com.joekay.network.repository
 
+import com.joekay.network.config.PAGE_SIZE
+import androidx.paging.PagingConfig
 import com.joekay.network.RetrofitBuilder
 import com.joekay.network.config.BASE_URL
 import com.joekay.network.exception.ErrorException
@@ -21,11 +23,10 @@ open class BaseRepository<C>(
     }
 
     companion object {
-        //val config = PagingConfig(
-        //    pageSize = PAGE_SIZE,
-        //    initialLoadSize = PAGE_SIZE,
-        //    enablePlaceholders = false,
-        //)
+        var page = 1
+        val config = PagingConfig(
+            pageSize = PAGE_SIZE,
+        )
     }
 
     protected suspend fun <T> fire(
@@ -48,7 +49,26 @@ open class BaseRepository<C>(
         response
     }
 
+    protected suspend fun <T> fireList(
+        block: suspend () -> BaseResponse<T>
+    ): BaseResponse<T> = withContext(Dispatchers.IO) {
+        var response: BaseResponse<T> = EmptyResponse()
+        kotlin.runCatching {
+            block.invoke()
+        }.onSuccess {
+            response = when (it.success) {
+                true -> {
+                    page++
+                    checkEmptyResponse(it.data)
+                }
 
+                false -> FailureResponse(handleException(ErrorException(it)))
+            }
+        }.onFailure { throwable ->
+            response = FailureResponse(handleException(throwable))
+        }
+        response
+    }
 
     /**
      * data 为 null，或者 data 是集合类型，但是集合为空都会进入 onEmpty 回调

@@ -7,8 +7,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.viewbinding.ViewBinding
 import com.joekay.base.activity.BaseBindingAct
-import com.joekay.base.ktx.showToast
+import com.joekay.base.ext.logD
+import com.joekay.base.ext.showToast
 import com.joekay.base.widgets.ActionBarView
+import com.joekay.module_base.event.MessageEvent
 import com.joekay.network.event.LoadingEvent
 import com.joekay.network.event.State
 import com.joekay.network.event.StateEvent
@@ -25,6 +27,7 @@ import org.greenrobot.eventbus.ThreadMode
 @Suppress("DEPRECATION")
 abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAction {
 
+    protected val TAG: String = this.javaClass.simpleName
 
     /** 标题栏对象 */
     private var titleBar: ActionBarView? = null
@@ -40,23 +43,25 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         titleBar?.setOnTitleBarListener(this)
 
     }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    open fun onMessageEvent(messageEvent: MessageEvent) {
+        logD(TAG, "BaseFragment-->onMessageEvent()")
+    }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun loadingEvent(event: LoadingEvent) {
+    private fun loadingEvent(event: LoadingEvent) {
         if (event.isLoading) {
-            "xiangshi".showToast()
         } else {
-            "yinchang".showToast()
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun toastEvent(event: ToastEvent) {
+    private fun toastEvent(event: ToastEvent) {
         event.msg.showToast()
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun stateEvent(event: StateEvent) {
+    private fun stateEvent(event: StateEvent) {
         when (event.state) {
             State.STATE_LOADING -> {
                 "STATE_LOADING".showToast()

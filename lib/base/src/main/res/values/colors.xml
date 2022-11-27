@@ -5,4 +5,6 @@
     <color name="common_line_color">#ECECEC</color>
     <!-- 矢量图标的颜色 -->
     <color name="common_icon_color">#7C7C7C</color>
+    <color name="common_accent_color">#5A8DDF</color>
+    <color name="progress_color">#03A9F4</color>
 </resources>
