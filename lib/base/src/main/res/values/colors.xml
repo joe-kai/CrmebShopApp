@@ -7,4 +7,8 @@
     <color name="common_icon_color">#7C7C7C</color>
     <color name="common_accent_color">#5A8DDF</color>
     <color name="progress_color">#03A9F4</color>
+
+    <color name="colorAccentAlpha60">#6661f2d4</color>
+    <color name="colorAccent">#61f2d4</color>
+
 </resources>

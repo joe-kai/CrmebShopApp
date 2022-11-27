@@ -6,6 +6,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CrmebShopApp">
         <activity
+            android:name=".ui.details.VideoDetailActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:launchMode="singleTop"/>
+
+        <activity
             android:name=".VideoActivity"
             android:exported="true">
             <meta-data

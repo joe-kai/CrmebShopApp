@@ -12,20 +12,19 @@ import com.joekay.base.utils.BindingReflex
  * @explain：
  */
 abstract class BaseBindingAct<VB : ViewBinding> : BaseAct(), IBaseView {
-    private val _binding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
+    private val _binding: VB? by lazy(mode = LazyThreadSafetyMode.NONE) {
         BindingReflex.reflexViewBinding(javaClass, layoutInflater)
     }
-    protected val mBinding: VB
-        get() = _binding
+    protected open val mBinding: VB
+        get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(_binding.root)
+        setContentView(mBinding.root)
         window.setTransparentStyle()
         initSoftKeyboard()
         initObserve()
         initBinding()
         setDarkStatusBar()
     }
-
 }

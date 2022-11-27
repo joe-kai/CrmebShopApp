@@ -14,7 +14,9 @@ import com.joekay.base.utils.GlobalUtil
 import com.joekay.module_video.BuildConfig
 import com.joekay.module_video.R
 import com.joekay.module_video.model.Follow
+import com.joekay.module_video.model.VideoInfo
 import com.joekay.module_video.ui.VideoFragment
+import com.joekay.module_video.ui.details.VideoDetailActivity
 import com.shuyu.gsyvideoplayer.GSYVideoManager
 import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer
@@ -101,21 +103,21 @@ class VideoAdapter @Inject constructor(
                             override fun onClickBlank(url: String?, vararg objects: Any?) {
                                 super.onClickBlank(url, *objects)
                                 holder.tvVideoDuration.visible()
-                                //NewDetailActivity.start(
-                                //    fragment.activity,
-                                //    NewDetailActivity.VideoInfo(
-                                //        id,
-                                //        playUrl,
-                                //        title,
-                                //        description,
-                                //        category,
-                                //        library,
-                                //        consumption,
-                                //        cover,
-                                //        author!!,
-                                //        webUrl
-                                //    )
-                                //)
+                                VideoDetailActivity.start(
+                                    fragment.requireActivity(),
+                                    VideoInfo(
+                                        id,
+                                        playUrl,
+                                        title,
+                                        description,
+                                        category,
+                                        library,
+                                        consumption,
+                                        cover,
+                                        author!!,
+                                        webUrl
+                                    )
+                                )
                             }
                         })
                     holder.let {
@@ -131,26 +133,28 @@ class VideoAdapter @Inject constructor(
                         {
                             when (this) {
                                 it.videoPlayer.thumbImageView, it.itemView -> {
-                                    //NewDetailActivity.start(
-                                    //    fragment.activity, NewDetailActivity.VideoInfo(
-                                    //        item.data.content.data.id,
-                                    //        playUrl,
-                                    //        title,
-                                    //        description,
-                                    //        category,
-                                    //        library,
-                                    //        consumption,
-                                    //        cover,
-                                    //        author!!,
-                                    //        webUrl
-                                    //    )
-                                    //)
+                                    VideoDetailActivity.start(
+                                        fragment.requireActivity(),
+                                        VideoInfo(
+                                            item.data.content.data.id,
+                                            playUrl,
+                                            title,
+                                            description,
+                                            category,
+                                            library,
+                                            consumption,
+                                            cover,
+                                            author!!,
+                                            webUrl
+                                        )
+                                    )
                                 }
                                 it.ivCollectionCount, it.tvCollectionCount, it.ivFavorites, it.tvFavorites -> {
                                     //LoginActivity.start(fragment.activity)
+                                    "登录".showToast()
                                 }
                                 it.ivShare -> {
-                                    //showDialogShare(fragment.activity, getShareContent(item))
+                                    ShowDialogShare(fragment.requireActivity(), getShareContent(item))
                                 }
                             }
                         }

@@ -79,5 +79,8 @@
     <color name="title_color">#000000</color>
     <color name="main_bottom_bar_select">#FF4500</color>
     <color name="main_bottom_bar_no_select">#868686</color>
+    <color name="grayDark">#adadad</color>
+    <color name="colorTextPrimary">#444444</color>
+
 
 </resources>

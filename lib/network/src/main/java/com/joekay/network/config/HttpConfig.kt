@@ -6,6 +6,7 @@ package com.joekay.network.config
  * @explain：
  */
 const val BASE_URL = "http://crmeb.api.front.joekai.top"
+const val Kai_Yan_BASE_URL = "http://baobab.kaiyanapp.com/"
 
 const val PAGE_SIZE  =10;
 const val CALL_TIME_OUT = 8L

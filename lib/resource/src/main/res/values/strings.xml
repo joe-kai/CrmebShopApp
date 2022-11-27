@@ -23,6 +23,11 @@
     <string name="network_response_code_error">服务器状态码异常：</string>
     <string name="error_view_tip_retry">加载失败，点击重试</string>
 
+    <!-- 视频详情 -->
+    <string name="pull_down_close_page">下 拉 关 闭 页 面</string>
+    <string name="click_send_comment">点 击 发 表 你 的 评 论</string>
+    <string name="reply_target">回复 @%1$s</string>
+
     <!-- 支付密码对话框 -->
     <string name="pay_title">请输入支付密码</string>
 </resources>

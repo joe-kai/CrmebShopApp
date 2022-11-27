@@ -1,5 +1,12 @@
 [
   {
+    "path": "video/videoDetail_act",
+    "className": "com.joekay.module_video.ui.details.VideoDetailActivity",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
     "path": "video/video_frag",
     "className": "com.joekay.module_video.ui.VideoFragment",
     "action": "",
