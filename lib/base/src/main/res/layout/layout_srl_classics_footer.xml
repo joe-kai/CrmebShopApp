@@ -3,15 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:background="#eee"
     android:paddingVertical="20dp"
+    tools:background="#eee"
     tools:parentTag="android.widget.RelativeLayout">
 
     <TextView
         android:id="@+id/srl_classics_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp_40"
         android:layout_centerInParent="true"
+        android:gravity="center"
         android:maxLines="1"
         android:text="@string/srl_footer_nothing"
         android:textColor="#666666"

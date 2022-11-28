@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.core.content.ContextCompat
 import com.joekay.base.aop.Log
+import com.joekay.base.multiStateView.MultiStateConfig
 import com.joekay.base.utils.GlobalUtil
 import com.joekay.base.widgets.NoStatusFooter
 import com.scwang.smart.refresh.footer.ClassicsFooter

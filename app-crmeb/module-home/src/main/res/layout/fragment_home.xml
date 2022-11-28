@@ -89,8 +89,9 @@
                         tools:listitem="@layout/layout_menus_item" />
 
                     <LinearLayout
+                        android:id="@+id/ll_coupon"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_100"
+                        android:layout_height="@dimen/dp_140"
                         android:layout_marginHorizontal="@dimen/dp_10"
                         android:layout_marginTop="@dimen/dp_10"
                         android:background="@drawable/yhjsy">
@@ -105,6 +106,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/ll_seckill"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dp_10"
@@ -120,6 +122,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/ll_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dp_10"
@@ -135,6 +138,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/ll_haggle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dp_10"

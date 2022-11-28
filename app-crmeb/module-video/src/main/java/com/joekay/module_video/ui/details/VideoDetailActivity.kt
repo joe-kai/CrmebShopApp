@@ -24,6 +24,7 @@ import com.shuyu.gsyvideoplayer.video.base.GSYVideoView
 import com.therouter.router.Route
 import kotlinx.coroutines.*
 
+@Suppress("DEPRECATION")
 @Route(path = RouterPath.act_videoDetail)
 class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
 

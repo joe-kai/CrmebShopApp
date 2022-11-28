@@ -1,8 +1,6 @@
 package com.joekay.module_home.ui
 
-import android.os.Build
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
@@ -15,8 +13,13 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.gyf.immersionbar.ImmersionBar
 import com.joekay.base.adapter.BaseAdapter
 import com.joekay.base.ext.showToast
+import com.joekay.base.multiStateView.MultiStatePage
+import com.joekay.base.multiStateView.MultiStateView
+import com.joekay.base.multiStateView.bindMultiState
+import com.joekay.base.multiStateView.state.*
 import com.joekay.base.paging.FooterAdapter
 import com.joekay.module_base.base.BaseFragment
+import com.joekay.module_home.R
 import com.joekay.module_home.databinding.FragmentHomeBinding
 import com.joekay.module_home.model.Banner
 import com.joekay.module_home.model.ExplosiveMoney
@@ -31,6 +34,7 @@ import com.therouter.router.Route
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
+
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
@@ -50,6 +54,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     @Inject
     lateinit var productAdapter: HomeProductAdapter
 
+    private lateinit var couponState: MultiStateView
+    private lateinit var seckillState: MultiStateView
+    private lateinit var groupState: MultiStateView
+    private lateinit var haggleState: MultiStateView
+
     override fun initObserve() {
         viewModel.getHomeData()
         viewModel.homeModel.observeLoading(this, true) {
@@ -66,8 +75,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         //}
     }
 
-    @RequiresApi(Build.VERSION_CODES.S)
     override fun initBinding() {
+        couponState = mBinding.llCoupon.bindMultiState()
+        couponState.show<EmptyState> {
+            it.setEmptyMsg("这是个空的")
+        }
+        seckillState = mBinding.llSeckill.bindMultiState()
+        seckillState.show<ErrorState> {
+            it.setErrorMsg("chu cuo le")
+            it.retry {
+                "啥都没用".showToast()
+            }
+        }
+        groupState = mBinding.llGroup.bindMultiState()
+        groupState.show<LoadingState> {
+            it.setLoadingMsg("快快加载···")
+        }
+        haggleState = mBinding.llHaggle.bindMultiState()
+        haggleState.show<LottieState> {
+        }
         mBinding.run {
             ImmersionBar.setTitleBar(getAttachActivity(), tbHomeTitle)
             appBarLayout.addOnOffsetChangedListener { _, verticalOffset ->

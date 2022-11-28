@@ -31,6 +31,7 @@ fun View?.visibleAlphaAnimation(duration: Long = 500L) {
 fun View?.gone() {
     this?.visibility = View.GONE
 }
+
 /**
  * 隐藏view，带有渐隐动画效果。
  *
@@ -43,11 +44,16 @@ fun View?.goneAlphaAnimation(duration: Long = 500L) {
         fillAfter = true
     })
 }
+
 /**
  * 占位隐藏view
  */
 fun View?.invisible() {
     this?.visibility = View.INVISIBLE
+}
+
+fun View.isVisible(visible: Boolean) {
+    if (visible) this.visibility = View.VISIBLE else this.visibility = View.GONE
 }
 
 /**

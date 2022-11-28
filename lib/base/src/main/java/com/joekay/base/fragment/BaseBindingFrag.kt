@@ -10,6 +10,7 @@ import androidx.viewbinding.ViewBinding
 import com.joekay.base.IBaseView
 import com.joekay.base.ext.setTransparentStyle
 import com.joekay.base.utils.BindingReflex
+import com.joekay.base.widgets.LoadingDialog
 
 /**
  * @author:  JoeKai
@@ -29,6 +30,8 @@ abstract class BaseBindingFrag<VB : ViewBinding> : BaseFrag(), IBaseView {
     /** 当前是否加载过 */
     private var loading: Boolean = false
 
+    private lateinit var mLoadingDialog: LoadingDialog
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -40,6 +43,7 @@ abstract class BaseBindingFrag<VB : ViewBinding> : BaseFrag(), IBaseView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mLoadingDialog = LoadingDialog(view.context)
         initObserve()
         initBinding()
         setDarkStatusBar()
@@ -50,6 +54,18 @@ abstract class BaseBindingFrag<VB : ViewBinding> : BaseFrag(), IBaseView {
             isAppearanceLightStatusBars = dark
             isAppearanceLightNavigationBars = dark
         }
+    }
+
+    open fun setDialogMessage(msg: String) {
+        mLoadingDialog.setMessage(msg)
+    }
+
+    open fun showDialog() {
+        mLoadingDialog.showDialog()
+    }
+
+    open fun dismissDialog() {
+        mLoadingDialog.dismissDialog()
     }
 
     override fun onResume() {

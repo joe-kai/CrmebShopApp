@@ -22,7 +22,6 @@ import javax.inject.Inject
  * @explain：
  */
 class HomeProductAdapter @Inject constructor(
-    @ActivityContext context: Context
 ) : PagingDataAdapter<ProductModel, RecyclerView.ViewHolder>(callback) {
     companion object {
         val callback = object : DiffUtil.ItemCallback<ProductModel>() {

@@ -82,7 +82,9 @@ ext {
             //圆形图像 https://github.com/hdodenhof/CircleImageView
             circleimageview    : "de.hdodenhof:circleimageview:3.1.0",
             //视频播放 https://github.com/CarGuo/GSYVideoPlayer
-            GSYVideoPlayer     : 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.3.4-release-jitpack'
+            GSYVideoPlayer     : 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.3.4-release-jitpack',
+            //多状态页面管理 https://github.com/Zhao-Yan-Yan/MultiStatePage
+//            MultiStatePage: 'com.github.Zhao-Yan-Yan:MultiStatePage:2.0.2',
 
             // 多语种：https://github.com/getActivity/MultiLanguages
             // 悬浮窗：https://github.com/getActivity/XToast

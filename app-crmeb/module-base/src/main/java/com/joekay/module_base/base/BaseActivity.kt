@@ -87,7 +87,9 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
     @Subscribe(threadMode = ThreadMode.MAIN)
     private fun loadingEvent(event: LoadingEvent) {
         if (event.isLoading) {
+            showDialog()
         } else {
+            dismissDialog()
         }
     }
 
@@ -133,7 +135,6 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         super.onStop()
         EventBus.getDefault().unregister(this)
         logD(TAG, "BaseActivity-->onStop()")
-
     }
 
     override fun onResume() {

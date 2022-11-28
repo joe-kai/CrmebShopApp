@@ -45,4 +45,6 @@ dependencies {
     api libs.circleimageview
     api libs.GSYVideoPlayer
 
+//    api libs.MultiStatePage
+
 }
