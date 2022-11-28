@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
     android:padding="@dimen/dp_10">
 
     <ProgressBar
@@ -16,14 +15,16 @@
         android:indeterminate="true"
         android:indeterminateTint="@color/pink" />
 
-    <TextView
+    <com.joekay.base.widgets.TypefaceTextView
         android:id="@+id/txv_retry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:background="@null"
         android:gravity="center"
+        android:textColor="@color/black70"
         android:text="@string/load_error"
+        app:typeface="fzlLTypeface"
         android:textSize="@dimen/sp_13" />
 
 </RelativeLayout>

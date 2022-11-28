@@ -34,7 +34,7 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
     /**
      * 日志输出标志
      */
-    protected val TAG: String = this.javaClass.simpleName
+    protected val TAG: String = "Log:${this.javaClass.simpleName}->"
 
     /** 标题栏对象 */
     private var titleBar: ActionBarView? = null
@@ -66,12 +66,14 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         ActivityCollector.pushTask(activityWR)
         val titleBar = getTitleBar()
         titleBar?.setOnTitleBarListener(this)
-
+        logD(TAG, "BaseActivity-->onCreate()")
     }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         logD(TAG, "BaseActivity-->onSaveInstanceState()")
     }
+
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         logD(TAG, "BaseActivity-->onRestoreInstanceState()")
@@ -121,6 +123,7 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         super.onNewIntent(intent)
         logD(TAG, "BaseActivity-->onNewIntent()")
     }
+
     override fun onRestart() {
         super.onRestart()
         logD(TAG, "BaseActivity-->onRestart()")
@@ -132,18 +135,21 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         logD(TAG, "BaseActivity-->onStop()")
 
     }
+
     override fun onResume() {
         super.onResume()
         logD(TAG, "BaseActivity-->onResume()")
         isActive = true
         //MobclickAgent.onResume(this)
     }
+
     override fun onPause() {
         super.onPause()
         logD(TAG, "BaseActivity-->onPause()")
         isActive = false
         //MobclickAgent.onPause(this)
     }
+
     override fun onDestroy() {
         super.onDestroy()
         logD(TAG, "BaseActivity-->onDestroy()")

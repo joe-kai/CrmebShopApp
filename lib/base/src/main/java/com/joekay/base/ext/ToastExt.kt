@@ -28,3 +28,7 @@ fun String.showToast(duration: Int = Toast.LENGTH_SHORT) {
     }
     oldMsg = this
 }
+
+fun Int.showToast(duration: Int = Toast.LENGTH_SHORT) {
+    Toast.makeText(ActivityManager.getInstance().getApplication(), this, duration).show()
+}

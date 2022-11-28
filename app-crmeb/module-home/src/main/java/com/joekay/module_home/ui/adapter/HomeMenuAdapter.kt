@@ -18,9 +18,9 @@ import javax.inject.Inject
 class HomeMenuAdapter @Inject constructor(
     @ActivityContext context: Context
 ) : AppAdapter<Menus>(context) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
-        return ViewHolder()
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder =
+        ViewHolder()
+
 
     inner class ViewHolder : AppViewHolder(R.layout.layout_menus_item) {
         private val binding by lazy {
@@ -32,7 +32,6 @@ class HomeMenuAdapter @Inject constructor(
             binding.run {
                 imvIcon.loadUrl(item.pic)
                 txvName.text = item.name
-
             }
         }
 

@@ -16,7 +16,6 @@ import com.gyf.immersionbar.ImmersionBar
 import com.joekay.base.adapter.BaseAdapter
 import com.joekay.base.ext.showToast
 import com.joekay.base.paging.FooterAdapter
-import com.joekay.base.paging.OnItemClickListener
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_home.databinding.FragmentHomeBinding
 import com.joekay.module_home.model.Banner
@@ -101,13 +100,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     }
                 }
             }
-            productAdapter.setOnItemClickListener(object : OnItemClickListener {
-                override fun onItemClick(itemView: View?, position: Int) {
-                    productAdapter.getAdapterItem(position).id.toString().showToast()
-                }
-
-            })
-
         }
     }
 

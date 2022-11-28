@@ -23,8 +23,8 @@ abstract class BaseBindingAct<VB : ViewBinding> : BaseAct(), IBaseView {
         setContentView(mBinding.root)
         window.setTransparentStyle()
         initSoftKeyboard()
+        setDarkStatusBar()
         initObserve()
         initBinding()
-        setDarkStatusBar()
     }
 }

@@ -58,13 +58,13 @@ import com.scwang.smart.refresh.layout.simple.SimpleComponent
             }
             mTextNothing = when {
                 it.hasValue(R.styleable.NoStatusFooter_srlTextNothing) -> {
-                    it.getString(R.styleable.NoStatusFooter_srlTextNothing) ?: context.getString(R.string.srl_footer_nothing)
+                    it.getString(R.styleable.NoStatusFooter_srlTextNothing) ?: context.getString(R.string.footer_not_more)
                 }
                 REFRESH_FOOTER_NOTHING != null -> {
                     REFRESH_FOOTER_NOTHING!!
                 }
                 else -> {
-                    context.getString(R.string.srl_footer_nothing)
+                    context.getString(R.string.footer_not_more)
                 }
             }
             mTitleText.typeface = TypefaceTextView.getTypeface(it.getInt(R.styleable.NoStatusFooter_srlTextTitleTypeface, TypeFaceUtil.LOBSTER_TYPEFACE))

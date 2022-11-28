@@ -3,11 +3,10 @@ package com.joekay.module_video.ui.details
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
-import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.joekay.base.ext.*
 import com.joekay.base.utils.*
@@ -27,10 +26,6 @@ import kotlinx.coroutines.*
 
 @Route(path = RouterPath.act_videoDetail)
 class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
-    var _binding: ActivityVideoDetailBinding? = null
-
-    val binding: ActivityVideoDetailBinding
-        get() = _binding!!
 
     //private val viewModel by viewModels<VideoDetailViewModel>()
     private var orientationUtils: OrientationUtils? = null
@@ -41,17 +36,13 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
     private var hideTitleBarJob: Job? = null
 
     private var hideBottomContainerJob: Job? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        _binding = ActivityVideoDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setupViews()
-    }
 
     override fun initObserve() {
     }
 
     override fun initBinding() {
+        setDarkStatusBar(false)
+        setupViews()
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -66,54 +57,62 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
 
     override fun onPause() {
         super.onPause()
-        binding.videoPlayer.onVideoPause()
+        logD(TAG, "onPause")
+        mBinding.videoPlayer.onVideoPause()
     }
 
     override fun onResume() {
         super.onResume()
-        binding.videoPlayer.onVideoResume()
+        logD(TAG, "onResume")
+        mBinding.videoPlayer.onVideoResume()
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        logD(TAG, "onDestroy")
         GSYVideoADManager.releaseAllVideos()
         orientationUtils?.releaseListener()
-        binding.videoPlayer.release()
-        binding.videoPlayer.setVideoAllCallBack(null)
+        mBinding.videoPlayer.release()
+        mBinding.videoPlayer.setVideoAllCallBack(null)
         globalJob.cancel()
-        _binding = null
 
     }
 
-    @Suppress("DEPRECATION")
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
+        logD(TAG, "onBackPressed()")
         orientationUtils?.backToProtVideo()
         if (GSYVideoManager.backFromWindowFull(this)) return
-        super.onBackPressed()
+        finish()
     }
 
     override fun finish() {
-        super.finish()
+        GSYVideoADManager.releaseAllVideos()
+        orientationUtils?.releaseListener()
+        mBinding.videoPlayer.release()
+        mBinding.videoPlayer.setVideoAllCallBack(null)
+        globalJob.cancel()
         overridePendingTransition(0, com.joekay.base.R.anim.window_bottom_out)
+        super.finish()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        binding.videoPlayer.onConfigurationChanged(this, newConfig, orientationUtils, true, true)
+        mBinding.videoPlayer.onConfigurationChanged(this, newConfig, orientationUtils, true, true)
     }
 
     private fun setupViews() {
 
         initParams()
-        orientationUtils = OrientationUtils(this, binding.videoPlayer)
+        orientationUtils = OrientationUtils(this, mBinding.videoPlayer)
         //relatedAdapter = NewDetailRelatedAdapter(this, viewModel.relatedDataList, viewModel.videoInfoData)
         //replyAdapter = NewDetailReplyAdapter(this, viewModel.repliesDataList)
         //mergeAdapter = ConcatAdapter(relatedAdapter, replyAdapter)
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        mBinding.recyclerView.layoutManager = LinearLayoutManager(this)
         //binding.recyclerView.adapter = mergeAdapter
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.itemAnimator = null
-        binding.refreshLayout.run {
+        mBinding.recyclerView.setHasFixedSize(true)
+        mBinding.recyclerView.itemAnimator = null
+        mBinding.refreshLayout.run {
             setDragRate(0.7f)
             setHeaderTriggerRate(0.6f)
             setFooterTriggerRate(0.6f)
@@ -121,29 +120,30 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
             setEnableFooterFollowWhenNoMoreData(true)
             setEnableFooterTranslationContent(true)
             setEnableScrollContentWhenLoaded(true)
-            binding.refreshLayout.setEnableNestedScroll(true)
+            setEnableNestedScroll(true)
             setFooterHeight(153f)
             setRefreshFooter(NoStatusFooter(this@VideoDetailActivity).apply {
                 setAccentColorId(com.joekay.resource.R.color.white)
                 setTextTitleSize(16f)
             })
+            closeHeaderOrFooter()
             setOnRefreshListener { finish() }
             setOnLoadMoreListener { viewModel.onLoadMore() }
         }
         setOnClickListener(
-            binding.ivPullDown,
-            binding.ivMore,
-            binding.ivShare,
-            binding.ivCollection,
-            binding.ivToWechatFriends,
-            binding.ivShareToWechatMemories,
-            binding.ivShareToWeibo,
-            binding.ivShareToQQ,
-            binding.ivShareToQQzone,
-            binding.ivAvatar,
-            binding.etComment,
-            binding.ivReply,
-            binding.tvReplyCount,
+            mBinding.ivPullDown,
+            mBinding.ivMore,
+            mBinding.ivShare,
+            mBinding.ivCollection,
+            mBinding.ivToWechatFriends,
+            mBinding.ivShareToWechatMemories,
+            mBinding.ivShareToWeibo,
+            mBinding.ivShareToQQ,
+            mBinding.ivShareToQQzone,
+            mBinding.ivAvatar,
+            mBinding.etComment,
+            mBinding.ivReply,
+            mBinding.tvReplyCount,
             listener = ClickListener()
         )
         //observe()
@@ -173,9 +173,9 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
 
     private fun startVideoPlayer() {
         viewModel.videoInfoData?.run {
-            binding.ivBlurredBg.load(cover.blurred)
-            binding.tvReplyCount.text = consumption.replyCount.toString()
-            binding.videoPlayer.startPlay()
+            mBinding.ivBlurredBg.load(cover.blurred)
+            mBinding.tvReplyCount.text = consumption.replyCount.toString()
+            mBinding.videoPlayer.startPlay()
         }
     }
 
@@ -294,31 +294,31 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
     }
 
     private fun switchTitleBarVisible() {
-        if (binding.videoPlayer.currentPlayer.currentState == GSYVideoView.CURRENT_STATE_AUTO_COMPLETE) return
-        if (binding.flHeader.visibility == View.VISIBLE) {
+        if (mBinding.videoPlayer.currentPlayer.currentState == GSYVideoView.CURRENT_STATE_AUTO_COMPLETE) return
+        if (mBinding.flHeader.visibility == View.VISIBLE) {
             hideTitleBar()
         } else {
-            binding.flHeader.visibleAlphaAnimation(1000)
-            binding.ivPullDown.visibleAlphaAnimation(1000)
-            binding.ivCollection.visibleAlphaAnimation(1000)
-            binding.ivMore.visibleAlphaAnimation(1000)
-            binding.ivShare.visibleAlphaAnimation(1000)
+            mBinding.flHeader.visibleAlphaAnimation(1000)
+            mBinding.ivPullDown.visibleAlphaAnimation(1000)
+            mBinding.ivCollection.visibleAlphaAnimation(1000)
+            mBinding.ivMore.visibleAlphaAnimation(1000)
+            mBinding.ivShare.visibleAlphaAnimation(1000)
             delayHideTitleBar()
         }
     }
 
     private fun hideTitleBar() {
-        binding.flHeader.invisibleAlphaAnimation(1000)
-        binding.ivPullDown.goneAlphaAnimation(1000)
-        binding.ivCollection.goneAlphaAnimation(1000)
-        binding.ivMore.goneAlphaAnimation(1000)
-        binding.ivShare.goneAlphaAnimation(1000)
+        mBinding.flHeader.invisibleAlphaAnimation(1000)
+        mBinding.ivPullDown.goneAlphaAnimation(1000)
+        mBinding.ivCollection.goneAlphaAnimation(1000)
+        mBinding.ivMore.goneAlphaAnimation(1000)
+        mBinding.ivShare.goneAlphaAnimation(1000)
     }
 
     private fun delayHideTitleBar() {
         hideTitleBarJob?.cancel()
         hideTitleBarJob = CoroutineScope(globalJob).launch(Dispatchers.Main) {
-            delay(binding.videoPlayer.dismissControlTime.toLong())
+            delay(mBinding.videoPlayer.dismissControlTime.toLong())
             hideTitleBar()
         }
     }
@@ -326,9 +326,9 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
     private fun delayHideBottomContainer() {
         hideBottomContainerJob?.cancel()
         hideBottomContainerJob = CoroutineScope(globalJob).launch(Dispatchers.Main) {
-            delay(binding.videoPlayer.dismissControlTime.toLong())
-            binding.videoPlayer.getBottomContainer().gone()
-            binding.videoPlayer.startButton.gone()
+            delay(mBinding.videoPlayer.dismissControlTime.toLong())
+            mBinding.videoPlayer.getBottomContainer().gone()
+            mBinding.videoPlayer.startButton.gone()
         }
     }
 
@@ -354,8 +354,8 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
     inner class VideoCallPlayBack : GSYSampleCallBack() {
         override fun onStartPrepared(url: String?, vararg objects: Any?) {
             super.onStartPrepared(url, *objects)
-            binding.flHeader.gone()
-            binding.llShares.gone()
+            mBinding.flHeader.gone()
+            mBinding.llShares.gone()
         }
 
         override fun onClickBlank(url: String?, vararg objects: Any?) {
@@ -370,12 +370,12 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
 
         override fun onAutoComplete(url: String?, vararg objects: Any?) {
             super.onAutoComplete(url, *objects)
-            binding.flHeader.visible()
-            binding.ivPullDown.visible()
-            binding.ivCollection.gone()
-            binding.ivShare.gone()
-            binding.ivMore.gone()
-            binding.llShares.visible()
+            mBinding.flHeader.visible()
+            mBinding.ivPullDown.visible()
+            mBinding.ivCollection.gone()
+            mBinding.ivShare.gone()
+            mBinding.ivMore.gone()
+            mBinding.llShares.visible()
         }
     }
 
@@ -383,39 +383,39 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
         override fun onClick(v: View) {
             viewModel.videoInfoData?.let {
                 when (v) {
-                    binding.ivPullDown -> finish()
-                    binding.ivMore -> {
+                    mBinding.ivPullDown -> finish()
+                    mBinding.ivMore -> {
                     }
-                    binding.ivShare -> {
+                    mBinding.ivShare -> {
                         showDialogShare(it.webUrl.raw)
                         //it.webUrl.raw.showToast()
                     }
-                    binding.ivCollection -> {
+                    mBinding.ivCollection -> {
                         //LoginActivity.start(this@NewDetailActivity)
                         "登录".showToast()
                     }
-                    binding.ivToWechatFriends -> {
+                    mBinding.ivToWechatFriends -> {
                         share(it.webUrl.raw, SHARE_WECHAT)
                         it.webUrl.raw.showToast()
                     }
 
-                    binding.ivShareToWechatMemories -> {
+                    mBinding.ivShareToWechatMemories -> {
                         share(it.webUrl.raw, SHARE_WECHAT_MEMORIES)
                     }
-                    binding.ivShareToWeibo -> {
+                    mBinding.ivShareToWeibo -> {
                         share(it.webUrl.forWeibo, SHARE_WEIBO)
                     }
-                    binding.ivShareToQQ -> {
+                    mBinding.ivShareToQQ -> {
                         share(it.webUrl.raw, SHARE_QQ)
                     }
-                    binding.ivShareToQQzone -> {
+                    mBinding.ivShareToQQzone -> {
                         share(it.webUrl.raw, SHARE_QQZONE)
                     }
-                    binding.ivAvatar, binding.etComment -> {
+                    mBinding.ivAvatar, mBinding.etComment -> {
                         //LoginActivity.start(this@NewDetailActivity)
                         "登录".showToast()
                     }
-                    binding.ivReply, binding.tvReplyCount -> {
+                    mBinding.ivReply, mBinding.tvReplyCount -> {
                         //scrollRepliesTop()
                         "滑动到".showToast()
                     }

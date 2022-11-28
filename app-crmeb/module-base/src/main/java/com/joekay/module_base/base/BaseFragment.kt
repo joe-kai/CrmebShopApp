@@ -24,7 +24,7 @@ abstract class BaseFragment<VB : ViewBinding> : BaseBindingFrag<VB>(), TitleBarA
     /**
      * 日志输出标志
      */
-    protected val TAG: String = this.javaClass.simpleName
+    protected val TAG: String = "Log:${this.javaClass.simpleName}->"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val titleBar = getTitleBar()

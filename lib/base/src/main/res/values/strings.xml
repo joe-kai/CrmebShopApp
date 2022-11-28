@@ -27,6 +27,8 @@
     <string name="minute">分钟</string>
 
     <string name="load_error">加载失败，请点击重试</string>
+
+    <string name="footer_not_more">- The End -</string>
     <string name="srl_footer_nothing">没有更多数据了</string>
 
     <string name="jump_page_unknown_error">跳转界面出现未知异常</string>

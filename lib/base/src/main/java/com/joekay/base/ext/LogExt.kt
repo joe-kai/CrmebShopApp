@@ -1,16 +1,13 @@
 package com.joekay.base.ext
 
 import android.util.Log
-import java.lang.Boolean
+import com.therouter.TheRouter
+import timber.log.Timber
 import kotlin.String
 import kotlin.Throwable
 import kotlin.toString
 
-/**
- * @author:  JoeKai
- * @date:  2022/11/27
- * @explain：
- */
+
 /**
  * 日志调试工具类。
  *
@@ -23,38 +20,39 @@ private const val INFO = 3
 private const val WARN = 4
 private const val ERROR = 5
 
-private val level = if (Boolean.parseBoolean("true")) VERBOSE else WARN
 
 fun logV(tag: String, msg: String?) {
-    if (level <= VERBOSE) {
-        Log.v(tag, msg.toString())
-    }
+    Timber.tag(tag).v(msg.toString())
+    TheRouter.build("").navigation()
 }
 
 fun logD(tag: String, msg: String?) {
-    if (level <= DEBUG) {
-        Log.d(tag, msg.toString())
-    }
+    //Timber.tag(tag).d(msg.toString())
+    debug(tag, msg!!)
 }
 
+
 fun logI(tag: String, msg: String?) {
-    if (level <= INFO) {
-        Log.i(tag, msg.toString())
+    Timber.tag(tag).i(msg.toString())
+}
+
+inline fun debug(tag: String, msg: String, block: () -> Unit = {}) {
+    if (TheRouter.isDebug) {
+        Log.d(":$tag", msg)
+        block.invoke()
+    } else {
+        TheRouter.logCat.invoke(":$tag", msg)
     }
 }
 
 fun logW(tag: String, msg: String?, tr: Throwable? = null) {
-    if (level <= WARN) {
-        if (tr == null) {
-            Log.w(tag, msg.toString())
-        } else {
-            Log.w(tag, msg.toString(), tr)
-        }
+    if (tr == null) {
+        Timber.tag(tag).w(msg.toString())
+    } else {
+        Timber.tag(tag).w(tr, msg.toString())
     }
 }
 
 fun logE(tag: String, msg: String?, tr: Throwable) {
-    if (level <= ERROR) {
-        Log.e(tag, msg.toString(), tr)
-    }
+    Timber.tag(tag).e(tr, msg.toString())
 }

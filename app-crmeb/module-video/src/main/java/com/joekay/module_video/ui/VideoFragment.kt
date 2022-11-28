@@ -80,11 +80,14 @@ class VideoFragment : BaseFragment<FragmentVideoBinding>() {
         msg!!.showToast()
 
     }
+
     override fun onMessageEvent(messageEvent: MessageEvent) {
         super.onMessageEvent(messageEvent)
         if (messageEvent is RefreshEvent && javaClass == messageEvent.activityClass) {
             mBinding.refreshLayout.autoRefresh()
-            if (mBinding.recyclerView.adapter?.itemCount ?: 0 > 0) mBinding.recyclerView.scrollToPosition(0)
+            if (mBinding.recyclerView.adapter?.itemCount ?: 0 > 0) mBinding.recyclerView.scrollToPosition(
+                0
+            )
         }
     }
 
@@ -151,7 +154,7 @@ class VideoFragment : BaseFragment<FragmentVideoBinding>() {
      * 当网络请求没有正常响应的时候，根据异常类型进行相应的处理。
      * @param e 异常实体类
      */
-   private fun getFailureTips(e: Throwable?): String {
+    private fun getFailureTips(e: Throwable?): String {
         logW("TAG", "getFailureTips exception is ${e?.message}")
         return when (e) {
             is ConnectException -> GlobalUtil.getString(string.network_connect_error)

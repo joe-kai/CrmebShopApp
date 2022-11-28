@@ -10,7 +10,7 @@ import java.util.ArrayList
 /**
  * @author:  JoeKai
  * @date:  2022/11/26
- * @explain：
+ * @explain：Activity 管理类
  */
 class ActivityManager private constructor() : Application.ActivityLifecycleCallbacks {
     companion object {
