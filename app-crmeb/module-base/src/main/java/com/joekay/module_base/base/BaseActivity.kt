@@ -7,13 +7,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.viewbinding.ViewBinding
+import com.hjq.bar.TitleBar
 import com.joekay.base.ActivityCollector
 import com.joekay.base.activity.BaseBindingAct
 import com.joekay.base.ext.ShowDialogShare
 import com.joekay.base.ext.logD
 import com.joekay.base.ext.showToast
 import com.joekay.base.utils.ShareUtil
-import com.joekay.base.widgets.ActionBarView
 import com.joekay.module_base.event.MessageEvent
 import com.joekay.network.event.LoadingEvent
 import com.joekay.network.event.State
@@ -37,7 +37,7 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
     protected val TAG: String = "Log:${this.javaClass.simpleName}->"
 
     /** 标题栏对象 */
-    private var titleBar: ActionBarView? = null
+    private var titleBar: TitleBar? = null
 
     /**
      * 判断当前Activity是否在前台。
@@ -159,7 +159,7 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         ActivityCollector.removeTask(activityWR)
     }
 
-    override fun getTitleBar(): ActionBarView? {
+    override fun getTitleBar(): TitleBar? {
         if (titleBar == null) {
             titleBar = obtainTitleBar(getContentView())
         }
@@ -167,25 +167,14 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
     }
 
     override fun setTitle(id: Int) {
-        getTitleBar()?.setTitle(id)
+        title = getString(id)
     }
 
-    override fun setTitle(title: CharSequence) {
+    override fun setTitle(title: CharSequence?) {
         super<BaseBindingAct>.setTitle(title)
-        getTitleBar()?.setTitle(title)
+        getTitleBar()?.title = title
     }
 
-    override fun onLeftClick(view: View?) {
-        onBackPressed()
-    }
-
-    override fun onRightClick(view: View?) {
-
-    }
-
-    override fun onTitleClick(view: View?) {
-        "hahha".showToast()
-    }
 
     /**
      * 调用系统原生分享

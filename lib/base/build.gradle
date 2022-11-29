@@ -47,4 +47,6 @@ dependencies {
 
 //    api libs.MultiStatePage
 
+    api libs.titleBar
+
 }

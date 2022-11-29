@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="ActionBarView">
-        <attr name="title" format="string" />
-        <attr name="title_size" format="dimension" />
-        <attr name="title_color" format="color" />
-        <attr name="right_icon" format="reference" />
-        <attr name="right_text" format="string" />
-        <attr name="right_color" format="color" />
-        <attr name="right_icon_margin" format="dimension" />
-        <attr name="right_width" format="dimension" />
-        <attr name="right_height" format="dimension" />
-        <attr name="left_icon" format="reference" />
-        <attr name="left_width" format="dimension" />
-        <attr name="left_text" format="string" />
-        <attr name="left_color" format="color" />
-        <attr name="left_height" format="dimension" />
-        <attr name="left_icon_margin" format="dimension" />
-        <attr name="left_hint" format="boolean" />
+    <declare-styleable name="AppTitleBar">
+        <attr name="appTitle" format="string" />
+        <attr name="titleSize" format="dimension" />
+        <attr name="titleColor" format="color" />
+        <attr name="leftIcon" format="reference" />
+        <attr name="leftTitle" format="string" />
+        <attr name="leftTitleColor" format="color" />
+        <attr name="leftTitleSize" format="dimension" />
+        <attr name="leftHide" format="boolean" />
+        <attr name="rightIcon" format="reference" />
+        <attr name="rightTitle" format="string" />
+        <attr name="rightTitleSize" format="dimension" />
+        <attr name="rightTitleColor" format="color" />
+        <attr name="rightHide" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="TypefaceTextView">

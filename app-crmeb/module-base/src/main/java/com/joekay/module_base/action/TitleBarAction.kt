@@ -1,7 +1,9 @@
+import android.graphics.drawable.Drawable
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
-import com.joekay.base.widgets.ActionBarView
-import com.joekay.base.widgets.OnTitleBarListener
+import com.hjq.bar.OnTitleBarListener
+import com.hjq.bar.TitleBar
 
 /**
  *    author : Android 轮子哥
@@ -14,8 +16,28 @@ interface TitleBarAction : OnTitleBarListener {
     /**
      * 获取标题栏对象
      */
-    fun getTitleBar(): ActionBarView?
+    fun getTitleBar(): TitleBar?
 
+    /**
+     * 左项被点击
+     *
+     * @param view     被点击的左项View
+     */
+    override fun onLeftClick(titleBar: TitleBar?) {}
+
+    /**
+     * 标题被点击
+     *
+     * @param view     被点击的标题View
+     */
+    override fun onTitleClick(titleBar: TitleBar?) {}
+
+    /**
+     * 右项被点击
+     *
+     * @param view     被点击的右项View
+     */
+    override fun onRightClick(titleBar: TitleBar?) {}
 
     /**
      * 设置标题栏的标题
@@ -27,8 +49,8 @@ interface TitleBarAction : OnTitleBarListener {
     /**
      * 设置标题栏的标题
      */
-    fun setTitle(title: CharSequence) {
-        getTitleBar()?.setTitle(title)
+    fun setTitle(title: CharSequence?) {
+        getTitleBar()?.title = title
     }
 
     /**
@@ -38,12 +60,12 @@ interface TitleBarAction : OnTitleBarListener {
         getTitleBar()?.setLeftTitle(id)
     }
 
-    fun setLeftTitle(text: CharSequence) {
-        getTitleBar()?.setLeftTitle(text)
+    fun setLeftTitle(text: CharSequence?) {
+        getTitleBar()?.leftTitle = text
     }
 
     fun getLeftTitle(): CharSequence? {
-        return getTitleBar()?.getLeftTitle()
+        return getTitleBar()?.leftTitle
     }
 
     /**
@@ -53,12 +75,12 @@ interface TitleBarAction : OnTitleBarListener {
         getTitleBar()?.setRightTitle(id)
     }
 
-    fun setRightTitle(text: CharSequence) {
-        getTitleBar()?.setRightTitle(text)
+    fun setRightTitle(text: CharSequence?) {
+        getTitleBar()?.rightTitle = text
     }
 
     fun getRightTitle(): CharSequence? {
-        return getTitleBar()?.getRightTitle()
+        return getTitleBar()?.rightTitle
     }
 
     /**
@@ -68,6 +90,14 @@ interface TitleBarAction : OnTitleBarListener {
         getTitleBar()?.setLeftIcon(id)
     }
 
+    fun setLeftIcon(drawable: Drawable?) {
+        getTitleBar()?.leftIcon = drawable
+    }
+
+    fun getLeftIcon(): Drawable? {
+        return getTitleBar()?.leftIcon
+    }
+
     /**
      * 设置标题栏的右图标
      */
@@ -75,17 +105,23 @@ interface TitleBarAction : OnTitleBarListener {
         getTitleBar()?.setRightIcon(id)
     }
 
+    fun setRightIcon(drawable: Drawable?) {
+        getTitleBar()?.rightIcon = drawable
+    }
 
+    fun getRightIcon(): Drawable? {
+        return getTitleBar()?.rightIcon
+    }
     /**
      * 递归获取 ViewGroup 中的 TitleBar 对象
      */
-    fun obtainTitleBar(group: ViewGroup?): ActionBarView? {
+    fun obtainTitleBar(group: ViewGroup?): TitleBar? {
         if (group == null) {
             return null
         }
         for (i in 0 until group.childCount) {
             val view = group.getChildAt(i)
-            if (view is ActionBarView) {
+            if (view is TitleBar) {
                 return view
             }
             if (view is ViewGroup) {

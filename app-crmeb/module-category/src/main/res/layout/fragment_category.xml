@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.CategoryFragment">
-    <com.joekay.base.widgets.ActionBarView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:title="分类"
-        app:left_hint="true"/>
 
-    <TextView
+    <com.hjq.bar.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        app:leftIcon="@null"
+        app:title="@string/category" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Category Hello" />
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_left"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/layout_category_left_item" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_right"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            tools:listitem="@layout/layout_category_right_item" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

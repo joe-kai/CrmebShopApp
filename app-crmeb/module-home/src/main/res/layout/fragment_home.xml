@@ -82,10 +82,9 @@
                         android:layout_marginHorizontal="@dimen/dp_10"
                         android:layout_marginTop="@dimen/dp_10"
                         android:background="@drawable/white_r10_bg"
-                        android:paddingVertical="@dimen/dp_5"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         app:spanCount="5"
-                        tools:itemCount="5"
+                        tools:itemCount="10"
                         tools:listitem="@layout/layout_menus_item" />
 
                     <LinearLayout

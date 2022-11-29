@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.text.TextUtils
 import com.joekay.base.ActivityManager
-import com.joekay.base.BaseApplication
 import java.util.*
 
 /**

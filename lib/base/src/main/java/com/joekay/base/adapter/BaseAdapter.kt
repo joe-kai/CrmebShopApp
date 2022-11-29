@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.joekay.base.action.ResourcesAction
 
 /**
@@ -15,7 +18,7 @@ import com.joekay.base.action.ResourcesAction
  * @date:  2022/11/26
  * @explain：
  */
-abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder> (private val context: Context) :
+abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder>(private val context: Context) :
     RecyclerView.Adapter<VH>(), ResourcesAction {
 
     /** RecyclerView 对象 */
@@ -151,6 +154,31 @@ abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder> (private val con
         // 判断当前的布局管理器是否为空，如果为空则设置默认的布局管理器
         if (this.recyclerView?.layoutManager == null) {
             this.recyclerView?.layoutManager = generateDefaultLayoutManager(context)
+            //val manager = recyclerView.layoutManager
+            //if (manager is GridLayoutManager || manager is StaggeredGridLayoutManager) {
+            //    this.recyclerView?.addItemDecoration(GridDividerItemDecoration(10))
+            //} else {
+            //    val layoutManager = manager as LinearLayoutManager
+            //    if (layoutManager.orientation == LinearLayoutManager.HORIZONTAL) {
+            //        this.recyclerView?.addItemDecoration(
+            //            LinearDividerItemDecoration(
+            //                context,
+            //                LinearDividerItemDecoration.HORIZONTAL_LIST
+            //            )
+            //        )
+            //    } else {
+            //        this.recyclerView?.addItemDecoration(
+            //            LinearDividerItemDecoration(
+            //                context,
+            //                LinearDividerItemDecoration.VERTICAL_LIST
+            //            )
+            //        )
+            //    }
+            //}
+
+        }
+        if (generateDefaultDividerDecoration(context) != null) {
+            this.recyclerView?.addItemDecoration(generateDefaultDividerDecoration(context)!!)
         }
     }
 
@@ -163,6 +191,14 @@ abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder> (private val con
      */
     protected open fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager? {
         return LinearLayoutManager(context)
+    }
+
+    /**
+     * 生成默认的分割线的效果
+     */
+    protected open fun generateDefaultDividerDecoration(context: Context): RecyclerView.ItemDecoration? {
+        return null
+        //return LinearDividerItemDecoration(context,com.joekay.base.adapter.DividerItemDecoration.HORIZONTAL_LIST)
     }
 
     /**

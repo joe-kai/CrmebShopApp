@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.gyf.immersionbar.ImmersionBar
 import com.joekay.base.adapter.BaseAdapter
+import com.joekay.base.adapter.GridDividerItemDecoration
 import com.joekay.base.ext.showToast
 import com.joekay.base.multiStateView.MultiStatePage
 import com.joekay.base.multiStateView.MultiStateView

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.joekay.base.widgets.TypefaceTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/txv_name"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_45"
+    android:gravity="center"
+    android:textColor="@drawable/selector_nav_text_color"
+    android:textSize="@dimen/sp_13"
+    tools:ignore="MissingDefaultResource"
+    tools:text="分类">
+
+</com.joekay.base.widgets.TypefaceTextView>

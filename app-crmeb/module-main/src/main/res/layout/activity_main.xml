@@ -22,7 +22,7 @@
         app:itemIconSize="@dimen/dp_24"
         app:itemIconTint="@null"
         app:itemRippleColor="@color/transparent"
-        app:itemTextColor="@drawable/select_nav_text_color"
+        app:itemTextColor="@drawable/selector_nav_text_color"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
 

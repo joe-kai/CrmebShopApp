@@ -7,10 +7,10 @@
     android:orientation="vertical"
     tools:context=".ui.MineFragment">
 
-    <com.joekay.base.widgets.ActionBarView
+    <com.hjq.bar.TitleBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:left_hint="true"
+        app:leftIcon="@null"
         app:title="我的" />
 
     <androidx.appcompat.widget.AppCompatTextView
