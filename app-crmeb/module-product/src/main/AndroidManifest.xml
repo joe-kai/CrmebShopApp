@@ -6,6 +6,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CrmebShopApp">
         <activity
+            android:name=".ui.ProductDetailActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ProductActivity"
             android:exported="true">
             <meta-data

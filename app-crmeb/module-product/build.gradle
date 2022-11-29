@@ -1,4 +1,5 @@
 apply from: "../crmeb_module.gradle"
+apply plugin: 'org.jetbrains.kotlin.android'
 
 
 android {
@@ -7,4 +8,8 @@ android {
         defaultConfig {
             applicationId "com.joekay.module_product"
         }
+}
+
+dependencies {
+
 }

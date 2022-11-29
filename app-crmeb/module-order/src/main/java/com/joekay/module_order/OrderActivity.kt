@@ -1,11 +1,16 @@
 package com.joekay.module_order
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.joekay.module_base.base.BaseActivity
+import com.joekay.module_order.databinding.ActivityOrderBinding
+import com.joekay.resource.RouterPath
+import com.therouter.router.Route
 
-class OrderActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_order)
+@Route(path = RouterPath.act_product)
+class OrderActivity : BaseActivity<ActivityOrderBinding>() {
+    override fun initObserve() {
     }
+
+    override fun initBinding() {
+    }
+
 }

@@ -1,11 +1,18 @@
 package com.joekay.module_mine
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.joekay.module_base.base.BaseActivity
+import com.joekay.module_mine.databinding.ActivityMineBinding
+import com.joekay.resource.RouterPath
+import com.therouter.router.Route
+import dagger.hilt.android.AndroidEntryPoint
 
-class MineActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_mine)
+@Route(path = RouterPath.act_mine)
+@AndroidEntryPoint
+class MineActivity : BaseActivity<ActivityMineBinding>() {
+    override fun initObserve() {
     }
+
+    override fun initBinding() {
+    }
+
 }

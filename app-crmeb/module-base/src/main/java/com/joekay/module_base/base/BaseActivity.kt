@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.viewbinding.ViewBinding
+import com.gyf.immersionbar.ImmersionBar
 import com.hjq.bar.TitleBar
 import com.joekay.base.ActivityCollector
 import com.joekay.base.activity.BaseBindingAct
@@ -65,6 +66,8 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         activityWR = WeakReference(mActivity!!)
         ActivityCollector.pushTask(activityWR)
         val titleBar = getTitleBar()
+        ImmersionBar.setTitleBar(this, titleBar)
+
         titleBar?.setOnTitleBarListener(this)
         logD(TAG, "BaseActivity-->onCreate()")
     }

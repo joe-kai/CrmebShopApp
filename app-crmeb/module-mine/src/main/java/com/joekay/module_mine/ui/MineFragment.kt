@@ -5,6 +5,7 @@ import com.joekay.base.ext.setSingleClickListener
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_mine.databinding.FragmentMineBinding
 import com.joekay.resource.RouterPath
+import com.therouter.TheRouter
 import com.therouter.router.Route
 
 @Route(path = RouterPath.frag_mine)
@@ -41,6 +42,7 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
                 //        }
                 //    })
                 //    .show()
+                TheRouter.build(RouterPath.act_mine).navigation()
             }
         }
     }

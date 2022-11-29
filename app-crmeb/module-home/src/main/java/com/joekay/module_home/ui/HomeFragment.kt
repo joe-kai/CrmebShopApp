@@ -31,6 +31,7 @@ import com.joekay.module_home.ui.adapter.HomeProductTabAdapter
 import com.joekay.network.liveData.observeLoading
 import com.joekay.resource.R.dimen
 import com.joekay.resource.RouterPath
+import com.therouter.TheRouter
 import com.therouter.router.Route
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
@@ -152,7 +153,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                             ).toInt()
                         )
                     )
-                    .into(holder.imageView);
+                    .into(holder.imageView)
             }
         }).addBannerLifecycleObserver(this).setIndicator(CircleIndicator(activity));
     }
@@ -168,6 +169,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     itemView: View?,
                     position: Int
                 ) {
+                    //TheRouter.build(RouterPath.act_product).navigation()
+                    TheRouter.build(RouterPath.act_mine).navigation()
                     homeMenuAdapter.getItem(position).name.showToast()
                 }
             })

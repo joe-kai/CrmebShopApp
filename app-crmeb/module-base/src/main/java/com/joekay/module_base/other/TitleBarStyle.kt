@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
+import com.hjq.bar.TitleBarSupport
 import com.hjq.bar.style.LightBarStyle
 import com.joekay.base.widgets.PressAlphaTextView
 import com.joekay.module_base.R
@@ -55,7 +56,11 @@ class TitleBarStyle : LightBarStyle() {
     }
 
     override fun getTitleSize(context: Context): Float {
-        return context.resources.getDimension(dimen.sp_15)
+        return context.resources.getDimension(dimen.sp_17)
+    }
+
+    override fun getTitleStyle(context: Context?): Int {
+        return 1
     }
 
     override fun getLeftTitleSize(context: Context): Float {

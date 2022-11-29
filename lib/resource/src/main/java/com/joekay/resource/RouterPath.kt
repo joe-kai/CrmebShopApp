@@ -6,6 +6,9 @@ package com.joekay.resource
  * @explain：TheRouter路由配置
  */
 object RouterPath {
+    /*module-app*/
+    const val act_splash = "app/splash_act"
+
     /*module-home*/
     const val frag_home = "home/home_frag"
 
@@ -21,12 +24,17 @@ object RouterPath {
 
     /*module-mine*/
     const val frag_mine = "mine/mine_frag"
-
-    /*module-app*/
-    const val act_splash = "app/splash_act"
+    const val act_mine = "mine/mine_act"
 
     /*module-main*/
     const val act_main = "main/main_act"
+
+    /*module-order*/
+    const val act_order = "order/order_act"
+
+    /*module-product*/
+    const val act_product = "product/product_act"
+    const val act_productDetail = "product/productDetail_act"
 
 
 }
