@@ -27,9 +27,7 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
         mBinding.run {
             ImmersionBar.setTitleBar(getAttachActivity(), llTop)
 
-            ivAvatar.load(drawable.ic_avatar, 50f) {
-                error(drawable.ic_avatar)
-            }
+            ivAvatar.load(drawable.ic_avatar, 50f)
             root.setSingleClickListener {
                 //PayPasswordDialog.Builder(mActivity)
                 //    .setTitle(getString(R.string.pay_title))

@@ -1,6 +1,7 @@
 package com.joekay.base.gilde
 
 import android.content.Context
+import androidx.compose.ui.layout.Placeable
 import com.bumptech.glide.GlideBuilder
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool
@@ -52,10 +53,11 @@ class GlideConfig : AppGlideModule() {
         builder.setDefaultRequestOptions(
             RequestOptions()
                 // 设置默认加载中占位图
-                .placeholder(R.drawable.img_loading)
+                //.placeholder(R.drawable.img_loading)
                 // 设置默认加载出错占位图
                 .error(R.drawable.img_error)
         )
+
     }
 
     //override fun registerComponents(context: Context, glide: Glide, registry: Registry) {

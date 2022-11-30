@@ -43,10 +43,10 @@ class HomeProductAdapter @Inject constructor(
         val mBinding = LayoutHomeProductItemBinding.bind(holder.itemView)
         val data = getItem(position)!!
         mBinding.run {
-            root.setOnClickListener {
-                data.id.toString().showToast()
-            }
-            imvProduct.load(data.image)
+            imvProduct.load(
+                data.image,
+                placeholder = com.joekay.resource.R.drawable.ic_img_loading_2
+            )
             txvProductName.text = data.storeName
             txvOtPrice.text = "¥${data.otPrice}"
             txvOtPrice.paint?.flags = Paint.STRIKE_THRU_TEXT_FLAG

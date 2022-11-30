@@ -6,7 +6,6 @@ import android.content.res.Configuration
 import android.view.View
 import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.joekay.base.ext.*
 import com.joekay.base.utils.*

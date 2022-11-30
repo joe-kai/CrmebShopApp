@@ -8,13 +8,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.gyf.immersionbar.ImmersionBar
 import com.joekay.base.adapter.BaseAdapter
-import com.joekay.base.adapter.GridDividerItemDecoration
+import com.joekay.base.ext.load
 import com.joekay.base.ext.showToast
-import com.joekay.base.multiStateView.MultiStatePage
 import com.joekay.base.multiStateView.MultiStateView
 import com.joekay.base.multiStateView.bindMultiState
 import com.joekay.base.multiStateView.state.*
@@ -145,15 +142,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             override fun onBindView(
                 holder: BannerImageHolder?, data: Banner?, position: Int, size: Int
             ) {
-                Glide.with(holder!!.itemView).load(data!!.pic)
-                    .transform(
-                        RoundedCorners(
-                            resources.getDimension(
-                                dimen.dp_20
-                            ).toInt()
-                        )
-                    )
-                    .into(holder.imageView)
+                holder!!.imageView.load(data!!.pic, 20f)
+                //Glide.with(holder!!.itemView).load(data!!.pic)
+                //    .transform(
+                //        RoundedCorners(
+                //            resources.getDimension(
+                //                dimen.dp_20
+                //            ).toInt()
+                //        )
+                //    )
+                //    .into(holder.imageView)
             }
         }).addBannerLifecycleObserver(this).setIndicator(CircleIndicator(activity));
     }
