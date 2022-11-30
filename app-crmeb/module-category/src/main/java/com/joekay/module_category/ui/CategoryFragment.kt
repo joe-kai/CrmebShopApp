@@ -4,7 +4,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.joekay.base.adapter.BaseAdapter
+import com.joekay.base.adapter.Adapter
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_category.databinding.FragmentCategoryBinding
 import com.joekay.module_category.ui.adapter.CategoryLeftAdapter
@@ -57,7 +57,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>() {
 
             })
 
-            leftAdapter.setOnItemClickListener(object : BaseAdapter.OnItemClickListener {
+            leftAdapter.setOnItemClickListener(object : Adapter.OnItemClickListener {
                 override fun onItemClick(
                     recyclerView: RecyclerView?,
                     itemView: View?,

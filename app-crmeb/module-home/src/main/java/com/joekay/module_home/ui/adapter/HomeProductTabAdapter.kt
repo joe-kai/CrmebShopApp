@@ -3,9 +3,9 @@ package com.joekay.module_home.ui.adapter
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.joekay.base.adapter.AppAdapter
+import com.joekay.base.adapter.Adapter
+import com.joekay.base.adapter.BaseAdapter
 import com.joekay.module_home.R
 import com.joekay.module_home.databinding.LayoutProductTabItemBinding
 import com.joekay.module_home.model.ExplosiveMoney
@@ -19,7 +19,7 @@ import javax.inject.Inject
  */
 class HomeProductTabAdapter @Inject constructor(
     @ActivityContext context: Context
-) : AppAdapter<ExplosiveMoney>(context), com.joekay.base.adapter.BaseAdapter.OnItemClickListener {
+) : BaseAdapter<ExplosiveMoney>(context), Adapter.OnItemClickListener {
     /** 当前选中条目位置 */
     private var selectedPosition: Int = 0
 
@@ -46,11 +46,11 @@ class HomeProductTabAdapter @Inject constructor(
         this.listener = listener
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return ViewHolder()
     }
 
-    inner class ViewHolder : AppViewHolder(R.layout.layout_product_tab_item) {
+    inner class ViewHolder : BaseViewHolder(R.layout.layout_product_tab_item) {
         private val mBinding by lazy {
             LayoutProductTabItemBinding.bind(getItemView())
         }

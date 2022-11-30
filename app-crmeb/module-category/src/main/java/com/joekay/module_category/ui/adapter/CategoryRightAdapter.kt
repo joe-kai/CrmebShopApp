@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.joekay.base.adapter.AppAdapter
+import com.joekay.base.adapter.BaseAdapter
 import com.joekay.base.ext.load
 import com.joekay.module_category.R
 import com.joekay.module_category.databinding.LayoutCategoryRightItemBinding
@@ -21,13 +21,13 @@ import javax.inject.Inject
  */
 class CategoryRightAdapter @Inject constructor(
     @ActivityContext context: Context
-) : AppAdapter<CategoryModel>(context) {
+) : BaseAdapter<CategoryModel>(context) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return ViewHolder()
     }
 
-    inner class ViewHolder : AppViewHolder(R.layout.layout_category_right_item) {
+    inner class ViewHolder : BaseViewHolder(R.layout.layout_category_right_item) {
         private val binding by lazy {
             LayoutCategoryRightItemBinding.bind(getItemView())
         }
@@ -47,17 +47,17 @@ class CategoryRightAdapter @Inject constructor(
 
     inner class SubAdapter constructor(
         context: Context
-    ) : AppAdapter<Child>(context) {
+    ) : BaseAdapter<Child>(context) {
 
         override fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager? {
             return GridLayoutManager(context, 3)
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
             return ViewHolder()
         }
 
-        inner class ViewHolder : AppViewHolder(R.layout.layout_category_right_sub_item) {
+        inner class ViewHolder : BaseViewHolder(R.layout.layout_category_right_sub_item) {
             private val binding by lazy {
                 LayoutCategoryRightSubItemBinding.bind(getItemView())
             }

@@ -3,18 +3,16 @@ package com.joekay.module_category.ui.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Typeface
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.joekay.base.adapter.AppAdapter
 import com.joekay.base.adapter.BaseAdapter
 import com.joekay.module_category.R
 import com.joekay.module_category.databinding.LayoutCategoryLeftItemBinding
 import com.joekay.module_category.model.CategoryModel
+import com.joekay.resource.R.color
 import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
-import com.joekay.resource.R.*
 
 /**
  * @author:  JoeKai
@@ -23,7 +21,7 @@ import com.joekay.resource.R.*
  */
 class CategoryLeftAdapter @Inject constructor(
     @ActivityContext context: Context
-) : AppAdapter<CategoryModel>(context) {
+) : BaseAdapter<CategoryModel>(context) {
 
     /** 当前选中条目位置 */
     private var selectedPosition: Int = 0
@@ -42,11 +40,11 @@ class CategoryLeftAdapter @Inject constructor(
         return LinearLayoutManager(context)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return ViewHolder()
     }
 
-    inner class ViewHolder : AppViewHolder(R.layout.layout_category_left_item) {
+    inner class ViewHolder : BaseViewHolder(R.layout.layout_category_left_item) {
         private val binding by lazy {
             LayoutCategoryLeftItemBinding.bind(getItemView())
         }

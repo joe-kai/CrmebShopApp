@@ -9,7 +9,7 @@ import androidx.annotation.StringRes
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.joekay.base.R
-import com.joekay.base.adapter.AppAdapter
+import com.joekay.base.adapter.Adapter
 import com.joekay.base.adapter.BaseAdapter
 import com.joekay.base.aop.SingleClick
 import com.joekay.base.widgets.PasswordView
@@ -22,7 +22,7 @@ import java.util.*
  */
 class PayPasswordDialog {
     class Builder constructor(context: Context) : BaseDialog.Builder<Builder>(context),
-        BaseAdapter.OnItemClickListener {
+        Adapter.OnItemClickListener {
 
         companion object {
 
@@ -85,8 +85,13 @@ class PayPasswordDialog {
             this.listener = listener
         }
 
+        fun clearRecord() {
+            recordList.clear()
+            passwordView?.setPassWordLength(recordList.size)
+        }
+
         /**
-         * [BaseAdapter.OnItemClickListener]
+         * [Adapter.OnItemClickListener]
          */
         override fun onItemClick(recyclerView: RecyclerView?, itemView: View?, position: Int) {
             when (adapter.getItemViewType(position)) {
@@ -113,7 +118,7 @@ class PayPasswordDialog {
                             for (s: String? in recordList) {
                                 password.append(s)
                             }
-                            listener?.onCompleted(getDialog(), password.toString())
+                            listener?.onCompleted(this, password.toString())
                         }, 300)
                     }
                 }
@@ -121,19 +126,20 @@ class PayPasswordDialog {
             passwordView?.setPassWordLength(recordList.size)
         }
 
+
         @SingleClick
         override fun onClick(view: View) {
             if (view === closeView) {
                 if (autoDismiss) {
                     dismiss()
                 }
-                listener?.onCancel(getDialog())
+                listener?.onCancel(this)
             }
         }
     }
 
     private class KeyboardAdapter(context: Context) :
-        AppAdapter<String?>(context) {
+        BaseAdapter<String?>(context) {
 
         companion object {
 
@@ -155,7 +161,7 @@ class PayPasswordDialog {
             }
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
             return when (viewType) {
                 TYPE_DELETE -> SimpleViewHolder(R.layout.pay_password_delete_item)
                 TYPE_EMPTY -> SimpleViewHolder(R.layout.pay_password_empty_item)
@@ -163,13 +169,20 @@ class PayPasswordDialog {
             }
         }
 
-        private inner class ViewHolder : AppViewHolder(R.layout.pay_password_normal_item) {
+        private inner class ViewHolder : BaseViewHolder(R.layout.pay_password_normal_item) {
 
             private val textView: TextView by lazy { getItemView() as TextView }
 
             override fun onBindView(position: Int) {
                 textView.text = getItem(position)
             }
+        }
+
+        private inner class SimpleViewHolder(id: Int) : BaseViewHolder(id) {
+            override fun onBindView(position: Int) {
+
+            }
+
         }
 
         override fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager {
@@ -184,11 +197,11 @@ class PayPasswordDialog {
          *
          * @param password      输入的密码
          */
-        fun onCompleted(dialog: BaseDialog?, password: String)
+        fun onCompleted(dialog: Builder, password: String)
 
         /**
          * 点击取消时回调
          */
-        fun onCancel(dialog: BaseDialog?) {}
+        fun onCancel(dialog: Builder) {}
     }
 }

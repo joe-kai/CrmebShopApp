@@ -1,17 +1,20 @@
 package com.joekay.module_home.ui.adapter
 
+import android.content.Context
 import android.graphics.Paint
-import android.view.View
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.joekay.base.ext.inflate
+import com.joekay.base.adapter.BasePagingAdapter
 import com.joekay.base.ext.load
 import com.joekay.base.ext.showToast
 import com.joekay.module_home.R
 import com.joekay.module_home.databinding.LayoutHomeProductItemBinding
 import com.joekay.module_home.model.ProductModel
+import com.joekay.resource.RouterPath
+import com.therouter.TheRouter
+import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
 /**
@@ -20,7 +23,8 @@ import javax.inject.Inject
  * @explain：
  */
 class HomeProductAdapter @Inject constructor(
-) : PagingDataAdapter<ProductModel, RecyclerView.ViewHolder>(callback) {
+    @ActivityContext context: Context
+) : BasePagingAdapter<ProductModel>(context, callback) {
     companion object {
         val callback = object : DiffUtil.ItemCallback<ProductModel>() {
             override fun areItemsTheSame(oldItem: ProductModel, newItem: ProductModel): Boolean {
@@ -33,43 +37,30 @@ class HomeProductAdapter @Inject constructor(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ViewHolder(
-            R.layout.layout_home_product_item.inflate(parent)
-        )
+    override fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager? {
+        return GridLayoutManager(getContext(), 2)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val mBinding = LayoutHomeProductItemBinding.bind(holder.itemView)
-        val data = getItem(position)!!
-        mBinding.run {
-            imvProduct.load(
-                data.image,
-                placeholder = com.joekay.resource.R.drawable.ic_img_loading_2
-            )
-            txvProductName.text = data.storeName
-            txvOtPrice.text = "¥${data.otPrice}"
-            txvOtPrice.paint?.flags = Paint.STRIKE_THRU_TEXT_FLAG
-            txvPrice.text = "¥${data.price}"
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagingViewHolder {
+        return ViewHolder(R.layout.layout_home_product_item)
+    }
+
+    inner class ViewHolder(id: Int) : PagingViewHolder(id) {
+        override fun onBindView(position: Int) {
+            val mBinding = LayoutHomeProductItemBinding.bind(getItemView())
+            val data = getItem(position)!!
+            mBinding.run {
+                imvProduct.load(
+                    data.image,
+                    placeholder = com.joekay.resource.R.drawable.ic_img_loading_2
+                )
+                txvProductName.text = data.storeName
+                txvOtPrice.text = "¥${data.otPrice}"
+                txvOtPrice.paint?.flags = Paint.STRIKE_THRU_TEXT_FLAG
+                txvPrice.text = "¥${data.price}"
+            }
         }
-
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-
-    //override fun getItemLayout(position: Int): Int {
-    //    return R.layout.layout_home_product_item
-    //}
-    //
-    //override fun bindData(helper: PagingItemHelper, data: ProductModel) {
-    //    val mBinding = LayoutHomeProductItemBinding.bind(helper.getItemView())
-    //    mBinding.run {
-    //        imvProduct.loadUrl(data.image)
-    //        txvProductName.text = data.storeName
-    //        txvOtPrice.text = "¥${data.otPrice}"
-    //        txvOtPrice.paint?.flags = Paint.STRIKE_THRU_TEXT_FLAG
-    //        txvPrice.text = "¥${data.price}"
-    //    }
-    //}
 }

@@ -7,9 +7,8 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.gyf.immersionbar.ImmersionBar
-import com.joekay.base.adapter.BaseAdapter
+import com.joekay.base.adapter.Adapter
 import com.joekay.base.ext.load
 import com.joekay.base.ext.showToast
 import com.joekay.base.multiStateView.MultiStateView
@@ -26,14 +25,12 @@ import com.joekay.module_home.ui.adapter.HomeMenuAdapter
 import com.joekay.module_home.ui.adapter.HomeProductAdapter
 import com.joekay.module_home.ui.adapter.HomeProductTabAdapter
 import com.joekay.network.liveData.observeLoading
-import com.joekay.resource.R.dimen
 import com.joekay.resource.RouterPath
 import com.therouter.TheRouter
 import com.therouter.router.Route
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
-
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
@@ -104,10 +101,39 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 }
 
             }
-            rvProduct.layoutManager =
-                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             rvProduct.adapter =
                 productAdapter.withLoadStateFooter(FooterAdapter { productAdapter.retry() })
+            productAdapter.setOnItemClickListener(object : Adapter.OnItemClickListener {
+                override fun onItemClick(
+                    recyclerView: RecyclerView?,
+                    itemView: View?,
+                    position: Int
+                ) {
+                    TheRouter.build(RouterPath.act_productDetail).navigation()
+                    productAdapter.getAdapterItem(position).storeName.showToast()
+                }
+
+            })
+            productAdapter.setOnChildClickListener(
+                R.id.imv_product, R.id.txv_product_name,
+                listener = object : Adapter.OnChildClickListener {
+                    override fun onChildClick(
+                        recyclerView: RecyclerView?,
+                        childView: View?,
+                        position: Int
+                    ) {
+                        when (childView?.id) {
+                            R.id.imv_product -> {
+                                "点击了图片".showToast()
+                            }
+                            R.id.txv_product_name -> {
+                                "点击了商品名称".showToast()
+
+                            }
+                        }
+                    }
+
+                })
             refreshLayout.setEnableRefresh(false)
             productAdapter.addLoadStateListener {
                 when (it.append) {
@@ -161,14 +187,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         mBinding.run {
             rvHomeMenu.layoutManager = GridLayoutManager(activity, 5)
             homeMenuAdapter.setData(list)
-            homeMenuAdapter.setOnItemClickListener(object : BaseAdapter.OnItemClickListener {
+            homeMenuAdapter.setOnItemClickListener(object : Adapter.OnItemClickListener {
                 override fun onItemClick(
                     recyclerView: RecyclerView?,
                     itemView: View?,
                     position: Int
                 ) {
-                    //TheRouter.build(RouterPath.act_product).navigation()
-                    TheRouter.build(RouterPath.act_mine).navigation()
                     homeMenuAdapter.getItem(position).name.showToast()
                 }
             })

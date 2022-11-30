@@ -53,9 +53,10 @@ class GlideConfig : AppGlideModule() {
         builder.setDefaultRequestOptions(
             RequestOptions()
                 // 设置默认加载中占位图
-                //.placeholder(R.drawable.img_loading)
+                .placeholder(R.drawable.img_loading)
                 // 设置默认加载出错占位图
                 .error(R.drawable.img_error)
+
         )
 
     }

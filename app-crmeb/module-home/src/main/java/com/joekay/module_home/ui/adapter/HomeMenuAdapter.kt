@@ -2,7 +2,7 @@ package com.joekay.module_home.ui.adapter
 
 import android.content.Context
 import android.view.ViewGroup
-import com.joekay.base.adapter.AppAdapter
+import com.joekay.base.adapter.BaseAdapter
 import com.joekay.base.ext.load
 import com.joekay.module_home.R
 import com.joekay.module_home.databinding.LayoutMenusItemBinding
@@ -17,12 +17,12 @@ import javax.inject.Inject
  */
 class HomeMenuAdapter @Inject constructor(
     @ActivityContext context: Context
-) : AppAdapter<Menus>(context) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder =
+) : BaseAdapter<Menus>(context) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder =
         ViewHolder()
 
 
-    inner class ViewHolder : AppViewHolder(R.layout.layout_menus_item) {
+    inner class ViewHolder : BaseViewHolder(R.layout.layout_menus_item) {
         private val binding by lazy {
             LayoutMenusItemBinding.bind(getItemView())
         }

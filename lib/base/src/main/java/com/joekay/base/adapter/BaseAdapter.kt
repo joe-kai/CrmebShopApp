@@ -5,46 +5,211 @@ import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import androidx.annotation.IdRes
+import androidx.annotation.IntRange
 import androidx.annotation.LayoutRes
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.joekay.base.action.ResourcesAction
+import java.util.ArrayList
 
 /**
  * @author:  JoeKai
- * @date:  2022/11/26
- * @explain：
+ * @date:  2022/12/1
+ * @explain：RecyclerView 适配器业务基类
  */
-abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder>(private val context: Context) :
-    RecyclerView.Adapter<VH>(), ResourcesAction {
+abstract class BaseAdapter<T>(private val context: Context) :
+    RecyclerView.Adapter<BaseAdapter<T>.BaseViewHolder>() {
+    /** 列表数据 */
+    private var dataSet: MutableList<T> = ArrayList()
+
+    /** 当前列表的页码，默认为第一页，用于分页加载功能 */
+    private var pageNumber = 1
+
+    /** 是否是最后一页，默认为false，用于分页加载功能 */
+    private var lastPage = false
+
+    /** 标记对象 */
+    private var tag: Any? = null
+
+    override fun getItemCount(): Int {
+        return getCount()
+    }
+
+    /**
+     * 获取数据总数
+     */
+    open fun getCount(): Int {
+        return dataSet.size
+    }
+
+    /**
+     * 设置新的数据
+     */
+    open fun setData(data: MutableList<T>?) {
+        if (data == null) {
+            dataSet.clear()
+        } else {
+            dataSet = data
+        }
+        notifyDataSetChanged()
+    }
+
+    /**
+     * 获取当前数据
+     */
+    open fun getData(): MutableList<T> {
+        return dataSet
+    }
+
+    /**
+     * 追加一些数据
+     */
+    open fun addData(data: MutableList<T>?) {
+        if (data == null || data.isEmpty()) {
+            return
+        }
+        dataSet.addAll(data)
+        notifyItemRangeInserted(dataSet.size - data.size, data.size)
+    }
+
+    /**
+     * 清空当前数据
+     */
+    open fun clearData() {
+        dataSet.clear()
+        notifyDataSetChanged()
+    }
+
+    /**
+     * 是否包含了某个位置上的条目数据
+     */
+    open fun containsItem(@IntRange(from = 0) position: Int): Boolean {
+        return containsItem(getItem(position))
+    }
+
+    /**
+     * 是否包含某个条目数据
+     */
+    open fun containsItem(item: T?): Boolean {
+        return if (item == null) {
+            false
+        } else dataSet.contains(item)
+    }
+
+    /**
+     * 获取某个位置上的数据
+     */
+    open fun getItem(@IntRange(from = 0) position: Int): T {
+        return dataSet[position]
+    }
+
+    /**
+     * 更新某个位置上的数据
+     */
+    open fun setItem(@IntRange(from = 0) position: Int, item: T) {
+        dataSet[position] = item
+        notifyItemChanged(position)
+    }
+
+    /**
+     * 添加单条数据
+     */
+    open fun addItem(item: T) {
+        addItem(dataSet.size, item)
+    }
+
+    open fun addItem(@IntRange(from = 0) position: Int, item: T) {
+        var finalPosition = position
+        if (finalPosition < dataSet.size) {
+            dataSet.add(finalPosition, item)
+        } else {
+            dataSet.add(item)
+            finalPosition = dataSet.size - 1
+        }
+        notifyItemInserted(finalPosition)
+    }
+
+    /**
+     * 删除单条数据
+     */
+    open fun removeItem(item: T) {
+        val index = dataSet.indexOf(item)
+        if (index != -1) {
+            removeItem(index)
+        }
+    }
+
+    open fun removeItem(@IntRange(from = 0) position: Int) {
+        dataSet.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
+    /**
+     * 获取当前的页码
+     */
+    open fun getPageNumber(): Int {
+        return pageNumber
+    }
+
+    /**
+     * 设置当前的页码
+     */
+    open fun setPageNumber(@IntRange(from = 0) number: Int) {
+        pageNumber = number
+    }
+
+    /**
+     * 当前是否为最后一页
+     */
+    open fun isLastPage(): Boolean {
+        return lastPage
+    }
+
+    /**
+     * 设置是否为最后一页
+     */
+    open fun setLastPage(last: Boolean) {
+        lastPage = last
+    }
+
+    /**
+     * 获取标记
+     */
+    open fun getTag(): Any? {
+        return tag
+    }
+
+    /**
+     * 设置标记
+     */
+    open fun setTag(tag: Any) {
+        this.tag = tag
+    }
 
     /** RecyclerView 对象 */
     private var recyclerView: RecyclerView? = null
 
     /** 条目点击监听器 */
-    private var itemClickListener: OnItemClickListener? = null
+    private var itemClickListener: Adapter.OnItemClickListener? = null
 
 
     /** 条目长按监听器 */
-    private var itemLongClickListener: OnItemLongClickListener? = null
+    private var itemLongClickListener: Adapter.OnItemLongClickListener? = null
 
     /** 条目子 View 点击监听器 */
-    private val childClickListeners: SparseArray<OnChildClickListener?> by lazy { SparseArray() }
+    private val childClickListeners: SparseArray<Adapter.OnChildClickListener?> by lazy { SparseArray() }
 
     /** 条目子 View 长按监听器 */
-    private val childLongClickListeners: SparseArray<OnChildLongClickListener?> by lazy { SparseArray() }
+    private val childLongClickListeners: SparseArray<Adapter.OnChildLongClickListener?> by lazy { SparseArray() }
 
     /** ViewHolder 位置偏移值 */
     private var positionOffset: Int = 0
+
     fun getContext(): Context {
         return context
     }
 
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         // 根据 ViewHolder 绑定的位置和传入的位置进行对比
         // 一般情况下这两个位置值是相等的，但是有一种特殊的情况
         // 在外层添加头部 View 的情况下，这两个位置值是不对等的
@@ -59,14 +224,89 @@ abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder>(private val cont
         return recyclerView
     }
 
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        this.recyclerView = recyclerView
+        // 判断当前的布局管理器是否为空，如果为空则设置默认的布局管理器
+        if (this.recyclerView?.layoutManager == null) {
+            this.recyclerView?.layoutManager = generateDefaultLayoutManager(context)
+        }
+        if (generateDefaultDividerDecoration(context) != null) {
+            this.recyclerView?.addItemDecoration(generateDefaultDividerDecoration(context)!!)
+        }
+    }
+
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+        this.recyclerView = null
+    }
+
     /**
-     * 条目 ViewHolder，需要子类 ViewHolder 继承
+     * 生成默认的布局摆放器
      */
+    protected open fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager? {
+        return LinearLayoutManager(context)
+    }
+
+    /**
+     * 生成默认的分割线的效果
+     */
+    protected open fun generateDefaultDividerDecoration(context: Context): RecyclerView.ItemDecoration? {
+        return null
+    }
+
+    /**
+     * 设置 RecyclerView 条目点击监听
+     */
+    open fun setOnItemClickListener(listener: Adapter.OnItemClickListener?) {
+        //checkRecyclerViewState()
+        itemClickListener = listener
+    }
+
+    /**
+     * 设置 RecyclerView 条目子 View 点击监听
+     */
+    open fun setOnChildClickListener(
+        @IdRes vararg id: Int,
+        listener: Adapter.OnChildClickListener?
+    ) {
+        //checkRecyclerViewState()
+        id.forEach {
+            childClickListeners.put(it, listener)
+        }
+    }
+
+    /**
+     * 设置 RecyclerView 条目长按监听
+     */
+    open fun setOnItemLongClickListener(listener: Adapter.OnItemLongClickListener?) {
+        //checkRecyclerViewState()
+        itemLongClickListener = listener
+    }
+
+    /**
+     * 设置 RecyclerView 条目子 View 长按监听
+     */
+    open fun setOnChildLongClickListener(
+        @IdRes id: Int,
+        listener: Adapter.OnChildLongClickListener?
+    ) {
+        //checkRecyclerViewState()
+        childLongClickListeners.put(id, listener)
+    }
+
+    /**
+     * 检查 RecyclerView 状态
+     */
+    private fun checkRecyclerViewState() {
+        if (recyclerView != null) {
+            // 必须在 RecyclerView.setAdapter() 之前设置监听
+            throw IllegalStateException("are you ok?")
+        }
+    }
+
     abstract inner class BaseViewHolder constructor(itemView: View) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener, View.OnLongClickListener {
-
         constructor(@LayoutRes id: Int) : this(
-            LayoutInflater.from(getContext()).inflate(id, recyclerView, false)
+            LayoutInflater.from(getContext()).inflate(id, getRecyclerView(), false)
         )
 
         init {
@@ -134,7 +374,7 @@ abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder>(private val cont
                 }
                 return false
             }
-            val listener: OnChildLongClickListener? = childLongClickListeners.get(view.id)
+            val listener: Adapter.OnChildLongClickListener? = childLongClickListeners.get(view.id)
             if (listener != null) {
                 return listener.onChildLongClick(recyclerView, view, position)
             }
@@ -150,135 +390,13 @@ abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder>(private val cont
         }
     }
 
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        this.recyclerView = recyclerView
-        // 判断当前的布局管理器是否为空，如果为空则设置默认的布局管理器
-        if (this.recyclerView?.layoutManager == null) {
-            this.recyclerView?.layoutManager = generateDefaultLayoutManager(context)
-        }
-        if (generateDefaultDividerDecoration(context) != null) {
-            this.recyclerView?.addItemDecoration(generateDefaultDividerDecoration(context)!!)
-        }
-    }
 
-    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
-        this.recyclerView = null
-    }
+    inner class SimpleViewHolder : BaseViewHolder {
 
-    /**
-     * 生成默认的布局摆放器
-     */
-    protected open fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager? {
-        return LinearLayoutManager(context)
-    }
+        constructor(@LayoutRes id: Int) : super(id)
 
-    /**
-     * 生成默认的分割线的效果
-     */
-    protected open fun generateDefaultDividerDecoration(context: Context): RecyclerView.ItemDecoration? {
-        return null
-    }
+        constructor(itemView: View) : super(itemView)
 
-    /**
-     * 设置 RecyclerView 条目点击监听
-     */
-    open fun setOnItemClickListener(listener: OnItemClickListener?) {
-        //checkRecyclerViewState()
-        itemClickListener = listener
-    }
-
-    /**
-     * 设置 RecyclerView 条目子 View 点击监听
-     */
-    open fun setOnChildClickListener(@IdRes id: Int, listener: OnChildClickListener?) {
-        checkRecyclerViewState()
-        childClickListeners.put(id, listener)
-    }
-
-    /**
-     * 设置 RecyclerView 条目长按监听
-     */
-    open fun setOnItemLongClickListener(listener: OnItemLongClickListener?) {
-        checkRecyclerViewState()
-        itemLongClickListener = listener
-    }
-
-    /**
-     * 设置 RecyclerView 条目子 View 长按监听
-     */
-    open fun setOnChildLongClickListener(@IdRes id: Int, listener: OnChildLongClickListener?) {
-        checkRecyclerViewState()
-        childLongClickListeners.put(id, listener)
-    }
-
-    /**
-     * 检查 RecyclerView 状态
-     */
-    private fun checkRecyclerViewState() {
-        if (recyclerView != null) {
-            // 必须在 RecyclerView.setAdapter() 之前设置监听
-            throw IllegalStateException("are you ok?")
-        }
-    }
-
-    /**
-     * RecyclerView 条目点击监听类
-     */
-    interface OnItemClickListener {
-
-        /**
-         * 当 RecyclerView 某个条目被点击时回调
-         *
-         * @param recyclerView      RecyclerView 对象
-         * @param itemView          被点击的条目对象
-         * @param position          被点击的条目位置
-         */
-        fun onItemClick(recyclerView: RecyclerView?, itemView: View?, position: Int)
-    }
-
-    /**
-     * RecyclerView 条目长按监听类
-     */
-    interface OnItemLongClickListener {
-
-        /**
-         * 当 RecyclerView 某个条目被长按时回调
-         *
-         * @param recyclerView      RecyclerView 对象
-         * @param itemView          被点击的条目对象
-         * @param position          被点击的条目位置
-         * @return                  是否拦截事件
-         */
-        fun onItemLongClick(recyclerView: RecyclerView?, itemView: View?, position: Int): Boolean
-    }
-
-    /**
-     * RecyclerView 条目子 View 点击监听类
-     */
-    interface OnChildClickListener {
-
-        /**
-         * 当 RecyclerView 某个条目 子 View 被点击时回调
-         *
-         * @param recyclerView      RecyclerView 对象
-         * @param childView         被点击的条目子 View
-         * @param position          被点击的条目位置
-         */
-        fun onChildClick(recyclerView: RecyclerView?, childView: View?, position: Int)
-    }
-
-    /**
-     * RecyclerView 条目子 View 长按监听类
-     */
-    interface OnChildLongClickListener {
-
-        /**
-         * 当 RecyclerView 某个条目子 View 被长按时回调
-         *
-         * @param recyclerView      RecyclerView 对象
-         * @param childView         被点击的条目子 View
-         * @param position          被点击的条目位置
-         */
-        fun onChildLongClick(recyclerView: RecyclerView?, childView: View?, position: Int): Boolean
+        override fun onBindView(position: Int) {}
     }
 }

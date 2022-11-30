@@ -446,4 +446,13 @@
     </LinearLayout>
 
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:gravity="center"
+        android:paddingVertical="@dimen/dp_10"
+        android:text="模拟支付" />
 </androidx.appcompat.widget.LinearLayoutCompat>
