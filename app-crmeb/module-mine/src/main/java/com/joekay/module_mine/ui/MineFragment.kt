@@ -1,9 +1,12 @@
 package com.joekay.module_mine.ui
 
 import androidx.fragment.app.activityViewModels
+import com.gyf.immersionbar.ImmersionBar
+import com.joekay.base.ext.load
 import com.joekay.base.ext.setSingleClickListener
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_mine.databinding.FragmentMineBinding
+import com.joekay.resource.R.drawable
 import com.joekay.resource.RouterPath
 import com.therouter.TheRouter
 import com.therouter.router.Route
@@ -22,6 +25,11 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
 
     override fun initBinding() {
         mBinding.run {
+            ImmersionBar.setTitleBar(getAttachActivity(), llTop)
+
+            ivAvatar.load(drawable.ic_avatar, 50f) {
+                error(drawable.ic_avatar)
+            }
             root.setSingleClickListener {
                 //PayPasswordDialog.Builder(mActivity)
                 //    .setTitle(getString(R.string.pay_title))

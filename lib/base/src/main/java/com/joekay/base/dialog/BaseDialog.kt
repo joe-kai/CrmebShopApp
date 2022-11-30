@@ -148,7 +148,7 @@ open class BaseDialog constructor(
         removeCallbacks()
         val focusView: View? = currentFocus
         if (focusView != null) {
-            getSystemService(InputMethodManager::class.java).hideSoftInputFromWindow(
+            getResSystemService(InputMethodManager::class.java).hideSoftInputFromWindow(
                 focusView.windowToken,
                 0
             )
@@ -539,7 +539,7 @@ open class BaseDialog constructor(
         open fun setGravity(gravity: Int): B {
             // 适配布局反方向
             this.gravity =
-                Gravity.getAbsoluteGravity(gravity, getResources().configuration.layoutDirection)
+                Gravity.getAbsoluteGravity(gravity, getResResources().configuration.layoutDirection)
             if (isCreated()) {
                 dialog?.setGravity(gravity)
             }
@@ -659,7 +659,7 @@ open class BaseDialog constructor(
          * 设置文本
          */
         open fun setText(@IdRes viewId: Int, @StringRes stringId: Int): B {
-            return setText(viewId, getString(stringId))
+            return setText(viewId, getResString(stringId))
         }
 
         open fun setText(@IdRes id: Int, text: CharSequence?): B {
@@ -679,7 +679,7 @@ open class BaseDialog constructor(
          * 设置提示
          */
         open fun setHint(@IdRes viewId: Int, @StringRes stringId: Int): B {
-            return setHint(viewId, getString(stringId))
+            return setHint(viewId, getResString(stringId))
         }
 
         open fun setHint(@IdRes id: Int, text: CharSequence?): B {

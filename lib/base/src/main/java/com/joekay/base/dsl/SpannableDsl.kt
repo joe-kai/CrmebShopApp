@@ -9,6 +9,7 @@ import android.text.method.LinkMovementMethod
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.Button
@@ -31,6 +32,7 @@ fun TextView.buildSpannableString(init: DslSpannableStringBuilder.() -> Unit) {
 }
 
 interface DslSpannableStringBuilder {
+
     //增加一段文字
     fun addText(text: String, method: (DslSpanBuilder.() -> Unit)? = null)
 }
@@ -39,8 +41,11 @@ interface DslSpanBuilder {
     //设置文字颜色
     fun setColor(color: String)
     fun setColor(color: Int)
-
     fun setTextSize(size: Int)
+    /**
+     *@param style 设置属性：Typeface.BOLD...
+     */
+    fun setTextStyle(style: Int)
 
     //设置点击事件
     fun onClick(useUnderLine: Boolean = true, onClick: (View) -> Unit)
@@ -72,7 +77,10 @@ class DslSpannableStringBuilderImpl : DslSpannableStringBuilder {
                 builder.setSpan(it, start, lastIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
             }
             sizeSpan?.let {
-                builder.setSpan(it,start,lastIndex,Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+                builder.setSpan(it, start, lastIndex, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+            }
+            styleSpan?.let {
+                builder.setSpan(it, start, lastIndex, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
             }
         }
     }
@@ -86,6 +94,7 @@ class DslSpanBuilderImpl : DslSpanBuilder {
     var foregroundColorSpan: ForegroundColorSpan? = null
     var sizeSpan: AbsoluteSizeSpan? = null
     var onClickSpan: ClickableSpan? = null
+    var styleSpan: StyleSpan? = null
     var useUnderLine = true
 
     override fun setColor(color: String) {
@@ -100,6 +109,10 @@ class DslSpanBuilderImpl : DslSpanBuilder {
         sizeSpan = AbsoluteSizeSpan(size)
     }
 
+
+    override fun setTextStyle(style: Int) {
+        styleSpan = StyleSpan(style)
+    }
 
     override fun onClick(useUnderLine: Boolean, onClick: (View) -> Unit) {
         onClickSpan = object : ClickableSpan() {

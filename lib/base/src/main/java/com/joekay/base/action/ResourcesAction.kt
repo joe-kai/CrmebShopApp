@@ -8,6 +8,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
+import com.joekay.base.ActivityManager
 
 /**
  *    author : Android 轮子哥
@@ -17,30 +18,33 @@ import androidx.core.content.ContextCompat
  */
 interface ResourcesAction {
 
-    fun getContext(): Context
-
-    fun getResources(): Resources {
-        return getContext().resources
+    private fun getResContext(): Context {
+        return ActivityManager.getInstance().getApplication()
     }
 
-    fun getString(@StringRes id: Int): String? {
-        return getContext().getString(id)
+
+    fun getResResources(): Resources {
+        return getResContext().resources
     }
 
-    fun getString(@StringRes id: Int, vararg formatArgs: Any?): String? {
-        return getResources().getString(id, *formatArgs)
+    fun getResString(@StringRes id: Int): String {
+        return getResContext().getString(id)
     }
 
-    fun getDrawable(@DrawableRes id: Int): Drawable? {
-        return ContextCompat.getDrawable(getContext(), id)
+    fun getResString(@StringRes id: Int, vararg formatArgs: Any?): String {
+        return getResResources().getString(id, *formatArgs)
+    }
+
+    fun getResDrawable(@DrawableRes id: Int): Drawable {
+        return ContextCompat.getDrawable(getResContext(), id)!!
     }
 
     @ColorInt
-    fun getColor(@ColorRes id: Int): Int {
-        return ContextCompat.getColor(getContext(), id)
+    fun getResColor(@ColorRes id: Int): Int {
+        return ContextCompat.getColor(getResContext(), id)
     }
 
-    fun <S> getSystemService(serviceClass: Class<S>): S {
-        return ContextCompat.getSystemService(getContext(), serviceClass)!!
+    fun <S> getResSystemService(serviceClass: Class<S>): S {
+        return ContextCompat.getSystemService(getResContext(), serviceClass)!!
     }
 }

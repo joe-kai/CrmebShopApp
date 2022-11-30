@@ -27,6 +27,7 @@ abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder>(private val cont
     /** 条目点击监听器 */
     private var itemClickListener: OnItemClickListener? = null
 
+
     /** 条目长按监听器 */
     private var itemLongClickListener: OnItemLongClickListener? = null
 
@@ -38,6 +39,10 @@ abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder>(private val cont
 
     /** ViewHolder 位置偏移值 */
     private var positionOffset: Int = 0
+    fun getContext(): Context {
+        return context
+    }
+
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         // 根据 ViewHolder 绑定的位置和传入的位置进行对比
@@ -52,10 +57,6 @@ abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder>(private val cont
      */
     open fun getRecyclerView(): RecyclerView? {
         return recyclerView
-    }
-
-    override fun getContext(): Context {
-        return context
     }
 
     /**
@@ -154,28 +155,6 @@ abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder>(private val cont
         // 判断当前的布局管理器是否为空，如果为空则设置默认的布局管理器
         if (this.recyclerView?.layoutManager == null) {
             this.recyclerView?.layoutManager = generateDefaultLayoutManager(context)
-            //val manager = recyclerView.layoutManager
-            //if (manager is GridLayoutManager || manager is StaggeredGridLayoutManager) {
-            //    this.recyclerView?.addItemDecoration(GridDividerItemDecoration(10))
-            //} else {
-            //    val layoutManager = manager as LinearLayoutManager
-            //    if (layoutManager.orientation == LinearLayoutManager.HORIZONTAL) {
-            //        this.recyclerView?.addItemDecoration(
-            //            LinearDividerItemDecoration(
-            //                context,
-            //                LinearDividerItemDecoration.HORIZONTAL_LIST
-            //            )
-            //        )
-            //    } else {
-            //        this.recyclerView?.addItemDecoration(
-            //            LinearDividerItemDecoration(
-            //                context,
-            //                LinearDividerItemDecoration.VERTICAL_LIST
-            //            )
-            //        )
-            //    }
-            //}
-
         }
         if (generateDefaultDividerDecoration(context) != null) {
             this.recyclerView?.addItemDecoration(generateDefaultDividerDecoration(context)!!)
@@ -198,7 +177,6 @@ abstract class BaseAdapter<VH : BaseAdapter<VH>.BaseViewHolder>(private val cont
      */
     protected open fun generateDefaultDividerDecoration(context: Context): RecyclerView.ItemDecoration? {
         return null
-        //return LinearDividerItemDecoration(context,com.joekay.base.adapter.DividerItemDecoration.HORIZONTAL_LIST)
     }
 
     /**

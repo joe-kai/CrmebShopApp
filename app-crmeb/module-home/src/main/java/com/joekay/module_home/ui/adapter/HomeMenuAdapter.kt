@@ -3,7 +3,7 @@ package com.joekay.module_home.ui.adapter
 import android.content.Context
 import android.view.ViewGroup
 import com.joekay.base.adapter.AppAdapter
-import com.joekay.base.ext.loadUrl
+import com.joekay.base.ext.load
 import com.joekay.module_home.R
 import com.joekay.module_home.databinding.LayoutMenusItemBinding
 import com.joekay.module_home.model.Menus
@@ -30,7 +30,7 @@ class HomeMenuAdapter @Inject constructor(
         override fun onBindView(position: Int) {
             val item = getItem(position)
             binding.run {
-                imvIcon.loadUrl(item.pic)
+                imvIcon.load(item.pic)
                 txvName.text = item.name
             }
         }

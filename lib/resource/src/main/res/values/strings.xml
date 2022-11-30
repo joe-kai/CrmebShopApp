@@ -30,4 +30,5 @@
 
     <!-- 支付密码对话框 -->
     <string name="pay_title">请输入支付密码</string>
+
 </resources>

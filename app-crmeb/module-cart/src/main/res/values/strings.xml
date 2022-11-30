@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">module-cart</string>
+    <string name="cart_app_name">module-cart</string>
+
+    <string name="cart_tip_left">100%正品保证</string>
+    <string name="cart_tip_centre">所有商品精挑细选</string>
+    <string name="cart_tip_right">售后无忧</string>
+    <string name="cart_cart_num">购物数量&#8195;</string>
 </resources>

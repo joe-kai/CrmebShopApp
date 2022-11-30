@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
     private Paint mPaint;
     private int mDividerHeight;
-    private int listDividerColor = Color.parseColor("#000000");
+    private int listDividerColor = Color.parseColor("#00000000");
 
     public GridDividerItemDecoration(int height) {
         mDividerHeight = height;
@@ -36,12 +36,6 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
         mPaint.setStyle(Paint.Style.FILL);
     }
 
-    public GridDividerItemDecoration(int width, int height, @ColorInt int color) {
-        mDividerHeight = height;
-        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPaint.setColor(color);
-        mPaint.setStyle(Paint.Style.FILL);
-    }
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {

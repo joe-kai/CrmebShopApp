@@ -21,8 +21,8 @@ public class LinearDividerItemDecoration extends RecyclerView.ItemDecoration {
     private int mOrientation;
     private Context mContext;
     private TextPaint mTextPaint;
-    private float listDividerSize = 10;
-    private int listDividerColor = Color.parseColor("#000000");
+    private float listDividerSize = 2;
+    private int listDividerColor = Color.parseColor("#00000000");
 
     public LinearDividerItemDecoration(Context context, int orientation) {
         mContext = context;

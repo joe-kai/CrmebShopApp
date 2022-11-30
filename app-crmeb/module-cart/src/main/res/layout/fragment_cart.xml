@@ -7,15 +7,60 @@
     android:orientation="vertical"
     tools:context=".ui.CartFragment">
 
-    <com.hjq.bar.TitleBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:leftIcon="@null"
-        app:title="购物车" />
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="@dimen/dp_120"
+        android:background="@color/cart_top_color">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_cart_num"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_cart_tip"
+                android:text="@string/cart_tip_left"
+                android:textColor="@color/cart_tips_color"
+                android:textSize="@dimen/sp_12" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/sp_15"
+                android:drawableStart="@drawable/ic_cart_tip"
+                android:text="@string/cart_tip_centre"
+                android:textColor="@color/cart_tips_color"
+                android:textSize="@dimen/sp_12" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_cart_tip"
+                android:text="@string/cart_tip_right"
+                android:textColor="@color/cart_tips_color"
+                android:textSize="@dimen/sp_12" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_cart_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/dp_20"
+            android:background="@drawable/shape_cart_cart_num_bg"
+            android:padding="@dimen/dp_12"
+            android:textColor="@color/black80"
+            android:textSize="@dimen/sp_13"
+            tools:text="购物数量 0">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+    </RelativeLayout>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

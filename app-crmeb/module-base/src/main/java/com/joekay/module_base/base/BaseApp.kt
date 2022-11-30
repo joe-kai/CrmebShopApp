@@ -6,6 +6,7 @@ import com.hjq.bar.TitleBar
 import com.joekay.base.ActivityManager
 import com.joekay.base.R
 import com.joekay.base.aop.Log
+import com.joekay.base.gilde.GlideApp
 import com.joekay.base.utils.GlobalUtil
 import com.joekay.base.widgets.NoStatusFooter
 import com.joekay.network.RetrofitBuilder
@@ -83,5 +84,17 @@ open class BaseApp : Application() {
         initSdk(this)
 
         RetrofitBuilder.initInterceptor(HeaderInterceptor())
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        // 清理所有图片内存缓存
+        GlideApp.get(this).onLowMemory()
+    }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        // 根据手机内存剩余情况清理图片内存缓存
+        GlideApp.get(this).onTrimMemory(level)
     }
 }

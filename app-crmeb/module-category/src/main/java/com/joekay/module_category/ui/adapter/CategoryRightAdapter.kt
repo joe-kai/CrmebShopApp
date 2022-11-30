@@ -6,8 +6,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.joekay.base.adapter.AppAdapter
 import com.joekay.base.ext.load
-import com.joekay.base.ext.loadUrl
-import com.joekay.base.utils.BindingReflex
 import com.joekay.module_category.R
 import com.joekay.module_category.databinding.LayoutCategoryRightItemBinding
 import com.joekay.module_category.databinding.LayoutCategoryRightSubItemBinding

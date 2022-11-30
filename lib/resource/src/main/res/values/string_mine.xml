@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="order_center">订单中心</string>
+    <string name="see_all">查看全部</string>
+    <string name="stay_payment">待付款</string>
+    <string name="stay_shipped">待发货</string>
+    <string name="stay_received">待收货</string>
+    <string name="stay_evaluate">待评价</string>
+    <string name="after_sales">售后/退款</string>
+    <string name="completed">已完成</string>
+</resources>

@@ -137,14 +137,14 @@ class AppUpdateDialog {
         private fun downloadApk() {
             // 设置对话框不能被取消
             setCancelable(false)
-            val notificationManager = getSystemService(NotificationManager::class.java)
+            val notificationManager = getResSystemService(NotificationManager::class.java)
             val notificationId = getContext().applicationInfo.uid
             var channelId = ""
             // 适配 Android 8.0 通知渠道新特性
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val channel = NotificationChannel(
-                    getString(R.string.update_notification_channel_id),
-                    getString(R.string.update_notification_channel_name),
+                    getResString(R.string.update_notification_channel_id),
+                    getResString(R.string.update_notification_channel_name),
                     NotificationManager.IMPORTANCE_LOW
                 )
                 channel.enableLights(false)
@@ -159,13 +159,13 @@ class AppUpdateDialog {
                     // 设置通知时间
                     .setWhen(System.currentTimeMillis())
                     // 设置通知标题
-                    .setContentTitle(getString(com.joekay.resource.R.string.app_name_normal))
+                    .setContentTitle(getResString(com.joekay.resource.R.string.app_name_normal))
                     // 设置通知小图标
                     .setSmallIcon(com.joekay.resource.R.mipmap.app_logo)
                     // 设置通知大图标
                     .setLargeIcon(
                         BitmapFactory.decodeResource(
-                            getResources(),
+                            getResResources(),
                             com.joekay.resource.R.mipmap.app_logo
                         )
                     )
@@ -181,7 +181,7 @@ class AppUpdateDialog {
             // 创建要下载的文件对象
             apkFile = File(
                 getContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                getString(com.joekay.resource.R.string.app_name_normal) + "_v" + nameView?.text.toString() + ".apk"
+                getResString(com.joekay.resource.R.string.app_name_normal) + "_v" + nameView?.text.toString() + ".apk"
             )
 
             com.joekay.network.download.DownloadHttp
@@ -203,7 +203,7 @@ class AppUpdateDialog {
 
                     override fun onProgress(file: File, progress: Int) {
                         updateView?.text =
-                            String.format(getString(R.string.update_status_running)!!, progress)
+                            String.format(getResString(R.string.update_status_running)!!, progress)
                         progressView?.progress = progress
                         // 更新下载通知
                         notificationManager.notify(
@@ -211,7 +211,7 @@ class AppUpdateDialog {
                                 // 设置通知的文本
                                 .setContentText(
                                     String.format(
-                                        getString(R.string.update_status_running)!!,
+                                        getResString(R.string.update_status_running)!!,
                                         progress
                                     )
                                 )
@@ -233,7 +233,7 @@ class AppUpdateDialog {
                                 // 设置通知的文本
                                 .setContentText(
                                     String.format(
-                                        getString(R.string.update_status_successful)!!,
+                                        getResString(R.string.update_status_successful)!!,
                                         100
                                     )
                                 )

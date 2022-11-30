@@ -3,6 +3,7 @@ package com.joekay.module_base.base
 import TitleBarAction
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.viewbinding.ViewBinding
 import com.gyf.immersionbar.ImmersionBar
 import com.hjq.bar.TitleBar
 import com.joekay.base.ActivityCollector
+import com.joekay.base.action.ResourcesAction
 import com.joekay.base.activity.BaseBindingAct
 import com.joekay.base.ext.ShowDialogShare
 import com.joekay.base.ext.logD
@@ -31,7 +33,8 @@ import java.lang.ref.WeakReference
  * @explain：
  */
 @Suppress("DEPRECATION")
-abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAction {
+abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAction,
+    ResourcesAction {
     /**
      * 日志输出标志
      */
@@ -177,7 +180,6 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         super<BaseBindingAct>.setTitle(title)
         getTitleBar()?.title = title
     }
-
 
     /**
      * 调用系统原生分享

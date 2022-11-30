@@ -69,7 +69,7 @@ class VideoAdapter @Inject constructor(
             is VideoViewHolder -> {
                 val item = getItem(position - 1)!!
                 item.data.content.data.run {
-                    holder.ivAvatar.loadUrl(item.data.header.icon ?: author?.icon ?: "")
+                    holder.ivAvatar.load(item.data.header.icon ?: author?.icon ?: "")
                     holder.tvReleaseTime.text = DateUtil.getDate(
                         releaseTime ?: author?.latestReleaseTime ?: System.currentTimeMillis(),
                         "HH:mm"

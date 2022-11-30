@@ -54,7 +54,7 @@ class PayPasswordDialog {
         }
 
         fun setTitle(@StringRes id: Int): Builder = apply {
-            setTitle(getString(id))
+            setTitle(getResString(id))
         }
 
         fun setTitle(title: CharSequence?): Builder = apply {
@@ -62,7 +62,7 @@ class PayPasswordDialog {
         }
 
         fun setSubTitle(@StringRes id: Int): Builder = apply {
-            setSubTitle(getString(id))
+            setSubTitle(getResString(id))
         }
 
         fun setSubTitle(subTitle: CharSequence?): Builder = apply {
@@ -70,7 +70,7 @@ class PayPasswordDialog {
         }
 
         fun setMoney(@StringRes id: Int): Builder = apply {
-            setMoney(getString(id))
+            setMoney(getResString(id))
         }
 
         fun setMoney(money: CharSequence?): Builder = apply {
