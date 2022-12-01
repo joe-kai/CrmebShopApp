@@ -180,9 +180,7 @@ class PayPasswordDialog {
 
         private inner class SimpleViewHolder(id: Int) : BaseViewHolder(id) {
             override fun onBindView(position: Int) {
-
             }
-
         }
 
         override fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager {

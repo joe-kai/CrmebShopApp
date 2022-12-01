@@ -7,8 +7,8 @@ ext.app_versions = [
         minSdkVersion    : 26,
         compileSdkVersion: 33,
         targetSdkVersion : 33,
-        versionCode      : 2,
-        versionName      : '1.1.0',
+        versionCode      : 10102,
+        versionName      : '1.1.2',
 ]
 
 ext {
@@ -87,7 +87,9 @@ ext {
 //            MultiStatePage: 'com.github.Zhao-Yan-Yan:MultiStatePage:2.0.2',
 
             // 标题栏框架：https://github.com/getActivity/TitleBar
-            titleBar             : 'com.github.getActivity:TitleBar:9.6'
+            titleBar             : 'com.github.getActivity:TitleBar:9.6',
+            // Shape 框架：https://github.com/getActivity/ShapeView
+            shapeView            : 'com.github.getActivity:ShapeView:8.5',
 
             // 多语种：https://github.com/getActivity/MultiLanguages
             // 悬浮窗：https://github.com/getActivity/XToast

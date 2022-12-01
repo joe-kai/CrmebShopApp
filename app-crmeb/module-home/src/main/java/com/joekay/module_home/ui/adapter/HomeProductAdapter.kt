@@ -5,7 +5,9 @@ import android.graphics.Paint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.joekay.base.adapter.BasePagingAdapter
 import com.joekay.base.ext.load
 import com.joekay.base.ext.showToast
@@ -37,8 +39,8 @@ class HomeProductAdapter @Inject constructor(
         }
     }
 
-    override fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager? {
-        return GridLayoutManager(getContext(), 2)
+    override fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager {
+        return StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagingViewHolder {

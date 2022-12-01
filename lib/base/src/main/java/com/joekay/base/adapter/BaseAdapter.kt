@@ -230,9 +230,9 @@ abstract class BaseAdapter<T>(private val context: Context) :
         if (this.recyclerView?.layoutManager == null) {
             this.recyclerView?.layoutManager = generateDefaultLayoutManager(context)
         }
-        if (generateDefaultDividerDecoration(context) != null) {
-            this.recyclerView?.addItemDecoration(generateDefaultDividerDecoration(context)!!)
-        }
+        //if (generateDefaultDividerDecoration(context) != null) {
+        //    this.recyclerView?.addItemDecoration(generateDefaultDividerDecoration(context)!!)
+        //}
     }
 
     override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
@@ -246,12 +246,12 @@ abstract class BaseAdapter<T>(private val context: Context) :
         return LinearLayoutManager(context)
     }
 
-    /**
-     * 生成默认的分割线的效果
-     */
-    protected open fun generateDefaultDividerDecoration(context: Context): RecyclerView.ItemDecoration? {
-        return null
-    }
+    ///**
+    // * 生成默认的分割线的效果
+    // */
+    //protected open fun generateDefaultDividerDecoration(context: Context): RecyclerView.ItemDecoration? {
+    //    return null
+    //}
 
     /**
      * 设置 RecyclerView 条目点击监听

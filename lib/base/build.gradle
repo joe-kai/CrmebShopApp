@@ -12,10 +12,13 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    api project(":lib:resource")
-    api project(":lib:network")
+    api libs.core_ktx
+    api libs.appcompat
+    api libs.material
     api libs.activity_ktx
     api libs.fragment_ktx
+    api libs.paging
+    api libs.paging_ktx
     api libs.eventbus
     api libs.rv_animators
     api libs.baseAdapter
@@ -36,7 +39,6 @@ dependencies {
     api libs.hilt
     kapt libs.hilt_kapt
     api libs.banner
-
     api libs.glide
     kapt libs.glide_kapt
     api libs.glide_transformations
@@ -48,5 +50,6 @@ dependencies {
 //    api libs.MultiStatePage
 
     api libs.titleBar
+    api libs.shapeView
 
 }

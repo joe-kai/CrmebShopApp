@@ -35,7 +35,7 @@
     <LinearLayout
         android:id="@+id/layout_bottom"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="@dimen/dp_35"
         android:layout_alignParentBottom="true"
         android:background="#99000000"
         android:gravity="center_vertical"
@@ -46,7 +46,7 @@
             android:id="@+id/current"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/dp_16"
             android:textColor="#ffffff"
             android:textSize="12sp"
             tools:text="00:00" />
@@ -61,7 +61,7 @@
             android:max="100"
             android:maxHeight="2dp"
             android:minHeight="2dp"
-            android:paddingVertical="8dp"
+            android:paddingVertical="@dimen/dp_10"
             android:progressDrawable="@drawable/video_seek_progress"
             android:thumb="@drawable/video_seek_thumb" />
 
@@ -69,19 +69,19 @@
             android:id="@+id/total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/dp_16"
             android:textColor="#ffffff"
-            android:textSize="12sp"
+            android:textSize="@dimen/sp_12"
             tools:text="00:00" />
 
     </LinearLayout>
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/start"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
         android:layout_centerInParent="true"
-        android:padding="10dp"
+        android:padding="@dimen/dp_10"
         android:src="@drawable/ic_play_white_24dp" />
 
     <ProgressBar

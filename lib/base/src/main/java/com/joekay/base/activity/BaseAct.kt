@@ -2,21 +2,19 @@ package com.joekay.base.activity
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
-import android.util.SparseArray
 import android.view.KeyEvent
 import android.view.ViewGroup
 import android.view.Window
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-import com.google.android.material.internal.ViewUtils.getContentView
-import com.joekay.base.action.*
+import com.joekay.base.action.ActivityAction
+import com.joekay.base.action.BundleAction
+import com.joekay.base.action.HandlerAction
+import com.joekay.base.action.KeyboardAction
 import com.joekay.base.fragment.BaseBindingFrag
-import com.joekay.base.fragment.BaseFrag
 
 /**
  * @author:  JoeKai

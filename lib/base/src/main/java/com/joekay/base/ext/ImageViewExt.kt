@@ -4,11 +4,10 @@ import android.widget.ImageView
 import com.bumptech.glide.request.RequestOptions
 import com.joekay.base.R
 import com.joekay.base.gilde.GlideApp
-import com.joekay.base.gilde.GlideConfig
 import com.joekay.base.gilde.GlideRequest
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
-private val defaultPlaceholderGif = com.joekay.resource.R.drawable.ic_img_loading
+private val defaultPlaceholderGif = R.drawable.gif_glide_loading
 
 ///占位图加载gif
 private fun ImageView.glideGif(url: Any, gif: Int = -1): GlideRequest<*> {
@@ -17,10 +16,13 @@ private fun ImageView.glideGif(url: Any, gif: Int = -1): GlideRequest<*> {
         -1 -> defaultPlaceholderGif
         else -> gif
     }
-    return GlideApp.with(this.context).load(url)
-        .thumbnail(
-            GlideApp.with(this.context).load(gifUrl)
-        )
+    return when (gifUrl) {
+        -1 -> GlideApp.with(this.context).load(url)
+        else -> GlideApp.with(this.context).load(url)
+            .thumbnail(
+                GlideApp.with(this.context).load(gifUrl)
+            )
+    }
 }
 
 /**

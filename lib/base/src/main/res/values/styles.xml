@@ -24,7 +24,7 @@
         <!-- 半透明 -->
         <item name="android:windowIsTranslucent">true</item>
         <!-- 背景透明 -->
-        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
         <!-- 遮盖层 -->
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 无标题 -->
@@ -47,6 +47,13 @@
         <!--<item name="android:windowSoftInputMode">stateHidden</item>-->
         <!-- Dialog 全屏显示 -->
         <!--<item name="android:windowFullscreen">true</item>-->
+    </style>
+
+    <!-- 默认水平分割线样式 -->
+    <style name="HorizontalLineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/line_size</item>
+        <item name="android:background">@color/common_line_color</item>
     </style>
 
     <!-- 缩放动画 -->

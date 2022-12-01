@@ -157,7 +157,7 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
                 0L
             ) == 0L
         ) {
-            GlobalUtil.getString(com.joekay.base.R.string.jump_page_unknown_error).showToast()
+            getString(com.joekay.base.R.string.jump_page_unknown_error).showToast()
             finish()
             false
         } else {

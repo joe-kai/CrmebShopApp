@@ -1,16 +1,12 @@
 package com.joekay.module_base.other
 
 import android.content.Context
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.content.ContextCompat
-import com.hjq.bar.TitleBarSupport
 import com.hjq.bar.style.LightBarStyle
 import com.joekay.base.widgets.PressAlphaTextView
-import com.joekay.module_base.R
-import com.joekay.resource.R.dimen
+import com.joekay.base.R.dimen
 
 /**
  * @author:  JoeKai

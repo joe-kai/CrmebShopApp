@@ -21,7 +21,7 @@
         android:layout_marginTop="@dimen/dp_10"
         android:text="@string/loading"
         android:textColor="@android:color/background_dark"
-        android:textSize="14sp" />
+        android:textSize="@dimen/sp_14" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txv_retry"

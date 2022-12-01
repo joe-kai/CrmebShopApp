@@ -82,8 +82,8 @@
                         android:layout_marginHorizontal="@dimen/dp_10"
                         android:layout_marginTop="@dimen/dp_10"
                         android:background="@drawable/shape_white_r10_bg"
-                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        app:spanCount="5"
+                        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        tools:spanCount="5"
                         tools:itemCount="10"
                         tools:listitem="@layout/layout_menus_item" />
 
@@ -209,9 +209,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dp_10"
                 android:layout_marginTop="@dimen/dp_10"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="4"
                 tools:itemCount="4"
+                tools:layoutManager="GridLayoutManager"
                 tools:listitem="@layout/layout_product_tab_item" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -232,8 +232,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="2"
+                    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:spanCount="2"
                     tools:itemCount="4"
                     tools:listitem="@layout/layout_home_product_item" />
             </com.scwang.smart.refresh.layout.SmartRefreshLayout>

@@ -7,7 +7,8 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.util.AttributeSet
 import android.view.View
-import com.joekay.resource.R
+import com.joekay.base.R
+import com.joekay.base.ext.dp2px
 
 /**
  * @author:  JoeKai
@@ -42,7 +43,7 @@ class PasswordView@JvmOverloads constructor
     private val itemWidth: Int = resources.getDimension(R.dimen.dp_44).toInt()
 
     /** 单个密码框的高度 */
-    private val itemHeight: Int = resources.getDimension(R.dimen.dp_41).toInt()
+    private val itemHeight: Int = resources.getDimension(R.dimen.dp_44).toInt()
 
     /** 已经输入的密码个数，也就是需要显示的小黑点个数 */
     private var currentIndex: Int = 0

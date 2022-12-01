@@ -42,6 +42,13 @@
     "params": {}
   },
   {
+    "path": "mine/about_act",
+    "className": "com.joekay.module_mine.ui.AboutActivity",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
     "path": "mine/mine_act",
     "className": "com.joekay.module_mine.MineActivity",
     "action": "",

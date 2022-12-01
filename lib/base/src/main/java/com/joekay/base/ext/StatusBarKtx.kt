@@ -19,8 +19,8 @@ import com.joekay.base.utils.GlobalUtil
 
 /** 设置状态栏颜色 */
 fun Activity.statusBarColor(color: Int) {
-    window.statusBarColor = GlobalUtil.getColor(color)
-    window.navigationBarColor = GlobalUtil.getColor(color)
+    window.statusBarColor = this.getColor(color)
+    window.navigationBarColor = this.getColor(color)
     WindowCompat.setDecorFitsSystemWindows(window, false)
 }
 

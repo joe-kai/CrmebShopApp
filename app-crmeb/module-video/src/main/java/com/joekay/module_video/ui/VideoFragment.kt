@@ -157,11 +157,11 @@ class VideoFragment : BaseFragment<FragmentVideoBinding>() {
     private fun getFailureTips(e: Throwable?): String {
         logW("TAG", "getFailureTips exception is ${e?.message}")
         return when (e) {
-            is ConnectException -> GlobalUtil.getString(string.network_connect_error)
-            is SocketTimeoutException -> GlobalUtil.getString(string.network_connect_timeout)
-            is NoRouteToHostException -> GlobalUtil.getString(string.no_route_to_host)
-            is UnknownHostException -> GlobalUtil.getString(string.network_error)
-            is JsonSyntaxException -> GlobalUtil.getString(string.json_data_error)
+            is ConnectException -> getString(string.network_connect_error)
+            is SocketTimeoutException -> getString(string.network_connect_timeout)
+            is NoRouteToHostException -> getString(string.no_route_to_host)
+            is UnknownHostException -> getString(string.network_error)
+            is JsonSyntaxException -> getString(string.json_data_error)
             else -> {
                 " GlobalUtil.getString(string.unknown_error)"
             }

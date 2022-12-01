@@ -28,7 +28,6 @@
     <string name="click_send_comment">点 击 发 表 你 的 评 论</string>
     <string name="reply_target">回复 @%1$s</string>
 
-    <!-- 支付密码对话框 -->
-    <string name="pay_title">请输入支付密码</string>
+
 
 </resources>

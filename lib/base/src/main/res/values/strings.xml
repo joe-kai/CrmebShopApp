@@ -26,6 +26,8 @@
     <string name="hour">小时</string>
     <string name="minute">分钟</string>
 
+    <!-- 支付密码对话框 -->
+    <string name="pay_title">请输入支付密码</string>
 
     <string name="loading">加载中···</string>
     <string name="load_error">加载失败，请点击重试</string>

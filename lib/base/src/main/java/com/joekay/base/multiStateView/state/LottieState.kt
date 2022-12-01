@@ -7,12 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import com.joekay.base.R
 import com.joekay.base.databinding.LayoutLottieStateBinding
-import com.joekay.base.ext.debug
-import com.joekay.base.ext.showToast
 import com.joekay.base.multiStateView.MultiStateConfig
 import com.joekay.base.multiStateView.MultiStateView
-import com.joekay.resource.RouterPath
-import com.therouter.TheRouter
 
 /**
  * @author:  JoeKai

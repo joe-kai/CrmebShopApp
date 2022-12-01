@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.joekay.base.ActivityManager
 import com.joekay.base.adapter.FragmentPagerAdapter
-import com.joekay.base.dialog.AppUpdateDialog
+import com.joekay.module_base.dialog.AppUpdateDialog
 import com.joekay.base.ext.showToast
 import com.joekay.base.utils.GlobalUtil
 import com.joekay.module_base.base.BaseActivity
@@ -131,7 +131,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (!DoubleClickHelper.isOnDoubleClick()) {
-            GlobalUtil.getString(R.string.home_exit_hint).showToast()
+            getString(R.string.home_exit_hint).showToast()
             return
         }
         // 移动到上一个任务栈，避免侧滑引起的不良反应

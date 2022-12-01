@@ -18,7 +18,7 @@ data class MultiStateConfig(
     val emptyIcon: Int = R.drawable.ic_state_empty,
     val loadingMsg: String = "loading...",
 
-    val lottieResId: Int = com.joekay.resource.R.raw.lottie_waiting,
+    val lottieResId: Int = R.raw.lottie_waiting,
 
     var alphaDuration: Long = 500,
 ) {
@@ -29,7 +29,7 @@ data class MultiStateConfig(
         private var errorIcon: Int = R.drawable.ic_state_error
         private var emptyMsg: String = "这里什么都没有"
         private var retryTip: String = "点击重试"
-        private var lottieResId: Int = com.joekay.resource.R.raw.lottie_waiting
+        private var lottieResId: Int = R.raw.lottie_waiting
 
         @DrawableRes
         private var emptyIcon: Int = R.drawable.ic_state_empty
@@ -67,7 +67,7 @@ data class MultiStateConfig(
             return this
         }
 
-        fun setAlphaDuration(duration: Long) = apply{
+        fun setAlphaDuration(duration: Long) = apply {
             this.alphaDuration = duration
         }
 

@@ -6,15 +6,15 @@
     android:background="@drawable/shape_load_bg"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingStart="25dp"
-    android:paddingTop="10dp"
-    android:paddingEnd="25dp"
-    android:paddingBottom="10dp">
+    android:paddingHorizontal="@dimen/dp_25"
+    android:paddingVertical="@dimen/dp_10"
+
+    >
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
         android:background="@drawable/ic_loading" />
 
     <TextView
@@ -22,8 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/dp_5"
         android:text="@string/loading"
         android:textColor="@android:color/white"
-        android:textSize="12sp" />
+        android:textSize="@dimen/sp_12" />
 </LinearLayout>

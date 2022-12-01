@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
     <color name="common_window_background_color">#F4F4F4</color>
     <color name="common_primary_color">@color/white</color>
     <color name="common_primary_dark_color">@color/black</color>

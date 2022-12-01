@@ -10,5 +10,6 @@ android {
 
 dependencies {
     api project(":lib:base")
+    api project(":lib:resource")
     api project(":lib:network")
 }

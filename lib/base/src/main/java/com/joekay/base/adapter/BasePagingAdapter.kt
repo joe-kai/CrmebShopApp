@@ -160,11 +160,11 @@ abstract class BasePagingAdapter<T : Any>(
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         this.recyclerView = recyclerView
         // 判断当前的布局管理器是否为空，如果为空则设置默认的布局管理器
-        if (this.recyclerView?.layoutManager == null) {
-            this.recyclerView?.layoutManager = generateDefaultLayoutManager(context)
+        if (recyclerView.layoutManager == null) {
+            recyclerView.layoutManager = generateDefaultLayoutManager(context)
         }
         if (generateDefaultDividerDecoration(context) != null) {
-            this.recyclerView?.addItemDecoration(generateDefaultDividerDecoration(context)!!)
+            recyclerView.addItemDecoration(generateDefaultDividerDecoration(context)!!)
         }
     }
 
@@ -175,7 +175,7 @@ abstract class BasePagingAdapter<T : Any>(
     /**
      * 生成默认的布局摆放器
      */
-    protected open fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager? {
+    protected open fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager {
         return LinearLayoutManager(context)
     }
 

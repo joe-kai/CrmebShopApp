@@ -6,10 +6,25 @@
 
     <color name="black">#FF000000</color>
     <color name="black5">#0D000000</color>
-    <!-- 矢量图标的颜色 -->
-    <color name="common_icon_color">#7C7C7C</color>
+
+
+    <color name="gray">#FF808080</color>
+    <color name="grayDark">#adadad</color>
 
     <color name="progress_color">#03A9F4</color>
     <color name="colorAccent">#61f2d4</color>
+
+    <color name="common_window_background_color">#F4F4F4</color>
+    <color name="common_primary_color">@android:color/white</color>
+    <color name="common_primary_dark_color">@color/black</color>
+    <color name="common_accent_color">#5A8DDF</color>
+    <color name="common_text_color">#333333</color>
+    <color name="common_text_hint_color">@color/panda</color>
+    <!-- 分割线的颜色 -->
+    <color name="common_line_color">#ECECEC</color>
+    <!-- 矢量图标的颜色 -->
+    <color name="common_icon_color">#7C7C7C</color>
+    <!-- 熊猫色（黑白背景通吃） -->
+    <color name="panda">#FF757575</color>
 
 </resources>

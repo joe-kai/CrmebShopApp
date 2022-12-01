@@ -3,28 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@android:color/white"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingHorizontal="13dp">
+    android:paddingHorizontal="@dimen/dp_10">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="73dp"
         android:gravity="center"
         android:text="@string/share"
-        android:textSize="14sp"
+        android:textSize="@dimen/sp_14"
         android:textStyle="bold" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="@dimen/line_size"
         android:background="@color/gray" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginTop="6dp"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginTop="@dimen/dp_5"
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -33,22 +33,22 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_share_wechat_black_30dp"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/dp_10"
             android:gravity="center_horizontal"
             android:text="@string/wechat"
             android:textColor="@color/grayDark"
-            android:textSize="10sp" />
+            android:textSize="@dimen/sp_10" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvShareToWeibo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/dp_10"
             android:gravity="center_horizontal"
             android:text="@string/weibo"
             android:textColor="@color/grayDark"
-            android:textSize="10sp"
+            android:textSize="@dimen/sp_10"
             app:drawableTopCompat="@drawable/ic_share_weibo_black_30dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -57,11 +57,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_share_qq_black_30dp"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/dp_10"
             android:gravity="center_horizontal"
             android:text="@string/qq_friends"
             android:textColor="@color/grayDark"
-            android:textSize="10sp" />
+            android:textSize="@dimen/sp_10" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvShareToQQzone"
@@ -69,11 +69,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_share_qq_zone_black_30dp"
-            android:drawablePadding="10dp"
+            android:drawablePadding="@dimen/dp_10"
             android:gravity="center_horizontal"
             android:text="@string/qq_zone"
             android:textColor="@color/grayDark"
-            android:textSize="10sp" />
+            android:textSize="@dimen/sp_10" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/llMore"
@@ -84,9 +84,9 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:padding="3dp"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
+                android:padding="@dimen/dp_3"
                 android:src="@drawable/ic_baseline_more_horiz_30"
                 app:civ_circle_background_color="#d9d9d9" />
 
@@ -94,11 +94,11 @@
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/dp_10"
                 android:gravity="center_horizontal"
                 android:text="@string/more"
                 android:textColor="@color/grayDark"
-                android:textSize="10sp" />
+                android:textSize="@dimen/sp_10" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -106,16 +106,16 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_marginTop="9dp"
+        android:layout_height="@dimen/line_size"
+        android:layout_marginTop="@dimen/dp_5"
         android:background="@color/gray" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCancel"
         android:layout_width="match_parent"
-        android:layout_height="73dp"
+        android:layout_height="@dimen/dp_50"
         android:gravity="center"
         android:text="@string/cancel"
-        android:textSize="14sp" />
+        android:textSize="@dimen/sp_14" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

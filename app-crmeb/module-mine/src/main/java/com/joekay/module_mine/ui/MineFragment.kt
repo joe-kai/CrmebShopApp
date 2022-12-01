@@ -35,7 +35,7 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
 
             tvPay.setOnClickListener {
                 PayPasswordDialog.Builder(requireContext())
-                    .setTitle(getResString(com.joekay.resource.R.string.pay_title))
+                    .setTitle("一个支付Dialog")
                     .setSubTitle("用于购买一个女盆友")
                     .setMoney("￥ 100.00")
                     // 设置点击按钮后不关闭对话框
@@ -59,6 +59,9 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
                         }
                     })
                     .show()
+            }
+            tvAbout.setOnClickListener {
+                TheRouter.build(RouterPath.act_about).navigation()
             }
         }
     }
