@@ -7,7 +7,7 @@
     tools:background="#eee"
     tools:parentTag="android.widget.RelativeLayout">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/srl_classics_title"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/dp_40"

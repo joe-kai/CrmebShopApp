@@ -11,7 +11,7 @@
         android:id="@+id/ll_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/user_bg"
+        android:background="@drawable/mine_top_bg"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/sp_15">
 
@@ -52,7 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:background="@drawable/vip_bg"
+                        android:background="@drawable/shape_vip_bg"
                         android:gravity="center_vertical"
                         android:paddingLeft="5dp"
                         android:paddingTop="3dp"
@@ -85,7 +85,7 @@
                     android:layout_marginTop="6dp"
                     android:drawablePadding="2dp"
                     android:textColor="@color/white"
-                    app:drawableRightCompat="@drawable/edit"
+                    app:drawableRightCompat="@drawable/ic_edit"
                     tools:text="187998998" />
             </LinearLayout>
         </LinearLayout>
@@ -198,7 +198,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/white_r10_bg"
+            android:background="@drawable/shape_white_r10_bg"
             android:orientation="vertical"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
@@ -251,14 +251,14 @@
                             android:layout_width="37dp"
                             android:layout_height="37dp"
                             android:padding="5dp"
-                            android:src="@drawable/order1" />
+                            android:src="@drawable/ic_order1" />
 
                         <TextView
                             android:id="@+id/txv_stay_payment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@id/icon1"
-                            android:background="@drawable/white_r15_1_bg"
+                            android:background="@drawable/shape_white_r15_1_bg"
                             android:gravity="center"
                             android:paddingHorizontal="@dimen/dp_5"
                             android:textColor="@color/red"
@@ -292,14 +292,14 @@
                             android:layout_width="37dp"
                             android:layout_height="37dp"
                             android:padding="5dp"
-                            android:src="@drawable/order2" />
+                            android:src="@drawable/ic_order2" />
 
                         <TextView
                             android:id="@+id/txv_stay_shipped"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@id/icon2"
-                            android:background="@drawable/white_r15_1_bg"
+                            android:background="@drawable/shape_white_r15_1_bg"
                             android:gravity="center"
                             android:paddingHorizontal="@dimen/dp_5"
                             android:textColor="@color/red"
@@ -333,14 +333,14 @@
                             android:layout_width="37dp"
                             android:layout_height="37dp"
                             android:padding="5dp"
-                            android:src="@drawable/order3" />
+                            android:src="@drawable/ic_order3" />
 
                         <TextView
                             android:id="@+id/txv_stay_received"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@id/icon3"
-                            android:background="@drawable/white_r15_1_bg"
+                            android:background="@drawable/shape_white_r15_1_bg"
                             android:gravity="center"
                             android:paddingHorizontal="@dimen/dp_5"
                             android:textColor="@color/red"
@@ -374,14 +374,14 @@
                             android:layout_width="37dp"
                             android:layout_height="37dp"
                             android:padding="5dp"
-                            android:src="@drawable/order4" />
+                            android:src="@drawable/ic_order4" />
 
                         <TextView
                             android:id="@+id/txv_stay_evaluate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@id/icon4"
-                            android:background="@drawable/white_r15_1_bg"
+                            android:background="@drawable/shape_white_r15_1_bg"
                             android:gravity="center"
                             android:paddingHorizontal="@dimen/dp_5"
                             android:textColor="@color/red"
@@ -415,14 +415,14 @@
                             android:layout_width="37dp"
                             android:layout_height="37dp"
                             android:padding="5dp"
-                            android:src="@drawable/order5" />
+                            android:src="@drawable/ic_order5" />
 
                         <TextView
                             android:id="@+id/txv_after_sales"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@id/icon5"
-                            android:background="@drawable/white_r15_1_bg"
+                            android:background="@drawable/shape_white_r15_1_bg"
                             android:gravity="center"
                             android:paddingHorizontal="@dimen/dp_5"
                             android:textColor="@color/red"

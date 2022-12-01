@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="#ffffff"
+    android:gravity="center"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -12,23 +13,23 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_state_loading" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txv_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/dp_10"
-        android:text="加载中···"
+        android:text="@string/loading"
         android:textColor="@android:color/background_dark"
         android:textSize="14sp" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txv_retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_10"
-        android:text="点击重试"
         android:textColor="@android:color/primary_text_light"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:text="点击重试" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

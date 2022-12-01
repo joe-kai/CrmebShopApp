@@ -46,7 +46,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dp_10"
                         android:layout_marginTop="@dimen/dp_10"
-                        android:background="@drawable/white_r10_bg"
+                        android:background="@drawable/shape_white_r10_bg"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingHorizontal="@dimen/dp_5"
@@ -55,7 +55,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/xinjian" />
+                            android:src="@drawable/ic_home_vp" />
 
                         <View
                             android:layout_width="1dp"
@@ -81,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dp_10"
                         android:layout_marginTop="@dimen/dp_10"
-                        android:background="@drawable/white_r10_bg"
+                        android:background="@drawable/shape_white_r10_bg"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         app:spanCount="5"
                         tools:itemCount="10"
@@ -93,7 +93,7 @@
                         android:layout_height="@dimen/dp_140"
                         android:layout_marginHorizontal="@dimen/dp_10"
                         android:layout_marginTop="@dimen/dp_10"
-                        android:background="@drawable/yhjsy">
+                        android:background="@drawable/home_coupon_bg">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -158,7 +158,7 @@
                     android:id="@+id/tb_home_title"
                     android:layout_width="match_parent"
                     android:layout_height="?android:attr/actionBarSize"
-                    android:background="@drawable/home_title_bg"
+                    android:background="@drawable/shape_home_title_bg"
                     app:layout_collapseMode="pin">
 
                     <LinearLayout
@@ -182,7 +182,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/dp_20"
                             android:layout_weight="1"
-                            android:background="@drawable/home_search_bar_transparent_bg"
+                            android:background="@drawable/shape_home_search_bar_transparent_bg"
                             android:gravity="center"
                             android:paddingVertical="@dimen/dp_5"
                             android:text="完善细节，追求完美"
@@ -194,7 +194,7 @@
                             android:layout_width="@dimen/dp_24"
                             android:layout_height="@dimen/dp_24"
                             android:layout_marginEnd="@dimen/dp_10"
-                            app:srcCompat="@drawable/search_ic"
+                            app:srcCompat="@drawable/ic_search"
                             app:tint="@color/white70" />
 
                     </LinearLayout>

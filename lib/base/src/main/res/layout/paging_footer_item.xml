@@ -13,7 +13,7 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:indeterminate="true"
-        android:indeterminateTint="@color/pink" />
+        android:indeterminateTint="@android:color/holo_red_dark" />
 
     <com.joekay.base.widgets.TypefaceTextView
         android:id="@+id/txv_retry"
@@ -22,7 +22,7 @@
         android:layout_centerInParent="true"
         android:background="@null"
         android:gravity="center"
-        android:textColor="@color/black70"
+        android:textColor="@android:color/secondary_text_light"
         android:text="@string/load_error"
         app:typeface="fzlLTypeface"
         android:textSize="@dimen/sp_13" />
