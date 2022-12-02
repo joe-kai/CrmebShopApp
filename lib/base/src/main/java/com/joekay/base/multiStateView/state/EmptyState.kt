@@ -46,6 +46,7 @@ class EmptyState : MultiState() {
     fun setEmptyIcon(@DrawableRes emptyIcon: Int) {
         binding.imgIcon.setImageResource(emptyIcon)
     }
+
     fun hideEmptyIcon() {
         binding.imgIcon.gone()
     }

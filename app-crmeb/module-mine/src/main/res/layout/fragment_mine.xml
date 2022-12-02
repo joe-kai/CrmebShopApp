@@ -210,31 +210,31 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical">
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/order_center"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/sp_15"
                     android:textStyle="bold" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txv_see_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/see_all"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/sp_12"
                     app:drawableRightCompat="@drawable/ic_right_back_12dp" />
             </LinearLayout>
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/ll_stay_payment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -248,21 +248,25 @@
 
                         <ImageView
                             android:id="@+id/icon1"
-                            android:layout_width="37dp"
-                            android:layout_height="37dp"
+                            android:layout_width="@dimen/dp_35"
+                            android:layout_height="@dimen/dp_35"
                             android:padding="5dp"
                             android:src="@drawable/ic_order1" />
 
-                        <TextView
-                            android:id="@+id/txv_stay_payment"
+                        <com.hjq.shape.view.ShapeTextView
+                            android:id="@+id/tv_stay_payment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@id/icon1"
-                            android:background="@drawable/shape_white_r15_1_bg"
                             android:gravity="center"
-                            android:paddingHorizontal="@dimen/dp_5"
+                            android:paddingHorizontal="@dimen/dp_2"
                             android:textColor="@color/red"
-                            android:textSize="11sp"
+                            android:textSize="@dimen/sp_8"
+                            app:shape="rectangle"
+                            app:shape_radius="@dimen/dp_20"
+                            app:shape_solidColor="@color/white"
+                            app:shape_strokeColor="@color/red"
+                            app:shape_strokeWidth="@dimen/line_size"
                             tools:text="0" />
                     </RelativeLayout>
 
@@ -272,8 +276,8 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/stay_payment"
                         android:textColor="@color/black"
-                        android:textSize="12sp" />
-                </LinearLayout>
+                        android:textSize="@dimen/sp_10" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <LinearLayout
                     android:id="@+id/ll_stay_shipped"
@@ -289,21 +293,25 @@
 
                         <ImageView
                             android:id="@+id/icon2"
-                            android:layout_width="37dp"
-                            android:layout_height="37dp"
+                            android:layout_width="@dimen/dp_35"
+                            android:layout_height="@dimen/dp_35"
                             android:padding="5dp"
                             android:src="@drawable/ic_order2" />
 
-                        <TextView
-                            android:id="@+id/txv_stay_shipped"
+                        <com.hjq.shape.view.ShapeTextView
+                            android:id="@+id/tv_stay_shipped"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@id/icon2"
-                            android:background="@drawable/shape_white_r15_1_bg"
                             android:gravity="center"
-                            android:paddingHorizontal="@dimen/dp_5"
+                            android:paddingHorizontal="@dimen/dp_2"
                             android:textColor="@color/red"
-                            android:textSize="11sp"
+                            android:textSize="@dimen/sp_8"
+                            app:shape="rectangle"
+                            app:shape_radius="@dimen/dp_20"
+                            app:shape_solidColor="@color/white"
+                            app:shape_strokeColor="@color/red"
+                            app:shape_strokeWidth="@dimen/line_size"
                             tools:text="0" />
                     </RelativeLayout>
 
@@ -313,7 +321,7 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/stay_shipped"
                         android:textColor="@color/black"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/sp_10" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -330,21 +338,25 @@
 
                         <ImageView
                             android:id="@+id/icon3"
-                            android:layout_width="37dp"
-                            android:layout_height="37dp"
+                            android:layout_width="@dimen/dp_35"
+                            android:layout_height="@dimen/dp_35"
                             android:padding="5dp"
                             android:src="@drawable/ic_order3" />
 
-                        <TextView
-                            android:id="@+id/txv_stay_received"
+                        <com.hjq.shape.view.ShapeTextView
+                            android:id="@+id/tv_stay_received"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@id/icon3"
-                            android:background="@drawable/shape_white_r15_1_bg"
                             android:gravity="center"
-                            android:paddingHorizontal="@dimen/dp_5"
+                            android:paddingHorizontal="@dimen/dp_2"
                             android:textColor="@color/red"
-                            android:textSize="11sp"
+                            android:textSize="@dimen/sp_8"
+                            app:shape="rectangle"
+                            app:shape_radius="@dimen/dp_20"
+                            app:shape_solidColor="@color/white"
+                            app:shape_strokeColor="@color/red"
+                            app:shape_strokeWidth="@dimen/line_size"
                             tools:text="0" />
                     </RelativeLayout>
 
@@ -354,7 +366,7 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/stay_received"
                         android:textColor="@color/black"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/sp_10" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -371,21 +383,26 @@
 
                         <ImageView
                             android:id="@+id/icon4"
-                            android:layout_width="37dp"
-                            android:layout_height="37dp"
+                            android:layout_width="@dimen/dp_35"
+                            android:layout_height="@dimen/dp_35"
                             android:padding="5dp"
                             android:src="@drawable/ic_order4" />
 
-                        <TextView
-                            android:id="@+id/txv_stay_evaluate"
+                        <com.hjq.shape.view.ShapeTextView
+                            android:id="@+id/tv_stay_evaluate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@id/icon4"
                             android:background="@drawable/shape_white_r15_1_bg"
                             android:gravity="center"
-                            android:paddingHorizontal="@dimen/dp_5"
+                            android:paddingHorizontal="@dimen/dp_2"
                             android:textColor="@color/red"
-                            android:textSize="11sp"
+                            android:textSize="@dimen/sp_8"
+                            app:shape="rectangle"
+                            app:shape_radius="@dimen/dp_20"
+                            app:shape_solidColor="@color/white"
+                            app:shape_strokeColor="@color/red"
+                            app:shape_strokeWidth="@dimen/line_size"
                             tools:text="0" />
                     </RelativeLayout>
 
@@ -395,7 +412,7 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/stay_evaluate"
                         android:textColor="@color/black"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/sp_10" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -410,23 +427,28 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/icon5"
-                            android:layout_width="37dp"
-                            android:layout_height="37dp"
+                            android:layout_width="@dimen/dp_35"
+                            android:layout_height="@dimen/dp_35"
                             android:padding="5dp"
                             android:src="@drawable/ic_order5" />
 
-                        <TextView
-                            android:id="@+id/txv_after_sales"
+                        <com.hjq.shape.view.ShapeTextView
+                            android:id="@+id/tv_after_sales"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@id/icon5"
                             android:background="@drawable/shape_white_r15_1_bg"
                             android:gravity="center"
-                            android:paddingHorizontal="@dimen/dp_5"
+                            android:paddingHorizontal="@dimen/dp_2"
                             android:textColor="@color/red"
-                            android:textSize="11sp"
+                            android:textSize="@dimen/sp_8"
+                            app:shape="rectangle"
+                            app:shape_radius="@dimen/dp_20"
+                            app:shape_solidColor="@color/white"
+                            app:shape_strokeColor="@color/red"
+                            app:shape_strokeWidth="@dimen/line_size"
                             tools:text="0" />
                     </RelativeLayout>
 
@@ -436,10 +458,10 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/after_sales"
                         android:textColor="@color/black"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/sp_10" />
                 </LinearLayout>
 
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </LinearLayout>
 

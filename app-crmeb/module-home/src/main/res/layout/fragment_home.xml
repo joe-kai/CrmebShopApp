@@ -27,7 +27,6 @@
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:scrimVisibleHeightTrigger="@dimen/dp_100">
 
-
                 <!--Banner 等等-->
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -41,18 +40,19 @@
                         android:layout_height="@dimen/dp_250"
                         app:layout_scrollFlags="scroll" />
 
-                    <LinearLayout
+                    <com.hjq.shape.layout.ShapeLinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dp_10"
                         android:layout_marginTop="@dimen/dp_10"
-                        android:background="@drawable/shape_white_r10_bg"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingHorizontal="@dimen/dp_5"
-                        android:paddingVertical="@dimen/dp_10">
+                        android:paddingVertical="@dimen/dp_10"
+                        app:shape_radius="@dimen/dp_10"
+                        app:shape_solidColor="@color/white">
 
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/ic_home_vp" />
@@ -73,60 +73,106 @@
                             android:inAnimation="@anim/window_bottom_in"
                             android:outAnimation="@anim/window_bottom_out"
                             android:scrollbarAlwaysDrawHorizontalTrack="false" />
-                    </LinearLayout>
+                    </com.hjq.shape.layout.ShapeLinearLayout>
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <com.hjq.shape.layout.ShapeRecyclerView
                         android:id="@+id/rv_home_menu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dp_10"
                         android:layout_marginTop="@dimen/dp_10"
-                        android:background="@drawable/shape_white_r10_bg"
-                        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                        tools:spanCount="5"
+                        app:shape_radius="@dimen/dp_10"
+                        app:shape_solidColor="@color/white"
                         tools:itemCount="10"
-                        tools:listitem="@layout/layout_menus_item" />
+                        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        tools:listitem="@layout/layout_menus_item"
+                        tools:spanCount="5" />
 
-                    <LinearLayout
+                    <com.hjq.shape.layout.ShapeRelativeLayout
                         android:id="@+id/ll_coupon"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_140"
-                        android:layout_marginHorizontal="@dimen/dp_10"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:background="@drawable/home_coupon_bg">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="优惠卷" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll_seckill"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dp_10"
                         android:layout_marginTop="@dimen/dp_10"
-                        android:background="@drawable/xsms">
+                        app:shape_radius="@dimen/dp_10"
+                        app:shape_solidColor="@color/white">
 
-                        <TextView
+
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="限时秒杀" />
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/home_coupon_bg" />
 
-                    </LinearLayout>
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/dp_20"
+                            android:layout_marginEnd="@dimen/dp_10"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
 
-                    <LinearLayout
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="领取优惠卷"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_16"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:layout_marginBottom="@dimen/dp_15"
+                                android:gravity="center"
+                                android:text="福利大礼包，省了又省"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_12"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="@string/see_all"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    </com.hjq.shape.layout.ShapeRelativeLayout>
+
+                    <com.hjq.shape.layout.ShapeRelativeLayout
+                        android:id="@+id/ll_sec_kill"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/dp_10"
+                        android:layout_marginTop="@dimen/dp_10">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/home_sec_kill_bg" />
+
+
+                    </com.hjq.shape.layout.ShapeRelativeLayout>
+
+                    <com.hjq.shape.layout.ShapeRelativeLayout
                         android:id="@+id/ll_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dp_10"
                         android:layout_marginTop="@dimen/dp_10"
-                        android:background="@drawable/xsms">
+                        app:shape_solidColor="@color/white">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/home_group_bg" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -134,15 +180,20 @@
                             android:gravity="center"
                             android:text="拼团" />
 
-                    </LinearLayout>
+                    </com.hjq.shape.layout.ShapeRelativeLayout>
 
-                    <LinearLayout
+                    <com.hjq.shape.layout.ShapeRelativeLayout
                         android:id="@+id/ll_haggle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/dp_10"
                         android:layout_marginTop="@dimen/dp_10"
-                        android:background="@drawable/xsms">
+                        app:shape_solidColor="@color/white">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/home_haggle_bg" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -150,7 +201,7 @@
                             android:gravity="center"
                             android:text="砍价" />
 
-                    </LinearLayout>
+                    </com.hjq.shape.layout.ShapeRelativeLayout>
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <!--Title-->
@@ -232,10 +283,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
-                    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    tools:spanCount="2"
                     tools:itemCount="4"
-                    tools:listitem="@layout/layout_home_product_item" />
+                    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:listitem="@layout/layout_home_product_item"
+                    tools:spanCount="2" />
             </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
         </LinearLayout>

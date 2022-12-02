@@ -32,6 +32,11 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
             ImmersionBar.setTitleBar(getAttachActivity(), llTop)
 
             ivAvatar.load(drawable.ic_avatar, 50f)
+            tvStayPayment.text = "1"
+            tvStayShipped.text = "11"
+            tvStayReceived.text = "21"
+            tvStayEvaluate.text = "99+"
+            tvAfterSales.text = "29"
 
             tvPay.setOnClickListener {
                 PayPasswordDialog.Builder(requireContext())

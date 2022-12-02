@@ -52,7 +52,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     lateinit var productAdapter: HomeProductAdapter
 
     private lateinit var couponState: MultiStateView
-    private lateinit var seckillState: MultiStateView
+    private lateinit var secKillState: MultiStateView
     private lateinit var groupState: MultiStateView
     private lateinit var haggleState: MultiStateView
 
@@ -74,11 +74,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun initBinding() {
         couponState = mBinding.llCoupon.bindMultiState()
-        couponState.show<EmptyState> {
-            it.setEmptyMsg("这是个空的")
+        couponState.show<EmptyState>{
+            it.setEmptyMsg("空空如也")
         }
-        seckillState = mBinding.llSeckill.bindMultiState()
-        seckillState.show<ErrorState> {
+        secKillState = mBinding.llSecKill.bindMultiState()
+        secKillState.show<ErrorState> {
             it.setErrorMsg("chu cuo le")
             it.retry {
                 "啥都没用".showToast()

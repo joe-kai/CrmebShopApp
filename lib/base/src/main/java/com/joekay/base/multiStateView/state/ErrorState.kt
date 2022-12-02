@@ -6,9 +6,7 @@ import android.view.View
 import androidx.annotation.DrawableRes
 import com.joekay.base.R
 import com.joekay.base.databinding.LayoutMultiStateBinding
-import com.joekay.base.ext.gone
-import com.joekay.base.ext.isVisible
-import com.joekay.base.ext.visible
+import com.joekay.base.ext.*
 import com.joekay.base.multiStateView.MultiStateConfig
 import com.joekay.base.multiStateView.MultiStatePage
 import com.joekay.base.multiStateView.MultiStateView
@@ -56,11 +54,11 @@ class ErrorState : MultiState() {
     }
 
     fun setRetryTip(retryTip: String) {
-        binding.txvRetry.isVisible(retryTip.isNotEmpty())
+        binding.txvRetry.isInVisible(retryTip.isNotEmpty())
         binding.txvRetry.text = retryTip
     }
     fun hideRetryTip() {
-        binding.txvRetry.gone()
+        binding.txvRetry.invisible()
     }
 
     fun retry(retry: OnRetryClickListener) {

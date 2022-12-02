@@ -24,7 +24,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
     public GridDividerItemDecoration(int height) {
         mDividerHeight = height;
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        //mPaint.setColor(Color.TRANSPARENT);
+        mPaint.setColor(Color.TRANSPARENT);
         mPaint.setColor(listDividerColor);
         mPaint.setStyle(Paint.Style.FILL);
     }
@@ -56,7 +56,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
         left = itemPosition % spanCount * dl;
         right = eachWidth - left;
         bottom = mDividerHeight;
-        if (isLastRow){
+        if (isLastRow) {
             bottom = 0;
         }
         outRect.set(left, top, right, bottom);
@@ -81,7 +81,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
             int right = child.getRight();
             int top = child.getBottom() + layoutParams.bottomMargin;
             int bottom = top + mDividerHeight;
-            if (isLastRow)  bottom = top;
+            if (isLastRow) bottom = top;
             if (mPaint != null) {
                 canvas.drawRect(left, top, right, bottom, mPaint);
             }
@@ -90,7 +90,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
             bottom = child.getBottom() + mDividerHeight;
             left = child.getRight() + layoutParams.rightMargin;
             right = left + mDividerHeight;
-            if (isLastRow)  bottom = child.getBottom();
+            if (isLastRow) bottom = child.getBottom();
             if (mPaint != null) {
                 canvas.drawRect(left, top, right, bottom, mPaint);
             }

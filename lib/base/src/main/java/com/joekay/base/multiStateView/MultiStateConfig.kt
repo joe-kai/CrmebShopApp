@@ -12,7 +12,7 @@ data class MultiStateConfig(
     val errorMsg: String = "哎呀,出错了",
     @DrawableRes
     var errorIcon: Int = R.drawable.ic_state_error,
-    val emptyMsg: String = "这里什么都没有",
+    val emptyMsg: String = "空空如也",
     val retryTip: String = "点击重试",
     @DrawableRes
     val emptyIcon: Int = R.drawable.ic_state_empty,
@@ -27,7 +27,7 @@ data class MultiStateConfig(
 
         @DrawableRes
         private var errorIcon: Int = R.drawable.ic_state_error
-        private var emptyMsg: String = "这里什么都没有"
+        private var emptyMsg: String = "空空如也"
         private var retryTip: String = "点击重试"
         private var lottieResId: Int = R.raw.lottie_waiting
 
