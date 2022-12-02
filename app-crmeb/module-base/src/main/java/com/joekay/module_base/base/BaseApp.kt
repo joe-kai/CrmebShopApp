@@ -16,6 +16,7 @@ import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.tencent.bugly.crashreport.CrashReport
+import com.tencent.mmkv.MMKV
 
 /**
  * @author:  JoeKai
@@ -28,6 +29,9 @@ open class BaseApp : Application() {
          * 初始化一些第三方框架
          */
         fun initSdk(application: Application) {
+
+            //初始化腾讯MMKV(数据存储)
+            MMKV.initialize(application)
             // 设置标题栏初始化器
             TitleBar.setDefaultStyle(TitleBarStyle())
             // 设置全局初始化器

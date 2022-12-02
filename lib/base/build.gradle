@@ -46,6 +46,7 @@ dependencies {
     api libs.immersionbar_ktx
     api libs.circleimageview
     api libs.GSYVideoPlayer
+    api libs.mmkv
 
 //    api libs.MultiStatePage
 

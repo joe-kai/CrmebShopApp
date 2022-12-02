@@ -91,6 +91,10 @@ ext {
             // Shape 框架：https://github.com/getActivity/ShapeView
             shapeView            : 'com.github.getActivity:ShapeView:8.5',
 
+
+            //MMKV : https://github.com/Tencent/MMKV
+            mmkv                 : 'com.tencent:mmkv:1.2.14',
+
             // 多语种：https://github.com/getActivity/MultiLanguages
             // 悬浮窗：https://github.com/getActivity/XToast
             // 日志输出：https://github.com/getActivity/Logcat

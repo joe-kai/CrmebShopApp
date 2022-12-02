@@ -1,5 +1,7 @@
 package com.joekay.module_base.network.interceptor
 
+import com.joekay.module_base.other.TOKEN_KEY
+import com.joekay.module_base.utils.MMKVUtils
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -14,11 +16,7 @@ class HeaderInterceptor : Interceptor {
         val request = original.newBuilder()
             .header("content-type", "application/json")
             .header(
-                "Authori-zation","9b1348fc777d414c8453438b8c770b57"
-                //DataStoreUtils.getSyncData(
-                //    DataStoreKey.TOKEN_KEY,
-                //    "9b1348fc777d414c8453438b8c770b57"
-                //)
+                "Authori-zation", MMKVUtils.getString(TOKEN_KEY, "")
             )
             .build()
 
