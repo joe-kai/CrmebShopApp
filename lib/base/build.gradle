@@ -47,6 +47,7 @@ dependencies {
     api libs.circleimageview
     api libs.GSYVideoPlayer
     api libs.mmkv
+    api libs.rxDownload
 
 //    api libs.MultiStatePage
 

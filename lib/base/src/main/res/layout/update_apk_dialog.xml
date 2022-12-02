@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/dp_260"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="@dimen/dp_5"
+    app:cardElevation="0px">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_m_1"
+                app:srcCompat="@drawable/update_app_top_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/dp_30"
+                android:layout_marginBottom="@dimen/dp_5"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/update_title"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/sp_20" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_update_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/sp_16"
+                    tools:text="3.2.1" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_20"
+            android:text="@string/update_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_update_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_20"
+            android:layout_marginVertical="@dimen/dp_10"
+            android:lineSpacingExtra="@dimen/dp_5"
+            android:maxLines="4"
+            android:minLines="3"
+            android:scrollbars="vertical"
+            android:textColor="@android:color/tertiary_text_light"
+            android:textSize="@dimen/sp_14"
+            tools:text="6\n66\n666\n6666\n66666" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_update_close"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingVertical="@dimen/dp_15"
+                android:text="@string/update_no"
+                android:textColor="@android:color/secondary_text_dark"
+                android:textSize="@dimen/sp_14" />
+
+            <com.joekay.base.widgets.ProgressButton
+                android:id="@+id/btn_update"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingVertical="@dimen/dp_15"
+                android:text="@string/update_yes"
+                android:textColor="@android:color/secondary_text_light"
+                android:textSize="@dimen/sp_15"
+                tools:buttonColor="#002444"
+                tools:maxProgress="60"
+                tools:progress="20"
+                tools:progressBackColor="#fff"
+                tools:progressColor="#ddd"
+                tools:progressMargin="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

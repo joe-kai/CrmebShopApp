@@ -79,6 +79,7 @@
                         android:id="@+id/rv_home_menu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/dp_5"
                         android:layout_marginHorizontal="@dimen/dp_10"
                         android:layout_marginTop="@dimen/dp_10"
                         app:shape_radius="@dimen/dp_10"

@@ -10,6 +10,7 @@ import com.joekay.base.ext.showToast
 import com.joekay.base.utils.GlobalUtil
 import com.joekay.module_base.base.BaseActivity
 import com.joekay.module_base.base.BaseFragment
+import com.joekay.module_base.dialog.UpdateApkDialog
 import com.joekay.module_base.utils.DoubleClickHelper
 import com.joekay.module_main.databinding.ActivityMainBinding
 import com.joekay.network.liveData.observeLoading
@@ -37,9 +38,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         viewModel.updateApk.observeLoading(this, false) {
             onSuccess {
                 if (GlobalUtil.appVersionCode < it.versionCode) {
-                    // 升级对话框
-                    AppUpdateDialog.Builder(this@MainActivity)
-                        // 版本名
+                    UpdateApkDialog.Builder(this@MainActivity)
+                        //版本名
                         .setVersionName(it.versionName)
                         // 是否强制更新
                         .setForceUpdate(false)
@@ -47,8 +47,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                         .setUpdateLog(it.updateMessage)
                         // 下载 URL
                         .setDownloadUrl("${it.updateUrl}${it.fileName}")
-                        // 文件 MD5
-                        .setFileMd5(it.md5)
                         .show()
                 }
             }

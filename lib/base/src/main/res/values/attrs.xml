@@ -39,4 +39,14 @@
         </attr>
         <attr name="srlTextNothing" />
     </declare-styleable>
+    <declare-styleable name="ProgressButton">
+        <attr name="progressColor" format="color" />
+        <attr name="progressBackColor" format="color" />
+        <attr name="buttonColor" format="color" />
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="progress" format="integer" />
+        <attr name="minProgress" format="integer" />
+        <attr name="maxProgress" format="integer" />
+        <attr name="progressMargin" format="dimension" />
+    </declare-styleable>
 </resources>

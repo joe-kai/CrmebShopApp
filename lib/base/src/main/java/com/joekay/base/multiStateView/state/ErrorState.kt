@@ -8,7 +8,6 @@ import com.joekay.base.R
 import com.joekay.base.databinding.LayoutMultiStateBinding
 import com.joekay.base.ext.*
 import com.joekay.base.multiStateView.MultiStateConfig
-import com.joekay.base.multiStateView.MultiStatePage
 import com.joekay.base.multiStateView.MultiStateView
 
 /**

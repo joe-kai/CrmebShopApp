@@ -95,6 +95,8 @@ ext {
             //MMKV : https://github.com/Tencent/MMKV
             mmkv                 : 'com.tencent:mmkv:1.2.14',
 
+            rxDownload: "com.github.ssseasonnn:RxDownload:1.1.4",
+
             // 多语种：https://github.com/getActivity/MultiLanguages
             // 悬浮窗：https://github.com/getActivity/XToast
             // 日志输出：https://github.com/getActivity/Logcat

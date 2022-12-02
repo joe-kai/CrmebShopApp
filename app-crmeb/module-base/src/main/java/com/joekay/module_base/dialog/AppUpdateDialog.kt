@@ -185,6 +185,8 @@ class AppUpdateDialog {
                 getResString(com.joekay.resource.R.string.app_name_normal) + "_v" + nameView?.text.toString() + ".apk"
             )
 
+
+
             com.joekay.network.download.DownloadHttp
                 .file(apkFile)
                 .url(downloadUrl)
