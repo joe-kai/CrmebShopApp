@@ -7,3 +7,4 @@ package com.joekay.module_base.other
  */
 
 const val TOKEN_KEY = "token"
+const val PASSWORD_KEY = "password"

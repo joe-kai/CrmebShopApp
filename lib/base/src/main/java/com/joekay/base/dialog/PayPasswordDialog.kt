@@ -12,6 +12,7 @@ import com.joekay.base.R
 import com.joekay.base.adapter.Adapter
 import com.joekay.base.adapter.BaseAdapter
 import com.joekay.base.aop.SingleClick
+import com.joekay.base.ext.gone
 import com.joekay.base.widgets.PasswordView
 import java.util.*
 
@@ -23,9 +24,7 @@ import java.util.*
 class PayPasswordDialog {
     class Builder constructor(context: Context) : BaseDialog.Builder<Builder>(context),
         Adapter.OnItemClickListener {
-
         companion object {
-
             /** 输入键盘文本 */
             private val KEYBOARD_TEXT: Array<String> =
                 arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "", "0", "")

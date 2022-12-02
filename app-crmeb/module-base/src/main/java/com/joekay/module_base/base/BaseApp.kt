@@ -9,9 +9,9 @@ import com.joekay.base.aop.Log
 import com.joekay.base.gilde.GlideApp
 import com.joekay.base.utils.GlobalUtil
 import com.joekay.base.widgets.NoStatusFooter
-import com.joekay.network.RetrofitBuilder
 import com.joekay.module_base.network.interceptor.HeaderInterceptor
 import com.joekay.module_base.other.TitleBarStyle
+import com.joekay.network.RetrofitBuilder
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.scwang.smart.refresh.layout.api.RefreshLayout
@@ -29,8 +29,11 @@ open class BaseApp : Application() {
          * 初始化一些第三方框架
          */
         fun initSdk(application: Application) {
-
-            //初始化腾讯MMKV(数据存储)
+            ////初始化腾讯MMKV(数据存储)
+            //val dir: String = getFilesDir().getAbsolutePath() + "/mmkv"
+            //MMKV.initialize(
+            //    dir
+            //) { libName -> ReLinker.loadLibrary(application, libName) }
             MMKV.initialize(application)
             // 设置标题栏初始化器
             TitleBar.setDefaultStyle(TitleBarStyle())
