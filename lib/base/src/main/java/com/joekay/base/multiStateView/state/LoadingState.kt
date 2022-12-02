@@ -7,6 +7,7 @@ import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import com.joekay.base.R
 import com.joekay.base.databinding.LayoutMultiStateBinding
+import com.joekay.base.ext.gone
 import com.joekay.base.multiStateView.MultiStateConfig
 import com.joekay.base.multiStateView.MultiStateView
 
@@ -38,6 +39,11 @@ class LoadingState : MultiState() {
         animation.fillAfter = true
         binding.imgIcon.startAnimation(animation)
         setLoadingMsg(MultiStateConfig().loadingMsg)
+        hideRetryTip()
+    }
+
+    private fun hideRetryTip() {
+        binding.txvRetry.gone()
     }
 
     fun setLoadingMsg(loadingMsg: String) {

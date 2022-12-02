@@ -54,18 +54,15 @@ class ErrorState : MultiState() {
     }
 
     fun setRetryTip(retryTip: String) {
-        binding.txvRetry.isInVisible(retryTip.isNotEmpty())
+        binding.txvRetry.isVisible(retryTip.isNotEmpty())
         binding.txvRetry.text = retryTip
     }
+
     fun hideRetryTip() {
-        binding.txvRetry.invisible()
+        binding.txvRetry.gone()
     }
 
     fun retry(retry: OnRetryClickListener) {
         this.retry = retry
-    }
-
-    fun interface OnRetryClickListener {
-        fun retry()
     }
 }

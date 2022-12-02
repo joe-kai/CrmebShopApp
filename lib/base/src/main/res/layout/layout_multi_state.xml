@@ -11,7 +11,7 @@
         android:id="@+id/img_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginVertical="@dimen/dp_30"
         android:src="@drawable/ic_state_loading" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_30"
         android:text="@string/loading"
         android:textColor="@android:color/background_dark"
         android:textSize="@dimen/sp_14" />
@@ -28,10 +28,8 @@
         android:id="@+id/txv_retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_20"
         android:layout_marginBottom="@dimen/dp_30"
         android:textColor="@android:color/primary_text_light"
-        android:visibility="invisible"
         tools:text="点击重试" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

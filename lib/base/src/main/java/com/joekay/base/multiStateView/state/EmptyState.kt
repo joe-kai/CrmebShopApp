@@ -6,9 +6,7 @@ import android.view.View
 import androidx.annotation.DrawableRes
 import com.joekay.base.R
 import com.joekay.base.databinding.LayoutMultiStateBinding
-import com.joekay.base.ext.gone
-import com.joekay.base.ext.isVisible
-import com.joekay.base.ext.visible
+import com.joekay.base.ext.*
 import com.joekay.base.multiStateView.MultiStateConfig
 import com.joekay.base.multiStateView.MultiStateView
 
@@ -19,6 +17,7 @@ import com.joekay.base.multiStateView.MultiStateView
  */
 class EmptyState : MultiState() {
     private lateinit var binding: LayoutMultiStateBinding
+    private var retry: OnRetryClickListener? = null
 
     override fun onCreateMultiStateView(
         context: Context,
@@ -32,6 +31,9 @@ class EmptyState : MultiState() {
         binding = LayoutMultiStateBinding.bind(view)
         setEmptyMsg(MultiStateConfig().emptyMsg)
         setEmptyIcon(MultiStateConfig().emptyIcon)
+        hideRetryTip()
+        binding.txvRetry.setOnClickListener { retry?.retry() }
+
     }
 
     fun setEmptyMsg(emptyMsg: String) {
@@ -50,4 +52,17 @@ class EmptyState : MultiState() {
     fun hideEmptyIcon() {
         binding.imgIcon.gone()
     }
+    fun setRetryTip(retryTip: String) {
+        binding.txvRetry.isVisible(retryTip.isNotEmpty())
+        binding.txvRetry.text = retryTip
+    }
+    fun hideRetryTip() {
+        binding.txvRetry.gone()
+    }
+
+    fun retry(retry: OnRetryClickListener) {
+        this.retry = retry
+    }
+
+
 }
