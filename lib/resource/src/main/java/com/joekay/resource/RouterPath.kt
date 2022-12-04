@@ -16,11 +16,13 @@ object RouterPath {
     const val frag_category = "category/category_frag"
 
     /*module-video*/
+    const val act_video = "video/video_act"
     const val frag_video = "video/video_frag"
     const val act_videoDetail = "video/videoDetail_act"
 
     /*module-cart*/
     const val frag_cart = "cart/cart_frag"
+    const val act_cart = "cart/cart_act"
 
     /*module-mine*/
     const val frag_mine = "mine/mine_frag"

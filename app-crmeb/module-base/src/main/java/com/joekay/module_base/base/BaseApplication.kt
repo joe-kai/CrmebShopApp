@@ -22,7 +22,7 @@ import com.tencent.mmkv.MMKV
  * @date:  2022/11/21
  * @explain：
  */
-open class BaseApp : Application() {
+open class BaseApplication : Application() {
     companion object {
         /**
          * 初始化一些第三方框架
@@ -87,7 +87,6 @@ open class BaseApp : Application() {
     override fun onCreate() {
         super.onCreate()
         initSdk(this)
-
         RetrofitBuilder.initInterceptor(HeaderInterceptor())
     }
 

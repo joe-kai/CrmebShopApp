@@ -924,6 +924,8 @@ open class BaseDialog constructor(
         open fun getDialog(): BaseDialog? {
             return dialog
         }
+
+
     }
 
     /**

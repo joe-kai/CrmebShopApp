@@ -17,10 +17,10 @@ private fun ImageView.glideGif(url: Any, gif: Int = -1): GlideRequest<*> {
         else -> gif
     }
     return when (gifUrl) {
-        -1 -> GlideApp.with(this.context).load(url)
-        else -> GlideApp.with(this.context).load(url)
+        -1 -> GlideApp.with(this).load(url)
+        else -> GlideApp.with(this).load(url)
             .thumbnail(
-                GlideApp.with(this.context).load(gifUrl)
+                GlideApp.with(this).load(gifUrl)
             )
     }
 }

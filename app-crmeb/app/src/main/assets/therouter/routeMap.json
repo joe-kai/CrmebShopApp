@@ -14,6 +14,13 @@
     "params": {}
   },
   {
+    "path": "video/video_act",
+    "className": "com.joekay.module_video.VideoActivity",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
     "path": "product/productDetail_act",
     "className": "com.joekay.module_product.ui.ProductDetailActivity",
     "action": "",
@@ -79,6 +86,13 @@
   {
     "path": "cart/cart_frag",
     "className": "com.joekay.module_cart.ui.CartFragment",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
+    "path": "cart/cart_act",
+    "className": "com.joekay.module_cart.CartActivity",
     "action": "",
     "description": "",
     "params": {}

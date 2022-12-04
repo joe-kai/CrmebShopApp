@@ -1,7 +1,5 @@
 package com.joekay.module_mine.ui
 
-import android.os.Build
-import com.joekay.base.ActivityManager
 import com.joekay.base.dsl.buildSpannableString
 import com.joekay.base.ext.load
 import com.joekay.base.utils.GlobalUtil
@@ -19,24 +17,13 @@ class AboutActivity : BaseActivity<ActivityAboutBinding>() {
     }
 
     override fun initBinding() {
-        val versionCode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            application.packageManager.getPackageInfo(
-                GlobalUtil.appPackage,
-                0
-            ).longVersionCode
-        } else {
-            application.packageManager.getPackageInfo(
-                GlobalUtil.appPackage,
-                0
-            ).versionCode.toLong()
-        }
         mBinding.run {
             ivAppIcon.load(GlobalUtil.getAppIcon())
-            tvAppName.text = getResString(application.applicationInfo.labelRes)
+            tvAppName.text = GlobalUtil.appName
             tvAppVersionCode.buildSpannableString {
                 addText("版本号：")
                 addText(
-                    versionCode.toString()
+                    GlobalUtil.appVersionCode.toString()
                 ) {
                     setColor(getColor(color.red))
                 }
@@ -44,16 +31,11 @@ class AboutActivity : BaseActivity<ActivityAboutBinding>() {
             tvAppVersionName.buildSpannableString {
                 addText("版本名称：")
                 addText(
-                    application.packageManager.getPackageInfo(
-                        GlobalUtil.appPackage,
-                        0
-                    ).versionName
+                    GlobalUtil.appVersionName
                 ) {
                     setColor(getColor(color.red))
                 }
             }
-
         }
     }
-
 }

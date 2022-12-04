@@ -10,7 +10,6 @@ import com.joekay.base.ext.logW
 import com.joekay.base.ext.showToast
 import com.joekay.base.ext.visible
 import com.joekay.base.paging.FooterAdapter
-import com.joekay.base.utils.GlobalUtil
 import com.joekay.base.widgets.AutoPlayScrollListener
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_base.event.MessageEvent

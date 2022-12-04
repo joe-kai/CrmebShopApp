@@ -18,9 +18,7 @@ import com.joekay.base.widgets.LoadingDialog
  * @explain：
  */
 abstract class BaseBindingFrag<VB : ViewBinding> : BaseFrag(), IBaseView {
-    private val _binding: VB by lazy(mode = LazyThreadSafetyMode.NONE) {
-        BindingReflex.reflexViewBinding(javaClass, layoutInflater)
-    }
+    private var _binding: VB? = null
 
     protected val mBinding
         get() = checkNotNull(_binding) {
@@ -37,8 +35,9 @@ abstract class BaseBindingFrag<VB : ViewBinding> : BaseFrag(), IBaseView {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         getAttachActivity()?.window?.setTransparentStyle()
+        _binding = BindingReflex.reflexViewBinding(javaClass, layoutInflater)
         loading = false
-        return _binding.root
+        return mBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,7 +49,7 @@ abstract class BaseBindingFrag<VB : ViewBinding> : BaseFrag(), IBaseView {
     }
 
     open fun setDarkStatusBar(dark: Boolean = true) {
-        WindowCompat.getInsetsController(getAttachActivity()?.window!!, _binding.root).apply {
+        WindowCompat.getInsetsController(getAttachActivity()?.window!!, mBinding.root).apply {
             isAppearanceLightStatusBars = dark
             isAppearanceLightNavigationBars = dark
         }
@@ -94,6 +93,7 @@ abstract class BaseBindingFrag<VB : ViewBinding> : BaseFrag(), IBaseView {
     override fun onDestroy() {
         super.onDestroy()
         loading = false
+        _binding = null
 
     }
 }

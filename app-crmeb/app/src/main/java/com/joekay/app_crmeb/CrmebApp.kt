@@ -1,8 +1,7 @@
 package com.joekay.app_crmeb
 
 import android.content.Context
-import com.joekay.module_base.base.BaseApp
-import com.joekay.resource.RouterPath
+import com.joekay.module_base.base.BaseApplication
 import com.therouter.TheRouter
 import dagger.hilt.android.HiltAndroidApp
 
@@ -12,12 +11,11 @@ import dagger.hilt.android.HiltAndroidApp
  * @explain：
  */
 @HiltAndroidApp
-class CrmebApp : BaseApp() {
-
+class CrmebApp : BaseApplication() {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         TheRouter.isDebug = true
-        TheRouter.build(RouterPath.act_main).navigation()
+        //TheRouter.build(RouterPath.act_video).navigation()
     }
 
 }

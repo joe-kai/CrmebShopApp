@@ -30,14 +30,19 @@ object GlobalUtil {
      * @return 当前应用程序的名称。
      */
     val appName: String
-        get() = ActivityManager.getInstance().getApplication().resources.getString(ActivityManager.getInstance().getApplication().applicationInfo.labelRes)
+        get() = ActivityManager.getInstance().getApplication().resources.getString(
+            ActivityManager.getInstance().getApplication().applicationInfo.labelRes
+        )
 
     /**
      * 获取当前应用程序的版本名。
      * @return 当前应用程序的版本名。
      */
     val appVersionName: String
-        get() = ActivityManager.getInstance().getApplication().packageManager.getPackageInfo(appPackage, 0).versionName
+        get() = ActivityManager.getInstance().getApplication().packageManager.getPackageInfo(
+            appPackage,
+            0
+        ).versionName
 
     /**
      * 获取当前应用程序的版本号。
@@ -45,7 +50,10 @@ object GlobalUtil {
      */
     val appVersionCode: Long
         get() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            ActivityManager.getInstance().getApplication().packageManager.getPackageInfo(appPackage, 0).longVersionCode
+            ActivityManager.getInstance().getApplication().packageManager.getPackageInfo(
+                appPackage,
+                0
+            ).longVersionCode
         } else {
             ActivityManager.getInstance().getApplication().packageManager.getPackageInfo(
                 appPackage,
@@ -101,7 +109,9 @@ object GlobalUtil {
      * @return 字符串资源id对应的字符串内容。
      */
     fun getDimension(resId: Int): Int {
-        return ActivityManager.getInstance().getApplication().resources.getDimensionPixelOffset(resId)
+        return ActivityManager.getInstance().getApplication().resources.getDimensionPixelOffset(
+            resId
+        )
     }
 
     /**
@@ -114,7 +124,11 @@ object GlobalUtil {
      * @return 指定资源名的资源id。
      */
     fun getResourceId(name: String, type: String): Int {
-        return ActivityManager.getInstance().getApplication().resources.getIdentifier(name, type, appPackage)
+        return ActivityManager.getInstance().getApplication().resources.getIdentifier(
+            name,
+            type,
+            appPackage
+        )
     }
 
     fun getDrawable(resId: Int): Drawable? {
@@ -134,10 +148,11 @@ object GlobalUtil {
     fun getApplicationMetaData(key: String): String? {
         var applicationInfo: ApplicationInfo? = null
         try {
-            applicationInfo = ActivityManager.getInstance().getApplication().packageManager.getApplicationInfo(
-                appPackage,
-                PackageManager.GET_META_DATA
-            )
+            applicationInfo =
+                ActivityManager.getInstance().getApplication().packageManager.getApplicationInfo(
+                    appPackage,
+                    PackageManager.GET_META_DATA
+                )
         } catch (e: PackageManager.NameNotFoundException) {
         }
         if (applicationInfo == null) return ""
@@ -152,7 +167,8 @@ object GlobalUtil {
      */
     fun isInstalled(packageName: String): Boolean {
         val packageInfo: PackageInfo? = try {
-            ActivityManager.getInstance().getApplication().packageManager.getPackageInfo(packageName, 0)
+            ActivityManager.getInstance()
+                .getApplication().packageManager.getPackageInfo(packageName, 0)
         } catch (e: PackageManager.NameNotFoundException) {
             null
         }

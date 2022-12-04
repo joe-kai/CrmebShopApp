@@ -2,15 +2,11 @@ package com.joekay.module_base.base
 
 import TitleBarAction
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.viewbinding.ViewBinding
 import com.gyf.immersionbar.ImmersionBar
 import com.hjq.bar.TitleBar
-import com.joekay.base.ActivityCollector
 import com.joekay.base.action.ResourcesAction
 import com.joekay.base.activity.BaseBindingAct
 import com.joekay.base.ext.ShowDialogShare
@@ -25,7 +21,6 @@ import com.joekay.network.event.ToastEvent
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import java.lang.ref.WeakReference
 
 /**
  * @author:  JoeKai
@@ -35,10 +30,6 @@ import java.lang.ref.WeakReference
 @Suppress("DEPRECATION")
 abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAction,
     ResourcesAction {
-    /**
-     * 日志输出标志
-     */
-    protected val TAG: String = "Log:${this.javaClass.simpleName}->"
 
     /** 标题栏对象 */
     private var titleBar: TitleBar? = null
@@ -48,29 +39,16 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
      */
     protected var isActive: Boolean = false
 
-    /**
-     * 当前Activity的实例。
-     */
-    protected var mActivity: Activity? = null
-
-    /** 当前Activity的弱引用，防止内存泄露  */
-    private var activityWR: WeakReference<Activity>? = null
-
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
         logD(TAG, "BaseActivity-->onStart()")
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mActivity = this
-        activityWR = WeakReference(mActivity!!)
-        ActivityCollector.pushTask(activityWR)
         val titleBar = getTitleBar()
         ImmersionBar.setTitleBar(this, titleBar)
-
         titleBar?.setOnTitleBarListener(this)
         logD(TAG, "BaseActivity-->onCreate()")
     }
@@ -147,23 +125,14 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         super.onResume()
         logD(TAG, "BaseActivity-->onResume()")
         isActive = true
-        //MobclickAgent.onResume(this)
     }
 
     override fun onPause() {
         super.onPause()
         logD(TAG, "BaseActivity-->onPause()")
         isActive = false
-        //MobclickAgent.onPause(this)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        logD(TAG, "BaseActivity-->onDestroy()")
-
-        mActivity = null
-        ActivityCollector.removeTask(activityWR)
-    }
 
     override fun getTitleBar(): TitleBar? {
         if (titleBar == null) {

@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.joekay.base.ActivityManager
 import com.joekay.base.adapter.FragmentPagerAdapter
-import com.joekay.module_base.dialog.AppUpdateDialog
 import com.joekay.base.ext.showToast
 import com.joekay.base.utils.GlobalUtil
 import com.joekay.module_base.base.BaseActivity
@@ -38,7 +37,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         viewModel.updateApk.observeLoading(this, false) {
             onSuccess {
                 if (GlobalUtil.appVersionCode < it.versionCode) {
-                    UpdateApkDialog.Builder(this@MainActivity)
+                    UpdateApkDialog.Builder(mActivity!!)
                         //版本名
                         .setVersionName(it.versionName)
                         // 是否强制更新

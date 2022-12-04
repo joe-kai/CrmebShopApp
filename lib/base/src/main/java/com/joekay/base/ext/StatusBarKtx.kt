@@ -9,7 +9,6 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.joekay.base.ActivityManager
-import com.joekay.base.utils.GlobalUtil
 
 /**
  * @author:  JoeKai
