@@ -17,9 +17,6 @@ import androidx.core.app.NotificationCompat
 import androidx.core.content.FileProvider
 import com.joekay.base.R
 import com.joekay.base.action.AnimAction
-import com.joekay.base.aop.CheckNet
-import com.joekay.base.aop.Permissions
-import com.joekay.base.aop.SingleClick
 import com.joekay.base.dialog.BaseDialog
 import com.joekay.base.utils.GlobalUtil
 import com.joekay.network.download.OnDownloadListener
@@ -105,7 +102,6 @@ class AppUpdateDialog {
             fileMd5 = md5
         }
 
-        @SingleClick
         override fun onClick(view: View) {
             if (view === closeView) {
                 dismiss()
@@ -129,12 +125,6 @@ class AppUpdateDialog {
         /**
          * 下载 Apk
          */
-        @CheckNet
-        @Permissions(
-            //Permission.READ_EXTERNAL_STORAGE,
-            //Permission.WRITE_EXTERNAL_STORAGE,
-            //Permission.REQUEST_INSTALL_PACKAGES
-        )
         private fun downloadApk() {
             // 设置对话框不能被取消
             setCancelable(false)

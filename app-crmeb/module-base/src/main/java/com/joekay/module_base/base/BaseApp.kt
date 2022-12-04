@@ -5,7 +5,6 @@ import android.content.Context
 import com.hjq.bar.TitleBar
 import com.joekay.base.ActivityManager
 import com.joekay.base.R
-import com.joekay.base.aop.Log
 import com.joekay.base.gilde.GlideApp
 import com.joekay.base.utils.GlobalUtil
 import com.joekay.base.widgets.NoStatusFooter
@@ -85,7 +84,6 @@ open class BaseApp : Application() {
     }
 
 
-    @Log("启动耗时")
     override fun onCreate() {
         super.onCreate()
         initSdk(this)

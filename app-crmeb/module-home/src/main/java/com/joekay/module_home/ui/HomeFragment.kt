@@ -11,8 +11,7 @@ import com.gyf.immersionbar.ImmersionBar
 import com.joekay.base.adapter.Adapter
 import com.joekay.base.ext.load
 import com.joekay.base.ext.showToast
-import com.joekay.base.multiStateView.MultiStateView
-import com.joekay.base.multiStateView.bindMultiState
+import com.joekay.base.multiStateView.*
 import com.joekay.base.multiStateView.state.*
 import com.joekay.base.paging.FooterAdapter
 import com.joekay.module_base.base.BaseFragment
@@ -73,18 +72,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun initBinding() {
         couponState = mBinding.llCoupon.bindMultiState()
-        couponState.show<EmptyState>{
+        couponState.showEmpty {
             it.setEmptyMsg("空空如也")
         }
         secKillState = mBinding.llSecKill.bindMultiState()
-        secKillState.show<ErrorState> {
+        secKillState.showError {
             it.setErrorMsg("chu cuo le")
             it.retry {
                 "啥都没用".showToast()
             }
         }
         groupState = mBinding.llGroup.bindMultiState()
-        groupState.show<LoadingState> {
+        groupState.showLoading {
             it.setLoadingMsg("快快加载···")
         }
         haggleState = mBinding.llHaggle.bindMultiState()

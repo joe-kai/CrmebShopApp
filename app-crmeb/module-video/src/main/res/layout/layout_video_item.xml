@@ -193,8 +193,8 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@id/tvCollectionCount"
         app:layout_constraintStart_toEndOf="@id/ivFavorites"
-        app:layout_constraintTop_toTopOf="@id/tvCollectionCount"
      />
+        app:layout_constraintTop_toTopOf="@id/tvCollectionCount" />
 
     <ImageView
         android:id="@+id/ivShare"

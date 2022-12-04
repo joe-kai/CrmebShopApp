@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.joekay.base.R
 import com.joekay.base.adapter.Adapter
 import com.joekay.base.adapter.BaseAdapter
-import com.joekay.base.aop.SingleClick
 import com.joekay.base.ext.gone
 import com.joekay.base.widgets.PasswordView
 import java.util.*
@@ -126,7 +125,6 @@ class PayPasswordDialog {
         }
 
 
-        @SingleClick
         override fun onClick(view: View) {
             if (view === closeView) {
                 if (autoDismiss) {

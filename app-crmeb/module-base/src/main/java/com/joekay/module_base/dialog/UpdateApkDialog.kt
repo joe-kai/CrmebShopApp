@@ -7,12 +7,10 @@ import android.os.Build
 import android.os.Environment
 import android.text.method.ScrollingMovementMethod
 import android.view.View
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.FileProvider
 import com.joekay.base.R
 import com.joekay.base.action.AnimAction
-import com.joekay.base.aop.SingleClick
 import com.joekay.base.dialog.BaseDialog
 import com.joekay.base.utils.GlobalUtil
 import com.joekay.base.widgets.ProgressButton
@@ -93,7 +91,6 @@ class UpdateApkDialog {
             downloadUrl = url
         }
 
-        @SingleClick
         override fun onClick(view: View) {
             if (view === closeView) {
                 dismiss()

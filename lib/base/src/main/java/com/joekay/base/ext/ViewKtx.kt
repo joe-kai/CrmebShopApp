@@ -2,7 +2,6 @@ package com.joekay.base.ext
 
 import android.view.View
 import android.view.animation.AlphaAnimation
-import com.joekay.base.aop.SingleClick
 
 
 /**
@@ -78,18 +77,15 @@ fun View?.invisibleAlphaAnimation(duration: Long = 500L) {
  * @param v 点击的控件
  * @param block 处理点击事件回调代码块
  */
-@SingleClick
 fun View.setSingleClickListener(block: View.() -> Unit) {
     this.setOnClickListener { it.block() }
 }
 
-@SingleClick
 fun setOnClickListener(vararg v: View?, block: View.() -> Unit) {
     val listener = View.OnClickListener { it.block() }
     v.forEach { it?.setOnClickListener(listener) }
 }
 
-@SingleClick
 fun setOnLoginClickListener(vararg v: View?, block: View.() -> Unit) {
     val listener = View.OnClickListener {
         //if (DataStoreUtils.getSyncData(TOKEN_KEY, "").isEmpty()) {
@@ -109,7 +105,6 @@ fun setOnLoginClickListener(vararg v: View?, block: View.() -> Unit) {
  * @param v 点击的控件
  * @param listener 处理点击事件监听器
  */
-@SingleClick
 fun setOnClickListener(vararg v: View?, listener: View.OnClickListener) {
     v.forEach { it?.setOnClickListener(listener) }
 }
