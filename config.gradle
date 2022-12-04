@@ -95,7 +95,13 @@ ext {
             //MMKV : https://github.com/Tencent/MMKV
             mmkv                 : 'com.tencent:mmkv:1.2.14',
 
-            rxDownload: "com.github.ssseasonnn:RxDownload:1.1.4",
+            rxDownload           : "com.github.ssseasonnn:RxDownload:1.1.4",
+
+
+            // 此处以JCore 4.0.0 版本为例
+            jcore                : 'cn.jiguang.sdk:jcore:4.0.0',
+            // 此处以JPush 4.8.5 版本为例
+            jpush                : 'cn.jiguang.sdk:jpush:4.8.5',
 
             // 多语种：https://github.com/getActivity/MultiLanguages
             // 悬浮窗：https://github.com/getActivity/XToast

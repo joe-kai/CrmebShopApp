@@ -13,7 +13,24 @@ android {
 
     defaultConfig {
         applicationId "com.joekay.app_crmeb"
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: "com.joekay.app_crmeb",
+                JPUSH_APPKEY : "54fab9eda7b17074a81e721b",//值来自开发者平台取得的AppKey
+                JPUSH_CHANNEL: "default_developer",
+//                MEIZU_APPKEY:"MZ-魅族的APPKEY",
+//                MEIZU_APPID:"MZ-魅族的APPID",
+//                XIAOMI_APPID:"MI-小米的APPID",
+//                XIAOMI_APPKEY:"MI-小米的APPKEY",
+//                OPPO_APPKEY:"OP-oppo的APPKEY",
+//                OPPO_APPID:"OP-oppo的APPID",
+//                OPPO_APPSECRET:"OP-oppo的APPSECRET",
+//                VIVO_APPKEY:"vivo的APPKEY",
+//                VIVO_APPID:"vivo的APPID"
+        ]
+
     }
+
 
     buildTypes {
         debug {
@@ -25,7 +42,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    lintOptions {
+        abortOnError false
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     flavorDimensions 'package'
     productFlavors {
         normal {
@@ -49,12 +73,23 @@ android {
         }
     }
 
+    repositories {
+//        flatDir {
+//            dirs 'libs'
+//        }
+    }
 }
 
 dependencies {
+    implementation fileTree(include: ['*.jar', "*.aar"], dir: 'libs')
+
     api project(":app-crmeb:module-base")
     api libs.hilt
     kapt libs.hilt_kapt
+
+
+    api libs.jcore
+    api libs.jpush
 
     if (!isApp) {
         api project(":app-crmeb:module-main")
