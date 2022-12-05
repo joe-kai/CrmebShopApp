@@ -1,11 +1,10 @@
 ## 项目说明
-[![](https://img.shields.io/badge/Google-Developer%20Library-4c86ea.svg?style=flat?style=flat-square&logo=Android)][33]
-[![](https://img.shields.io/badge/License-Apache%202.0-1d7fbf.svg?style=flat)][34]
-[![](https://img.shields.io/badge/GitHub-vipyinzhiwei-5674dd.svg?style=flat?style=flat-square&logo=GitHub)][36]
 
+基于 [Kotlin] 语言 编写 商城类+「[开眼 Eyepetizer]」短视频 Android 客户端项目，采用 Android组件化 + [Jetpack]
++ [协程]实现的 MVVM 架构。
 
+[1]:https://kotlinlang.org
 
+[2]:https://www.kaiyanapp.com
 
-[33]:https://devlibrary.withgoogle.com/products/android/repos/VIPyinzhiwei-Eyepetizer
-[34]:https://opensource.org/licenses/Apache-2.0
-[36]:https://github.com/joe-kai
+[3]:https://developer.android.com/jetpack
