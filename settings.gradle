@@ -18,7 +18,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "CrmebShopApp"
 
-
 include ':lib:base'
 include ':lib:resource'
 include ':lib:network'

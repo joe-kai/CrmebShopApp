@@ -4,6 +4,7 @@ ext {
 
 
 ext.app_versions = [
+        apkName          : "商城App",
         minSdkVersion    : 26,
         compileSdkVersion: 33,
         targetSdkVersion : 33,
