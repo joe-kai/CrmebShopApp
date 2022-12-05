@@ -30,15 +30,33 @@ android {
         ]
 
     }
+    signingConfigs {
+        release {
+            keyAlias 'app_crmeb'
+            keyPassword 'app.crmeb'
+            storePassword 'app.crmeb'
+            storeFile file('./store/app_crmeb_release.store')
 
+        }
+        debug {
+            keyAlias 'app_crmeb'
+            keyPassword 'app.crmeb'
+            storePassword 'app.crmeb'
+            storeFile file("./store/app_crmeb_debug.store")
+        }
+
+    }
 
     buildTypes {
         debug {
             debuggable true
             minifyEnabled false
+            signingConfig signingConfigs.debug
         }
         release {
             minifyEnabled false
+
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
