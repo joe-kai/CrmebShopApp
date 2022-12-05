@@ -196,7 +196,7 @@ class AppUpdateDialog {
 
                     override fun onProgress(file: File, progress: Int) {
                         updateView?.text =
-                            String.format(getResString(R.string.update_status_running)!!, progress)
+                            String.format(getResString(R.string.update_status_running), progress)
                         progressView?.progress = progress
                         // 更新下载通知
                         notificationManager.notify(
@@ -204,7 +204,7 @@ class AppUpdateDialog {
                                 // 设置通知的文本
                                 .setContentText(
                                     String.format(
-                                        getResString(R.string.update_status_running)!!,
+                                        getResString(R.string.update_status_running),
                                         progress
                                     )
                                 )
@@ -226,7 +226,7 @@ class AppUpdateDialog {
                                 // 设置通知的文本
                                 .setContentText(
                                     String.format(
-                                        getResString(R.string.update_status_successful)!!,
+                                        getResString(R.string.update_status_successful),
                                         100
                                     )
                                 )

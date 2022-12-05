@@ -37,7 +37,7 @@ open class BaseApplication : Application() {
             // 设置标题栏初始化器
             TitleBar.setDefaultStyle(TitleBarStyle())
             // 设置全局初始化器
-            SmartRefreshLayout.setDefaultRefreshInitializer { context: Context, layout: RefreshLayout ->
+            SmartRefreshLayout.setDefaultRefreshInitializer { _, layout: RefreshLayout ->
                 // 刷新头部是否跟随内容偏移
                 layout.setEnableLoadMore(true)
                 layout.setEnableLoadMoreWhenContentNotFull(true)
@@ -78,8 +78,6 @@ open class BaseApplication : Application() {
 
             // Activity 栈管理初始化
             ActivityManager.getInstance().init(application)
-            // Bugly异常捕捉
-            CrashReport.initCrashReport(application, "70d55d6996", false)
         }
     }
 

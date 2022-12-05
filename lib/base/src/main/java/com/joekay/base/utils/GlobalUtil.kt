@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.joekay.base.utils
 
 import android.content.pm.ApplicationInfo

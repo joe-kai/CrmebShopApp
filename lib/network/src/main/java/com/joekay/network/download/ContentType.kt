@@ -25,7 +25,7 @@ class ContentType {
          * 根据文件名获取 MIME 类型
          */
         fun guessMimeType(fileName: String): MediaType? {
-            var fileName = fileName
+            var  fileName  =fileName
             if (TextUtils.isEmpty(fileName)) {
                 return STREAM
             }

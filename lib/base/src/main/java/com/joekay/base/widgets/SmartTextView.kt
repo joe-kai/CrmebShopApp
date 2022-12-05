@@ -16,11 +16,11 @@ class SmartTextView : AppCompatTextView {
     constructor(context: Context) : super(context) {
         SmartTextView(context, null)
     }
-
+    @JvmOverloads
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         SmartTextView(context, attrs, 0)
     }
-
+    @JvmOverloads
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
         context, attrs, defStyleAttr
     ) {

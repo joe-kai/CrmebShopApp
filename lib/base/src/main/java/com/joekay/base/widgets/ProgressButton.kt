@@ -15,6 +15,7 @@ import com.joekay.base.R
  * @date:  2022/12/2
  * @explain：自定义进度条Button
  */
+@Suppress("DEPRECATION")
 class ProgressButton : AppCompatButton {
     private var mCornerRadius = 0f
     private var mProgressMargin = 0f

@@ -104,7 +104,7 @@ object MMKVUtils {
         return mmkv.decodeBytes(key)
     }
 
-    fun getByteArray(key: String, defult: Int): ByteArray? {
+    fun getByteArray(key: String, default: Int): ByteArray? {
         return mmkv.decodeBytes(key)
     }
 

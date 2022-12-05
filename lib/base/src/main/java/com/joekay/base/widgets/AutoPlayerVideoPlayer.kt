@@ -215,17 +215,17 @@ class AutoPlayScrollListener(private val itemPlayId: Int, private val rangeTop: 
         }
         AlertDialog.Builder(context).apply {
             setMessage(context.resources.getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi))
-            setPositiveButton(context.resources.getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi_confirm)) { dialog, which ->
+            setPositiveButton(context.resources.getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi_confirm)) { dialog, _ ->
                 dialog.dismiss()
                 gsyBaseVideoPlayer.startPlayLogic()
                 isNeedShowWifiDialog = false
             }
-            setPositiveButton(context.resources.getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi_confirm)) { dialog, which ->
+            setPositiveButton(context.resources.getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi_confirm)) { dialog, _ ->
                 dialog.dismiss()
                 gsyBaseVideoPlayer.startPlayLogic()
                 isNeedShowWifiDialog = false
             }
-            setNegativeButton(context.resources.getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi_cancel)) { dialog, which ->
+            setNegativeButton(context.resources.getString(com.shuyu.gsyvideoplayer.R.string.tips_not_wifi_cancel)) { dialog, _ ->
                 dialog.dismiss()
                 isNeedShowWifiDialog = true
             }

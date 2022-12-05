@@ -73,6 +73,7 @@ open class BaseRepository<C>(
     /**
      * data 为 null，或者 data 是集合类型，但是集合为空都会进入 onEmpty 回调
      */
+    @Suppress("UNCHECKED_CAST")
     private fun <T> checkEmptyResponse(data: T?): BaseResponse<T> =
         if (data is List<*> && data.isEmpty() || data is PagingResponse<*> && data.list.isEmpty()) {
             EmptyResponse()

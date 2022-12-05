@@ -13,7 +13,8 @@ import okio.Timeout
  * @explain：
  */
 class CallProxy : Call {
-    private lateinit var mCall: Call
+    private var mCall: Call
+
     constructor(call: Call) {
         mCall = call
     }
@@ -23,7 +24,7 @@ class CallProxy : Call {
     }
 
     override fun cancel() {
-         mCall.cancel()
+        mCall.cancel()
     }
 
     override fun clone(): Call {
