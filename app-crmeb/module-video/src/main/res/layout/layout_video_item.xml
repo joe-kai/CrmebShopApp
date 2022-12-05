@@ -142,12 +142,13 @@
         android:layout_height="35dp"
         android:layout_marginTop="4dp"
         android:gravity="center"
-        android:paddingStart="9dp"
+        android:paddingStart="@dimen/dp_10"
         android:textColor="@color/black65"
         android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@id/ivCollectionCount"
         app:layout_constraintTop_toBottomOf="@id/videoPlayer"
-        tools:text="0" />
+        tools:text="0"
+        tools:ignore="RtlSymmetry" />
 
     <ImageView
         android:id="@+id/ivReply"
@@ -193,7 +194,6 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@id/tvCollectionCount"
         app:layout_constraintStart_toEndOf="@id/ivFavorites"
-     />
         app:layout_constraintTop_toTopOf="@id/tvCollectionCount" />
 
     <ImageView
