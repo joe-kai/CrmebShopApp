@@ -22,9 +22,13 @@ abstract class BaseBindingAct<VB : ViewBinding> : BaseAct(), IBaseView {
      */
     protected val TAG: String = "Log:${this.javaClass.simpleName}->"
 
-    private var _binding: VB? = null
+    private val _binding: VB? by lazy(mode = LazyThreadSafetyMode.NONE) {
+        BindingReflex.reflexViewBinding(javaClass, layoutInflater)
+    }
     protected open val mBinding: VB
-        get() = _binding!!
+        get() = checkNotNull(_binding) {
+            "初始化binding失败或者binding未初始化"
+        }
     private lateinit var mLoadingDialog: LoadingDialog
 
     /**
@@ -37,7 +41,7 @@ abstract class BaseBindingAct<VB : ViewBinding> : BaseAct(), IBaseView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = BindingReflex.reflexViewBinding(javaClass, layoutInflater)
+        //_binding = BindingReflex.reflexViewBinding(javaClass, layoutInflater)
         activityWR = WeakReference(this)
         mActivity = activityWR?.get()
         ActivityCollector.pushTask(activityWR)
@@ -67,7 +71,7 @@ abstract class BaseBindingAct<VB : ViewBinding> : BaseAct(), IBaseView {
         super.onDestroy()
         logD(TAG, "BaseActivity-->onDestroy()")
         mActivity = null
-        _binding = null
+        //_binding = null
         ActivityCollector.removeTask(activityWR)
     }
 

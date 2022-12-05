@@ -18,8 +18,9 @@ import com.joekay.base.widgets.LoadingDialog
  * @explain：
  */
 abstract class BaseBindingFrag<VB : ViewBinding> : BaseFrag(), IBaseView {
-    private var _binding: VB? = null
-
+    private val _binding: VB? by lazy(mode = LazyThreadSafetyMode.NONE) {
+        BindingReflex.reflexViewBinding(javaClass, layoutInflater)
+    }
     protected val mBinding
         get() = checkNotNull(_binding) {
             "初始化binding失败或者binding未初始化"
@@ -35,7 +36,7 @@ abstract class BaseBindingFrag<VB : ViewBinding> : BaseFrag(), IBaseView {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         getAttachActivity()?.window?.setTransparentStyle()
-        _binding = BindingReflex.reflexViewBinding(javaClass, layoutInflater)
+        //_binding = BindingReflex.reflexViewBinding(javaClass, layoutInflater)
         loading = false
         return mBinding.root
     }
@@ -93,7 +94,7 @@ abstract class BaseBindingFrag<VB : ViewBinding> : BaseFrag(), IBaseView {
     override fun onDestroy() {
         super.onDestroy()
         loading = false
-        _binding = null
+        //_binding = null
 
     }
 }

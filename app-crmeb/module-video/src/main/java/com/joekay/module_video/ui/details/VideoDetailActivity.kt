@@ -267,7 +267,7 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
                 showFull()
             }
             //防止错位设置
-            playTag = TAG
+            playTag = it.playUrl
             //音频焦点冲突时是否释放
             isReleaseWhenLossAudio = false
             //增加封面

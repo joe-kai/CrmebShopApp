@@ -38,12 +38,12 @@ android {
             storeFile file('./store/app_crmeb_release.store')
 
         }
-        debug {
-            keyAlias 'app_crmeb'
-            keyPassword 'app.crmeb'
-            storePassword 'app.crmeb'
-            storeFile file("./store/app_crmeb_debug.store")
-        }
+//        debug {
+//            keyAlias 'app_crmeb'
+//            keyPassword 'app.crmeb'
+//            storePassword 'app.crmeb'
+//            storeFile file("./store/app_crmeb_debug.store")
+//        }
 
     }
 
@@ -51,7 +51,7 @@ android {
         debug {
             debuggable true
             minifyEnabled false
-            signingConfig signingConfigs.debug
+//            signingConfig signingConfigs.debug
         }
         release {
             minifyEnabled false
