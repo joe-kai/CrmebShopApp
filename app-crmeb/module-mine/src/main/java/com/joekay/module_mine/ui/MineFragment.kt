@@ -103,6 +103,10 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
             }
             tvAbout.setOnClickListener {
                 TheRouter.build(RouterPath.act_about).navigation()
+
+            }
+            tvFullVideo.setOnClickListener {
+                TheRouter.build(RouterPath.act_video).navigation()
             }
         }
     }

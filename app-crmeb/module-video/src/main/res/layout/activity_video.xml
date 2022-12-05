@@ -6,11 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".VideoActivity">
 
-    <fragment
-        android:id="@+id/video_frag"
-        android:name="com.joekay.module_video.ui.VideoFragment"
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout="@layout/fragment_video" />
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/layout_full_video_item" />
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
 
 </LinearLayout>
