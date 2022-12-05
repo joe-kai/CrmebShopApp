@@ -14,7 +14,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -41,15 +42,15 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/app_logo"
         android:label="${appName}"
         android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.CrmebShopApp"
         android:usesCleartextTraffic="true"
-        android:hardwareAccelerated="true"
-        android:requestLegacyExternalStorage="true"
         tools:targetApi="s">
         <activity
             android:name=".SplashActivity"
@@ -78,7 +79,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <service android:name=".jpush.CrmebPushService"
+        <service
+            android:name=".jpush.CrmebPushService"
             android:enabled="true"
             android:exported="false"
             android:process=":pushcore">
@@ -91,16 +93,34 @@
         <!-- 新的 tag/alias 接口结果返回需要开发者配置一个自定的广播 -->
         <!-- 3.3.0开始所有事件将通过该类回调 -->
         <!-- 该广播需要继承 JPush 提供的 JPushMessageReceiver 类, 并如下新增一个 Intent-Filter -->
-        <receiver
-            android:name=".jpush.CrmebPushReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
-                <category android:name="com.joekay.app_crmeb" />
-            </intent-filter>
+        <!--        <receiver-->
+        <!--            android:name=".jpush.CrmebPushReceiver"-->
+        <!--            android:enabled="true"-->
+        <!--            android:exported="false">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />-->
+        <!--                <category android:name="com.joekay.app_crmeb" />-->
+        <!--            </intent-filter>-->
 
-        </receiver>
+        <!--        </receiver>-->
+
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="com.joekay.app_crmeb.init.UMengInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="638d56ebba6a5259c4c0127f" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="opensource" />
     </application>
 
 </manifest>

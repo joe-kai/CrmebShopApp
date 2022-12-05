@@ -15,6 +15,7 @@ dependencies {
     api libs.core_ktx
     api libs.appcompat
     api libs.material
+    api libs.startup
     api libs.activity_ktx
     api libs.fragment_ktx
     api libs.paging
@@ -40,6 +41,7 @@ dependencies {
     kapt libs.hilt_kapt
     api libs.banner
     api libs.glide
+    api libs.glide_integration
     kapt libs.glide_kapt
     api libs.glide_transformations
     api libs.immersionbar
@@ -53,5 +55,9 @@ dependencies {
 
     api libs.titleBar
     api libs.shapeView
+
+    api libs.umsdk_common
+    api libs.umsdk_asms
+
 
 }

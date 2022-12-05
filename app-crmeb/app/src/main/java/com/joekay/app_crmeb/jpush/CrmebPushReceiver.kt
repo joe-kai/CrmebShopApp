@@ -20,24 +20,24 @@ class CrmebPushReceiver : JPushMessageReceiver() {
     }
 
     override fun onNotifyMessageOpened(p0: Context?, p1: NotificationMessage?) {
-        //"onNotifyMessageOpened".showToast()
-        kotlin.io.println("-----------${p1?.toString()}")
-
-        val json = JSONObject(p1?.notificationExtras!!)
-        var message_id = json.getInt("type")
-        when (message_id) {
-            1 -> {
-                com.therouter.TheRouter.build(com.joekay.resource.RouterPath.act_mine).navigation()
-            }
-            else - {
-                com.therouter.TheRouter.build(com.joekay.resource.RouterPath.act_product)
-                    .navigation()
-
-            }
-
-        }
-
-        "$message_id".showToast()
+        ////"onNotifyMessageOpened".showToast()
+        //kotlin.io.println("-----------${p1?.toString()}")
+        //
+        //val json = JSONObject(p1?.notificationExtras!!)
+        //var message_id = json.getInt("type")
+        //when (message_id) {
+        //    1 -> {
+        //       TheRouter.build(RouterPath.act_mine).navigation()
+        //    }
+        //    else - {
+        //      TheRouter.build(RouterPath.act_product)
+        //            .navigation()
+        //
+        //    }
+        //
+        //}
+        //
+        //"$message_id".showToast()
         super.onNotifyMessageOpened(p0, p1)
     }
 

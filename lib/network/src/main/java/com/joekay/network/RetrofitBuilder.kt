@@ -23,7 +23,7 @@ object RetrofitBuilder {
     private val retrofitMap = mutableMapOf<String, Retrofit>()
     private var interceptorList = mutableListOf<Interceptor>()
 
-    private val okHttpClient: OkHttpClient by lazy {
+    val okHttpClient: OkHttpClient by lazy {
         val builder = OkHttpClient.Builder()
             .callTimeout(CALL_TIME_OUT, TimeUnit.SECONDS)
             .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
