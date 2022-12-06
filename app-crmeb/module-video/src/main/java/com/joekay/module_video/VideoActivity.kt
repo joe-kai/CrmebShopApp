@@ -12,6 +12,7 @@ import com.joekay.base.ext.showToast
 import com.joekay.base.ext.visible
 import com.joekay.base.paging.FooterAdapter
 import com.joekay.base.widgets.AutoPlayScrollListener
+import com.joekay.base.widgets.FullAutoPlayScrollListener
 import com.joekay.module_base.base.BaseActivity
 import com.joekay.module_base.event.MessageEvent
 import com.joekay.module_base.event.RefreshEvent
@@ -55,10 +56,8 @@ class VideoActivity : BaseActivity<ActivityVideoBinding>() {
         mBinding.recyclerView.setHasFixedSize(true)
         mBinding.recyclerView.itemAnimator = null
         mBinding.recyclerView.addOnScrollListener(
-            AutoPlayScrollListener(
-                R.id.videoPlayer,
-                AutoPlayScrollListener.PLAY_RANGE_TOP,
-                AutoPlayScrollListener.PLAY_RANGE_BOTTOM
+            FullAutoPlayScrollListener(
+                R.id.videoPlayer
             )
         )
         mBinding.refreshLayout.setOnRefreshListener { fullVideoAdapter.refresh() }

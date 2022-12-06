@@ -76,7 +76,6 @@ android {
         }
         self {
             dimension 'package'
-            applicationIdSuffix ".self"
             manifestPlaceholders = [appName: "@string/app_name_self"]
         }
     }

@@ -102,7 +102,6 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
     }
 
     private fun setupViews() {
-
         initParams()
         orientationUtils = OrientationUtils(this, mBinding.videoPlayer)
         //relatedAdapter = NewDetailRelatedAdapter(this, viewModel.relatedDataList, viewModel.videoInfoData)
