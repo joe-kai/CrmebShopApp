@@ -2,11 +2,11 @@ package com.joekay.network
 
 import android.util.Log
 import com.joekay.network.config.*
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 /**
@@ -23,7 +23,7 @@ object RetrofitBuilder {
     private val retrofitMap = mutableMapOf<String, Retrofit>()
     private var interceptorList = mutableListOf<Interceptor>()
 
-    val okHttpClient: OkHttpClient by lazy {
+    private val okHttpClient: OkHttpClient by lazy {
         val builder = OkHttpClient.Builder()
             .callTimeout(CALL_TIME_OUT, TimeUnit.SECONDS)
             .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
@@ -45,10 +45,18 @@ object RetrofitBuilder {
         builder.build()
     }
 
+
     fun getRetrofit(baseUrl: String): Retrofit = retrofitMap.getOrPut(baseUrl) {
-        Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient).build()
+        Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
     }
+
+    fun <T> create(serviceClass: Class<T>, baseUrl: String): T =
+        getRetrofit(baseUrl).create(serviceClass)
+
 
     fun initInterceptor(interceptor: Interceptor) = apply {
         interceptorList.add(interceptor)

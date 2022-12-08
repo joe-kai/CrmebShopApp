@@ -19,8 +19,10 @@ open class BaseRepository<C>(
     serviceClass: Class<C>, baseUrl: String = BASE_URL
 ) {
     val api: C by lazy {
-        RetrofitBuilder.getRetrofit(baseUrl).create<C>(serviceClass)
+        RetrofitBuilder.getRetrofit(baseUrl).create(serviceClass)
     }
+
+
 
     companion object {
         var page = 1

@@ -8,6 +8,8 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.ListView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -44,7 +46,7 @@ class AutoPlayerVideoPlayer : StandardGSYVideoPlayer {
     override fun touchSurfaceMoveFullLogic(absDeltaX: Float, absDeltaY: Float) {
         super.touchSurfaceMoveFullLogic(absDeltaX, absDeltaY)
         //不给触摸快进，如果需要，屏蔽下方代码即可
-        mChangePosition = false
+        //mChangePosition = false
         //不给触摸音量，如果需要，屏蔽下方代码即可
         mChangeVolume = false
         //不给触摸亮度，如果需要，屏蔽下方代码即可

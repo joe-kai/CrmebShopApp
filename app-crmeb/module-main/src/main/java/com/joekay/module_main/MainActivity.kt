@@ -56,7 +56,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 TheRouter.build(RouterPath.frag_category).createFragment<BaseFragment<*>>()!!
             )
             addFragment(
-                TheRouter.build(RouterPath.frag_video).createFragment<BaseFragment<*>>()!!
+                TheRouter.build(RouterPath.frag_fullVideo).createFragment<BaseFragment<*>>()!!
             )
             addFragment(TheRouter.build(RouterPath.frag_cart).createFragment<BaseFragment<*>>()!!)
             addFragment(TheRouter.build(RouterPath.frag_mine).createFragment<BaseFragment<*>>()!!)

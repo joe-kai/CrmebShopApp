@@ -14,6 +14,13 @@
     "params": {}
   },
   {
+    "path": "video/fullVideo_frag",
+    "className": "com.joekay.module_video.ui.FullVideoFragment",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
     "path": "video/video_act",
     "className": "com.joekay.module_video.VideoActivity",
     "action": "",

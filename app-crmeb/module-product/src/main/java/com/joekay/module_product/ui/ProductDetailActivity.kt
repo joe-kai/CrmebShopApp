@@ -7,8 +7,10 @@ import com.joekay.module_product.databinding.ActivityProductBinding
 import com.joekay.module_product.databinding.ActivityProductDetailBinding
 import com.joekay.resource.RouterPath
 import com.therouter.router.Route
+import dagger.hilt.android.AndroidEntryPoint
 
 @Route(path = RouterPath.act_productDetail)
+@AndroidEntryPoint
 class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
     override fun initObserve() {
     }

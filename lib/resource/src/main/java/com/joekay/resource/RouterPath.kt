@@ -18,6 +18,7 @@ object RouterPath {
     /*module-video*/
     const val act_video = "video/video_act"
     const val frag_video = "video/video_frag"
+    const val frag_fullVideo = "video/fullVideo_frag"
     const val act_videoDetail = "video/videoDetail_act"
 
     /*module-cart*/

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:ignore="MissingDefaultResource">
 
-    <com.joekay.base.widgets.AutoPlayerVideoPlayer
+    <com.joekay.base.widgets.FullVideoPlayer
         android:id="@+id/videoPlayer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
