@@ -11,8 +11,7 @@ import com.joekay.base.ext.logW
 import com.joekay.base.ext.showToast
 import com.joekay.base.ext.visible
 import com.joekay.base.paging.FooterAdapter
-import com.joekay.base.widgets.FullAutoPlayScrollListener
-import com.joekay.module_base.base.BaseActivity
+import com.joekay.base.widgets.FullVideoPlayer
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_base.event.MessageEvent
 import com.joekay.module_base.event.RefreshEvent
@@ -63,7 +62,7 @@ class FullVideoFragment : BaseFragment<ActivityVideoBinding>() {
         mBinding.recyclerView.setHasFixedSize(true)
         mBinding.recyclerView.itemAnimator = null
         mBinding.recyclerView.addOnScrollListener(
-            FullAutoPlayScrollListener(
+            FullVideoPlayer.FullAutoPlayScrollListener(
                 R.id.videoPlayer
             )
         )
