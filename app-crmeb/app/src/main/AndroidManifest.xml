@@ -4,10 +4,10 @@
 
     <!-- Required -->
     <permission
-        android:name="com.joekay.app_crmeb.permission.JPUSH_MESSAGE"
+        android:name="${applicationId}.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
     <!-- Required -->
-    <uses-permission android:name="com.joekay.app_crmeb.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="${applicationId}.permission.JPUSH_MESSAGE" />
 
     <!-- Optional. Required for location feature -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -44,7 +44,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/app_logo"
-        android:label="${appName}"
+        android:label="${apkName}"
         android:networkSecurityConfig="@xml/network_security_config"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/app_logo"

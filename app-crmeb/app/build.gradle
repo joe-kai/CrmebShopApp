@@ -55,7 +55,6 @@ android {
         }
         release {
             minifyEnabled false
-
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -69,7 +68,9 @@ android {
         }
     }
     flavorDimensions 'package'
+
     productFlavors {
+
         normal {
             dimension 'package'
             manifestPlaceholders = [appName: "@string/app_name_normal"]
@@ -78,13 +79,14 @@ android {
             dimension 'package'
             manifestPlaceholders = [appName: "@string/app_name_self"]
         }
+
     }
     applicationVariants.all { variant ->
         // apk 输出文件名配置
         variant.outputs.all { output ->
-            outputFileName = app_versions.apkName + '_v' + variant.versionName + '_' + variant.buildType.name
+            outputFileName = "appName" + '_v' + variant.versionName + '_' + variant.buildType.name
 //            if (variant.buildType.name == buildTypes.release.getName()) {
-                outputFileName += '_' + new Date().format('YYYYMMdd')
+            outputFileName += '_' + new Date().format('YYYYMMdd')
 //            }
             outputFileName += '.apk'
         }

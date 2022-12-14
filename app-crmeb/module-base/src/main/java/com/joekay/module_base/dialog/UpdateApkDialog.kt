@@ -9,6 +9,7 @@ import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.FileProvider
+import com.joekay.base.ActivityManager
 import com.joekay.base.R
 import com.joekay.base.action.AnimAction
 import com.joekay.base.dialog.BaseDialog
@@ -113,7 +114,7 @@ class UpdateApkDialog {
             // 创建要下载的文件对象
             apkFile = File(
                 getContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                getResString(com.joekay.resource.R.string.app_name_normal) + "_v" + nameView?.text.toString() + ".apk"
+                GlobalUtil.appName + "_v" + nameView?.text.toString() + ".apk"
             )
             var disposable = downloadUrl.download()
                 .observeOn(AndroidSchedulers.mainThread())

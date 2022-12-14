@@ -150,7 +150,7 @@ class AppUpdateDialog {
                     // 设置通知时间
                     .setWhen(System.currentTimeMillis())
                     // 设置通知标题
-                    .setContentTitle(getResString(com.joekay.resource.R.string.app_name_normal))
+                    .setContentTitle(GlobalUtil.appName)
                     // 设置通知小图标
                     .setSmallIcon(com.joekay.resource.R.mipmap.app_logo)
                     // 设置通知大图标
@@ -172,7 +172,7 @@ class AppUpdateDialog {
             // 创建要下载的文件对象
             apkFile = File(
                 getContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                getResString(com.joekay.resource.R.string.app_name_normal) + "_v" + nameView?.text.toString() + ".apk"
+                GlobalUtil.appName+ "_v" + nameView?.text.toString() + ".apk"
             )
 
 

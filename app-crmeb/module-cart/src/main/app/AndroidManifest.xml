@@ -4,7 +4,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/app_logo"
-        android:label="@string/cart_app_name"
+        android:label="@string/module_name"
         android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.CrmebShopApp">

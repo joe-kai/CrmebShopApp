@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">一体化Shop</string>
+    <string name="app_name_normal">一体化ShopNormal</string>
+    <string name="app_name_self">一体化ShopSelf</string>
 
     <!-- 升级对话框 -->
     <string name="update_title">发现新版本</string>
