@@ -1,5 +1,6 @@
 package com.joekay.module_main
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -66,10 +67,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
 
+    @SuppressLint("ResourceAsColor")
     override fun initBinding() {
         mBinding.bottomNav.apply {
             itemIconTintList = null
             setOnItemSelectedListener { item ->
+                when (item.itemId) {
+                    R.id.nav_video ->
+                        setBackgroundColor(getResColor(R.color.black))
+                    else ->
+                        setBackgroundColor(getResColor(R.color.white))
+                }
                 when (item.itemId) {
                     R.id.nav_home -> {
                         switchFragment(0)

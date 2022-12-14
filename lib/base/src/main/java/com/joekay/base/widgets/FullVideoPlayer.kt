@@ -11,10 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.joekay.base.R
-import com.joekay.base.ext.dp2px
-import com.joekay.base.ext.gone
-import com.joekay.base.ext.logD
-import com.joekay.base.ext.screenHeight
+import com.joekay.base.ext.*
 import com.shuyu.gsyvideoplayer.utils.CommonUtil
 import com.shuyu.gsyvideoplayer.utils.NetworkUtils
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
@@ -49,7 +46,7 @@ class FullVideoPlayer : StandardGSYVideoPlayer {
 
     override fun updateStartImage() {
         super.updateStartImage()
-        mStartButton.gone()
+        //mStartButton.gone()
         //mBottomProgressBar.gone()
     }
 
@@ -70,6 +67,7 @@ class FullVideoPlayer : StandardGSYVideoPlayer {
         super.changeUiToPreparingShow()
         logD(javaClass.simpleName, "changeUiToPreparingShow")
         //mBottomContainer.gone()
+        mStartButton.gone()
     }
 
     //播放中
@@ -77,12 +75,16 @@ class FullVideoPlayer : StandardGSYVideoPlayer {
         super.changeUiToPlayingShow()
         logD(javaClass.simpleName, "changeUiToPlayingShow")
         //mBottomContainer.gone()
+        mStartButton.gone()
+
     }
 
     //开始缓冲
     override fun changeUiToPlayingBufferingShow() {
         super.changeUiToPlayingBufferingShow()
         logD(javaClass.simpleName, "changeUiToPlayingBufferingShow")
+        mStartButton.gone()
+
     }
 
     //暂停
@@ -90,6 +92,8 @@ class FullVideoPlayer : StandardGSYVideoPlayer {
         super.changeUiToPauseShow()
         logD(javaClass.simpleName, "changeUiToPauseShow")
         //mBottomContainer.gone()
+        mStartButton.visible()
+
     }
 
     //自动播放结束

@@ -13,7 +13,6 @@ android {
 
     defaultConfig {
         applicationId "com.joekay.app_crmeb"
-
         manifestPlaceholders = [
                 JPUSH_PKGNAME: "com.joekay.app_crmeb",
                 JPUSH_APPKEY : "54fab9eda7b17074a81e721b",//值来自开发者平台取得的AppKey
@@ -84,7 +83,7 @@ android {
     applicationVariants.all { variant ->
         // apk 输出文件名配置
         variant.outputs.all { output ->
-            outputFileName = "appName" + '_v' + variant.versionName + '_' + variant.buildType.name
+            outputFileName = rootProject.getName() + '_v' + variant.versionName + '_' + variant.buildType.name
 //            if (variant.buildType.name == buildTypes.release.getName()) {
             outputFileName += '_' + new Date().format('YYYYMMdd')
 //            }
