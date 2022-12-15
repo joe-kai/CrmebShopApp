@@ -1,10 +1,19 @@
 ## 项目说明
 
-基于 [Kotlin][1] 语言 编写商城类 +「[开眼短视频][2]」组合的 Android 客户端项目，采用 Android组件化,[Jetpack][3] + [协程][4]实现的 MVVM 架构。
+基于 [Kotlin][1] 语言 编写商城类 +「[开眼短视频][2]」组合的 Android 客户端项目，采用 Android组件化,[Jetpack][3] + [协程][4]实现的 MVVM
+架构。
 
 ## 下载地址
 
 ![蒲公英](pic/QRCode.png)
+
+## 项目效果
+
+![首页](pic/首页.jpeg)
+![分类](pic/分类.jpeg)
+![视频](pic/视频.jpeg)
+![购物车](pic/购物车.jpeg)
+![我的](pic/我的.jpeg)
 
 
 [1]:https://kotlinlang.org
