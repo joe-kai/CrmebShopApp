@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.joekay.base.adapter.BasePagingAdapter
 import com.joekay.base.ext.load
+import com.joekay.base.ext.loadGif
 import com.joekay.base.ext.showToast
 import com.joekay.module_home.R
 import com.joekay.module_home.databinding.LayoutHomeProductItemBinding
@@ -52,7 +53,7 @@ class HomeProductAdapter @Inject constructor(
             val mBinding = LayoutHomeProductItemBinding.bind(getItemView())
             val data = getItem(position)!!
             mBinding.run {
-                imvProduct.load(
+                imvProduct.loadGif(
                     data.image,
                     placeholder = com.joekay.resource.R.drawable.ic_img_loading_2
                 )

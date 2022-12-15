@@ -58,14 +58,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    lintOptions {
-        abortOnError false
-    }
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['libs']
-        }
-    }
+
     flavorDimensions 'package'
 
     productFlavors {
@@ -94,18 +87,12 @@ android {
         // apk 输出文件名配置
         variant.outputs.all { output ->
 //            outputFileName = rootProject.getName() + '_v' + variant.versionName + '_' + variant.buildType.name
-            outputFileName = app_versions.apkName + '_V' + variant.versionName + '_' + variant.buildType.name
-//            if (variant.buildType.name == buildTypes.release.getName()) {
-            outputFileName += '_' + new Date().format('YYYYMMdd')
-//            }
+            outputFileName = app_versions.apkName + '_v' + variant.versionName + '_' + variant.buildType.name
+            if (variant.buildType.name == buildTypes.release.getName()) {
+                outputFileName += '_' + new Date().format('YYYYMMdd')
+            }
             outputFileName += '.apk'
         }
-    }
-
-    repositories {
-//        flatDir {
-//            dirs 'libs'
-//        }
     }
 }
 

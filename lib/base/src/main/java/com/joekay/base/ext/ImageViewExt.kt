@@ -25,6 +25,51 @@ private fun ImageView.glideGif(url: Any, gif: Int = -1): GlideRequest<*> {
     }
 }
 
+
+/**
+ * Glide加载图片.可设置圆角
+ * @param url 图片地址
+ * @param round 圆角
+ * @param cornerType 裁剪方式
+ */
+fun ImageView.load(
+    url: Any,
+    round: Float = 0f,
+    cornerType: RoundedCornersTransformation.CornerType = RoundedCornersTransformation.CornerType.ALL,
+) {
+    val option = RequestOptions.bitmapTransform(
+        RoundedCornersTransformation(
+            dp2px(round),
+            0,
+            cornerType
+        )
+    )
+    GlideApp.with(this.context)
+        .load(url)
+        .apply(option)
+        .into(this)
+}
+
+fun ImageView.load(
+    url: Any,
+    round: Float = 0f,
+    cornerType: RoundedCornersTransformation.CornerType = RoundedCornersTransformation.CornerType.ALL,
+    options: RequestOptions.() -> RequestOptions
+) {
+    val option = RequestOptions.bitmapTransform(
+        RoundedCornersTransformation(
+            dp2px(round),
+            0,
+            cornerType
+        )
+    )
+    GlideApp.with(this.context)
+        .load(url)
+        .apply(option)
+        .apply(RequestOptions().options())
+        .into(this)
+}
+
 /**
  * Glide加载图片.可设置圆角
  * @param url 图片地址
@@ -32,7 +77,7 @@ private fun ImageView.glideGif(url: Any, gif: Int = -1): GlideRequest<*> {
  * @param placeholder 占位图
  * @param cornerType 裁剪方式
  */
-fun ImageView.load(
+fun ImageView.loadGif(
     url: Any,
     round: Float = 0f,
     placeholder: Int = -1,
@@ -45,21 +90,12 @@ fun ImageView.load(
             cornerType
         )
     )
-    //GlideApp.with(this.context).load(url)
     this.glideGif(url, placeholder)
         .apply(option)
         .into(this)
 }
 
-/**
- * Glide加载图片.可设置圆角
- * @param url 图片地址
- * @param round 圆角
- * @param placeholder 占位图
- * @param cornerType 裁剪方式
- * @param options 配置参数
- */
-fun ImageView.load(
+fun ImageView.loadGif(
     url: Any,
     round: Float = 0f,
     placeholder: Int = -1,
@@ -73,7 +109,6 @@ fun ImageView.load(
             cornerType
         )
     )
-    //GlideApp.with(this.context).load(url)
     this.glideGif(url, placeholder)
         .apply(option).apply(RequestOptions().options())
         .into(this)

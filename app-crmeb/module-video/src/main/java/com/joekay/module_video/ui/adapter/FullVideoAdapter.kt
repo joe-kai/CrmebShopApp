@@ -103,7 +103,7 @@ class FullVideoAdapter @Inject constructor(
             //增加封面
             val cover = ImageView(context)
             //cover.scaleType = ImageView.ScaleType.CENTER_CROP
-            cover.load(coverUrl, 4f)
+            cover.load(coverUrl)
             cover.parent?.run { removeView(cover) }
             thumbImageView = cover
             //设置播放过程中的回调

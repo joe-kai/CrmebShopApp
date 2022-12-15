@@ -39,75 +39,7 @@ class FullVideoPlayer : StandardGSYVideoPlayer {
         mChangeVolume = false
         //不给触摸亮度，如果需要，屏蔽下方代码即可
         mBrightness = false
-
-        mTouchingProgressBar = true
-
     }
-
-    override fun updateStartImage() {
-        super.updateStartImage()
-        //mStartButton.gone()
-        //mBottomProgressBar.gone()
-    }
-
-    override fun touchDoubleUp(e: MotionEvent?) {
-        super.touchDoubleUp(e)
-        //不需要双击暂停
-    }
-
-    //正常
-    override fun changeUiToNormal() {
-        super.changeUiToNormal()
-        logD(javaClass.simpleName, "changeUiToNormal")
-        //mBottomContainer.gone()
-    }
-
-    //准备中
-    override fun changeUiToPreparingShow() {
-        super.changeUiToPreparingShow()
-        logD(javaClass.simpleName, "changeUiToPreparingShow")
-        //mBottomContainer.gone()
-        mStartButton.gone()
-    }
-
-    //播放中
-    override fun changeUiToPlayingShow() {
-        super.changeUiToPlayingShow()
-        logD(javaClass.simpleName, "changeUiToPlayingShow")
-        //mBottomContainer.gone()
-        mStartButton.gone()
-
-    }
-
-    //开始缓冲
-    override fun changeUiToPlayingBufferingShow() {
-        super.changeUiToPlayingBufferingShow()
-        logD(javaClass.simpleName, "changeUiToPlayingBufferingShow")
-        mStartButton.gone()
-
-    }
-
-    //暂停
-    override fun changeUiToPauseShow() {
-        super.changeUiToPauseShow()
-        logD(javaClass.simpleName, "changeUiToPauseShow")
-        //mBottomContainer.gone()
-        mStartButton.visible()
-
-    }
-
-    //自动播放结束
-    override fun changeUiToCompleteShow() {
-        super.changeUiToCompleteShow()
-        logD(javaClass.simpleName, "changeUiToCompleteShow")
-    }
-
-    //错误状态
-    override fun changeUiToError() {
-        super.changeUiToError()
-        logD(javaClass.simpleName, "changeUiToError")
-    }
-
 
     class FullAutoPlayScrollListener(private val itemPlayId: Int) :
         RecyclerView.OnScrollListener() {

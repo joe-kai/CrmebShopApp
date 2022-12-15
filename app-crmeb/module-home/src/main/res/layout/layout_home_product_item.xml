@@ -18,7 +18,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imv_product"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_150"
+            android:layout_height="wrap_content"
             android:scaleType="fitXY" />
 
         <TextView
