@@ -109,4 +109,8 @@ fun setOnClickListener(vararg v: View?, listener: View.OnClickListener) {
     v.forEach { it?.setOnClickListener(listener) }
 }
 
+fun View.setPaddingTop(top: Int) {
+    this.setPadding(this.paddingLeft, this.paddingTop + top, this.paddingRight, this.paddingBottom)
+}
+
 

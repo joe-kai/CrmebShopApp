@@ -52,6 +52,7 @@ dependencies {
     api libs.rxDownload
 
 //    api libs.MultiStatePage
+    api libs.fastjson2
 
     api libs.titleBar
     api libs.shapeView

@@ -15,6 +15,7 @@ import com.joekay.base.multiStateView.*
 import com.joekay.base.multiStateView.state.*
 import com.joekay.base.paging.FooterAdapter
 import com.joekay.module_base.base.BaseFragment
+import com.joekay.module_base.utils.RouterUtils
 import com.joekay.module_home.R
 import com.joekay.module_home.databinding.FragmentHomeBinding
 import com.joekay.module_home.model.Banner
@@ -108,31 +109,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     itemView: View?,
                     position: Int
                 ) {
-                    TheRouter.build(RouterPath.act_productDetail).navigation()
-                    productAdapter.getAdapterItem(position).storeName.showToast()
+                    //TheRouter.build(RouterPath.act_productDetail).navigation()
+                    RouterUtils.goToProductDetail(productAdapter.getAdapterItem(position).id)
                 }
 
             })
-            productAdapter.setOnChildClickListener(
-                R.id.imv_product, R.id.txv_product_name,
-                listener = object : Adapter.OnChildClickListener {
-                    override fun onChildClick(
-                        recyclerView: RecyclerView?,
-                        childView: View?,
-                        position: Int
-                    ) {
-                        when (childView?.id) {
-                            R.id.imv_product -> {
-                                "点击了图片".showToast()
-                            }
-                            R.id.txv_product_name -> {
-                                "点击了商品名称".showToast()
-
-                            }
-                        }
-                    }
-
-                })
+            //productAdapter.setOnChildClickListener(
+            //    R.id.imv_product, R.id.txv_product_name,
+            //    listener = object : Adapter.OnChildClickListener {
+            //        override fun onChildClick(
+            //            recyclerView: RecyclerView?,
+            //            childView: View?,
+            //            position: Int
+            //        ) {
+            //            when (childView?.id) {
+            //                R.id.imv_product -> {
+            //                    "点击了图片".showToast()
+            //                }
+            //                R.id.txv_product_name -> {
+            //                    "点击了商品名称".showToast()
+            //
+            //                }
+            //            }
+            //        }
+            //
+            //    })
             refreshLayout.setEnableRefresh(false)
             productAdapter.addLoadStateListener {
                 when (it.append) {

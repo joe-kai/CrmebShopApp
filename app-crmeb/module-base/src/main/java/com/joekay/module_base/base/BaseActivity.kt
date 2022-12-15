@@ -19,6 +19,7 @@ import com.joekay.network.event.LoadingEvent
 import com.joekay.network.event.State
 import com.joekay.network.event.StateEvent
 import com.joekay.network.event.ToastEvent
+import com.therouter.TheRouter
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -52,6 +53,8 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         val titleBar = getTitleBar()
         ImmersionBar.setTitleBar(this, titleBar)
         titleBar?.setOnTitleBarListener(this)
+        TheRouter.inject(this)
+
         val params = window.attributes
         params.systemUiVisibility =
             View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE

@@ -110,14 +110,15 @@
         app:layout_constraintTop_toBottomOf="@+id/tvContent" />
 
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <com.hjq.shape.view.ShapeTextView
         android:id="@+id/tvVideoDuration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dp_5"
         android:layout_marginBottom="@dimen/dp_5"
-        android:background="@drawable/shape_time_radius_black_2dp_bg"
         android:paddingHorizontal="@dimen/dp_3_5"
+        app:shape_solidColor="@color/black80"
+        app:shape_radius="@dimen/dp_2"
         android:paddingVertical="@dimen/dp_1"
         android:textColor="@color/gray"
         android:textSize="@dimen/sp_13"

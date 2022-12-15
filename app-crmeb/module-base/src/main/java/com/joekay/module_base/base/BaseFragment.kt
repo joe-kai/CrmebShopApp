@@ -14,6 +14,7 @@ import com.joekay.base.fragment.BaseBindingFrag
 import com.joekay.base.ext.logD
 import com.joekay.module_base.event.MessageEvent
 import com.joekay.network.event.LoadingEvent
+import com.therouter.TheRouter
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -41,6 +42,7 @@ abstract class BaseFragment<VB : ViewBinding> : BaseBindingFrag<VB>(), TitleBarA
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        TheRouter.inject(this)
         val titleBar = getTitleBar()
         ImmersionBar.setTitleBar(getAttachActivity(), titleBar)
         // 设置标题栏点击监听

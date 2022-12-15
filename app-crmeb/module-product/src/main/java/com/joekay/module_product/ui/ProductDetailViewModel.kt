@@ -2,7 +2,7 @@ package com.joekay.module_product.ui
 
 import com.joekay.base.vm.BaseViewModel
 import com.joekay.module_product.api.ProductRepo
-import com.joekay.module_product.model.GoodsDetailModel
+import com.joekay.module_product.model.ProductDetailModel
 import com.joekay.network.liveData.BaseLiveData
 import com.joekay.network.liveData.request
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,12 +21,12 @@ class ProductDetailViewModel @Inject constructor(
     val tabs = arrayListOf("商品", "评价", "详情")
     var goodsSpec = ""
     var cartOrBuy: Boolean = false
-    var goodsDetails = BaseLiveData<GoodsDetailModel>()
+    var productDetail = BaseLiveData<ProductDetailModel>()
 
 
-    fun getOrderDetails(id: String) {
-        goodsDetails.request(this) {
-            productRepo.getGoodsDetail(id)
+    fun getProductDetails(id: String) {
+        productDetail.request(this) {
+            productRepo.getProductDetail(id)
         }
     }
 

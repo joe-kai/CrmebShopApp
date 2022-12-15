@@ -100,6 +100,8 @@ ext {
 
             rxDownload           : "com.github.ssseasonnn:RxDownload:1.1.4",
 
+            fastjson2            : "com.alibaba.fastjson2:fastjson2:2.0.14",
+
 
             // 此处以JCore 4.0.0 版本为例
             jcore                : 'cn.jiguang.sdk:jcore:4.0.0',

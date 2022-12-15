@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/detailHeaderLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/transparent">
@@ -13,36 +14,47 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/detailHeaderTabLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:visibility="invisible"
+                app:tabIndicator="@drawable/layer_tab_indicator"
+                app:tabIndicatorColor="@color/red"
+                app:tabIndicatorHeight="0dp"
+                app:tabMaxWidth="@dimen/dp_50"
+                app:tabMinWidth="@dimen/dp_50"
+                app:tabMode="fixed"
+                app:tabPaddingEnd="@dimen/dp_10"
+                app:tabPaddingStart="@dimen/dp_10"
+                app:tabRippleColor="@color/transparent"
+                app:tabSelectedTextColor="@color/red"
+                app:tabTextColor="@color/black" />
+
+        </LinearLayout>
+
+        <com.hjq.shape.view.ShapeImageView
             android:id="@+id/imv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_5"
+            android:layout_marginStart="@dimen/dp_8"
+            android:padding="@dimen/dp_3"
             android:src="@drawable/ic_back_black_25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:shape_radius="@dimen/dp_20"
+            app:shape_solidColor="@color/white30" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/detailHeaderTabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="@dimen/dp_40"
-            android:background="@color/transparent"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:tabIndicator="@drawable/layer_tab_indicator"
-            app:tabIndicatorColor="@color/red"
-            app:tabIndicatorHeight="0dp"
-            app:tabMaxWidth="@dimen/dp_40"
-            app:tabMinWidth="@dimen/dp_40"
-            app:tabMode="fixed"
-            app:tabPaddingEnd="@dimen/dp_10"
-            app:tabPaddingStart="@dimen/dp_10"
-            app:tabRippleColor="@color/transparent"
-            app:tabSelectedTextColor="@color/red"
-            app:tabTextColor="@color/black" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

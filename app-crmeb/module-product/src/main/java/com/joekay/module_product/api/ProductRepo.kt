@@ -9,7 +9,7 @@ import javax.inject.Inject
  * @explain：
  */
 class ProductRepo @Inject constructor() : BaseRepository<ProductApi>(ProductApi::class.java) {
-    suspend fun getGoodsDetail(id: String) = fire {
-        api.getGoodsDetail(id)
+    suspend fun getProductDetail(id: String) = fire {
+        api.getProductDetail(id)
     }
 }

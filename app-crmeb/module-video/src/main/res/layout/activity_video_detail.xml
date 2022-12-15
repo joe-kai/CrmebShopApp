@@ -152,17 +152,19 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <com.hjq.shape.layout.ShapeLinearLayout
         android:id="@+id/llShares"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
         android:layout_alignBottom="@id/videoPlayer"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="7dp"
-        android:background="@drawable/shape_radius_black_alpha_60_4dp_bg"
         android:gravity="center"
+        app:shape_radius="@dimen/dp_5"
+        app:shape_solidColor="@color/black40"
         android:orientation="horizontal"
         android:visibility="gone"
+        app:shape="rectangle"
         tools:visibility="visible">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -201,5 +203,5 @@
             android:padding="7dp"
             android:src="@drawable/ic_share_qq_zone_white_30dp" />
 
-    </LinearLayout>
+    </com.hjq.shape.layout.ShapeLinearLayout>
 </RelativeLayout>
