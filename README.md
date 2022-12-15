@@ -5,7 +5,7 @@
 
 ## 下载地址
 
-![avatar](pic/QRCode_1400.png)
+![avatar](pic/QRCode.png)
 
 
 [1]:https://kotlinlang.org
