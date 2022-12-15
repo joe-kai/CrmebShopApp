@@ -8,11 +8,13 @@
 ![蒲公英](pic/QRCode.png)
 
 ## 项目效果
-首页|分类|视频|购物车|我的
-|:-:|:-:|:-:|:-:|:-:|
-|![首页](pic/首页.jpeg)|![分类](pic/分类.jpeg)|![视频](pic/视频.jpeg)|![购物车](pic/购物车.jpeg)|![我的](pic/我的.jpeg)|
+首页|分类|视频
+|:-:|:-:|:-:|
+|![首页](pic/首页.jpeg)|![分类](pic/分类.jpeg)|![视频](pic/视频.jpeg)|
 
-![gif](pic/未标题-1.gif)
+购物车|我的|GIF-25秒
+|:-:|:-:|:-:|
+|![购物车](pic/购物车.jpeg)|![我的](pic/我的.jpeg)|![gif](pic/未标题-1.gif)|
 
 [1]:https://kotlinlang.org
 
