@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name_normal">商城APP</string>
-    <string name="app_name_self">商城SELF</string>
+    <string name="app_name">Crmeb商城</string>
+    <string name="app_name_normal">商城Normal</string>
+    <string name="app_name_self">商城Self</string>
     <string name="home_exit_hint">再按一次退出</string>
 
 

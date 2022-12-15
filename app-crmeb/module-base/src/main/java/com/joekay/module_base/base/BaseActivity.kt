@@ -4,6 +4,7 @@ import TitleBarAction
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.viewbinding.ViewBinding
 import com.gyf.immersionbar.ImmersionBar
 import com.hjq.bar.TitleBar
@@ -21,6 +22,7 @@ import com.joekay.network.event.ToastEvent
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+
 
 /**
  * @author:  JoeKai
@@ -50,6 +52,10 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         val titleBar = getTitleBar()
         ImmersionBar.setTitleBar(this, titleBar)
         titleBar?.setOnTitleBarListener(this)
+        val params = window.attributes
+        params.systemUiVisibility =
+            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE
+        window.attributes = params
         logD(TAG, "BaseActivity-->onCreate()")
     }
 
@@ -150,6 +156,10 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         getTitleBar()?.title = title
     }
 
+    override fun onLeftClick(titleBar: TitleBar?) {
+        super.onLeftClick(titleBar)
+        finish()
+    }
     /**
      * 调用系统原生分享
      *

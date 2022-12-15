@@ -34,7 +34,7 @@ dependencies {
     api libs.timber
     api libs.lottie
     api libs.bugly
-    debugApi libs.leakcanary
+//    debugApi libs.leakcanary
     api libs.therouter
     kapt libs.therouter_apt
     api libs.hilt

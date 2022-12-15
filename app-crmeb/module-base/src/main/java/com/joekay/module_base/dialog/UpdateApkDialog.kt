@@ -112,11 +112,11 @@ class UpdateApkDialog {
             // 设置对话框不能被取消
             setCancelable(false)
             // 创建要下载的文件对象
-            apkFile = File(
-                getContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
-                GlobalUtil.appName + "_v" + nameView?.text.toString() + ".apk"
-            )
-            var disposable = downloadUrl.download()
+            //apkFile = File(
+            //    getContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),
+            //    GlobalUtil.appName + "_v" + nameView?.text.toString() + ".apk"
+            //)
+             downloadUrl.download()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onNext = {

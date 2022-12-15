@@ -42,7 +42,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                         //版本名
                         .setVersionName(it.versionName)
                         // 是否强制更新
-                        .setForceUpdate(false)
+                        .setForceUpdate(it.force)
                         // 更新日志
                         .setUpdateLog(it.updateMessage)
                         // 下载 URL
@@ -62,7 +62,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             addFragment(TheRouter.build(RouterPath.frag_cart).createFragment<BaseFragment<*>>()!!)
             addFragment(TheRouter.build(RouterPath.frag_mine).createFragment<BaseFragment<*>>()!!)
         }
-
 
     }
 

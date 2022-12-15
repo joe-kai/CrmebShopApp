@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
 import com.joekay.app_crmeb.databinding.ActivitySplashBinding
+import com.joekay.base.utils.GlobalUtil
 import com.joekay.module_base.base.BaseActivity
 import com.joekay.resource.RouterPath
 import com.therouter.TheRouter
@@ -18,6 +19,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     }
 
     override fun initBinding() {
+        mBinding.tvAppName.text = GlobalUtil.appName
+
         // 设置动画监听
         mBinding.lavSplashLottie.addAnimatorListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
