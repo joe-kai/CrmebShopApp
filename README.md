@@ -14,6 +14,7 @@
 ![视频](pic/视频.jpeg)
 ![购物车](pic/购物车.jpeg)
 ![我的](pic/我的.jpeg)
+![视频效果](pic/24_1671090689.mp4)
 
 
 [1]:https://kotlinlang.org
