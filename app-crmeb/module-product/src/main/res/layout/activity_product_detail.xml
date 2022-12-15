@@ -8,14 +8,126 @@
     tools:context=".ui.ProductDetailActivity"
     tools:ignore="MissingDefaultResource">
 
-    <com.hjq.bar.TitleBar
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/detail_info"
+                    layout="@layout/product_detail_info" />
+
+                <include
+                    android:id="@+id/detail_appraise"
+                    layout="@layout/product_detail_appraise" />
+
+                <include
+                    android:id="@+id/detail_web"
+                    layout="@layout/product_detail_web" />
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </FrameLayout>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="商品详情" />
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/dp_10">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/call_peo"
+            android:textSize="@dimen/sp_10"
+            app:drawableTopCompat="@drawable/call" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:drawableTop="@drawable/sel_collection_bg"
+            android:text="@string/collection"
+            android:textSize="@dimen/sp_10" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txv_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:gravity="center"
+                android:text="@string/cart"
+                android:textSize="@dimen/sp_10"
+                app:drawableTopCompat="@drawable/cart" />
+
+            <com.hjq.shape.view.ShapeTextView
+                android:id="@+id/txv_cartNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/txv_cart"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/dp_2"
+                android:textColor="@color/red"
+                android:textSize="@dimen/sp_8"
+                app:shape="rectangle"
+                app:shape_radius="@dimen/dp_20"
+                app:shape_solidColor="@color/white"
+                app:shape_strokeColor="@color/red"
+                app:shape_strokeWidth="@dimen/line_size"
+                tools:text="0" />/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.hjq.shape.view.ShapeTextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_35"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/sp_15"
+            android:text="@string/add_cart"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_12"
+            app:shape_bottomLeftRadius="@dimen/dp_20"
+            app:shape_endColor="#fc9413"
+            app:shape_startColor="#fcbc4c"
+            app:shape_topLeftRadius="@dimen/dp_20" />
+
+        <com.hjq.shape.view.ShapeTextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_35"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/sp_15"
+            android:text="@string/buy_now"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_12"
+            app:shape_bottomRightRadius="@dimen/dp_20"
+            app:shape_endColor="#ec3424"
+            app:shape_startColor="#f65c17"
+            app:shape_topRightRadius="@dimen/dp_20" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

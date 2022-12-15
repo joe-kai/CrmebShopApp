@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_cart">加入购物车</string>
+    <string name="buy_now">立即购买</string>
+    <string name="collection">收藏</string>
+    <string name="call_peo">客服</string>
+    <string name="appraise">评价</string>
+    <string name="see_all_appraise">查看全部评价</string>
+    <string name="product_detail">产品详情</string>
+
+</resources>
