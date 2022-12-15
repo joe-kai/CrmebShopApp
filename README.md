@@ -8,13 +8,12 @@
 ![蒲公英](pic/QRCode.png)
 
 ## 项目效果
+首页|分类|视频|购物车|我的
+|:-:|:-:|:-:|:-:|:-:|
+|![首页](pic/首页.jpeg)|![分类](pic/分类.jpeg)|![视频](pic/视频.jpeg)|![购物车](pic/购物车.jpeg)|![我的](pic/我的.jpeg)|
 
-![首页](pic/首页.jpeg)
-![分类](pic/分类.jpeg)
-![视频](pic/视频.jpeg)
-![购物车](pic/购物车.jpeg)
-![我的](pic/我的.jpeg)
-![视频效果](pic/24_1671090689.mp4)
+<video src="pic/24_1671090689.mp4"></video>
+<iframe height=498 width=510 src="pic/24_1671090689.mp4">
 
 
 [1]:https://kotlinlang.org
