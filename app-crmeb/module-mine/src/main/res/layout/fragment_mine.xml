@@ -48,16 +48,17 @@
                         android:textSize="14sp"
                         tools:text="天涯一刀" />
 
-                    <LinearLayout
+                    <com.hjq.shape.layout.ShapeLinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:background="@drawable/shape_vip_bg"
                         android:gravity="center_vertical"
                         android:paddingLeft="5dp"
                         android:paddingTop="3dp"
                         android:paddingRight="5dp"
-                        android:paddingBottom="3dp">
+                        android:paddingBottom="3dp"
+                        app:shape_radius="@dimen/dp_10"
+                        app:shape_solidColor="@color/black20">
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/civ_vip"
@@ -73,7 +74,7 @@
                             android:textSize="9sp"
                             tools:ignore="SmallSp"
                             tools:text="黄金会员" />
-                    </LinearLayout>
+                    </com.hjq.shape.layout.ShapeLinearLayout>
 
 
                 </LinearLayout>
@@ -194,16 +195,17 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <com.hjq.shape.layout.ShapeLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/shape_white_r10_bg"
             android:orientation="vertical"
             android:paddingLeft="5dp"
             android:paddingTop="10dp"
             android:paddingRight="5dp"
-            android:paddingBottom="10dp">
+            android:paddingBottom="10dp"
+            app:shape_radius="@dimen/dp_10"
+            app:shape_solidColor="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -393,7 +395,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@id/icon4"
-                            android:background="@drawable/shape_white_r15_1_bg"
                             android:gravity="center"
                             android:paddingHorizontal="@dimen/dp_2"
                             android:textColor="@color/red"
@@ -439,7 +440,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@id/icon5"
-                            android:background="@drawable/shape_white_r15_1_bg"
                             android:gravity="center"
                             android:paddingHorizontal="@dimen/dp_2"
                             android:textColor="@color/red"
@@ -463,7 +463,7 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-        </LinearLayout>
+        </com.hjq.shape.layout.ShapeLinearLayout>
 
     </LinearLayout>
 

@@ -64,21 +64,24 @@
             app:civ_border_width="1dp"
             app:civ_circle_background_color="@color/white" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <com.hjq.shape.view.ShapeEditText
             android:id="@+id/etComment"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@id/ivReply"
             android:layout_toEndOf="@id/ivAvatar"
-            android:background="@drawable/shape_comment_edit_text_bg"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:gravity="center_vertical"
             android:hint="@string/click_send_comment"
             android:paddingHorizontal="12dp"
             android:textColorHint="@color/white60"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:shape="rectangle"
+            app:shape_radius="@dimen/dp_2"
+            app:shape_solidColor="@color/black5"
+            app:shape_strokeColor="@color/white20"
+            app:shape_strokeWidth="@dimen/dp_0_5" />
 
         <ImageView
             android:id="@+id/ivReply"

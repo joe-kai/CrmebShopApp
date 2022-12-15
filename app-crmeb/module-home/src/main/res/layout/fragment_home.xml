@@ -228,18 +228,20 @@
                             android:textSize="@dimen/sp_15"
                             tools:text="广州" />
 
-                        <androidx.appcompat.widget.AppCompatTextView
+                        <com.hjq.shape.view.ShapeTextView
                             android:id="@+id/tv_home_hint"
                             android:layout_width="0px"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/dp_20"
                             android:layout_weight="1"
-                            android:background="@drawable/shape_home_search_bar_transparent_bg"
                             android:gravity="center"
                             android:paddingVertical="@dimen/dp_5"
                             android:text="完善细节，追求完美"
                             android:textColor="@color/white70"
-                            android:textSize="@dimen/sp_13" />
+                            android:textSize="@dimen/sp_13"
+                            app:shape_radius="@dimen/dp_5"
+                            app:shape_strokeColor="@color/white70"
+                            app:shape_strokeWidth="@dimen/dp_1" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_home_search"
