@@ -12,9 +12,7 @@
 |:-:|:-:|:-:|:-:|:-:|
 |![首页](pic/首页.jpeg)|![分类](pic/分类.jpeg)|![视频](pic/视频.jpeg)|![购物车](pic/购物车.jpeg)|![我的](pic/我的.jpeg)|
 
-<video src="pic/24_1671090689.mp4"></video>
-<iframe height=498 width=510 src="pic/24_1671090689.mp4">
-
+![gif](pic/未标题-1.gif)
 
 [1]:https://kotlinlang.org
 
