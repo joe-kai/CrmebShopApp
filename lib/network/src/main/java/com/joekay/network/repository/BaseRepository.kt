@@ -23,7 +23,6 @@ open class BaseRepository<C>(
     }
 
 
-
     companion object {
         var page = 1
         val config = PagingConfig(
@@ -81,7 +80,7 @@ open class BaseRepository<C>(
             EmptyResponse()
         } else {
             if (data == null) {
-                SuccessResponse(true as T)
+                EmptyResponse()
             } else {
                 SuccessResponse(data)
             }

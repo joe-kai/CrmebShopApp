@@ -18,12 +18,29 @@ class HomeRepo @Inject constructor() : BaseRepository<HomeApi>(HomeApi::class.ja
         api.getHomeData()
     }
 
-    suspend fun getProductList(type: String)= fireList {
+    suspend fun getProductList(type: String) = fireList {
         api.getHomeProduct(type, page, config.pageSize)
     }
+
     fun getHomeProduct(type: String): Flow<PagingData<ProductModel>> {
         return Pager(config) {
             HomePagingSource(type, api)
         }.flow
+    }
+
+    suspend fun getCombinationProductList() = fire {
+        api.getCombinationProductList()
+    }
+
+    suspend fun getHomeSecKill() = fire {
+        api.getHomeSecKill()
+    }
+
+    suspend fun getHomeBargain() = fire {
+        api.getHomeBargain()
+    }
+
+    suspend fun getHomeCoupon() = fire {
+        api.getHomeCoupon()
     }
 }

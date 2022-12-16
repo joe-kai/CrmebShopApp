@@ -1,14 +1,13 @@
-package com.joekay.module_home.model
+package com.joekay.module_base.network.model
 
 /**
- * author:  JoeKai
- * date: 2022/8/2 23:49
- * content：
+ * @author:  JoeKai
+ * @date:  2022/12/16
+ * @explain：
  */
 data class ProductModel(
     val id: Int,
     val storeName: String,
-    val title: String,
     val info: String,
     val image: String,
     val price: String,

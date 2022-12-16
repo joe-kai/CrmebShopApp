@@ -1,5 +1,6 @@
 package com.joekay.module_home.ui
 
+import android.annotation.SuppressLint
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gyf.immersionbar.ImmersionBar
 import com.joekay.base.adapter.Adapter
+import com.joekay.base.ext.gone
+import com.joekay.base.ext.isVisible
 import com.joekay.base.ext.load
 import com.joekay.base.ext.showToast
 import com.joekay.base.multiStateView.*
@@ -16,24 +19,24 @@ import com.joekay.base.multiStateView.state.*
 import com.joekay.base.paging.FooterAdapter
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_base.utils.RouterUtils
-import com.joekay.module_home.R
 import com.joekay.module_home.databinding.FragmentHomeBinding
 import com.joekay.module_home.model.Banner
 import com.joekay.module_home.model.ExplosiveMoney
 import com.joekay.module_home.model.Menus
-import com.joekay.module_home.ui.adapter.HomeMenuAdapter
-import com.joekay.module_home.ui.adapter.HomeProductAdapter
-import com.joekay.module_home.ui.adapter.HomeProductTabAdapter
+import com.joekay.module_home.model.SecKillResponse
+import com.joekay.module_home.ui.adapter.*
 import com.joekay.network.liveData.observeLoading
+import com.joekay.network.liveData.observeState
 import com.joekay.resource.RouterPath
-import com.therouter.TheRouter
 import com.therouter.router.Route
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import java.util.*
 import javax.inject.Inject
+
 
 @Route(path = RouterPath.frag_home)
 @AndroidEntryPoint
@@ -50,11 +53,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     @Inject
     lateinit var productAdapter: HomeProductAdapter
 
-    private lateinit var couponState: MultiStateView
-    private lateinit var secKillState: MultiStateView
-    private lateinit var groupState: MultiStateView
-    private lateinit var haggleState: MultiStateView
+    @Inject
+    lateinit var couponAdapter: HomeCouponAdapter
 
+    @Inject
+    lateinit var combinationAdapter: HomeCombinationAdapter
+
+    @Inject
+    lateinit var secKillAdapter: HomeSecKillAdapter
+
+    @Inject
+    lateinit var bargainAdapter: HomeBargainAdapter
     override fun initObserve() {
         viewModel.getHomeData()
         viewModel.homeModel.observeLoading(this, true) {
@@ -64,32 +73,55 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 initProductTab(it.explosiveMoney)
             }
         }
-        //viewModel.homeProductList.observeLoading(this, false) {
-        //    onSuccess {
-        //        productAdapter.addData(it.list)
-        //    }
-        //}
-    }
-
-    override fun initBinding() {
-        couponState = mBinding.llCoupon.bindMultiState()
-        couponState.showEmpty {
-            it.setEmptyMsg("空空如也")
-        }
-        secKillState = mBinding.llSecKill.bindMultiState()
-        secKillState.showError {
-            it.setErrorMsg("chu cuo le")
-            it.retry {
-                "啥都没用".showToast()
+        viewModel.getHomeCoupon()
+        viewModel.homeCouponList.observeState(this) {
+            onSuccess {
+                couponAdapter.setData(it)
+                mBinding.homeCouponLayout.clCoupon.isVisible(it.isNotEmpty())
+            }
+            onEmpty {
+                mBinding.homeCouponLayout.clCoupon.gone()
             }
         }
-        groupState = mBinding.llGroup.bindMultiState()
-        groupState.showLoading {
-            it.setLoadingMsg("快快加载···")
+        viewModel.getCombinationProductList()
+        viewModel.homeCombinationModel.observeState(this) {
+            onSuccess {
+                combinationAdapter.setData(it.productList)
+                mBinding.homeCombinationLayout.rlCombination.isVisible(it.productList.isNotEmpty())
+            }
+            onEmpty {
+                mBinding.homeCombinationLayout.rlCombination.gone()
+            }
         }
-        haggleState = mBinding.llHaggle.bindMultiState()
-        haggleState.show<LottieState> {
+
+        viewModel.getHomeSecKill()
+        viewModel.homeSecKillModel.observeState(this) {
+            onSuccess {
+                secKillAdapter.setData(it.productList)
+                mBinding.homeSecKillLayout.clSecKill.isVisible(it.productList.isNotEmpty())
+                initSecKill(it.secKillResponse)
+            }
+            onEmpty {
+                mBinding.homeSecKillLayout.clSecKill.gone()
+            }
         }
+
+        viewModel.getHomeBargain()
+        viewModel.homeBargainModel.observeState(this) {
+            onSuccess {
+                bargainAdapter.setData(it.productList)
+                mBinding.homeBargainLayout.clBargain.isVisible(it.productList.isNotEmpty())
+            }
+            onEmpty {
+                mBinding.homeBargainLayout.clBargain.gone()
+
+            }
+        }
+
+    }
+
+
+    override fun initBinding() {
         mBinding.run {
             ImmersionBar.setTitleBar(getAttachActivity(), tbHomeTitle)
             appBarLayout.addOnOffsetChangedListener { _, verticalOffset ->
@@ -151,6 +183,40 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     }
                 }
             }
+            homeCouponLayout.rvCoupon.adapter = couponAdapter
+            homeSecKillLayout.rvSecKill.adapter = secKillAdapter
+            homeCombinationLayout.rvCombination.adapter = combinationAdapter
+            homeBargainLayout.rvBargain.adapter = bargainAdapter
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun initSecKill(sec: SecKillResponse) {
+        if (sec==null){
+            return
+        }
+        mBinding.homeSecKillLayout.run {
+            tvTime.text = "${sec.time.substring(0, 5)} 场"
+            var mCount = sec.timeSwap.toLong() - System.currentTimeMillis() / 1000
+            var hour = 0
+            var minute = 0
+            var second = 0
+            val mCounter = object : Runnable {
+                override fun run() {
+                    mCount--
+                    hour = (mCount / 60 / 60).toInt()
+                    tvHour.text = if (hour > 9) "$hour" else "0${hour}"
+                    minute = ((mCount - hour * 60 * 60) / 60).toInt()
+                    tvMinute.text = if (minute > 9) "$minute" else "0${minute}"
+                    second = ((mCount - hour * 60 * 60 - minute * 60).toInt())
+                    tvSecond.text = if (second > 9) "$second" else "0${second}"
+                    if (mCount <= 0) {
+                        viewModel.getHomeSecKill()
+                    }
+                    postDelayed(this, 1000)
+                }
+            }
+            post(mCounter)
         }
     }
 

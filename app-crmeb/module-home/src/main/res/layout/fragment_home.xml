@@ -89,120 +89,23 @@
                         tools:listitem="@layout/layout_menus_item"
                         tools:spanCount="5" />
 
-                    <com.hjq.shape.layout.ShapeRelativeLayout
-                        android:id="@+id/ll_coupon"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/dp_10"
-                        android:layout_marginTop="@dimen/dp_10"
-                        app:shape_radius="@dimen/dp_10"
-                        app:shape_solidColor="@color/white">
+                    <include
+                        android:id="@+id/home_coupon_layout"
+                        layout="@layout/home_coupon_layout" />
+
+                    <include
+                        android:id="@+id/home_sec_kill_layout"
+                        layout="@layout/home_sec_kill_layout" />
+
+                    <include
+                        android:id="@+id/home_combination_layout"
+                        layout="@layout/home_combination_layout" />
+
+                    <include
+                        android:id="@+id/home_bargain_layout"
+                        layout="@layout/home_bargain_layout" />
 
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/home_coupon_bg" />
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="@dimen/dp_20"
-                            android:layout_marginEnd="@dimen/dp_10"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="领取优惠卷"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/sp_16"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dp_10"
-                                android:layout_marginBottom="@dimen/dp_15"
-                                android:gravity="center"
-                                android:text="福利大礼包，省了又省"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/sp_12"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="@string/see_all"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/sp_14"
-                                android:textStyle="bold" />
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-                    </com.hjq.shape.layout.ShapeRelativeLayout>
-
-                    <com.hjq.shape.layout.ShapeRelativeLayout
-                        android:id="@+id/ll_sec_kill"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/dp_10"
-                        android:layout_marginTop="@dimen/dp_10">
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/home_sec_kill_bg" />
-
-
-                    </com.hjq.shape.layout.ShapeRelativeLayout>
-
-                    <com.hjq.shape.layout.ShapeRelativeLayout
-                        android:id="@+id/ll_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/dp_10"
-                        android:layout_marginTop="@dimen/dp_10"
-                        app:shape_solidColor="@color/white">
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/home_group_bg" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="拼团" />
-
-                    </com.hjq.shape.layout.ShapeRelativeLayout>
-
-                    <com.hjq.shape.layout.ShapeRelativeLayout
-                        android:id="@+id/ll_haggle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/dp_10"
-                        android:layout_marginTop="@dimen/dp_10"
-                        app:shape_solidColor="@color/white">
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/home_haggle_bg" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="砍价" />
-
-                    </com.hjq.shape.layout.ShapeRelativeLayout>
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <!--Title-->

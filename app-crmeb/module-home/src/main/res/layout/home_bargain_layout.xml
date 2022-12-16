@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hjq.shape.layout.ShapeConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_bargain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dp_10"
+    android:layout_marginTop="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_10"
+    app:shape_radius="@dimen/dp_10"
+    app:shape_solidColor="@color/white">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home_haggle_bg" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_5"
+        android:src="@drawable/kanjia"
+        app:layout_constraintBottom_toBottomOf="@id/tv_bargain_go"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_bargain_go" />
+
+    <com.hjq.shape.view.ShapeTextView
+        android:id="@+id/tv_bargain_go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:drawableEnd="@drawable/ic_right_back_12dp"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/dp_5"
+        android:paddingVertical="@dimen/dp_4"
+        android:text="GO"
+        android:textColor="#ff9610"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shape_radius="@dimen/dp_10"
+        app:shape_solidColor="#ffe5c4" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_bargain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_5"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tv_bargain_go"
+        tools:layoutManager="LinearLayoutManager"
+        tools:listitem="@layout/layout_bargain_item" />
+
+
+</com.hjq.shape.layout.ShapeConstraintLayout>

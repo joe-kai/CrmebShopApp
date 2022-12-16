@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hjq.shape.layout.ShapeRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_combination"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dp_10"
+    android:layout_marginTop="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_10"
+    app:shape_radius="@dimen/dp_10"
+    app:shape_solidColor="@color/white">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home_group_bg" />
+
+    <com.hjq.shape.view.ShapeTextView
+        android:id="@+id/tv_combination_go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:drawableEnd="@drawable/ic_right_back_12dp"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/dp_5"
+        android:paddingVertical="@dimen/dp_4"
+        android:text="GO"
+        android:textColor="#ff9610"
+        app:shape_radius="@dimen/dp_10"
+        app:shape_solidColor="#ffe5c4" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_combination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_combination_go"
+        android:layout_marginHorizontal="@dimen/dp_7"
+        android:layout_marginTop="@dimen/dp_10"
+        tools:itemCount="5"
+        tools:layoutManager="LinearLayoutManager"
+        tools:listitem="@layout/layout_combination_item"
+        tools:orientation="horizontal" />
+
+</com.hjq.shape.layout.ShapeRelativeLayout>
+
+

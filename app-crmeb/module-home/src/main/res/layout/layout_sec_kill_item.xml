@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hjq.shape.layout.ShapeLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/dp_5"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dp_5"
+    app:shape_radius="@dimen/dp_3">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_image"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        tools:src="@mipmap/app_logo" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="@dimen/sp_13"
+        tools:text="想拼名称大哭大哭大哭收拾收拾" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_7"
+        android:textColor="@color/red"
+        android:textSize="@dimen/sp_12"
+        android:textStyle="bold"
+        tools:text="¥999.99" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_ot_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_7"
+        android:textColor="@color/black50"
+        android:textSize="@dimen/sp_10"
+        tools:text="¥999.99" />
+
+</com.hjq.shape.layout.ShapeLinearLayout>
