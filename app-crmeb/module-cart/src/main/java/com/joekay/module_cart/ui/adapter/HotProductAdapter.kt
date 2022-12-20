@@ -51,7 +51,7 @@ class HotProductAdapter @Inject constructor(
 
         override fun onBindView(position: Int) {
             var model = getAdapterItem(position)
-            binding.ivProduct.load(model.image)
+            binding.ivProduct.load(model.image,5f)
             binding.tvProductName.text = model.storeName
             binding.tvPrice.text = model.price
         }

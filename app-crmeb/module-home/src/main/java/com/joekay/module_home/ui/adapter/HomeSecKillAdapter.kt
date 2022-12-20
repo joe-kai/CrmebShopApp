@@ -40,7 +40,7 @@ class HomeSecKillAdapter
         override fun onBindView(position: Int) {
             val model = getItem(position)
             binding.run{
-                ivImage.load(model.image)
+                ivImage.load(model.image,5f)
                 tvName.text = model.title
                 tvPrice.text = "¥${model.price}"
                 tvOtPrice.text = "¥${model.otPrice}"

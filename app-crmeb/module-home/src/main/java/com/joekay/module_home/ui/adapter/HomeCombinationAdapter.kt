@@ -42,7 +42,7 @@ class HomeCombinationAdapter @Inject constructor(
         override fun onBindView(position: Int) {
             val model = getItem(position)
             binding.run {
-                ivImage.load(model.image)
+                ivImage.load(model.image,5f)
                 tvName.text = model.info
                 tvPrice.text = "¥${model.price}"
                 tvOtPrice.text = "¥${model.otPrice}"

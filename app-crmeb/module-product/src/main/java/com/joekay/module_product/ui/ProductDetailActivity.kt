@@ -8,10 +8,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayout
 import com.gyf.immersionbar.ImmersionBar
-import com.joekay.base.ext.getStatusBarHeight
-import com.joekay.base.ext.gone
-import com.joekay.base.ext.setPaddingTop
-import com.joekay.base.ext.visible
+import com.joekay.base.ext.*
 import com.joekay.module_base.base.BaseActivity
 import com.joekay.module_base.utils.BundleKey
 import com.joekay.module_product.R
@@ -163,9 +160,10 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
                 override fun onBindView(
                     holder: BannerImageHolder?, data: String?, position: Int, size: Int
                 ) {
-                    Glide.with(holder!!.itemView).load(data!!)
-                        .apply(RequestOptions.bitmapTransform(RoundedCorners(30)))
-                        .into(holder.imageView)
+                    holder!!.imageView.load(data!!)
+                    //Glide.with(holder!!.itemView).load(data!!)
+                    //    .apply(RequestOptions.bitmapTransform(RoundedCorners(30)))
+                    //    .into(holder.imageView)
                 }
             }).addBannerLifecycleObserver(this@ProductDetailActivity).indicator =
                 CircleIndicator(this@ProductDetailActivity)
