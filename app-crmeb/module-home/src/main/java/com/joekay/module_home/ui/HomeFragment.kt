@@ -14,8 +14,6 @@ import com.joekay.base.ext.gone
 import com.joekay.base.ext.isVisible
 import com.joekay.base.ext.load
 import com.joekay.base.ext.showToast
-import com.joekay.base.multiStateView.*
-import com.joekay.base.multiStateView.state.*
 import com.joekay.base.paging.FooterAdapter
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_base.utils.RouterUtils
@@ -28,13 +26,14 @@ import com.joekay.module_home.ui.adapter.*
 import com.joekay.network.liveData.observeLoading
 import com.joekay.network.liveData.observeState
 import com.joekay.resource.RouterPath
+import com.scwang.smart.refresh.layout.api.RefreshLayout
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener
 import com.therouter.router.Route
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import java.util.*
 import javax.inject.Inject
 
 
@@ -64,6 +63,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     @Inject
     lateinit var bargainAdapter: HomeBargainAdapter
+
+    private var mCounter: Runnable? = null
     override fun initObserve() {
         viewModel.getHomeData()
         viewModel.homeModel.observeLoading(this, true) {
@@ -118,12 +119,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
         }
 
+
     }
 
 
     override fun initBinding() {
         mBinding.run {
             ImmersionBar.setTitleBar(getAttachActivity(), tbHomeTitle)
+
             appBarLayout.addOnOffsetChangedListener { _, verticalOffset ->
                 val alpha = (0 - verticalOffset) / 2
                 tbHomeTitle.background.alpha = if (alpha >= 255) {
@@ -131,7 +134,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 } else {
                     alpha
                 }
-
             }
             rvProduct.adapter =
                 productAdapter.withLoadStateFooter(FooterAdapter { productAdapter.retry() })
@@ -146,27 +148,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 }
 
             })
-            //productAdapter.setOnChildClickListener(
-            //    R.id.imv_product, R.id.txv_product_name,
-            //    listener = object : Adapter.OnChildClickListener {
-            //        override fun onChildClick(
-            //            recyclerView: RecyclerView?,
-            //            childView: View?,
-            //            position: Int
-            //        ) {
-            //            when (childView?.id) {
-            //                R.id.imv_product -> {
-            //                    "点击了图片".showToast()
-            //                }
-            //                R.id.txv_product_name -> {
-            //                    "点击了商品名称".showToast()
-            //
-            //                }
-            //            }
-            //        }
-            //
-            //    })
-            refreshLayout.setEnableRefresh(false)
+            refreshLayout.setOnRefreshListener {
+                viewModel.onRefresh()
+                postDelayed({ refreshLayout.finishRefresh() }, 2000)
+            }
             productAdapter.addLoadStateListener {
                 when (it.append) {
                     is LoadState.NotLoading -> {
@@ -192,31 +177,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     @SuppressLint("SetTextI18n")
     private fun initSecKill(sec: SecKillResponse) {
-        if (sec==null){
-            return
-        }
         mBinding.homeSecKillLayout.run {
             tvTime.text = "${sec.time.substring(0, 5)} 场"
             var mCount = sec.timeSwap.toLong() - System.currentTimeMillis() / 1000
-            var hour = 0
-            var minute = 0
-            var second = 0
-            val mCounter = object : Runnable {
-                override fun run() {
-                    mCount--
-                    hour = (mCount / 60 / 60).toInt()
-                    tvHour.text = if (hour > 9) "$hour" else "0${hour}"
-                    minute = ((mCount - hour * 60 * 60) / 60).toInt()
-                    tvMinute.text = if (minute > 9) "$minute" else "0${minute}"
-                    second = ((mCount - hour * 60 * 60 - minute * 60).toInt())
-                    tvSecond.text = if (second > 9) "$second" else "0${second}"
-                    if (mCount <= 0) {
-                        viewModel.getHomeSecKill()
+            if (mCounter == null) {
+                mCounter = object : Runnable {
+                    override fun run() {
+                        mCount--
+                        val hour = (mCount / 60 / 60).toInt()
+                        tvHour.text = if (hour > 9) "$hour" else "0${hour}"
+                        val minute = ((mCount - hour * 60 * 60) / 60).toInt()
+                        tvMinute.text = if (minute > 9) "$minute" else "0${minute}"
+                        val second = ((mCount - hour * 60 * 60 - minute * 60).toInt())
+                        tvSecond.text = if (second > 9) "$second" else "0${second}"
+                        if (mCount == 0L) {
+                            viewModel.getHomeSecKill()
+                        }
+                        postDelayed(this, 1000)
                     }
-                    postDelayed(this, 1000)
                 }
+                post(mCounter!!)
             }
-            post(mCounter)
         }
     }
 

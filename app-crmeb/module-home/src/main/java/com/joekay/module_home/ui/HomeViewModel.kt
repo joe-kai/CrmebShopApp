@@ -27,6 +27,13 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun onRefresh() {
+        getHomeCoupon()
+        getHomeBargain()
+        getHomeSecKill()
+        getCombinationProductList()
+    }
+
     fun getHomeCoupon() {
         homeCouponList.request(this) {
             homeRepo.getHomeCoupon()
