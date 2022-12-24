@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.joekay.base.R
 import com.joekay.base.adapter.Adapter
 import com.joekay.base.adapter.BaseAdapter
-import com.joekay.base.ext.gone
 import com.joekay.base.widgets.PasswordView
 import java.util.*
 

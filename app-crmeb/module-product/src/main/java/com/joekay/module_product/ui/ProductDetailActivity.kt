@@ -14,6 +14,7 @@ import com.joekay.module_base.utils.BundleKey
 import com.joekay.module_product.R
 import com.joekay.module_product.databinding.ActivityProductDetailBinding
 import com.joekay.module_product.model.ProductDetailModel
+import com.joekay.module_product.ui.dialog.ProductSpecDialog
 import com.joekay.network.liveData.observeLoading
 import com.joekay.resource.RouterPath
 import com.therouter.router.Route
@@ -89,6 +90,15 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
         mBinding.scrollLayout.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
             handleScroll(scrollY)
         })
+        mBinding.tvAddCart.setOnClickListener {
+            ProductSpecDialog.Builder(getContext(), productDetailModel)
+                .show()
+
+        }
+        mBinding.tvBuyNow.setOnClickListener {
+            ProductSpecDialog.Builder(getContext(), productDetailModel)
+                .show()
+        }
 
     }
 

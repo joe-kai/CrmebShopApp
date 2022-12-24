@@ -26,8 +26,6 @@ import com.joekay.module_home.ui.adapter.*
 import com.joekay.network.liveData.observeLoading
 import com.joekay.network.liveData.observeState
 import com.joekay.resource.RouterPath
-import com.scwang.smart.refresh.layout.api.RefreshLayout
-import com.scwang.smart.refresh.layout.listener.OnRefreshListener
 import com.therouter.router.Route
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder

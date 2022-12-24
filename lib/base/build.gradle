@@ -59,6 +59,7 @@ dependencies {
 
     api libs.umsdk_common
     api libs.umsdk_asms
+    api libs.flexbox
 
 
 }

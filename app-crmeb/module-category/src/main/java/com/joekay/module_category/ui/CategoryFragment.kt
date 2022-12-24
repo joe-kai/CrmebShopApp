@@ -14,7 +14,6 @@ import com.joekay.resource.RouterPath
 import com.therouter.router.Route
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.joekay.resource.R.*
 
 @Route(path = RouterPath.frag_category)
 @AndroidEntryPoint

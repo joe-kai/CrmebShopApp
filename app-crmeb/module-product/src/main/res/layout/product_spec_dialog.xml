@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hjq.shape.layout.ShapeLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:maxHeight="@dimen/dp_260"
+    android:minHeight="@dimen/dp_160"
+    android:orientation="vertical"
+    app:shape_solidColor="@color/white"
+    app:shape_topLeftRadius="@dimen/dp_10"
+    app:shape_topRightRadius="@dimen/dp_10"
+    tools:ignore="MissingDefaultResource">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_10">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/iv_image"
+            android:maxLines="2"
+            tools:text="@string/app_name" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/tv_product_name"
+            android:layout_alignBottom="@id/iv_image"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/red"
+            tools:text="ddd" />
+
+        <TextView
+            android:id="@+id/tv_stock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_price"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_toEndOf="@id/tv_price"
+            tools:text="ddd" />
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_spec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_10" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_10"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="购买数量" />
+
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:gravity="center"
+                    android:text="-" />
+
+                <com.hjq.shape.view.ShapeTextView
+                    android:id="@+id/txv_num"
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:gravity="center"
+                    android:text="1"
+                    app:shape_radius="@dimen/dp_2"
+                    app:shape_strokeColor="@color/black40"
+                    app:shape_strokeWidth="@dimen/dp_0_5" />
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:gravity="center"
+                    android:text="+" />
+
+            </LinearLayout>
+
+            <com.hjq.shape.view.ShapeTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_20"
+                android:gravity="center"
+                android:paddingVertical="@dimen/dp_10"
+                android:textColor="@color/white"
+                app:shape_radius="@dimen/dp_20"
+                app:shape_solidColor="@color/red"
+                tools:text="加入购物车" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</com.hjq.shape.layout.ShapeLinearLayout>

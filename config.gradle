@@ -111,6 +111,8 @@ ext {
             // 友盟基础组件库（所有友盟业务SDK都依赖基础组件库）
             umsdk_common         : 'com.umeng.umsdk:common:9.4.2',//必选
             umsdk_asms           : 'com.umeng.umsdk:asms:1.4.1',//必选
+            //
+            flexbox              : 'com.google.android.flexbox:flexbox:3.0.0',
 
             // 多语种：https://github.com/getActivity/MultiLanguages
             // 悬浮窗：https://github.com/getActivity/XToast

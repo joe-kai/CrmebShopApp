@@ -8,7 +8,7 @@ package com.joekay.module_product.model
 data class ProductDetailModel(
     val activityAllH5: Any,
     val priceName: Any,
-    val productAttr: List<ProductAttr>,
+    val productAttr: MutableList<ProductAttr>,
     val productInfo: ProductInfo,
     val productValue: Map<String, AttrVauel>,
     val userCollect: Boolean

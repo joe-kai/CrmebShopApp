@@ -107,6 +107,7 @@
             android:layout_weight="1" />
 
         <com.hjq.shape.view.ShapeTextView
+            android:id="@+id/tv_add_cart"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_35"
             android:gravity="center"
@@ -120,6 +121,7 @@
             app:shape_topLeftRadius="@dimen/dp_20" />
 
         <com.hjq.shape.view.ShapeTextView
+            android:id="@+id/tv_buy_now"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_35"
             android:gravity="center"

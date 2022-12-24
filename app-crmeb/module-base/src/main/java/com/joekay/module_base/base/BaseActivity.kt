@@ -3,6 +3,7 @@ package com.joekay.module_base.base
 import TitleBarAction
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import androidx.viewbinding.ViewBinding
@@ -50,6 +51,8 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
         val titleBar = getTitleBar()
         ImmersionBar.setTitleBar(this, titleBar)
         titleBar?.setOnTitleBarListener(this)
