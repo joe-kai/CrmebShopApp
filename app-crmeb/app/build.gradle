@@ -116,6 +116,7 @@ dependencies {
         api project(":app-crmeb:module-mine")
         api project(":app-crmeb:module-order")
         api project(":app-crmeb:module-product")
+        api project(":app-crmeb:module-account")
     }
 
 }

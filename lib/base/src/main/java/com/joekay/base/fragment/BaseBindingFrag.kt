@@ -49,6 +49,10 @@ abstract class BaseBindingFrag<VB : ViewBinding> : BaseFrag(), IBaseView {
         setDarkStatusBar()
     }
 
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+    }
+
     open fun setDarkStatusBar(dark: Boolean = true) {
         WindowCompat.getInsetsController(getAttachActivity()?.window!!, mBinding.root).apply {
             isAppearanceLightStatusBars = dark

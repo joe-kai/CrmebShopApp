@@ -1,13 +1,11 @@
 package com.joekay.module_category.ui.adapter
 
 import android.content.Context
-import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.joekay.base.adapter.BaseAdapter
-import com.joekay.base.ext.getStatusBarHeight
 import com.joekay.base.ext.load
 import com.joekay.base.ext.screenHeight
 import com.joekay.module_category.R

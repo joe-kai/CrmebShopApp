@@ -5,13 +5,13 @@
         android:allowBackup="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.CrmebShopApp">
-
         <activity
-            android:name=".MainActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
-            android:exported="true"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+            android:name=".ui.login.LoginActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
     </application>
 
 </manifest>

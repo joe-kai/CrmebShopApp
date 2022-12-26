@@ -27,7 +27,7 @@ import kotlin.coroutines.CoroutineContext
 inline fun <T> BaseLiveData<T>.observeLoading(
     owner: LifecycleOwner,
     isShowLoading: Boolean = true,
-    isShowToast: Boolean = false,
+    //isShowToast: Boolean = false,
     crossinline callback: HttpRequestCallback<T>.() -> Unit
 ) {
     val requestCallback = HttpRequestCallback<T>().apply(callback)
@@ -49,9 +49,9 @@ inline fun <T> BaseLiveData<T>.observeLoading(
         }
 
         override fun onFailure(e: ErrorException) {
-            if (isShowToast){
-                EventBus.getDefault().post(ToastEvent("${e.errorMsg}"))
-            }
+            //if (isShowToast){
+            //    EventBus.getDefault().post(ToastEvent("${e.errorMsg}"))
+            //}
             Log.e("-----error", "${e.errorMsg}")
             requestCallback.failureCallback?.invoke(e)
         }
@@ -69,7 +69,7 @@ inline fun <T> BaseLiveData<T>.observeLoading(
 inline fun <T> BaseLiveData<T>.observeState(
     owner: LifecycleOwner,
     isShowState: Boolean = true,
-    isShowToast:Boolean = false,
+    //isShowToast:Boolean = false,
     crossinline callback: HttpRequestCallback<T>.() -> Unit
 ) {
     val requestCallback = HttpRequestCallback<T>().apply(callback)
@@ -99,9 +99,9 @@ inline fun <T> BaseLiveData<T>.observeState(
             if (isShowState) {
                 EventBus.getDefault().post(StateEvent(State.STATE_ERROR))
             }
-            if (isShowToast){
-                EventBus.getDefault().post(ToastEvent("${e.errorMsg}"))
-            }
+            //if (isShowToast){
+            //    EventBus.getDefault().post(ToastEvent("${e.errorMsg}"))
+            //}
             requestCallback.failureCallback?.invoke(e)
         }
 

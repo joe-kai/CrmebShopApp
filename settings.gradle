@@ -33,3 +33,4 @@ include ':app-crmeb:module-product'
 
 include ':app-crmeb:module-main'
 include ':app-crmeb:module-video'
+include ':app-crmeb:module-account'

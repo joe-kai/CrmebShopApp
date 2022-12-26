@@ -103,5 +103,12 @@
     "action": "",
     "description": "",
     "params": {}
+  },
+  {
+    "path": "account/login_act",
+    "className": "com.joekay.module_account.ui.login.LoginActivity",
+    "action": "",
+    "description": "",
+    "params": {}
   }
 ]

@@ -17,4 +17,11 @@ object RouterUtils {
 
     }
 
+    fun goToLogin() {
+        TheRouter
+            .build(RouterPath.act_login)
+            .navigation()
+
+    }
+
 }

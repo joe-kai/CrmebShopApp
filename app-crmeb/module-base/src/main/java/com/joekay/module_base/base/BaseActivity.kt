@@ -90,11 +90,6 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    private fun toastEvent(event: ToastEvent) {
-        event.msg.showToast()
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
     private fun stateEvent(event: StateEvent) {
         when (event.state) {
             State.STATE_LOADING -> {
@@ -166,6 +161,7 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         super.onLeftClick(titleBar)
         finish()
     }
+
     /**
      * 调用系统原生分享
      *

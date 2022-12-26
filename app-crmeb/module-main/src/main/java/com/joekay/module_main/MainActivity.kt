@@ -3,7 +3,10 @@ package com.joekay.module_main
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.lifecycle.MutableLiveData
+import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener
 import com.joekay.base.ActivityManager
 import com.joekay.base.adapter.FragmentPagerAdapter
 import com.joekay.base.ext.showToast
@@ -11,8 +14,13 @@ import com.joekay.base.utils.GlobalUtil
 import com.joekay.module_base.base.BaseActivity
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_base.dialog.UpdateApkDialog
+import com.joekay.module_base.login.LoginInterceptCoroutinesManager
+import com.joekay.module_base.other.TOKEN_KEY
 import com.joekay.module_base.utils.DoubleClickHelper
+import com.joekay.module_base.utils.MMKVUtils
+import com.joekay.module_base.utils.RouterUtils
 import com.joekay.module_main.databinding.ActivityMainBinding
+import com.joekay.network.liveData.BaseLiveData
 import com.joekay.network.liveData.observeLoading
 import com.joekay.resource.R
 import com.joekay.resource.RouterPath
@@ -65,7 +73,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     }
 
-
     @SuppressLint("ResourceAsColor")
     override fun initBinding() {
         mBinding.bottomNav.apply {
@@ -88,10 +95,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                         switchFragment(2)
                     }
                     R.id.nav_cart -> {
-                        switchFragment(3)
+                        MMKVUtils.put(TOKEN_KEY, "")
+                        LoginInterceptCoroutinesManager.get()
+                            .checkLogin({
+                                RouterUtils.goToLogin()
+                            }, {
+                                switchFragment(3)
+                            })
                     }
                     R.id.nav_mine -> {
-                        switchFragment(4)
+                        MMKVUtils.put(TOKEN_KEY, "")
+                        LoginInterceptCoroutinesManager.get()
+                            .checkLogin({
+                                RouterUtils.goToLogin()
+                            }, {
+                                switchFragment(4)
+                            })
                     }
                 }
                 return@setOnItemSelectedListener true
@@ -100,26 +119,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         mBinding.mainPager.adapter = pagerAdapter
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        pagerAdapter?.let {
-            switchFragment(it.getFragmentIndex(getBundleSerializable(INTENT_KEY_IN_FRAGMENT_CLASS)))
-        }
-    }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        mBinding.mainPager.let {
-            // 保存当前 Fragment 索引位置
-            outState.putInt(INTENT_KEY_IN_FRAGMENT_INDEX, it.currentItem)
-        }
-    }
+    //override fun onNewIntent(intent: Intent?) {
+    //    super.onNewIntent(intent)
+    //    pagerAdapter?.let {
+    //        switchFragment(it.getFragmentIndex(getBundleSerializable(INTENT_KEY_IN_FRAGMENT_CLASS)))
+    //    }
+    //}
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        // 恢复当前 Fragment 索引位置
-        switchFragment(savedInstanceState.getInt(INTENT_KEY_IN_FRAGMENT_INDEX))
-    }
+    //override fun onSaveInstanceState(outState: Bundle) {
+    //    super.onSaveInstanceState(outState)
+    //    mBinding.mainPager.let {
+    //        // 保存当前 Fragment 索引位置
+    //        outState.putInt(INTENT_KEY_IN_FRAGMENT_INDEX, it.currentItem)
+    //    }
+    //}
+
+    //override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+    //    super.onRestoreInstanceState(savedInstanceState)
+    //    // 恢复当前 Fragment 索引位置
+    //    switchFragment(savedInstanceState.getInt(INTENT_KEY_IN_FRAGMENT_INDEX))
+    //}
 
     private fun switchFragment(fragmentIndex: Int) {
         if (fragmentIndex == -1) {

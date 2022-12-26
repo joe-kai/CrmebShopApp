@@ -40,6 +40,8 @@ object RouterPath {
     const val act_product = "product/product_act"
     const val act_productDetail = "product/productDetail_act"
 
+    /*module-account*/
+    const val act_login = "account/login_act"
 
 
 

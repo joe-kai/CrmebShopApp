@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.login.LoginActivity">
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:background="@null"
+        android:drawableStart="@drawable/phone"
+        android:drawablePadding="@dimen/dp_5"
+        android:hint="输入手机号码"
+        android:maxLines="1"
+        android:maxLength="11"
+        android:text="18700800435"
+        android:paddingVertical="@dimen/dp_20"
+        android:textColor="@color/red"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:background="@null"
+        android:text="123456"
+        android:drawableStart="@drawable/password"
+        android:drawablePadding="@dimen/dp_5"
+        android:hint="填写登录密码"
+        android:maxLines="1"
+        android:inputType="textPassword"
+        android:paddingVertical="@dimen/dp_20"
+        android:textColor="@color/red"
+        android:maxLength="26"
+        android:textSize="18sp" />
+
+    <com.hjq.shape.view.ShapeButton
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_40"
+        android:gravity="center"
+        android:text="登录"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_16"
+        app:shape_radius="@dimen/dp_10"
+        app:shape_solidColor="@color/red" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
