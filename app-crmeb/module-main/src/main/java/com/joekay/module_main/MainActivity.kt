@@ -95,7 +95,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                         switchFragment(2)
                     }
                     R.id.nav_cart -> {
-                        MMKVUtils.put(TOKEN_KEY, "")
                         LoginInterceptCoroutinesManager.get()
                             .checkLogin({
                                 RouterUtils.goToLogin()
@@ -104,7 +103,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                             })
                     }
                     R.id.nav_mine -> {
-                        MMKVUtils.put(TOKEN_KEY, "")
                         LoginInterceptCoroutinesManager.get()
                             .checkLogin({
                                 RouterUtils.goToLogin()

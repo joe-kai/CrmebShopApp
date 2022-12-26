@@ -49,6 +49,13 @@
     "params": {}
   },
   {
+    "path": "order/order_act",
+    "className": "com.joekay.module_order.OrderActivity",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
     "path": "mine/mine_frag",
     "className": "com.joekay.module_mine.ui.MineFragment",
     "action": "",

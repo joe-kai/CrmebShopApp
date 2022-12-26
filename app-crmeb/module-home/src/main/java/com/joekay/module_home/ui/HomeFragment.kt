@@ -16,6 +16,10 @@ import com.joekay.base.ext.load
 import com.joekay.base.ext.showToast
 import com.joekay.base.paging.FooterAdapter
 import com.joekay.module_base.base.BaseFragment
+import com.joekay.module_base.login.interceptor.LoginInterceptChain
+import com.joekay.module_base.login.interceptor.LoginNextIntercept
+import com.joekay.module_base.other.TOKEN_KEY
+import com.joekay.module_base.utils.MMKVUtils
 import com.joekay.module_base.utils.RouterUtils
 import com.joekay.module_home.databinding.FragmentHomeBinding
 import com.joekay.module_home.model.Banner
@@ -26,6 +30,7 @@ import com.joekay.module_home.ui.adapter.*
 import com.joekay.network.liveData.observeLoading
 import com.joekay.network.liveData.observeState
 import com.joekay.resource.RouterPath
+import com.therouter.TheRouter
 import com.therouter.router.Route
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
@@ -238,7 +243,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     itemView: View?,
                     position: Int
                 ) {
-                    homeMenuAdapter.getItem(position).name.showToast()
+                    when (homeMenuAdapter.getItem(position).name) {
+                        "我的收藏" -> {
+                            //TheRouter.build(ARouterPath.collection_activity).navigation()
+                        }
+
+                        "地址管理" -> {
+                            //TheRouter.build(ARouterPath.addressList_activity).navigation()
+                        }
+
+                        "订单管理" -> {
+                            MMKVUtils.put(TOKEN_KEY,"")
+                            LoginInterceptChain.addInterceptor(LoginNextIntercept {
+                                TheRouter.build(RouterPath.act_order).navigation()
+                            }).process()
+                        }
+                        else -> {
+                            homeMenuAdapter.getItem(position).name.showToast()
+
+                        }
+
+                    }
                 }
             })
             rvHomeMenu.adapter = homeMenuAdapter

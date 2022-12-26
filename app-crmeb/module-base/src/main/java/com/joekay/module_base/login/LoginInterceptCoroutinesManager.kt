@@ -9,7 +9,7 @@ import kotlinx.coroutines.channels.Channel
 /**
  * @author:  JoeKai
  * @date:  2022/12/26
- * @explain：使用携程处理登录拦截
+ * @explain：使用携程实现登录拦截
  */
 class LoginInterceptCoroutinesManager constructor() : DefaultLifecycleObserver,
     CoroutineScope by MainScope() {

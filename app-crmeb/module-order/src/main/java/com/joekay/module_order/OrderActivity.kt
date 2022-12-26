@@ -5,7 +5,7 @@ import com.joekay.module_order.databinding.ActivityOrderBinding
 import com.joekay.resource.RouterPath
 import com.therouter.router.Route
 
-@Route(path = RouterPath.act_product)
+@Route(path = RouterPath.act_order)
 class OrderActivity : BaseActivity<ActivityOrderBinding>() {
     override fun initObserve() {
     }

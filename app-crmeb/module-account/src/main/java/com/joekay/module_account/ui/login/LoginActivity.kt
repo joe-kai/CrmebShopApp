@@ -6,6 +6,7 @@ import com.joekay.base.ext.showToast
 import com.joekay.module_account.databinding.ActivityLoginBinding
 import com.joekay.module_base.base.BaseActivity
 import com.joekay.module_base.login.LoginInterceptCoroutinesManager
+import com.joekay.module_base.login.interceptor.LoginInterceptChain
 import com.joekay.module_base.other.TOKEN_KEY
 import com.joekay.module_base.utils.MMKVUtils
 import com.joekay.network.liveData.observeLoading
@@ -24,8 +25,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
     override fun initObserve() {
         viewModel.loginModel.observeLoading(this) {
             onSuccess {
+                "登录成功".showToast()
                 MMKVUtils.put(TOKEN_KEY, it.token)
                 LoginInterceptCoroutinesManager.get().loginFinished()
+                LoginInterceptChain.loginFinished()
                 finish()
             }
             onFailure {
