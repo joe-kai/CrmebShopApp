@@ -56,6 +56,7 @@ class FullVideoFragment : BaseFragment<ActivityVideoBinding>() {
 
     override fun initBinding() {
         val layoutManager = VideoLayoutManager(context, OrientationHelper.VERTICAL)
+        layoutManager.initialPrefetchItemCount = 4
         mBinding.recyclerView.layoutManager = layoutManager
         mBinding.recyclerView.adapter =
             fullVideoAdapter.withLoadStateFooter(FooterAdapter { fullVideoAdapter.retry() })

@@ -96,7 +96,7 @@ class LoginInterceptor : BaseLoginInterceptImpl() {
     }
 }
 
-class LoginNextIntercept(private val action: () -> Unit) : BaseLoginInterceptImpl() {
+class NextIntercept(private val action: () -> Unit) : BaseLoginInterceptImpl() {
     override fun intercept(chain: LoginInterceptChain) {
         super.intercept(chain)
         if (LoginManager.isLogin()) {

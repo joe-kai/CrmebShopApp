@@ -17,7 +17,7 @@ import com.joekay.base.ext.showToast
 import com.joekay.base.paging.FooterAdapter
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_base.login.interceptor.LoginInterceptChain
-import com.joekay.module_base.login.interceptor.LoginNextIntercept
+import com.joekay.module_base.login.interceptor.NextIntercept
 import com.joekay.module_base.other.TOKEN_KEY
 import com.joekay.module_base.utils.MMKVUtils
 import com.joekay.module_base.utils.RouterUtils
@@ -253,8 +253,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         }
 
                         "订单管理" -> {
-                            MMKVUtils.put(TOKEN_KEY,"")
-                            LoginInterceptChain.addInterceptor(LoginNextIntercept {
+                            LoginInterceptChain.addInterceptor(NextIntercept {
                                 TheRouter.build(RouterPath.act_order).navigation()
                             }).process()
                         }

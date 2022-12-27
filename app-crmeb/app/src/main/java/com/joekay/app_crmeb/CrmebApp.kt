@@ -1,6 +1,7 @@
 package com.joekay.app_crmeb
 
 import android.content.Context
+import android.os.MessageQueue.IdleHandler
 import cn.jpush.android.api.JPushInterface
 import com.joekay.module_base.base.BaseApplication
 import com.therouter.TheRouter
@@ -21,7 +22,6 @@ class CrmebApp : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
-
         JPushInterface.setDebugMode(true)
         JPushInterface.init(this)
     }

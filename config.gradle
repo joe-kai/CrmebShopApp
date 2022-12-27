@@ -4,12 +4,12 @@ ext {
 
 
 ext.app_versions = [
-        apkName          : "商城",
+        apkName          : "ShopNormal",
         minSdkVersion    : 26,
         compileSdkVersion: 33,
         targetSdkVersion : 33,
-        versionCode      : 10106,
-        versionName      : '1.1.6',
+        versionCode      : 10107,
+        versionName      : '1.1.7',
 ]
 
 ext {
