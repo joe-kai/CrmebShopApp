@@ -9,12 +9,12 @@ import com.joekay.base.gilde.GlideApp
 import com.joekay.base.utils.GlobalUtil
 import com.joekay.base.widgets.NoStatusFooter
 import com.joekay.module_base.network.interceptor.HeaderInterceptor
+import com.joekay.module_base.network.interceptor.ClearTokenInterceptor
 import com.joekay.module_base.other.TitleBarStyle
 import com.joekay.network.RetrofitBuilder
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.scwang.smart.refresh.layout.api.RefreshLayout
-import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.mmkv.MMKV
 
 /**
@@ -86,6 +86,7 @@ open class BaseApplication : Application() {
         super.onCreate()
         initSdk(this)
         RetrofitBuilder.initInterceptor(HeaderInterceptor())
+            .initInterceptor(ClearTokenInterceptor())
     }
 
     override fun onLowMemory() {
