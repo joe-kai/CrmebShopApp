@@ -26,7 +26,7 @@ class ClearTokenInterceptor : Interceptor {
 
         val response = chain.proceed(request)
         if (response.isSuccessful) {
-            val jsonObject = JSONObject(getResponseBody(response))
+            val jsonObject = JSONObject(getResponseBody(response.body))
             if (jsonObject.has("code")) {
                 val code = jsonObject.getInt("code")
                 if (code == 401) {
@@ -37,9 +37,8 @@ class ClearTokenInterceptor : Interceptor {
         return response
     }
 
-    private fun getResponseBody(response: Response): String {
+    private fun getResponseBody(responseBody: ResponseBody?): String {
         val UTF8: Charset = Charset.forName("UTF-8")
-        val responseBody: ResponseBody? = response.body
         val source: BufferedSource = responseBody!!.source()
         try {
             source.request(Long.MAX_VALUE) // Buffer the entire body.
