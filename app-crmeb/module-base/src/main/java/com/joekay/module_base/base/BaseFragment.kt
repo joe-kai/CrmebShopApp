@@ -1,17 +1,14 @@
 package com.joekay.module_base.base
 
 import TitleBarAction
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.gyf.immersionbar.ImmersionBar
 import com.hjq.bar.TitleBar
-import com.joekay.base.ActivityManager
 import com.joekay.base.action.ResourcesAction
 import com.joekay.base.fragment.BaseBindingFrag
-import com.joekay.base.ext.logD
 import com.joekay.module_base.event.MessageEvent
 import com.joekay.network.event.LoadingEvent
 import com.therouter.TheRouter
@@ -32,12 +29,11 @@ abstract class BaseFragment<VB : ViewBinding> : BaseBindingFrag<VB>(), TitleBarA
     /**
      * 日志输出标志
      */
-    protected val TAG: String = "Log:${this.javaClass.simpleName}->"
+    protected val TAG: String = "-${this.javaClass.simpleName}"
 
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,7 +55,6 @@ abstract class BaseFragment<VB : ViewBinding> : BaseBindingFrag<VB>(), TitleBarA
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     open fun onMessageEvent(messageEvent: MessageEvent) {
-        logD(TAG, "BaseFragment-->onMessageEvent()")
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -74,6 +69,5 @@ abstract class BaseFragment<VB : ViewBinding> : BaseBindingFrag<VB>(), TitleBarA
     override fun onStop() {
         super.onStop()
         EventBus.getDefault().unregister(this)
-        logD(TAG, "BaseActivity-->onStop()")
     }
 }

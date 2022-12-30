@@ -6,10 +6,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.OrientationHelper
 import com.google.gson.JsonSyntaxException
 import com.joekay.base.adapter.VideoLayoutManager
-import com.joekay.base.ext.gone
-import com.joekay.base.ext.logW
-import com.joekay.base.ext.showToast
-import com.joekay.base.ext.visible
+import com.joekay.base.ext.*
 import com.joekay.base.paging.FooterAdapter
 import com.joekay.base.widgets.FullVideoPlayer
 import com.joekay.module_base.base.BaseFragment
@@ -164,7 +161,7 @@ class FullVideoFragment : BaseFragment<ActivityVideoBinding>() {
      * @param e 异常实体类
      */
     private fun getFailureTips(e: Throwable?): String {
-        logW("TAG", "getFailureTips exception is ${e?.message}")
+        mLogW( "getFailureTips exception is ${e?.message}")
         return when (e) {
             is ConnectException -> getString(com.joekay.resource.R.string.network_connect_error)
             is SocketTimeoutException -> getString(com.joekay.resource.R.string.network_connect_timeout)

@@ -18,8 +18,6 @@ import com.joekay.base.paging.FooterAdapter
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_base.login.interceptor.LoginInterceptChain
 import com.joekay.module_base.login.interceptor.NextIntercept
-import com.joekay.module_base.other.TOKEN_KEY
-import com.joekay.module_base.utils.MMKVUtils
 import com.joekay.module_base.utils.RouterUtils
 import com.joekay.module_home.databinding.FragmentHomeBinding
 import com.joekay.module_home.model.Banner

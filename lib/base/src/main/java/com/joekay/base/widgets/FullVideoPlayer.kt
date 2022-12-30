@@ -5,7 +5,6 @@ import android.content.Context
 import android.graphics.Rect
 import android.os.Handler
 import android.util.AttributeSet
-import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,7 +51,7 @@ class FullVideoPlayer : StandardGSYVideoPlayer {
             when (scrollState) {
                 RecyclerView.SCROLL_STATE_IDLE -> playVideo(recyclerView)
             }
-            logD("----TAG", "-------onScrollStateChanged-> $scrollState")
+            mLogD("-------onScrollStateChanged-> $scrollState")
         }
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -61,10 +60,7 @@ class FullVideoPlayer : StandardGSYVideoPlayer {
                 (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
             val lastVisibleItem =
                 (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
-            logD(
-                "----TAG",
-                "-------onScrolled-> firstVisibleItem:$firstVisibleItem     lastVisibleItem:$lastVisibleItem"
-            )
+            mLogD("-------onScrolled-> firstVisibleItem:$firstVisibleItem lastVisibleItem:$lastVisibleItem")
         }
 
         private fun playVideo(recyclerView: RecyclerView?) {

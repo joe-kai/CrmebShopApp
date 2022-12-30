@@ -5,10 +5,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.JsonSyntaxException
-import com.joekay.base.ext.gone
-import com.joekay.base.ext.logW
-import com.joekay.base.ext.showToast
-import com.joekay.base.ext.visible
+import com.joekay.base.ext.*
 import com.joekay.base.paging.FooterAdapter
 import com.joekay.base.widgets.AutoPlayScrollListener
 import com.joekay.module_base.base.BaseFragment
@@ -154,7 +151,7 @@ class VideoFragment : BaseFragment<FragmentVideoBinding>() {
      * @param e 异常实体类
      */
     private fun getFailureTips(e: Throwable?): String {
-        logW("TAG", "getFailureTips exception is ${e?.message}")
+        mLogW( "getFailureTips exception is ${e?.message}")
         return when (e) {
             is ConnectException -> getString(string.network_connect_error)
             is SocketTimeoutException -> getString(string.network_connect_timeout)

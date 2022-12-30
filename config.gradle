@@ -114,6 +114,7 @@ ext {
             //
             flexbox              : 'com.google.android.flexbox:flexbox:3.0.0',
 
+            logger               : 'com.orhanobut:logger:2.2.0',
             // 多语种：https://github.com/getActivity/MultiLanguages
             // 悬浮窗：https://github.com/getActivity/XToast
             // 日志输出：https://github.com/getActivity/Logcat

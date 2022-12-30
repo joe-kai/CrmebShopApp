@@ -57,19 +57,19 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
 
     override fun onPause() {
         super.onPause()
-        logD(TAG, "onPause")
+        mLogD("onPause")
         mBinding.videoPlayer.onVideoPause()
     }
 
     override fun onResume() {
         super.onResume()
-        logD(TAG, "onResume")
+        mLogD("onResume")
         mBinding.videoPlayer.onVideoResume()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        logD(TAG, "onDestroy")
+        mLogD("onDestroy")
         GSYVideoADManager.releaseAllVideos()
         orientationUtils?.releaseListener()
         mBinding.videoPlayer.release()
@@ -80,7 +80,7 @@ class VideoDetailActivity : BaseActivity<ActivityVideoDetailBinding>() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        logD(TAG, "onBackPressed()")
+        mLogD("onBackPressed()")
         orientationUtils?.backToProtVideo()
         if (GSYVideoManager.backFromWindowFull(this)) return
         finish()

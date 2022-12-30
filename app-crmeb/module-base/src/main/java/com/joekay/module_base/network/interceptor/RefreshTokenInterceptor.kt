@@ -38,7 +38,7 @@ class RefreshTokenInterceptor : Interceptor {
             val newRequest = chain.request().newBuilder()
                 .addHeader("Authori-zation", MMKVUtils.getString(TOKEN_KEY, ""))
                 .build()
-            return chain.proceed(newRequest);
+            return chain.proceed(newRequest)
         }
 
         return proceed.newBuilder()

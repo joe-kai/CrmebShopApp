@@ -1,12 +1,16 @@
 package com.joekay.network
 
+import android.app.Notification.Builder
+import android.text.TextUtils
 import android.util.Log
 import com.joekay.network.config.*
-import okhttp3.*
+import com.orhanobut.logger.Logger
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.json.JSONObject
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 /**
@@ -15,7 +19,8 @@ import java.util.concurrent.TimeUnit
  * @explain： Retrofit 构建器基类
  */
 object RetrofitBuilder {
-    private const val LOG_TAG = "---->:"
+
+    private const val LOG_TAG = "Retrofit"
 
     /**
      * retrofit 多实例
@@ -32,9 +37,13 @@ object RetrofitBuilder {
             .retryOnConnectionFailure(true)
             .cookieJar(LocalCookieJar())
             .addInterceptor(HttpLoggingInterceptor { message ->
-                Log.d(
-                    LOG_TAG, message
-                )
+                Logger.t(LOG_TAG)
+                if (isJsonObject(message)) {
+                    Logger.json(message)
+                } else if (message.contains("http://") || message.contains("https://")) {
+                    Logger.e(message)
+                }
+                //Log.d(LOG_TAG,message)
             }.setLevel(HttpLoggingInterceptor.Level.BODY))
 
         if (interceptorList.isNotEmpty()) {
@@ -43,6 +52,23 @@ object RetrofitBuilder {
             }
         }
         builder.build()
+    }
+
+    /**
+     * 2 * 判断字符串是否可以转化为json对象
+     * 3 * @param content
+     * 4 * @return
+     * 5
+     */
+    private fun isJsonObject(content: String?): Boolean {
+        return if (content == null || TextUtils.isEmpty(content)) {
+            false
+        } else try {
+            JSONObject(content)
+            true
+        } catch (e: Exception) {
+            false
+        }
     }
 
 

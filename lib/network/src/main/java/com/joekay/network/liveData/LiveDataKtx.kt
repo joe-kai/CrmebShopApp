@@ -1,7 +1,5 @@
 package com.joekay.network.liveData
 
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +8,6 @@ import com.joekay.network.HttpRequestCallback
 import com.joekay.network.event.LoadingEvent
 import com.joekay.network.event.State
 import com.joekay.network.event.StateEvent
-import com.joekay.network.event.ToastEvent
 import com.joekay.network.exception.ErrorException
 import com.joekay.network.observer.IBaseObserver
 import com.joekay.network.response.BaseResponse
@@ -40,7 +37,6 @@ inline fun <T> BaseLiveData<T>.observeLoading(
         }
 
         override fun onSuccess(data: T) {
-            Log.e("-----observeState", "onSuccess")
             requestCallback.successCallback?.invoke(data)
         }
 
@@ -52,7 +48,6 @@ inline fun <T> BaseLiveData<T>.observeLoading(
             //if (isShowToast){
             //    EventBus.getDefault().post(ToastEvent("${e.errorMsg}"))
             //}
-            Log.e("-----error", "${e.errorMsg}")
             requestCallback.failureCallback?.invoke(e)
         }
 

@@ -31,7 +31,7 @@ dependencies {
     api libs.runtime_ktx
 //    api libs.xxPermissions
     api libs.aspectjrt
-    api libs.timber
+//    api libs.timber
     api libs.lottie
     api libs.bugly
 //    debugApi libs.leakcanary
@@ -60,6 +60,9 @@ dependencies {
     api libs.umsdk_common
     api libs.umsdk_asms
     api libs.flexbox
+
+    api libs.logger
+
 
 
 }

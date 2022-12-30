@@ -4,7 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import androidx.collection.ArrayMap
-import timber.log.Timber
+import com.joekay.base.ext.mLogI
 import java.util.ArrayList
 
 /**
@@ -151,39 +151,39 @@ class ActivityManager private constructor() : Application.ActivityLifecycleCallb
     }
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-        Timber.i("%s - onCreate", activity.javaClass.simpleName)
+        mLogI(" - onCreate")
         if (activitySet.size == 0) {
             for (callback: ApplicationLifecycleCallback? in lifecycleCallbacks) {
                 callback?.onApplicationCreate(activity)
             }
-            Timber.i("%s - onApplicationCreate", activity.javaClass.simpleName)
+            mLogI(" - onApplicationCreate")
         }
         activitySet[getObjectTag(activity)] = activity
         topActivity = activity
     }
 
     override fun onActivityStarted(activity: Activity) {
-        Timber.i("%s - onStart", activity.javaClass.simpleName)
+        mLogI(" - onActivityStarted")
     }
 
     override fun onActivityResumed(activity: Activity) {
-        Timber.i("%s - onResume", activity.javaClass.simpleName)
+        mLogI(" - onActivityResumed")
         if (topActivity === activity && resumedActivity == null) {
             for (callback: ApplicationLifecycleCallback in lifecycleCallbacks) {
                 callback.onApplicationForeground(activity)
             }
-            Timber.i("%s - onApplicationForeground", activity.javaClass.simpleName)
+            mLogI(" - onApplicationForeground")
         }
         topActivity = activity
         resumedActivity = activity
     }
 
     override fun onActivityPaused(activity: Activity) {
-        Timber.i("%s - onPause", activity.javaClass.simpleName)
+        mLogI("- onActivityPaused")
     }
 
     override fun onActivityStopped(activity: Activity) {
-        Timber.i("%s - onStop", activity.javaClass.simpleName)
+        mLogI(" - onActivityStopped")
         if (resumedActivity === activity) {
             resumedActivity = null
         }
@@ -191,16 +191,16 @@ class ActivityManager private constructor() : Application.ActivityLifecycleCallb
             for (callback: ApplicationLifecycleCallback in lifecycleCallbacks) {
                 callback.onApplicationBackground(activity)
             }
-            Timber.i("%s - onApplicationBackground", activity.javaClass.simpleName)
+            mLogI(" - onApplicationBackground")
         }
     }
 
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
-        Timber.i("%s - onSaveInstanceState", activity.javaClass.simpleName)
+        mLogI(" - onActivitySaveInstanceState")
     }
 
     override fun onActivityDestroyed(activity: Activity) {
-        Timber.i("%s - onDestroy", activity.javaClass.simpleName)
+        mLogI(" - onActivityDestroyed")
         activitySet.remove(getObjectTag(activity))
         if (topActivity === activity) {
             topActivity = null
@@ -209,7 +209,7 @@ class ActivityManager private constructor() : Application.ActivityLifecycleCallb
             for (callback: ApplicationLifecycleCallback in lifecycleCallbacks) {
                 callback.onApplicationDestroy(activity)
             }
-            Timber.i("%s - onApplicationDestroy", activity.javaClass.simpleName)
+            mLogI(" - onApplicationDestroy")
         }
     }
 

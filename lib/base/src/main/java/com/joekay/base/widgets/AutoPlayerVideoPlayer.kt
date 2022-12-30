@@ -8,12 +8,9 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.ListView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.chad.library.adapter.base.util.getItemView
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoView
 import com.joekay.base.R
@@ -74,21 +71,21 @@ class AutoPlayerVideoPlayer : StandardGSYVideoPlayer {
     //正常
     override fun changeUiToNormal() {
         super.changeUiToNormal()
-        logD(javaClass.simpleName, "changeUiToNormal")
+        mLogD("changeUiToNormal")
         mBottomContainer.gone()
     }
 
     //准备中
     override fun changeUiToPreparingShow() {
         super.changeUiToPreparingShow()
-        logD(javaClass.simpleName, "changeUiToPreparingShow")
+        mLogD("changeUiToPreparingShow")
         mBottomContainer.gone()
     }
 
     //播放中
     override fun changeUiToPlayingShow() {
         super.changeUiToPlayingShow()
-        logD(javaClass.simpleName, "changeUiToPlayingShow")
+        mLogD( "changeUiToPlayingShow")
         mBottomContainer.gone()
         start?.gone()
     }
@@ -96,26 +93,26 @@ class AutoPlayerVideoPlayer : StandardGSYVideoPlayer {
     //开始缓冲
     override fun changeUiToPlayingBufferingShow() {
         super.changeUiToPlayingBufferingShow()
-        logD(javaClass.simpleName, "changeUiToPlayingBufferingShow")
+        mLogD( "changeUiToPlayingBufferingShow")
     }
 
     //暂停
     override fun changeUiToPauseShow() {
         super.changeUiToPauseShow()
-        logD(javaClass.simpleName, "changeUiToPauseShow")
+        mLogD( "changeUiToPauseShow")
         mBottomContainer.gone()
     }
 
     //自动播放结束
     override fun changeUiToCompleteShow() {
         super.changeUiToCompleteShow()
-        logD(javaClass.simpleName, "changeUiToCompleteShow")
+        mLogD("changeUiToCompleteShow")
     }
 
     //错误状态
     override fun changeUiToError() {
         super.changeUiToError()
-        logD(javaClass.simpleName, "changeUiToError")
+        mLogD("changeUiToError")
     }
 }
 

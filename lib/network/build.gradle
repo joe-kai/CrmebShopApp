@@ -17,4 +17,6 @@ dependencies {
     api libs.eventbus
     api libs.paging
     api libs.paging_ktx
+    implementation libs.logger
+
 }

@@ -12,7 +12,7 @@ import androidx.annotation.NonNull
 import androidx.core.content.ContextCompat
 import com.joekay.base.R
 import com.joekay.base.ext.dp2px
-import com.joekay.base.ext.logD
+import com.joekay.base.ext.mLogD
 import com.joekay.base.utils.TypeFaceUtil
 import com.scwang.smart.refresh.layout.api.RefreshFooter
 import com.scwang.smart.refresh.layout.api.RefreshKernel
@@ -73,14 +73,14 @@ import com.scwang.smart.refresh.layout.simple.SimpleComponent
     }
 
     override fun onInitialized(@NonNull kernel: RefreshKernel, height: Int, maxDragHeight: Int) {
-        logD(TAG, "onInitialized: height=${height},noMoreData=${mNoMoreData}")
+        mLogD( "onInitialized: height=${height},noMoreData=${mNoMoreData}")
         mRefreshKernel = kernel
         mRefreshKernel?.requestDrawBackgroundFor(this, mBackgroundColor)
         if (mFooterHeight == 0) mFooterHeight = height    //获取SmartRefreshLayout全局设置的Footer高度。
     }
 
     override fun onFinish(refreshLayout: RefreshLayout, success: Boolean): Int {
-        logD(TAG, "onFinish: $success")
+        mLogD("onFinish: $success")
         super.onFinish(refreshLayout, success)
         return 0
     }
@@ -89,7 +89,7 @@ import com.scwang.smart.refresh.layout.simple.SimpleComponent
      * 设置数据全部加载完成，将不能再次触发加载功能
      */
     override fun setNoMoreData(noMoreData: Boolean): Boolean {
-        logD(TAG, "setNoMoreData: $noMoreData")
+        mLogD("setNoMoreData: $noMoreData")
         if (mNoMoreData != noMoreData) {
             mNoMoreData = noMoreData
             refreshFooterHeight()
@@ -102,7 +102,7 @@ import com.scwang.smart.refresh.layout.simple.SimpleComponent
 
     override fun onStateChanged(refreshLayout: RefreshLayout, oldState: RefreshState, newState: RefreshState) {
         super.onStateChanged(refreshLayout, oldState, newState)
-        logD(TAG, "onStateChanged: newState=${newState},noMoreData=${mNoMoreData}")
+        mLogD(TAG, "onStateChanged: newState=${newState},noMoreData=${mNoMoreData}")
         if (!mNoMoreData) {
             when (newState) {
                 RefreshState.None -> {
@@ -130,7 +130,7 @@ import com.scwang.smart.refresh.layout.simple.SimpleComponent
     }
 
     private fun refreshFooterHeight() {
-        logD(TAG, "refreshFooterHeight: noMoreData=${mNoMoreData}")
+        mLogD(TAG, "refreshFooterHeight: noMoreData=${mNoMoreData}")
         if (mNoMoreData) {
             mRefreshKernel?.refreshLayout?.setFooterHeightPx(mFooterHeight)
         } else {

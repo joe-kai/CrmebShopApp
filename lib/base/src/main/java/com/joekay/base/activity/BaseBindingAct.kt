@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.viewbinding.ViewBinding
 import com.joekay.base.ActivityCollector
 import com.joekay.base.IBaseView
-import com.joekay.base.ext.logD
+import com.joekay.base.ext.mLogD
 import com.joekay.base.ext.setTransparentStyle
 import com.joekay.base.utils.BindingReflex
 import com.joekay.base.widgets.LoadingDialog
@@ -20,7 +20,7 @@ abstract class BaseBindingAct<VB : ViewBinding> : BaseAct(), IBaseView {
     /**
      * 日志输出标志
      */
-    protected val TAG: String = "Log:${this.javaClass.simpleName}->"
+    protected val TAG: String = "-${this.javaClass.simpleName}"
 
     private val _binding: VB? by lazy(mode = LazyThreadSafetyMode.NONE) {
         BindingReflex.reflexViewBinding(javaClass, layoutInflater)
@@ -69,7 +69,7 @@ abstract class BaseBindingAct<VB : ViewBinding> : BaseAct(), IBaseView {
 
     override fun onDestroy() {
         super.onDestroy()
-        logD(TAG, "BaseActivity-->onDestroy()")
+        mLogD(TAG, "onDestroy()")
         mActivity = null
         //_binding = null
         ActivityCollector.removeTask(activityWR)

@@ -12,14 +12,13 @@ import com.hjq.bar.TitleBar
 import com.joekay.base.action.ResourcesAction
 import com.joekay.base.activity.BaseBindingAct
 import com.joekay.base.ext.ShowDialogShare
-import com.joekay.base.ext.logD
+import com.joekay.base.ext.mLogD
 import com.joekay.base.ext.showToast
 import com.joekay.base.utils.ShareUtil
 import com.joekay.module_base.event.MessageEvent
 import com.joekay.network.event.LoadingEvent
 import com.joekay.network.event.State
 import com.joekay.network.event.StateEvent
-import com.joekay.network.event.ToastEvent
 import com.therouter.TheRouter
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -46,7 +45,7 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
     override fun onStart() {
         super.onStart()
         EventBus.getDefault().register(this)
-        logD(TAG, "BaseActivity-->onStart()")
+        mLogD(TAG, "BaseActivity-->onStart()")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,22 +61,22 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
         params.systemUiVisibility =
             View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE
         window.attributes = params
-        logD(TAG, "BaseActivity-->onCreate()")
+        mLogD(TAG, "BaseActivity-->onCreate()")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        logD(TAG, "BaseActivity-->onSaveInstanceState()")
+        mLogD(TAG, "BaseActivity-->onSaveInstanceState()")
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        logD(TAG, "BaseActivity-->onRestoreInstanceState()")
+        mLogD(TAG, "BaseActivity-->onRestoreInstanceState()")
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     open fun onMessageEvent(messageEvent: MessageEvent) {
-        logD(TAG, "BaseFragment-->onMessageEvent()")
+        mLogD(TAG, "BaseFragment-->onMessageEvent()")
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -114,29 +113,29 @@ abstract class BaseActivity<VB : ViewBinding> : BaseBindingAct<VB>(), TitleBarAc
     @SuppressLint("MissingSuperCall")
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        logD(TAG, "BaseActivity-->onNewIntent()")
+        mLogD(TAG, "BaseActivity-->onNewIntent()")
     }
 
     override fun onRestart() {
         super.onRestart()
-        logD(TAG, "BaseActivity-->onRestart()")
+        mLogD(TAG, "BaseActivity-->onRestart()")
     }
 
     override fun onStop() {
         super.onStop()
         EventBus.getDefault().unregister(this)
-        logD(TAG, "BaseActivity-->onStop()")
+        mLogD(TAG, "->onStop()")
     }
 
     override fun onResume() {
         super.onResume()
-        logD(TAG, "BaseActivity-->onResume()")
+        mLogD(TAG,"BaseActivity-->onResume()")
         isActive = true
     }
 
     override fun onPause() {
         super.onPause()
-        logD(TAG, "BaseActivity-->onPause()")
+        mLogD(TAG,"BaseActivity-->onPause()")
         isActive = false
     }
 
