@@ -1,9 +1,11 @@
 package com.joekay.module_main
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.compose.ui.window.Dialog
 import com.joekay.base.ActivityManager
 import com.joekay.base.adapter.FragmentPagerAdapter
 import com.joekay.base.ext.showToast
@@ -14,9 +16,7 @@ import com.joekay.module_base.dialog.UpdateApkDialog
 import com.joekay.module_base.login.LoginInterceptCoroutinesManager
 import com.joekay.module_base.login.interceptor.LoginInterceptChain
 import com.joekay.module_base.login.interceptor.NextIntercept
-import com.joekay.module_base.other.TOKEN_KEY
 import com.joekay.module_base.utils.DoubleClickHelper
-import com.joekay.module_base.utils.MMKVUtils
 import com.joekay.module_base.utils.RouterUtils
 import com.joekay.module_main.databinding.ActivityMainBinding
 import com.joekay.network.liveData.observeLoading

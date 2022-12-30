@@ -4,8 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.recyclerview.widget.OrientationHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.joekay.base.adapter.BasePagingAdapter
 import com.joekay.base.adapter.PagingItemCallback
+import com.joekay.base.adapter.VideoLayoutManager
 import com.joekay.base.ext.gone
 import com.joekay.base.ext.load
 import com.joekay.base.ext.visible
@@ -38,6 +41,12 @@ class FullVideoAdapter @Inject constructor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagingViewHolder {
         return FullViewHolder(R.layout.layout_full_video_item)
+    }
+
+    override fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager {
+        val layoutManager = VideoLayoutManager(context, OrientationHelper.VERTICAL)
+        layoutManager.initialPrefetchItemCount = 4
+        return layoutManager
     }
 
     inner class FullViewHolder(id: Int) : PagingViewHolder(id) {

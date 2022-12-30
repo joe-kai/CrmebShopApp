@@ -52,9 +52,9 @@ class FullVideoFragment : BaseFragment<ActivityVideoBinding>() {
     }
 
     override fun initBinding() {
-        val layoutManager = VideoLayoutManager(context, OrientationHelper.VERTICAL)
-        layoutManager.initialPrefetchItemCount = 4
-        mBinding.recyclerView.layoutManager = layoutManager
+        //val layoutManager = VideoLayoutManager(context, OrientationHelper.VERTICAL)
+        //layoutManager.initialPrefetchItemCount = 4
+        //mBinding.recyclerView.layoutManager = layoutManager
         mBinding.recyclerView.adapter =
             fullVideoAdapter.withLoadStateFooter(FooterAdapter { fullVideoAdapter.retry() })
         mBinding.recyclerView.setHasFixedSize(true)
@@ -72,7 +72,6 @@ class FullVideoFragment : BaseFragment<ActivityVideoBinding>() {
     private fun loadFinished() {
         mBinding.refreshLayout.visible()
         mBinding.refreshLayout.finishRefresh()
-
     }
 
     private fun startLoading() {
@@ -83,6 +82,10 @@ class FullVideoFragment : BaseFragment<ActivityVideoBinding>() {
         mBinding.refreshLayout.finishRefresh()
         msg!!.showToast()
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
     }
 
     override fun onMessageEvent(messageEvent: MessageEvent) {
