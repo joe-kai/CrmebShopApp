@@ -29,6 +29,7 @@ object RouterPath {
     const val frag_mine = "mine/mine_frag"
     const val act_mine = "mine/mine_act"
     const val act_about = "mine/about_act"
+    const val act_roulette= "mine/roulette_act"
 
     /*module-main*/
     const val act_main = "main/main_act"

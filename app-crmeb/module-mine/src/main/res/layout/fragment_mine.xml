@@ -467,6 +467,11 @@
 
     </LinearLayout>
 
+    <com.joekay.base.widgets.ScratchView
+        android:layout_marginTop="@dimen/dp_10"
+        android:id="@+id/scratchView"
+        android:layout_width="match_parent"
+        android:layout_height="120dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_setting_pay_pwd"
@@ -511,4 +516,15 @@
         android:gravity="center_vertical"
         android:paddingHorizontal="10dp"
         android:text="全屏视频播放" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_roulette"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_1"
+        android:background="@android:color/white"
+        android:drawableEnd="@drawable/ic_right_back_12dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="10dp"
+        android:text="轮盘抽奖" />
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -40,6 +40,8 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
             tvStayEvaluate.text = "99+"
             tvAfterSales.text = "29"
 
+            scratchView.setText("这是个刮奖区")
+
             tvPay.setOnClickListener {
                 PayPasswordDialog.Builder(requireContext())
                     .setTitle("一个支付Dialog")
@@ -107,6 +109,9 @@ class MineFragment : BaseFragment<FragmentMineBinding>() {
             }
             tvFullVideo.setOnClickListener {
                 TheRouter.build(RouterPath.act_video).navigation()
+            }
+            tvRoulette.setOnClickListener {
+                TheRouter.build(RouterPath.act_roulette).navigation()
             }
         }
     }

@@ -56,6 +56,13 @@
     "params": {}
   },
   {
+    "path": "mine/roulette_act",
+    "className": "com.joekay.module_mine.ui.RouletteActivity",
+    "action": "",
+    "description": "",
+    "params": {}
+  },
+  {
     "path": "mine/mine_frag",
     "className": "com.joekay.module_mine.ui.MineFragment",
     "action": "",
