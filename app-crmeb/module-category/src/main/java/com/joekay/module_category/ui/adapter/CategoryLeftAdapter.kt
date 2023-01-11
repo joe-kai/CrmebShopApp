@@ -54,14 +54,19 @@ class CategoryLeftAdapter @Inject constructor(
             binding.run {
                 txvName.text = model.name
                 txvName.isSelected = selectedPosition == position
-                txvName.typeface = if (position == selectedPosition) {
+                if (position == selectedPosition) {
                     txvName.setBackgroundResource(color.white)
-                    Typeface.DEFAULT_BOLD
                 } else {
                     txvName.setBackgroundResource(color.transparent)
-                    Typeface.DEFAULT
-
                 }
+                //txvName.typeface = if (position == selectedPosition) {
+                //    txvName.setBackgroundResource(color.white)
+                //    Typeface.DEFAULT_BOLD
+                //} else {
+                //    txvName.setBackgroundResource(color.transparent)
+                //    Typeface.DEFAULT
+                //
+                //}
             }
         }
 

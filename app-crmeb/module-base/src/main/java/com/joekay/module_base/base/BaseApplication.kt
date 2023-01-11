@@ -1,6 +1,12 @@
 package com.joekay.module_base.base
 
+import android.app.Activity
 import android.app.Application
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
+import android.os.Bundle
+import android.view.View
+import android.graphics.Paint
 import com.joekay.base.ActivityManager
 import com.joekay.base.gilde.GlideApp
 import com.orhanobut.logger.AndroidLogAdapter
@@ -83,7 +89,46 @@ open class BaseApplication : Application() {
             .tag("-ShopApp")
             .build()
         Logger.addLogAdapter(AndroidLogAdapter(f))
+        //setBlackOrWhiteScreen()
     }
+
+    /**
+     * 通过监听Activity生命周期实现黑白屏
+     * 改变根布局饱和度
+     */
+    private fun setBlackOrWhiteScreen() {
+        var mPaint = Paint()
+        var mColorMatrix = ColorMatrix()
+        mColorMatrix.setSaturation(0f)
+        mPaint.colorFilter = ColorMatrixColorFilter(mColorMatrix)
+
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+                val view = activity.window.decorView
+                view.setLayerType(View.LAYER_TYPE_HARDWARE, mPaint)
+            }
+
+            override fun onActivityStarted(activity: Activity) {
+            }
+
+            override fun onActivityResumed(activity: Activity) {
+            }
+
+            override fun onActivityPaused(activity: Activity) {
+            }
+
+            override fun onActivityStopped(activity: Activity) {
+            }
+
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+            }
+
+            override fun onActivityDestroyed(activity: Activity) {
+            }
+
+        })
+    }
+
 
     override fun onLowMemory() {
         super.onLowMemory()
@@ -97,3 +142,4 @@ open class BaseApplication : Application() {
         GlideApp.get(this).onTrimMemory(level)
     }
 }
+

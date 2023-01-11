@@ -10,7 +10,7 @@ import com.joekay.base.utils.TypeFaceUtil
 /**
 * @author:  JoeKai
 * @date:  2022/11/27
-* @explain： 
+* @explain： 根据字体类型，获取自定义字体。
 */class TypefaceTextView  : AppCompatTextView {
 
     constructor(context: Context) : this(context, null)
