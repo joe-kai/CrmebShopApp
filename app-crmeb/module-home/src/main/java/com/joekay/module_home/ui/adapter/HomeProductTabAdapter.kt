@@ -3,6 +3,8 @@ package com.joekay.module_home.ui.adapter
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.joekay.base.adapter.Adapter
 import com.joekay.base.adapter.BaseAdapter
@@ -48,6 +50,10 @@ class HomeProductTabAdapter @Inject constructor(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return ViewHolder()
+    }
+
+    override fun generateDefaultLayoutManager(context: Context): RecyclerView.LayoutManager? {
+        return GridLayoutManager(context, 4)
     }
 
     inner class ViewHolder : BaseViewHolder(R.layout.layout_product_tab_item) {

@@ -13,33 +13,46 @@
         android:layout_height="wrap_content"
         app:title="轮盘抽奖" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
 
-        <com.joekay.base.widgets.roulette.LuckSpan
-            android:id="@+id/ls_lucky"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:padding="50dp" />
+<!--        <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical">-->
 
-        <ImageView
-            android:id="@+id/iv_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:contentDescription="@null"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/point" />
-    </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <com.joekay.base.widgets.roulette.LuckyView
-        android:id="@+id/luckyView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="@dimen/dp_10" />
+                <com.joekay.base.widgets.roulette.LuckSpan
+                    android:id="@+id/ls_lucky"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:padding="50dp" />
+
+                <ImageView
+                    android:id="@+id/iv_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/point" />
+            </RelativeLayout>
+
+            <com.joekay.base.widgets.roulette.LuckyView
+                android:id="@+id/luckyView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="@dimen/dp_10" />
+
+<!--        </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+<!--    </androidx.core.widget.NestedScrollView>-->
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

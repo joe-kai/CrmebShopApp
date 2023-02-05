@@ -1,3 +1,6 @@
 <resources>
 
+    <string name="luck_draw_shortcuts_long_label">biometrics_shortcuts_long_label</string>
+    <string name="luck_draw_shortcuts_short_label">抽奖</string>
+    <string name="shortcuts_disable_message">shortcuts_disable_message</string>
 </resources>

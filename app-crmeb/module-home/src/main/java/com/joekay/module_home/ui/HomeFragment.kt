@@ -10,14 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gyf.immersionbar.ImmersionBar
 import com.joekay.base.adapter.Adapter
-import com.joekay.base.ext.gone
-import com.joekay.base.ext.isVisible
-import com.joekay.base.ext.load
-import com.joekay.base.ext.showToast
+import com.joekay.base.ext.*
 import com.joekay.base.paging.FooterAdapter
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_base.login.interceptor.LoginInterceptChain
 import com.joekay.module_base.login.interceptor.NextIntercept
+import com.joekay.module_base.login.loginIntercept
 import com.joekay.module_base.utils.RouterUtils
 import com.joekay.module_home.databinding.FragmentHomeBinding
 import com.joekay.module_home.model.Banner
@@ -227,7 +225,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 //    )
                 //    .into(holder.imageView)
             }
-        }).addBannerLifecycleObserver(this).setIndicator(CircleIndicator(activity));
+        }).addBannerLifecycleObserver(this).indicator = CircleIndicator(activity)
     }
 
 
@@ -243,10 +241,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 ) {
                     when (homeMenuAdapter.getItem(position).name) {
                         "我的收藏" -> {
+                            loginIntercept {
+                                "我的收藏".showToast()
+                            }
                             //TheRouter.build(ARouterPath.collection_activity).navigation()
                         }
 
                         "地址管理" -> {
+                            loginIntercept {
+                                "地址管理".showToast()
+                            }
                             //TheRouter.build(ARouterPath.addressList_activity).navigation()
                         }
 
@@ -257,7 +261,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         }
                         else -> {
                             homeMenuAdapter.getItem(position).name.showToast()
-
                         }
 
                     }
@@ -269,9 +272,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
 
     private fun initProductTab(list: MutableList<ExplosiveMoney>) {
-        val manager = LinearLayoutManager(context)
-        manager.orientation = LinearLayoutManager.HORIZONTAL
-        mBinding.rvProductTab.layoutManager = GridLayoutManager(activity, 4)
         productTabAdapter.setData(list)
         mBinding.rvProductTab.adapter = productTabAdapter
         productTabAdapter.setOnProductTabListener(object :
