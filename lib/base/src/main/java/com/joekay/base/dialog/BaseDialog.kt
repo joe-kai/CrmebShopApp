@@ -843,7 +843,7 @@ open class BaseDialog constructor(
         }
 
         override fun getContext(): Context {
-            return context
+            return context.applicationContext
         }
 
         /**

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,15 +8,18 @@
     tools:context=".ui.ProductDetailActivity"
     tools:ignore="MissingDefaultResource">
 
-    <FrameLayout
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:orientation="vertical">
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scrollLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,102 +42,101 @@
 
         </androidx.core.widget.NestedScrollView>
 
-        <include
-            android:id="@+id/detail_header"
-            layout="@layout/product_detail_header"/>
-    </FrameLayout>
-
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center_vertical"
-        android:padding="@dimen/dp_10">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/call_peo"
-            android:textSize="@dimen/sp_10"
-            app:drawableTopCompat="@drawable/call" />
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_collection"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_10"
-            android:drawableTop="@drawable/sel_collection_bg"
-            android:text="@string/collection"
-            android:textSize="@dimen/sp_10" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_10">
 
             <TextView
-                android:id="@+id/tv_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/call_peo"
+                android:textSize="@dimen/sp_10"
+                app:drawableTopCompat="@drawable/call" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_collection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_10"
-                android:gravity="center"
-                android:text="@string/cart"
-                android:textSize="@dimen/sp_10"
-                app:drawableTopCompat="@drawable/cart" />
+                android:drawableTop="@drawable/sel_collection_bg"
+                android:text="@string/collection"
+                android:textSize="@dimen/sp_10" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:gravity="center"
+                    android:text="@string/cart"
+                    android:textSize="@dimen/sp_10"
+                    app:drawableTopCompat="@drawable/cart" />
+
+                <com.hjq.shape.view.ShapeTextView
+                    android:id="@+id/tv_cart_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@id/tv_cart"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/dp_2"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/sp_8"
+                    app:shape="rectangle"
+                    app:shape_radius="@dimen/dp_20"
+                    app:shape_solidColor="@color/white"
+                    app:shape_strokeColor="@color/red"
+                    app:shape_strokeWidth="@dimen/line_size"
+                    tools:text="0" />/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <com.hjq.shape.view.ShapeTextView
-                android:id="@+id/tv_cart_num"
+                android:id="@+id/tv_add_cart"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@id/tv_cart"
+                android:layout_height="@dimen/dp_35"
                 android:gravity="center"
-                android:paddingHorizontal="@dimen/dp_2"
-                android:textColor="@color/red"
-                android:textSize="@dimen/sp_8"
-                app:shape="rectangle"
-                app:shape_radius="@dimen/dp_20"
-                app:shape_solidColor="@color/white"
-                app:shape_strokeColor="@color/red"
-                app:shape_strokeWidth="@dimen/line_size"
-                tools:text="0" />/>
-        </RelativeLayout>
+                android:paddingHorizontal="@dimen/sp_15"
+                android:text="@string/add_cart"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12"
+                app:shape_bottomLeftRadius="@dimen/dp_20"
+                app:shape_endColor="#fc9413"
+                app:shape_startColor="#fcbc4c"
+                app:shape_topLeftRadius="@dimen/dp_20" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            <com.hjq.shape.view.ShapeTextView
+                android:id="@+id/tv_buy_now"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_35"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/sp_15"
+                android:text="@string/buy_now"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12"
+                app:shape_bottomRightRadius="@dimen/dp_20"
+                app:shape_endColor="#ec3424"
+                app:shape_startColor="#f65c17"
+                app:shape_topRightRadius="@dimen/dp_20" />
 
-        <com.hjq.shape.view.ShapeTextView
-            android:id="@+id/tv_add_cart"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dp_35"
-            android:gravity="center"
-            android:paddingHorizontal="@dimen/sp_15"
-            android:text="@string/add_cart"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_12"
-            app:shape_bottomLeftRadius="@dimen/dp_20"
-            app:shape_endColor="#fc9413"
-            app:shape_startColor="#fcbc4c"
-            app:shape_topLeftRadius="@dimen/dp_20" />
-
-        <com.hjq.shape.view.ShapeTextView
-            android:id="@+id/tv_buy_now"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dp_35"
-            android:gravity="center"
-            android:paddingHorizontal="@dimen/sp_15"
-            android:text="@string/buy_now"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_12"
-            app:shape_bottomRightRadius="@dimen/dp_20"
-            app:shape_endColor="#ec3424"
-            app:shape_startColor="#f65c17"
-            app:shape_topRightRadius="@dimen/dp_20" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <include
+        android:id="@+id/detail_header"
+        layout="@layout/product_detail_header" />
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</FrameLayout>

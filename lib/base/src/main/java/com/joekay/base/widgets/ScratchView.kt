@@ -10,7 +10,7 @@ import android.view.View
 /**
  * @author:  JoeKai
  * @date:  2022/12/31
- * @explain：
+ * @explain：刮刮乐效果
  */
 class ScratchView : View {
     private var mPreX = 0f

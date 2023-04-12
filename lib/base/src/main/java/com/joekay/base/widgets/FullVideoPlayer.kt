@@ -19,7 +19,7 @@ import com.shuyu.gsyvideoplayer.video.base.GSYBaseVideoPlayer
 /**
  * @author:  JoeKai
  * @date:  2022/12/8
- * @explain：
+ * @explain：全屏视频播放
  */
 class FullVideoPlayer : StandardGSYVideoPlayer {
     constructor(context: Context) : super(context)

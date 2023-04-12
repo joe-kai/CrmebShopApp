@@ -96,6 +96,10 @@ open class FragmentPagerAdapter <F : Fragment> constructor(manager: FragmentMana
         return -1
     }
 
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+
+    }
+
     override fun startUpdate(container: ViewGroup) {
         super.startUpdate(container)
         if (container is ViewPager) {

@@ -36,6 +36,7 @@ dependencies {
     api libs.bugly
 //    debugApi libs.leakcanary
     api libs.therouter
+    implementation 'androidx.core:core-ktx:+'
     kapt libs.therouter_apt
     api libs.hilt
     kapt libs.hilt_kapt

@@ -18,5 +18,6 @@ dependencies {
     api libs.paging
     api libs.paging_ktx
     implementation libs.logger
+    implementation 'androidx.core:core-ktx:+'
 
 }

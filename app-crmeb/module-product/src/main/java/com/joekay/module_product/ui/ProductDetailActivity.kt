@@ -9,6 +9,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayout
 import com.gyf.immersionbar.ImmersionBar
 import com.joekay.base.ext.*
+import com.joekay.base.multiStateView.bindMultiState
+import com.joekay.base.multiStateView.state.LoadingState
+import com.joekay.base.multiStateView.state.SuccessState
 import com.joekay.module_base.base.BaseActivity
 import com.joekay.module_base.utils.BundleKey
 import com.joekay.module_product.R
@@ -16,6 +19,7 @@ import com.joekay.module_product.databinding.ActivityProductDetailBinding
 import com.joekay.module_product.model.ProductDetailModel
 import com.joekay.module_product.ui.dialog.ProductSpecDialog
 import com.joekay.network.liveData.observeLoading
+import com.joekay.network.liveData.observeState
 import com.joekay.resource.RouterPath
 import com.therouter.router.Route
 import com.youth.banner.adapter.BannerImageAdapter
@@ -38,13 +42,14 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding>() {
 
         productId = getBundleString(BundleKey.PRODUCT_ID, "68")
         viewModel.getProductDetails(productId)
-
-        viewModel.productDetail.observeLoading(this) {
+        val stateView = mBinding.llDetail.bindMultiState()
+        stateView.show<LoadingState>()
+        viewModel.productDetail.observeState(this) {
             onSuccess {
                 productDetailModel = it
                 initProductInfo()
                 initProductWeb()
-
+                stateView.show<SuccessState>()
             }
         }
 

@@ -19,7 +19,7 @@ import com.joekay.base.ActivityManager
 interface ResourcesAction {
 
     private fun getResContext(): Context {
-        return ActivityManager.getInstance().getApplication()
+        return ActivityManager.getInstance().getApplication().applicationContext
     }
 
 

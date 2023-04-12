@@ -3,6 +3,9 @@ package com.joekay.app_crmeb
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
+import android.content.ComponentCallbacks
+import android.content.ComponentCallbacks2
+import android.content.res.Configuration
 import com.joekay.app_crmeb.databinding.ActivitySplashBinding
 import com.joekay.base.ext.*
 import com.joekay.base.utils.GlobalUtil
@@ -39,6 +42,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                     finish()
                 }
             })
+
     }
+
 
 }

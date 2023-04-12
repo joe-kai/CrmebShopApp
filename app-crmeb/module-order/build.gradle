@@ -1,4 +1,5 @@
 apply from: "../crmeb_module.gradle"
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     namespace 'com.joekay.module_order'
@@ -6,4 +7,8 @@ android {
         defaultConfig {
             applicationId "com.joekay.module_order"
         }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:+'
 }

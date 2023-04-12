@@ -11,6 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gyf.immersionbar.ImmersionBar
 import com.joekay.base.adapter.Adapter
 import com.joekay.base.ext.*
+import com.joekay.base.multiStateView.MultiStateView
+import com.joekay.base.multiStateView.bindMultiState
+import com.joekay.base.multiStateView.showLoading
+import com.joekay.base.multiStateView.showSuccess
+import com.joekay.base.multiStateView.state.LoadingState
+import com.joekay.base.multiStateView.state.SuccessState
 import com.joekay.base.paging.FooterAdapter
 import com.joekay.module_base.base.BaseFragment
 import com.joekay.module_base.login.interceptor.LoginInterceptChain
@@ -64,6 +70,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     lateinit var bargainAdapter: HomeBargainAdapter
 
     private var mCounter: Runnable? = null
+
     override fun initObserve() {
         viewModel.getHomeData()
         viewModel.homeModel.observeLoading(this, true) {
@@ -200,11 +207,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
     }
 
+
     fun getHomeProduct(type: String) {
         lifecycleScope.launchWhenCreated {
             viewModel.getHomeProduct(type).collectLatest {
                 productAdapter.submitData(it)
                 mBinding.rvProduct.scrollToPosition(0)
+
             }
         }
     }

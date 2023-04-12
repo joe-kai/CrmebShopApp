@@ -80,7 +80,7 @@ public class LuckyView extends View {
         mPaint.setStrokeWidth(mStrokeWidth); // 设置描边的宽度
 
         mRectFs = new ArrayList<>();
-    }
+        }
 
     public void setLuckAnimationEndListener(OnLuckAnimationEndListener luckAnimationEndListener) {
         mLuckAnimationEndListener = luckAnimationEndListener;
