@@ -13,4 +13,5 @@ dependencies {
     api project(":lib:resource")
     api project(":lib:network")
     implementation 'androidx.core:core-ktx:+'
+    implementation 'androidx.core:core-ktx:+'
 }

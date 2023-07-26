@@ -102,6 +102,7 @@ dependencies {
     api project(":app-crmeb:module-base")
     api libs.hilt
     implementation 'androidx.core:core-ktx:+'
+    implementation 'androidx.core:core-ktx:+'
     kapt libs.hilt_kapt
 
 
